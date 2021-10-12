@@ -678,8 +678,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\ManageAuthor\" />
-    <Folder Include="Areas\Admin\Views\ManagePublisher\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -740,10 +738,15 @@
     <Content Include="Areas\Admin\Views\Shared\Partials\_Footer.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Partials\_Header.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Partials\_Navbar.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageCategory\ManageCategory.cshtml" />
     <Content Include="Areas\Admin\Views\ManageCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ManageCategory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ManageCategory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageAuthor\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageAuthor\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageAuthor\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManagePublisher\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ManagePublisher\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ManagePublisher\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Checkout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />

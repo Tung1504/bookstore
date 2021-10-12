@@ -1,0 +1,64 @@
+﻿@model IEnumerable<bookstore.Models.Author>
+
+@{
+    ViewBag.Title = "ManageAuthor";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Category</h2>
+
+
+
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        <button type="button"><a href="@Url.Action("Create", "ManageAuthor")">Create</a></button>
+        <div class="row">
+            <div class="col-sm-12 col-12">
+                <div class="card">
+                    <h5 class="card-header">Basic Table</h5>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Author Name</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                @foreach (var author in Model)
+                                {
+                                    <tr>
+                                        <td>@author.id</td>
+                                        <td>@author.author_name</td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = author.id })
+                                        </td>
+                                        <td>
+                                            @using (Html.BeginForm("Delete", "ManageCategory", new { id = author.id }, FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit">Delete</button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section js{
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.bundle.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/slimscroll/jquery.slimscroll.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/custom-js/jquery.multi-select.html")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/js/main-js.js")"></script>
+}
