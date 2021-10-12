@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title -  E-Shopper</title>
+    @Styles.Render("~/Areas/Admin/Content/vendor/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Areas/Admin/Content/vendor/fonts/circular-std/style.css")
+    @Styles.Render("~/Areas/Admin/Content/css/style.css")
+    @Styles.Render("~/Areas/Admin/Content/vendor/fonts/fontawesome/css/fontawesome-all.css")
+    @Styles.Render("~/Areas/Admin/Content/vendor/charts/chartist-bundle/chartist.css")
+    @Styles.Render("~/Areas/Admin/Content/vendor/charts/morris-bundle/morris.css")
+    @Styles.Render("~/Areas/Admin/Content/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css")
+    @Styles.Render("~/Areas/Admin/Content/vendor/charts/c3charts/c3.css")
+    @Styles.Render("~/Areas/Admin/Content/vendor/fonts/flag-icon-css/flag-icon.min.css")
+    
+</head>
+
+<body>
+    @Html.Partial("~/Areas/Admin/Views/Shared/Partials/_Header.cshtml")
+
+   
+
+    @RenderBody();
+
+    @Html.Partial("~/Areas/Admin/Views/Shared/Partials/_Footer.cshtml")
+
+
+    @RenderSection("js", false)
+
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -  E-Shopper</title>
+    @Styles.Render("~/Content/css/bootstrap.min.css")
+    @Styles.Render("~/Content/css/font-awesome.min.css")
+    @Styles.Render("~/Content/css/prettyPhoto.css")
+    @Styles.Render("~/Content/css/price-range.css")
+    @Styles.Render("~/Content/css/animate.css")
+    @Styles.Render("~/Content/css/main.css")
+    @Styles.Render("~/Content/css/responsive.css")
+
+</head>
+
+<body>
+    @Html.Partial("~/Views/Shared/Partials/_Header.cshtml")
+
+    @RenderBody();
+
+    @Html.Partial("~/Views/Shared/Partials/_Footer.cshtml")
+
+
+    @RenderSection("js", false)
+
+
+</body>
+
+</html>

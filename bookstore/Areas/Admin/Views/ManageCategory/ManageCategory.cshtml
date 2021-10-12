@@ -1,0 +1,41 @@
+﻿@model IEnumerable<bookstore.Models.Category>
+
+@{
+    ViewBag.Title = "ManageCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ManageCategory</h2>
+
+<div class="row">
+    <!-- ============================================================== -->
+    <!-- basic table -->
+    <!-- ============================================================== -->
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header">Basic Table</h5>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Category Name</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+                        @foreach (var category in Model)
+                        {
+                            <tr>
+                                <td>@category.id</td>
+                                <td>@category.category_name</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
