@@ -11,18 +11,24 @@
 
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        <button type="button"><a href="@Url.Action("Create", "ManageCategory")">Create</a></button>
+        
         <div class="row">
             <div class="col-sm-12 col-12">
                 <div class="card">
-                    <h5 class="card-header">Basic Table</h5>
+                    <h5 class="card-header">LIST OF CATEGORIES</h5>
+                    
+                    <div class="card-header">
+                        <button type="button" href="@Url.Action("Create", "ManageCategory")">Create New</button>
+                        
+                    </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Category Name</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Actions</th>
+
                                 </tr>
                             </thead>
 
@@ -35,8 +41,7 @@
                                         <td>@category.category_name</td>
                                         <td>
                                             @Html.ActionLink("Edit", "Edit", new { id = category.id })
-                                        </td>
-                                        <td>
+
                                             @using (Html.BeginForm("Delete", "ManageCategory", new { id = category.id }, FormMethod.Post))
                                             {
                                                 @Html.AntiForgeryToken()
