@@ -28,6 +28,8 @@ namespace bookstore.Models
         public int author_id { get; set; }
         public string description { get; set; }
         public string image { get; set; }
+        public Nullable<System.DateTime> public_date { get; set; }
+        public string edition { get; set; }
     
         public virtual Author Author { get; set; }
         public virtual Category Category { get; set; }

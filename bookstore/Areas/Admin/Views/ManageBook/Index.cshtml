@@ -1,0 +1,73 @@
+﻿@model IEnumerable<bookstore.Models.Book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        <div class="row">
+            <div class="col-sm-12 col-12">
+                <div class="card">
+                    <h5 class="card-header">LIST OF BOOKS</h5>
+                    <div class="card-header">
+                        <button type="button"><a href="@Url.Action("Create", "ManageUser")">Create New</a></button>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantiy In Stock</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                @foreach (var book in Model)
+                                {
+                                <tr>
+                                    <td>@book.id</td>
+                                    <td>@book.title</td>
+                                    <td>@book.price</td>
+                                    <td>@book.quantity_in_stock</td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = book.id })
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("ViewDetail", "ViewDetail", new { id = book.id })
+                                    </td>
+                                    <td>
+                                        @using (Html.BeginForm("Delete", "ManageBook", new { id = book.id }, FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit">Delete</button>
+                                        }
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section js{
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.bundle.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/slimscroll/jquery.slimscroll.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/custom-js/jquery.multi-select.html")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/js/main-js.js")"></script>
+}
+
+

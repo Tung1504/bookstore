@@ -31,6 +31,8 @@
     <Property Name="author_id" Type="int" Nullable="false" />
     <Property Name="description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="public_date" Type="date" />
+    <Property Name="edition" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -79,6 +81,16 @@ warning 6002: The table/view 'BookStore.dbo.Order_Detail' does not have a primar
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="publisher_name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -189,6 +201,18 @@ warning 6002: The table/view 'BookStore.dbo.Order_Detail' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Payment_card_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Payment_card" Type="Self.Payment_card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Payment_card">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="BookStoreModelStoreContainer">
     <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
@@ -197,6 +221,7 @@ warning 6002: The table/view 'BookStore.dbo.Order_Detail' does not have a primar
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Payment_card" EntityType="Self.Payment_card" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -236,6 +261,10 @@ FROM [dbo].[Order_Detail] AS [Order_Detail]</DefiningQuery>
     <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
       <End Role="User" EntitySet="User" />
       <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_card_User" Association="Self.FK_Payment_card_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Payment_card" EntitySet="Payment_card" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

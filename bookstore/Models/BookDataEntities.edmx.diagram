@@ -22,6 +22,8 @@
         <AssociationConnector Association="BookStoreModel.FK_Order_Detail_Order" ManuallyRouted="false" />
         <AssociationConnector Association="BookStoreModel.FK_Order_Payment_method" ManuallyRouted="false" />
         <AssociationConnector Association="BookStoreModel.FK_Order_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BookStoreModel.sysdiagram" Width="1.5" PointX="3.375" PointY="5.75" />
+        <AssociationConnector Association="BookStoreModel.FK_Payment_card_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

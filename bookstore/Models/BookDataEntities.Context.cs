@@ -34,5 +34,6 @@ namespace bookstore.Models
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Order_Detail> Order_Detail { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

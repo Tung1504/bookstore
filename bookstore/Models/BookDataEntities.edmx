@@ -36,6 +36,8 @@
           <Property Name="author_id" Type="int" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="public_date" Type="date" />
+          <Property Name="edition" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -84,6 +86,16 @@ warning 6002: The table/view 'BookStore.dbo.Order_Detail' does not have a primar
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="publisher_name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -194,6 +206,18 @@ warning 6002: The table/view 'BookStore.dbo.Order_Detail' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Payment_card_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Payment_card" Type="Self.Payment_card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Payment_card">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BookStoreModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
@@ -202,6 +226,7 @@ warning 6002: The table/view 'BookStore.dbo.Order_Detail' does not have a primar
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment_card" EntityType="Self.Payment_card" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -241,6 +266,10 @@ FROM [dbo].[Order_Detail] AS [Order_Detail]</DefiningQuery>
           <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_card_User" Association="Self.FK_Payment_card_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Payment_card" EntitySet="Payment_card" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -284,6 +313,8 @@ FROM [dbo].[Order_Detail] AS [Order_Detail]</DefiningQuery>
           <NavigationProperty Name="Publisher" Relationship="Self.FK_Book_Publisher" FromRole="Book" ToRole="Publisher" />
           <NavigationProperty Name="Order_Detail" Relationship="Self.FK_Order_Detail_Book" FromRole="Book" ToRole="Order_Detail" />
           <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="public_date" Type="DateTime" Precision="0" />
+          <Property Name="edition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -318,6 +349,7 @@ FROM [dbo].[Order_Detail] AS [Order_Detail]</DefiningQuery>
           <Property Name="to_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Payment_method" FromRole="Payment_card" ToRole="Order" />
+          <NavigationProperty Name="User" Relationship="BookStoreModel.FK_Payment_card_User" FromRole="Payment_card" ToRole="User" />
         </EntityType>
         <EntityType Name="Publisher">
           <Key>
@@ -341,6 +373,7 @@ FROM [dbo].[Order_Detail] AS [Order_Detail]</DefiningQuery>
           <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_User" FromRole="User" ToRole="Address" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Payment_card" Relationship="BookStoreModel.FK_Payment_card_User" FromRole="User" ToRole="Payment_card" />
         </EntityType>
         <EntityType Name="Order_Detail">
           <Key>
@@ -492,7 +525,34 @@ FROM [dbo].[Order_Detail] AS [Order_Detail]</DefiningQuery>
             <End Role="User" EntitySet="Users" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="BookStoreModel.sysdiagram" />
+          <AssociationSet Name="FK_Payment_card_User" Association="BookStoreModel.FK_Payment_card_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Payment_card" EntitySet="Payment_card" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Payment_card_User">
+          <End Type="BookStoreModel.User" Role="User" Multiplicity="1" />
+          <End Type="BookStoreModel.Payment_card" Role="Payment_card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Payment_card">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -522,6 +582,8 @@ FROM [dbo].[Order_Detail] AS [Order_Detail]</DefiningQuery>
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="BookStoreModel.Book">
               <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="edition" ColumnName="edition" />
+                <ScalarProperty Name="public_date" ColumnName="public_date" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -594,6 +656,17 @@ FROM [dbo].[Order_Detail] AS [Order_Detail]</DefiningQuery>
                 <ScalarProperty Name="book_id" ColumnName="book_id" />
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BookStoreModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

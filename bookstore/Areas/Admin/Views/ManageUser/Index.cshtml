@@ -1,12 +1,11 @@
-﻿@model IEnumerable<bookstore.Models.Publisher>
+﻿@model IEnumerable<bookstore.Models.User>
 
 @{
-    ViewBag.Title = "ManagePublisher";
+    ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Manage Category</h2>
-
+<h2>Index</h2>
 
 
 <div class="dashboard-wrapper">
@@ -14,31 +13,35 @@
         <div class="row">
             <div class="col-sm-12 col-12">
                 <div class="card">
-                    <h5 class="card-header">LIST OF PUBLISHERS</h5>
+                    <h5 class="card-header">LIST OF USERS</h5>
                     <div class="card-header">
-                        <button type="button"><a href="@Url.Action("Create", "ManagePublisher")">Create New</a></button>
+                        <button type="button"><a href="@Url.Action("Create", "ManageUser")">Create New</a></button>
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Publisher Name</th>
+                                    <th scope="col">User Name</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
 
 
                             <tbody>
-                                @foreach (var publisher in Model)
+                                @foreach (var user in Model)
                                 {
                                     <tr>
-                                        <td>@publisher.id</td>
-                                        <td>@publisher.publisher_name</td>
+                                        <td>@user.id</td>
+                                        <td>@user.name</td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = publisher.id })
-
-                                            @using (Html.BeginForm("Delete", "ManageCategory", new { id = publisher.id }, FormMethod.Post))
+                                            @Html.ActionLink("Edit", "Edit", new { id = user.id })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("ViewDetail", "ViewDetail", new { id = user.id })
+                                        </td>
+                                        <td>
+                                            @using (Html.BeginForm("Delete", "ManageUser", new { id = user.id }, FormMethod.Post))
                                             {
                                                 @Html.AntiForgeryToken()
                                                 <button type="submit">Delete</button>

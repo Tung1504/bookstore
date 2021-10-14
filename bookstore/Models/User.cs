@@ -18,6 +18,7 @@ namespace bookstore.Models
         {
             this.Addresses = new HashSet<Address>();
             this.Orders = new HashSet<Order>();
+            this.Payment_card = new HashSet<Payment_card>();
         }
     
         public int id { get; set; }
@@ -31,5 +32,6 @@ namespace bookstore.Models
     
         public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Payment_card> Payment_card { get; set; }
     }
 }
