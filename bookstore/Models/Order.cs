@@ -26,6 +26,7 @@ namespace bookstore.Models
         public string status { get; set; }
         public double total_price { get; set; }
         public int payment_id { get; set; }
+        public string order_number { get; set; }
     
         public virtual ICollection<Order_Detail> Order_Detail { get; set; }
         public virtual Payment_card Payment_card { get; set; }

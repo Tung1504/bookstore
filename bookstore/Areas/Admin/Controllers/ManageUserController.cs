@@ -10,6 +10,7 @@ namespace bookstore.Areas.Admin.Controllers
 {
     public class ManageUserController : BaseController
     {
+        
         // GET: Admin/ManageUser
         public ActionResult Index()
         {
@@ -41,9 +42,12 @@ namespace bookstore.Areas.Admin.Controllers
 
         public ActionResult ViewDetail(int id)
         {
+            List<Address> listAddress = db.Addresses.ToList();
+            List<Payment_card> listPayments = db.Payment_card.ToList();
+
             User user = db.Users.Find(id);
-            Address address = db.Addresses.Find(id);
-            Payment_card paymentCard= db.Payment_card.Find(id);
+            Address address = listAddress.Find(i => i.user_id == id);
+            Payment_card paymentCard = listPayments.Find(i => i.user_id == id);
 
             UserAddressPaymentCardViewModels userAddressPaymentCardViewModels = new UserAddressPaymentCardViewModels(user, address, paymentCard);
             return View(userAddressPaymentCardViewModels);

@@ -12,18 +12,20 @@ namespace bookstore.ViewModels
         //public Category Category { get; set; }
         //public Publisher Publisher { get; set; }
 
-        public List<Book> listBook { get; set; }
-        public List<Category> listCategory { get; set; }
-        public List<Publisher> listPublisher { get; set; }
+        public List<Book> ListBook { get; set; }
+        public List<Category> ListCategory { get; set; }
+        public List<Publisher> ListPublisher { get; set; }
 
         public BookCategoryPublisherViewModel() { }
 
         public BookCategoryPublisherViewModel(List<Book> _listBook, List<Category> _listCategory, List<Publisher> _listPublisher)
         {
           
-            this.listBook = _listBook;
-            this.listCategory = _listCategory;
-            this.listPublisher = _listPublisher;
+            this.ListBook = _listBook;
+            this.ListCategory = _listCategory;
+            this.ListPublisher = _listPublisher;
         }
+
+       
     }
 }

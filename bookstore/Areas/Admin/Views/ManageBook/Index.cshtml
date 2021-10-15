@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<bookstore.Models.Book>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ManageBook";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -39,11 +39,9 @@
                                     <td>@book.quantity_in_stock</td>
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { id = book.id })
-                                    </td>
-                                    <td>
+                                    
                                         @Html.ActionLink("ViewDetail", "ViewDetail", new { id = book.id })
-                                    </td>
-                                    <td>
+                                    
                                         @using (Html.BeginForm("Delete", "ManageBook", new { id = book.id }, FormMethod.Post))
                                         {
                                             @Html.AntiForgeryToken()

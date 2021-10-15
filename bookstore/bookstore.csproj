@@ -132,10 +132,12 @@
     <Compile Include="Areas\Admin\Controllers\ManageAuthorController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageBookController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageOrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagePublisherController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageUserController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAO\ManageUserDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,6 +189,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Data\Entity\EntityState.cs" />
     <Compile Include="ViewModels\BookCategoryPublisherViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\UserAddressPaymentCardViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -760,6 +763,7 @@
     <Content Include="Areas\Admin\Views\ManageUser\ViewDetail.cshtml" />
     <Content Include="Areas\Admin\Views\ManageBook\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ManageBook\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageOrder\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Checkout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />

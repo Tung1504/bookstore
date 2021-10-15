@@ -49,18 +49,16 @@
     <Property Name="order_item_id" Type="int" Nullable="false" />
     <Property Name="shipping_price" Type="int" Nullable="false" />
     <Property Name="user_id" Type="int" Nullable="false" />
-    <Property Name="status" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="total_price" Type="float" Nullable="false" />
     <Property Name="payment_id" Type="int" Nullable="false" />
+    <Property Name="order_number" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'BookStore.dbo.Order_Detail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Order_Detail">
     <Key>
-      <PropertyRef Name="book_id" />
-      <PropertyRef Name="order_id" />
-      <PropertyRef Name="quantity" />
+      <PropertyRef Name="id" />
     </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="book_id" Type="int" Nullable="false" />
     <Property Name="order_id" Type="int" Nullable="false" />
     <Property Name="quantity" Type="int" Nullable="false" />
@@ -74,6 +72,7 @@ warning 6002: The table/view 'BookStore.dbo.Order_Detail' does not have a primar
     <Property Name="from_date" Type="date" Nullable="false" />
     <Property Name="to_date" Type="date" Nullable="false" />
     <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="card_type" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Publisher">
     <Key>
@@ -101,8 +100,8 @@ warning 6002: The table/view 'BookStore.dbo.Order_Detail' does not have a primar
     <Property Name="username" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="role" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="phone" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
     <Property Name="dob" Type="date" Nullable="false" />
   </EntityType>
   <Association Name="FK_Address_User">
@@ -201,35 +200,17 @@ warning 6002: The table/view 'BookStore.dbo.Order_Detail' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Payment_card_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Payment_card" Type="Self.Payment_card" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Payment_card">
-        <PropertyRef Name="user_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="BookStoreModelStoreContainer">
     <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Payment_card" EntityType="Self.Payment_card" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[Order_Detail].[book_id] AS [book_id], 
-[Order_Detail].[order_id] AS [order_id], 
-[Order_Detail].[quantity] AS [quantity]
-FROM [dbo].[Order_Detail] AS [Order_Detail]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK_Address_User" Association="Self.FK_Address_User">
       <End Role="User" EntitySet="User" />
       <End Role="Address" EntitySet="Address" />
@@ -261,10 +242,6 @@ FROM [dbo].[Order_Detail] AS [Order_Detail]</DefiningQuery>
     <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
       <End Role="User" EntitySet="User" />
       <End Role="Order" EntitySet="Order" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Payment_card_User" Association="Self.FK_Payment_card_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="Payment_card" EntitySet="Payment_card" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
