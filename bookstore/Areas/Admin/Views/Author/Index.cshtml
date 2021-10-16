@@ -1,0 +1,161 @@
+﻿@model IEnumerable<bookstore.Models.Author>
+
+@{
+    ViewBag.Title = "ManageAuthor";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Category</h2>
+
+
+
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        <div class="row">
+            <div class="col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">AUTHORS</h5>
+
+                        <a class="btn btn-primary mb-3" href="@Url.Action("Create", "Author")">Create New</a>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Author Name</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                @foreach (var author in Model)
+                                {
+                                    <tr>
+                                        <td>@author.id</td>
+                                        <td>@author.author_name</td>
+                                        <td>
+                                            <a href="#" class="btn btn-light fas fa-edit" data-toggle="modal" data-target="#editModal" onclick="editAuthor">
+                                                Edit
+                                            </a>
+                                            @*Modal*@
+                                            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Author Name</h5>
+                                                            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </a>
+                                                        </div>
+                                                        @using (Html.BeginForm("Edit", "Author", new { id = author.id }, FormMethod.Post, new { @class = "form-control" }))
+                                                        {
+                                                            @Html.ValidationSummary();
+                                                            @Html.AntiForgeryToken();
+
+
+                                                            <div class="modal-body">
+                                                                <input type="hidden" value="@author.id" />
+                                                                <input type="text" value="@author.author_name" />
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                            </div>
+                                                        }
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <a href="#" class="btn btn-light fas fa-trash" data-toggle="modal" data-target="#deleteModal">
+                                                Delete
+                                            </a>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                                                            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Are you sure to delete this author?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            @using (Html.BeginForm("Delete", "Publisher", new { id = author.id }, FormMethod.Post, new { style = "display:inline" }))
+                                                            {
+                                                                @Html.AntiForgeryToken()
+                                                                <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+
+                        <div class="#"  style="align-self:center">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section js{
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.bundle.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/slimscroll/jquery.slimscroll.js")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/vendor/custom-js/jquery.multi-select.html")"></script>
+    <script src="@Url.Content("~/Areas/Admin/Content/js/main-js.js")"></script>
+    <script>
+        $(function () {
+            $('#example1').DataTable();
+        })
+        function GetDetails(id) {
+            $.ajax({
+                url: "/Admin/Author/" + id,
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    $('#hfId').val(response.CustomerId);
+                    $('#txtUpdateName').val(response.Name);
+                    $('#modal-Update').modal('show');
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+            return false;
+        }
+    </script>
+}
+

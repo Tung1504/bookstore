@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace bookstore.Areas.Admin.Controllers
 {
-    public class ManageUserController : BaseController
+    public class UserController : BaseController
     {
         
         // GET: Admin/ManageUser
@@ -81,10 +81,18 @@ namespace bookstore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
+            List<Address> listAddress = db.Addresses.ToList();
+            List<Payment_card> listPayments = db.Payment_card.ToList();
+
             User user = db.Users.Find(id);
+            Address address = listAddress.Find(i => i.user_id == id);
+            Payment_card paymentCard = listPayments.Find(i => i.user_id == id);
+
             if (user != null)
             {
                 db.Users.Remove(user);
+                db.Addresses.Remove(address);
+                db.Payment_card.Remove(paymentCard);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

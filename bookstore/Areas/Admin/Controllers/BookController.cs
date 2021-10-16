@@ -7,15 +7,14 @@ using System.Web.Mvc;
 
 namespace bookstore.Areas.Admin.Controllers
 {
-    public class ManageCategoryController : BaseController
+    public class BookController : BaseController
     {
-        // GET: Admin/ManageCategory
+        // GET: Admin/ManageBook
         public ActionResult Index()
         {
-            List<Category> listCategory = db.Categories.ToList();
-            return View(listCategory);
+            List<Book> listBook = db.Books.ToList();
+            return View(listBook);
         }
-
 
         public ActionResult Create()
         {
@@ -24,52 +23,59 @@ namespace bookstore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category category)
+        public ActionResult Create(Book book)
         {
 
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
+                db.Books.Add(book);
                 db.SaveChanges(); //Apply insert statement
                 return RedirectToAction("Index");
             }
 
             //nếu validate thất bại
-            return View(category);
+            return View(book);
+        }
+
+
+        public ActionResult ViewDetail(int id)
+        {
+            Book book= db.Books.Find(id);
+            return View(book);
         }
 
         public ActionResult Edit(int id)
         {
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Book book= db.Books.Find(id);
+            if (book == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(book);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Category category)
+        public ActionResult Edit(int id, Book book)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = System.Data.EntityState.Modified;
+                db.Entry(book).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View(book);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            Category category = db.Categories.Find(id);
-            if (category != null)
+            Book book = db.Books.Find(id);
+            if (book != null)
             {
-                db.Categories.Remove(category);
+                db.Books.Remove(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

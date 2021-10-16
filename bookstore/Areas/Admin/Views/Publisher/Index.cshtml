@@ -1,7 +1,7 @@
-﻿@model IEnumerable<bookstore.Models.Author>
+﻿@model IEnumerable<bookstore.Models.Publisher>
 
 @{
-    ViewBag.Title = "ManageAuthor";
+    ViewBag.Title = "ManagePublisher";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,34 +14,34 @@
         <div class="row">
             <div class="col-sm-12 col-12">
                 <div class="card">
-                    <h5 class="card-header">LIST OF AUTHORS</h5>
-                    <div class="card-header">
-                        <button type="button"><a href="@Url.Action("Create", "ManageAuthor")">Create New</a></button>
-                    </div>
                     <div class="card-body">
+                        <h5 class="card-title">PUBLISHERS</h5>
+
+                        <a class="btn btn-primary mb-3" href="@Url.Action("Create", "Publisher")">Create New</a>
+
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Author Name</th>
+                                    <th scope="col">Publisher Name</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
 
 
                             <tbody>
-                                @foreach (var author in Model)
+                                @foreach (var publisher in Model)
                                 {
                                     <tr>
-                                        <td>@author.id</td>
-                                        <td>@author.author_name</td>
+                                        <td>@publisher.id</td>
+                                        <td>@publisher.publisher_name</td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = author.id })
-                                            
-                                            @using (Html.BeginForm("Delete", "ManageCategory", new { id = author.id }, FormMethod.Post))
+                                            @Html.ActionLink(" Edit", "Edit", new { id = publisher.id }, new { @class = "btn btn-light fas fa-edit" })
+
+                                            @using (Html.BeginForm("Delete", "Publisher", new { id = publisher.id }, FormMethod.Post, new { style = "display:inline" }))
                                             {
                                                 @Html.AntiForgeryToken()
-                                                <button type="submit">Delete</button>
+                                                <button type="submit" class="btn btn-light fas fa-trash"> Delete</button>
                                             }
                                         </td>
                                     </tr>

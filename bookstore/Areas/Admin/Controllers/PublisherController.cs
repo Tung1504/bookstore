@@ -7,13 +7,13 @@ using System.Web.Mvc;
 
 namespace bookstore.Areas.Admin.Controllers
 {
-    public class ManageAuthorController : BaseController
+    public class PublisherController : BaseController
     {
-        // GET: Admin/ManageAuthor
+        // GET: Admin/ManagePublisher
         public ActionResult Index()
         {
-            List<Author> listAuthor = db.Authors.ToList();
-            return View(listAuthor);
+            List<Publisher> listPublisher = db.Publishers.ToList();
+            return View(listPublisher);
         }
 
 
@@ -24,52 +24,52 @@ namespace bookstore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Author author)
+        public ActionResult Create(Publisher publisher)
         {
 
             if (ModelState.IsValid)
             {
-                db.Authors.Add(author);
+                db.Publishers.Add(publisher);
                 db.SaveChanges(); //Apply insert statement
                 return RedirectToAction("Index");
             }
 
             //nếu validate thất bại
-            return View(author);
+            return View(publisher);
         }
 
         public ActionResult Edit(int id)
         {
-            Author category = db.Authors.Find(id);
-            if (category == null)
+            Publisher publisher = db.Publishers.Find(id);
+            if (publisher == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(publisher);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Author author)
+        public ActionResult Edit(int id, Publisher publisher)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(author).State = System.Data.EntityState.Modified;
+                db.Entry(publisher).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(author);
+            return View(publisher);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            Author author = db.Authors.Find(id);
-            if (author != null)
+            Publisher publisher = db.Publishers.Find(id);
+            if (publisher != null)
             {
-                db.Authors.Remove(author);
+                db.Publishers.Remove(publisher);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

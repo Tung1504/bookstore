@@ -7,7 +7,7 @@
 <h2>Create</h2>
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        @using (Html.BeginForm("Create", "ManageAuthor", FormMethod.Post, new { @class = "form" }))
+        @using (Html.BeginForm("Create", "Author", FormMethod.Post, new { @class = "form" }))
         {
             @Html.ValidationSummary();
             @Html.AntiForgeryToken();

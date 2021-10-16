@@ -7,14 +7,15 @@ using System.Web.Mvc;
 
 namespace bookstore.Areas.Admin.Controllers
 {
-    public class ManageBookController : BaseController
+    public class AuthorController : BaseController
     {
-        // GET: Admin/ManageBook
+        // GET: Admin/ManageAuthor
         public ActionResult Index()
         {
-            List<Book> listBook = db.Books.ToList();
-            return View(listBook);
+            List<Author> listAuthor = db.Authors.ToList();
+            return View(listAuthor);
         }
+
 
         public ActionResult Create()
         {
@@ -23,59 +24,59 @@ namespace bookstore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Book book)
+        public ActionResult Create(Author author)
         {
 
             if (ModelState.IsValid)
             {
-                db.Books.Add(book);
+                db.Authors.Add(author);
                 db.SaveChanges(); //Apply insert statement
                 return RedirectToAction("Index");
             }
 
             //nếu validate thất bại
-            return View(book);
-        }
-
-
-        public ActionResult ViewDetail(int id)
-        {
-            Book book= db.Books.Find(id);
-            return View(book);
+            return View(author);
         }
 
         public ActionResult Edit(int id)
         {
-            Book book= db.Books.Find(id);
-            if (book == null)
+            Author author = db.Authors.Find(id);
+            if (author == null)
             {
                 return HttpNotFound();
             }
-            return View(book);
+            return View(author);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Book book)
+        public ActionResult Edit(int id, Author author)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(book).State = System.Data.EntityState.Modified;
+                db.Entry(author).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(book);
+            return View(author);
+            
         }
+
+        public JsonResult EditCustomer(int id)
+        {
+            var author = db.Authors.Find(id);
+            return Json(author, JsonRequestBehavior.AllowGet);
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            Book book = db.Books.Find(id);
-            if (book != null)
+            Author author = db.Authors.Find(id);
+            if (author != null)
             {
-                db.Books.Remove(book);
+                db.Authors.Remove(author);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -7,13 +7,14 @@ using System.Web.Mvc;
 
 namespace bookstore.Areas.Admin.Controllers
 {
-    public class ManagePublisherController : BaseController
+    public class CategoryController : BaseController
     {
-        // GET: Admin/ManagePublisher
+        // GET: Admin/ManageCategory
         public ActionResult Index()
         {
-            List<Publisher> listPublisher = db.Publishers.ToList();
-            return View(listPublisher);
+            //return Content("Hello world");
+            List<Category> listCategory = db.Categories.ToList();
+            return View(listCategory);
         }
 
 
@@ -24,52 +25,52 @@ namespace bookstore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Publisher publisher)
+        public ActionResult Create(Category category)
         {
 
             if (ModelState.IsValid)
             {
-                db.Publishers.Add(publisher);
+                db.Categories.Add(category);
                 db.SaveChanges(); //Apply insert statement
                 return RedirectToAction("Index");
             }
 
             //nếu validate thất bại
-            return View(publisher);
+            return View(category);
         }
 
         public ActionResult Edit(int id)
         {
-            Publisher publisher = db.Publishers.Find(id);
-            if (publisher == null)
+            Category category = db.Categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(publisher);
+            return View(category);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Publisher publisher)
+        public ActionResult Edit(int id, Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(publisher).State = System.Data.EntityState.Modified;
+                db.Entry(category).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(publisher);
+            return View(category);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            Publisher publisher = db.Publishers.Find(id);
-            if (publisher != null)
+            Category category = db.Categories.Find(id);
+            if (category != null)
             {
-                db.Publishers.Remove(publisher);
+                db.Categories.Remove(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

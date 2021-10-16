@@ -7,7 +7,7 @@
 <h2>Edit</h2>
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        @using (Html.BeginForm("Edit", "ManageCategory", FormMethod.Post, new { @class = "form" }))
+        @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { @class = "form" }))
         {
             @Html.ValidationSummary();
             @Html.AntiForgeryToken();
