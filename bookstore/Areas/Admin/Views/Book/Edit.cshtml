@@ -1,14 +1,17 @@
 ﻿@model bookstore.ViewModels.BookCategoryPublisherAuthorViewModel
 @{
-    ViewBag.Title = "Create Book";
+    ViewBag.Title = "Edit Book";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
+
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        @using (Html.BeginForm("Create", "Book", FormMethod.Post, new { @class = "form", enctype="multipart/form-data" }))
+        @using (Html.BeginForm("Edit", "Book", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
         {
+            @Html.HiddenFor(m => m.Book.id)
+
             @Html.ValidationSummary();
             @Html.AntiForgeryToken();
             <div>
@@ -55,7 +58,7 @@
 
             <div>
                 <lable>Image</lable>
-                <input type="file" name="upload_image" id="upload_image" class="form-control"/>
+                <input type="file" name="upload_image" id="upload_image" class="form-control" />
 
             </div>
 

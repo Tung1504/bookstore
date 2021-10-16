@@ -12,7 +12,6 @@ namespace bookstore.Areas.Admin.Controllers
         // GET: Admin/ManageCategory
         public ActionResult Index()
         {
-            //return Content("Hello world");
             List<Category> listCategory = db.Categories.ToList();
             return View(listCategory);
         }
@@ -76,5 +75,6 @@ namespace bookstore.Areas.Admin.Controllers
             }
             return HttpNotFound();
         }
+
     }
 }

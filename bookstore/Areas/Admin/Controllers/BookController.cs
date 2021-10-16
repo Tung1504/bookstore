@@ -1,6 +1,8 @@
 ﻿using bookstore.Models;
+using bookstore.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,18 +20,43 @@ namespace bookstore.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            Book book = new Book();
+            List<Author> authors = db.Authors.ToList();
+            List<Publisher> publishers = db.Publishers.ToList();
+            List<Category> categories = db.Categories.ToList();
+
+
+
+            BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(book, categories, publishers, authors);
+            return View(bookCategoryPublisherViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Book book)
+        public ActionResult Create(Book book, HttpPostedFileBase upload_image)
         {
+            // #TODO: save duong dan file image vao images/shop..
 
             if (ModelState.IsValid)
             {
                 db.Books.Add(book);
-                db.SaveChanges(); //Apply insert statement
+                db.SaveChanges();
+
+                if (upload_image != null && upload_image.ContentLength > 0)
+                {
+                    int id = int.Parse(db.Books.ToList().Last().id.ToString());
+                    string _FileName = "";
+                    int index = upload_image.FileName.IndexOf('.');
+                    _FileName = "book" + id.ToString() + '.' + upload_image.FileName.Substring(index + 1);
+                    string _path = Path.Combine(Server.MapPath("~/images/shop"), _FileName);
+
+                    upload_image.SaveAs(_path);
+
+                    Book b = db.Books.FirstOrDefault(x => x.id == id);
+                    b.image = _FileName;
+                    db.SaveChanges();
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -40,28 +67,62 @@ namespace bookstore.Areas.Admin.Controllers
 
         public ActionResult ViewDetail(int id)
         {
-            Book book= db.Books.Find(id);
-            return View(book);
+            Book book = db.Books.Find(id);
+            Category category = db.Categories.Where(m => m.id == book.category_id).FirstOrDefault();
+            Publisher publisher = db.Publishers.Where(m => m.id == book.publisher_id).FirstOrDefault();
+            Author author = db.Authors.Where(m => m.id == book.author_id).FirstOrDefault();
+
+            BookCategoryPublisherAuthorViewModel bookCategoryPublisherAuthorViewModel = new BookCategoryPublisherAuthorViewModel(book, category, publisher, author);
+
+            return View(bookCategoryPublisherAuthorViewModel);
         }
 
         public ActionResult Edit(int id)
         {
-            Book book= db.Books.Find(id);
+            Book book = db.Books.Find(id);
+
+
             if (book == null)
             {
                 return HttpNotFound();
             }
-            return View(book);
+
+            List<Author> authors = db.Authors.ToList();
+            List<Publisher> publishers = db.Publishers.ToList();
+            List<Category> categories = db.Categories.ToList();
+
+
+
+            BookCategoryPublisherAuthorViewModel bookCategoryPublisherAuthorViewModel = new BookCategoryPublisherAuthorViewModel(book, categories, publishers, authors);
+
+            return View(bookCategoryPublisherAuthorViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Book book)
+        public ActionResult Edit(int id, Book book, HttpPostedFileBase upload_image)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(book).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
+
+                // generate image file name (eg. book27.png)
+                int index = upload_image.FileName.IndexOf('.');
+                string _FileName = "book" + id.ToString() + '.' + upload_image.FileName.Substring(index + 1);
+
+                // save image file 
+                if (upload_image != null && upload_image.ContentLength > 0)
+                {
+                    string _path = Path.Combine(Server.MapPath("~/images/shop"), _FileName);
+                    upload_image.SaveAs(_path);
+                }
+
+                // update image file name of the book
+                Book b = db.Books.FirstOrDefault(x => x.id == id);
+                b.image = _FileName;
+                db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
 
@@ -83,3 +144,4 @@ namespace bookstore.Areas.Admin.Controllers
         }
     }
 }
+

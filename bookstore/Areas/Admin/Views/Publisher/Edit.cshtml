@@ -1,13 +1,13 @@
 ﻿@model bookstore.Models.Publisher
 @{
-    ViewBag.Title = "EditAuthor";
+    ViewBag.Title = "Edit Publisher";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Edit</h2>
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        @using (Html.BeginForm("Edit", "ManagePublisher", FormMethod.Post, new { @class = "form" }))
+        @using (Html.BeginForm("Edit", "Publisher", FormMethod.Post, new { @class = "form" }))
         {
             @Html.ValidationSummary();
             @Html.AntiForgeryToken();

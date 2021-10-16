@@ -1,0 +1,312 @@
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\bookstore.dll.config
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\bookstore.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\bookstore.pdb
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\csc.exe
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\csc.exe.config
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\csc.rsp
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\csi.exe
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\csi.exe.config
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\csi.rsp
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.AppContext.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Collections.Immutable.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Console.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.IO.Compression.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.IO.FileSystem.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.IO.Pipes.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Reflection.Metadata.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Security.AccessControl.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Security.Claims.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Security.Principal.Windows.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.ValueTuple.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Xml.XPath.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\vbc.exe
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\vbc.exe.config
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\vbc.rsp
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe.config
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\Antlr3.Runtime.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\Microsoft.Web.Infrastructure.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\Newtonsoft.Json.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.Helpers.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.Mvc.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.Optimization.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.Razor.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.WebPages.Deployment.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.WebPages.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.WebPages.Razor.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\WebGrease.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.Helpers.xml
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.Mvc.xml
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.Optimization.xml
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.Razor.xml
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.WebPages.xml
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.WebPages.Deployment.xml
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\System.Web.WebPages.Razor.xml
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\Newtonsoft.Json.xml
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\Antlr3.Runtime.pdb
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\obj\Debug\bookstore.csprojAssemblyReference.cache
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\obj\Debug\bookstore.csproj.CoreCompileInputs.cache
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\obj\Debug\bookstore.csproj.CopyComplete
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\obj\Debug\bookstore.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\obj\Debug\bookstore.pdb
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\EntityFramework.dll
+D:\Project\Project\HCL\FINAL\bookstore\bookstore\bin\EntityFramework.xml
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\bookstore.dll.config
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\bookstore.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\bookstore.pdb
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\csc.exe
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\csc.exe.config
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\csc.rsp
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\csi.exe
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\csi.exe.config
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\csi.rsp
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.AppContext.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Collections.Immutable.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Console.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.IO.Compression.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.IO.FileSystem.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.IO.Pipes.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Reflection.Metadata.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Security.AccessControl.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Security.Claims.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Security.Principal.Windows.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.ValueTuple.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Xml.XPath.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\vbc.exe
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\vbc.exe.config
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\vbc.rsp
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe.config
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\Antlr3.Runtime.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\EntityFramework.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\Microsoft.Web.Infrastructure.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\Newtonsoft.Json.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.Helpers.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.Mvc.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.Optimization.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.Razor.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.WebPages.Deployment.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.WebPages.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.WebPages.Razor.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\WebGrease.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\EntityFramework.xml
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.Helpers.xml
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.Mvc.xml
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.Optimization.xml
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.Razor.xml
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.WebPages.xml
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.WebPages.Deployment.xml
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\System.Web.WebPages.Razor.xml
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\Newtonsoft.Json.xml
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\Antlr3.Runtime.pdb
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\obj\Debug\bookstore.csprojAssemblyReference.cache
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\obj\Debug\bookstore.csproj.CoreCompileInputs.cache
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\obj\Debug\bookstore.csproj.CopyComplete
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\obj\Debug\bookstore.dll
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\obj\Debug\bookstore.pdb
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\bookstore.dll.config
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\bookstore.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\bookstore.pdb
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\csc.exe
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\csc.exe.config
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\csc.rsp
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\csi.exe
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\csi.exe.config
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\csi.rsp
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.AppContext.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Console.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.IO.Compression.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.IO.Pipes.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Security.Claims.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.ValueTuple.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Xml.XPath.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\vbc.exe
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\vbc.exe.config
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\vbc.rsp
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\Antlr3.Runtime.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\EntityFramework.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\Newtonsoft.Json.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.Helpers.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.Mvc.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.Optimization.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.Razor.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.WebPages.Deployment.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.WebPages.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.WebPages.Razor.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\WebGrease.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\EntityFramework.xml
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.Helpers.xml
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.Mvc.xml
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.Optimization.xml
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.Razor.xml
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.WebPages.xml
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.WebPages.Deployment.xml
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\System.Web.WebPages.Razor.xml
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\Newtonsoft.Json.xml
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\Antlr3.Runtime.pdb
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\obj\Debug\bookstore.csprojAssemblyReference.cache
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\obj\Debug\bookstore.csproj.CoreCompileInputs.cache
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\obj\Debug\bookstore.csproj.CopyComplete
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\obj\Debug\bookstore.dll
+C:\Users\viet\Desktop\DotNet project\source code\bookstore\bookstore\obj\Debug\bookstore.pdb
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\bookstore.dll.config
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\bookstore.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\bookstore.pdb
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\csc.exe
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\csc.exe.config
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\csc.rsp
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\csi.exe
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\csi.exe.config
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\csi.rsp
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.AppContext.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Console.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.IO.Compression.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.IO.Pipes.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Security.Claims.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.ValueTuple.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Xml.XPath.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\vbc.exe
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\vbc.exe.config
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\vbc.rsp
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\Antlr3.Runtime.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\EntityFramework.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\Newtonsoft.Json.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.Helpers.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.Mvc.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.Optimization.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.Razor.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.WebPages.Deployment.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.WebPages.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.WebPages.Razor.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\WebGrease.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\EntityFramework.xml
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.Helpers.xml
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.Mvc.xml
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.Optimization.xml
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.Razor.xml
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.WebPages.xml
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.WebPages.Deployment.xml
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\System.Web.WebPages.Razor.xml
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\Newtonsoft.Json.xml
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\Antlr3.Runtime.pdb
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\obj\Debug\bookstore.csprojAssemblyReference.cache
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\obj\Debug\bookstore.csproj.CoreCompileInputs.cache
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\obj\Debug\bookstore.csproj.CopyComplete
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\obj\Debug\bookstore.dll
+C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\obj\Debug\bookstore.pdb

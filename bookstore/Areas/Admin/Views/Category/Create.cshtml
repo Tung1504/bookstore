@@ -1,18 +1,18 @@
 ﻿@model bookstore.Models.Category
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Category";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create</h2>
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        @using (Html.BeginForm("Create", "ManageCategory", FormMethod.Post, new { @class = "form" }))
+        @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { @class = "form" }))
         {
             @Html.ValidationSummary();
             @Html.AntiForgeryToken();
             <div>
-                @Html.LabelFor(m => m.category_name)
+                <label>Category Name</label>
                 @Html.TextBoxFor(m => m.category_name, new { type = "text", @class = "form-control" })
 
             </div>

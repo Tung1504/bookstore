@@ -18,7 +18,7 @@ namespace bookstore.Controllers
 
            
 
-            BookCategoryPublisherViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherViewModel(listBook, listCategory, listPublisher);
+            BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(listBook, listCategory, listPublisher);
             
             return View(bookCategoryPublisherViewModel);
         }

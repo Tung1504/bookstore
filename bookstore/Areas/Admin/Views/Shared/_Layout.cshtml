@@ -13,7 +13,8 @@
     @Styles.Render("~/Areas/Admin/Content/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css")
     @Styles.Render("~/Areas/Admin/Content/vendor/charts/c3charts/c3.css")
     @Styles.Render("~/Areas/Admin/Content/vendor/fonts/flag-icon-css/flag-icon.min.css")
-    
+    @RenderSection("css", false)
+
 </head>
 
 <body>
@@ -28,6 +29,7 @@
 
     @RenderSection("js", false)
 
+    
 
 </body>
 
