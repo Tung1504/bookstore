@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace bookstore.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    public class DashboardController : BaseController
     {
         // GET: Admin/Admin
         public ActionResult Index()
