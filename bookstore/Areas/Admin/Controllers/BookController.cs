@@ -39,9 +39,6 @@ namespace bookstore.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Books.Add(book);
-                db.SaveChanges();
-
                 if (upload_image != null && upload_image.ContentLength > 0)
                 {
                     int id = int.Parse(db.Books.ToList().Last().id.ToString());
@@ -105,7 +102,7 @@ namespace bookstore.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(book).State = System.Data.EntityState.Modified;
-                db.SaveChanges();
+                //db.SaveChanges();
 
                 // generate image file name (eg. book27.png)
                 int index = upload_image.FileName.IndexOf('.');
@@ -122,7 +119,7 @@ namespace bookstore.Areas.Admin.Controllers
                 Book b = db.Books.FirstOrDefault(x => x.id == id);
                 b.image = _FileName;
                 db.SaveChanges();
-                
+
                 return RedirectToAction("Index");
             }
 

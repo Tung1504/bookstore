@@ -14,7 +14,7 @@
                 <div class="card">
                     <h5 class="card-header">BOOKS</h5>
                     <div class="card-header">
-                        <button type="button"><a href="@Url.Action("Create", "Book")">Create New</a></button>
+                        <a href="@Url.Action("Create", "Book")" class="btn btn-primary">Create New</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -50,16 +50,7 @@
                                         </tr>
                                     }
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantiy In Stock</th>
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </tfoot>
+                                
                             </table>
                         </div>
                     </div>
