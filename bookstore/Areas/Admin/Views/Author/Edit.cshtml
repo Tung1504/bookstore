@@ -1,0 +1,26 @@
+﻿@model bookstore.Models.Author
+@{
+    ViewBag.Title = "Edit Author";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        @using (Html.BeginForm("Edit", "Author", FormMethod.Post, new { @class = "form" }))
+        {
+            @Html.ValidationSummary();
+            @Html.AntiForgeryToken();
+            <div>
+                <label>Author New Name</label>
+                @Html.TextBoxFor(m => m.author_name , new { type = "text", @class = "form-control" })
+
+            </div>
+
+
+
+            <br />
+            <button type="submit">Submit</button>
+        }
+    </div>
+</div>

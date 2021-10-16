@@ -1,0 +1,77 @@
+﻿@model bookstore.ViewModels.BookCategoryPublisherAuthorViewModel
+@{
+    ViewBag.Title = "ViewDetail Book";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewDetail</h2>
+
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        <div>
+            <lable>Title</lable>
+            @Html.DisplayFor(m => m.Book.title, new { type = "text", @class = "form-control" })
+
+        </div>
+
+        <div>
+            <lable>Price</lable>
+            @Html.DisplayFor(m => m.Book.price, new { type = "text", @class = "form-control" })
+
+        </div>
+
+        <div>
+            <lable>Quantity In Stock</lable>
+            @Html.DisplayFor(m => m.Book.quantity_in_stock, new { type = "text", @class = "form-control" })
+
+        </div>
+
+        <div>
+            <lable>Publisher</lable>
+            @Html.DisplayFor(m => m.Publisher.publisher_name, new { type = "text", @class = "form-control" })
+
+        </div>
+
+        <div>
+            <lable>Category</lable>
+            @Html.DisplayFor(m => m.Category.category_name, new { type = "text", @class = "form-control" })
+
+        </div>
+
+        <div>
+            <lable>Author</lable>
+            @Html.DisplayFor(m => m.Author.author_name, new { type = "text", @class = "form-control" })
+
+        </div>
+
+        <div>
+            <lable>Description</lable>
+            @Html.DisplayFor(m => m.Book.description, new { type = "text", @class = "form-control" })
+
+        </div>
+
+        <div>
+            <lable>Image</lable>
+            <img style="width:50px;height:50px" src="~/images/shop/@Model.Book.image" />
+
+        </div>
+
+        <div>
+            <lable>Public date</lable>
+            @Html.DisplayFor(m => m.Book.public_date, new { type = "text", @class = "form-control" })
+
+        </div>
+
+        <div>
+            <lable>Edition</lable>
+            @Html.DisplayFor(m => m.Book.edition, new { type = "text", @class = "form-control" })
+
+        </div>
+
+
+
+        <br />
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Book.id })
+
+    </div>
+</div>

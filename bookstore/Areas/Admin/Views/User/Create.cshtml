@@ -1,0 +1,63 @@
+﻿@model bookstore.Models.User
+@{
+    ViewBag.Title = "Create User";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "form" }))
+        {
+            @Html.ValidationSummary();
+            @Html.AntiForgeryToken();
+            <div>
+                <lable>Name</lable>
+                @Html.TextBoxFor(m => m.name, new { type = "text", @class = "form-control" })
+
+            </div>
+
+            <div>
+                <lable>UserName</lable>
+                @Html.TextBoxFor(m => m.username, new { type = "text", @class = "form-control" })
+
+            </div>
+
+            <div>
+                <lable>Password</lable>
+                @Html.TextBoxFor(m => m.password, new { type = "password", @class = "form-control" })
+
+            </div>
+
+            <div>
+                <lable>Role</lable>
+                @Html.TextBoxFor(m => m.role, new { type = "text", @class = "form-control" })
+
+            </div>
+
+            <div>
+                <lable>Phone</lable>
+                @Html.TextBoxFor(m => m.phone, new { type = "text", @class = "form-control" })
+
+            </div>
+
+            <div>
+                <lable>Email</lable>
+                @Html.TextBoxFor(m => m.email, new { type = "text", @class = "form-control" })
+
+            </div>
+
+            <div>
+                <lable>Dob</lable>
+                @Html.TextBoxFor(m => m.dob, new { type = "date", @class = "form-control"})
+
+            </div>
+
+
+
+            <br />
+            <button type="submit">Submit</button>
+        }
+    </div>
+</div>
+

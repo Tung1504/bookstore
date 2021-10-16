@@ -49,7 +49,6 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="BookStoreModel.Order">
         <MappingFragment StoreEntitySet="Order">
-          <ScalarProperty Name="order_number" ColumnName="order_number" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="order_item_id" ColumnName="order_item_id" />
           <ScalarProperty Name="shipping_price" ColumnName="shipping_price" />
@@ -63,7 +62,6 @@
     <EntitySetMapping Name="Payment_card">
       <EntityTypeMapping TypeName="BookStoreModel.Payment_card">
         <MappingFragment StoreEntitySet="Payment_card">
-          <ScalarProperty Name="card_type" ColumnName="card_type" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="card_number" ColumnName="card_number" />
           <ScalarProperty Name="from_date" ColumnName="from_date" />
@@ -97,7 +95,6 @@
     <EntitySetMapping Name="Order_Detail">
       <EntityTypeMapping TypeName="BookStoreModel.Order_Detail">
         <MappingFragment StoreEntitySet="Order_Detail">
-          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="book_id" ColumnName="book_id" />
           <ScalarProperty Name="order_id" ColumnName="order_id" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />

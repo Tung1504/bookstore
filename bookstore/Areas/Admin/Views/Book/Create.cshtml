@@ -1,0 +1,83 @@
+﻿@model bookstore.ViewModels.BookCategoryPublisherAuthorViewModel
+@{
+    ViewBag.Title = "Create Book";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        @using (Html.BeginForm("Create", "Book", FormMethod.Post, new { @class = "form", enctype="multipart/form-data" }))
+        {
+            @Html.ValidationSummary();
+            @Html.AntiForgeryToken();
+            <div>
+                <lable>Title</lable>
+                @Html.TextBoxFor(m => m.Book.title, new { type = "text", @class = "form-control" })
+
+            </div>
+
+            <div>
+                <lable>Price</lable>
+                @Html.TextBoxFor(m => m.Book.price, new { type = "text", @class = "form-control" })
+
+            </div>
+
+            <div>
+                <lable>Quantity In Stock</lable>
+                @Html.TextBoxFor(m => m.Book.quantity_in_stock, new { type = "text", @class = "form-control" })
+
+            </div>
+
+            <div>
+                <lable>Publisher</lable>
+                @Html.DropDownListFor(m => m.Book.publisher_id, new SelectList(Model.listPublisher, "id", "publisher_name"), "-----Select Publisher-----")
+
+            </div>
+
+            <div>
+                <lable>Category</lable>
+                @Html.DropDownListFor(m => m.Book.category_id, new SelectList(Model.listCategory, "id", "category_name"), "-----Select Category-----")
+
+            </div>
+
+            <div>
+                <lable>Author</lable>
+                @Html.DropDownListFor(m => m.Book.author_id, new SelectList(Model.listAuthor, "id", "author_name"), "-----Select Author-----")
+
+            </div>
+
+            <div>
+                <lable>Description</lable>
+                @Html.TextBoxFor(m => m.Book.description, new { type = "text", @class = "form-control" })
+
+            </div>
+
+            <div>
+                <lable>Image</lable>
+                <input type="file" name="upload_image" id="upload_image" class="form-control"/>
+
+            </div>
+
+            <div>
+                <lable>Public date</lable>
+                @Html.TextBoxFor(m => m.Book.public_date, new { type = "date", @class = "form-control" })
+
+            </div>
+
+            <div>
+                <lable>Edition</lable>
+                @Html.TextBoxFor(m => m.Book.edition, new { type = "text", @class = "form-control" })
+
+            </div>
+
+
+
+
+
+            <br />
+            <button type="submit">Submit</button>
+        }
+    </div>
+</div>
+
