@@ -53,7 +53,7 @@ namespace bookstore.Controllers
 
         public ActionResult Admin()
         {
-            return RedirectToAction("Index", "Admin", new { area = "Admin" });
+            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
     }
 }
