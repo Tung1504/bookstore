@@ -8,104 +8,106 @@
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
         <div class="container-fluid  dashboard-content">
-            <h3>User Details</h3>
-            <div>
-                <lable>Name: </lable>
-                <p>@Model.User.name</p>
-                
-                
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title border-bottom pb-2">Profile</h3>
+                    <div>
+                        <lable>Name: </lable>
+                        <p>@Model.User.name</p>
+
+
+                    </div>
+
+                    <div>
+                        <lable>User Name: </lable>
+                        <p>@Model.User.username</p>
+
+                    </div>
+
+
+
+                    <div>
+                        <lable>Role: </lable>
+                        <p>@Model.User.role</p>
+
+                    </div>
+
+                    <div>
+                        <lable>Phone: </lable>
+                        <p>@Model.User.phone</p>
+
+                    </div>
+
+                    <div>
+                        <lable>Email:</lable>
+                        <p>@Model.User.email</p>
+
+                    </div>
+
+                    <div>
+                        <lable>Date of birth: </lable>
+                        @*@Html.TextBoxFor(m => m.User.dob, "{0:dd-MM-yyyy}", new { type = "text", @class = "form-control" })*@
+                        <p>@Model.User.dob.Day/@Model.User.dob.Month/@Model.User.dob.Year</p>
+
+                    </div>
+
+                    <div>
+                        <lable>Address: </lable>
+                        <p>@Model.Address.address1</p>
+
+                    </div>
+
+                    <div>
+                        <lable>City: </lable>
+                        <p>@Model.Address.city</p>
+
+                    </div>
+
+                    <div>
+                        <lable>District:</lable>
+                        <p>@Model.Address.district</p>
+
+                    </div>
+
+                    <div>
+                        <lable>Postal Code:</lable>
+                        <p>@Model.Address.postal_code</p>
+
+                    </div>
+                </div>
             </div>
 
-            <div>
-                <lable>User Name: </lable>
-                <p>@Model.User.username</p>
 
-            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title border-bottom pb-2">Payment Card</h3>
+                    <div>
+                        <lable>Card Number:</lable>
+                        <p>@Model.PaymentCard.card_number</p>
 
+                    </div>
 
+                    <div>
+                        <lable>Card Type:</lable>
+                        <p>@Model.PaymentCard.card_type</p>
+                    </div>
 
-            <div>
-                <lable>Role: </lable>
-                <p>@Model.User.role</p>
+                    <div>
+                        <lable>From Date:</lable>
+                        <p>@Model.PaymentCard.from_date.Month/@Model.PaymentCard.from_date.Year</p>
 
-            </div>
+                    </div>
 
-            <div>
-                <lable>Phone: </lable>
-                <p>@Model.User.phone</p>
+                    <div>
+                        <lable>To Date:</lable>
+                        <p>@Model.PaymentCard.to_date.Month/@Model.PaymentCard.to_date.Year</p>
 
-            </div>
-
-            <div>
-                <lable>Email:</lable>
-                <p>@Model.User.email</p>
-
-            </div>
-
-            <div>
-                <lable>Date of birth: </lable>
-                @*@Html.TextBoxFor(m => m.User.dob, "{0:dd-MM-yyyy}", new { type = "text", @class = "form-control" })*@
-                <p>@Model.User.dob.Day/@Model.User.dob.Month/@Model.User.dob.Year</p>
-
-            </div>
-        </div>
-
-        <div class="container-fluid  dashboard-content">
-            <h3>Address</h3>
-            <div>
-                <lable>Address: </lable>
-                <p>@Model.Address.address1</p>
-
-            </div>
-
-            <div>
-                <lable>City: </lable>
-                <p>@Model.Address.city</p>
-
-            </div>
-
-            <div>
-                <lable>District:</lable>
-                <p>@Model.Address.district</p>
-
-            </div>
-
-            <div>
-                <lable>Postal Code:</lable>
-                <p>@Model.Address.postal_code</p>
-
-            </div>
-        </div>
-
-
-        <div class="container-fluid  dashboard-content">
-            <h3>Payment Card</h3>
-            <div>
-                <lable>Card Number:</lable>
-                <p>@Model.PaymentCard.card_number</p>
-
-            </div>
-
-            <div>
-                <lable>Card Type:</lable>
-                <p>@Model.PaymentCard.card_type</p>
-            </div>
-
-            <div>
-                <lable>From Date:</lable>
-                <p>@Model.PaymentCard.from_date.Month/@Model.PaymentCard.from_date.Year</p>
-
-            </div>
-
-            <div>
-                <lable>To Date:</lable>
-                <p>@Model.PaymentCard.to_date.Month/@Model.PaymentCard.to_date.Year</p>
-
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 
 
 

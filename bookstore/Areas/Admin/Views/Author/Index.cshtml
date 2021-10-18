@@ -1,4 +1,4 @@
-﻿@model IEnumerable<bookstore.Models.Author>
+﻿
 
 @{
     ViewBag.Title = "ManageAuthor";
@@ -17,105 +17,47 @@
                     <div class="card-body">
                         <h5 class="card-title">AUTHORS</h5>
 
-                        <a class="btn btn-primary mb-3" href="@Url.Action("Create", "Author")">Create New</a>
-
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Author Name</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
+                        <a href="#" class="btn btn-success fas fa-plus mb-3" data-toggle="modal" data-target="#createModal"> Create New</a>
 
 
-                            <tbody>
-                                @foreach (var author in Model)
-                                {
-                                    <tr>
-                                        <td>@author.id</td>
-                                        <td>@author.author_name</td>
-                                        <td>
-                                            <a href="#" class="btn btn-light fas fa-edit" data-toggle="modal" data-target="#editModal" onclick="editAuthor">
-                                                Edit
-                                            </a>
-                                            @*Modal*@
-                                            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Author Name</h5>
-                                                            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </a>
-                                                        </div>
-                                                        @using (Html.BeginForm("Edit", "Author", new { id = author.id }, FormMethod.Post, new { @class = "form-control" }))
-                                                        {
-                                                            @Html.ValidationSummary();
-                                                            @Html.AntiForgeryToken();
-
-
-                                                            <div class="modal-body">
-                                                                <input type="hidden" value="@author.id" />
-                                                                <input type="text" value="@author.author_name" />
-
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a>
-                                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                                            </div>
-                                                        }
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                            <a href="#" class="btn btn-light fas fa-trash" data-toggle="modal" data-target="#deleteModal">
-                                                Delete
-                                            </a>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
-                                                            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Are you sure to delete this author?</p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            @using (Html.BeginForm("Delete", "Publisher", new { id = author.id }, FormMethod.Post, new { style = "display:inline" }))
-                                                            {
-                                                                @Html.AntiForgeryToken()
-                                                                <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a>
-                                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </td>
-                                    </tr>
-                                }
-
-                            </tbody>
-                        </table>
-
-                        <div class="#"  style="align-self:center">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
+                        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title">Create new author</h2>
+                                    </div>
+                                    <div class="modal-body"></div>
+                                    <div class="modal-footer"></div>
+                                </div>
+                            </div>
                         </div>
 
+                        <div class="table-responsive">
+                            <table class="table table-bordered first" id="authorTable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Author Name</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+
+                                @*<tbody>
+                                        @foreach (var author in ViewBag.Authors)
+                                        {
+                                            <tr>
+                                                <td>@author.id</td>
+                                                <td>@author.author_name</td>
+                                                <td>
+                                                    <a class='btn btn-default btn-sm' onclick= PopupForm('@Url.Action("AddOrEdit","Author"))><i class='fa fa-pencil'></i> Edit</a>
+
+                                                    <a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>*@
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -125,31 +67,104 @@
 
 
 @section js{
-    <script src="@Url.Content("~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js")"></script>
-    <script src="@Url.Content("~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.bundle.js")"></script>
-    <script src="@Url.Content("~/Areas/Admin/Content/vendor/slimscroll/jquery.slimscroll.js")"></script>
-    <script src="@Url.Content("~/Areas/Admin/Content/vendor/custom-js/jquery.multi-select.html")"></script>
-    <script src="@Url.Content("~/Areas/Admin/Content/js/main-js.js")"></script>
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables/js/data-table.js"></script>
+    <script src="~/Areas/Admin/Content/js/notify.min.js"></script>
+
     <script>
-        $(function () {
-            $('#example1').DataTable();
-        })
-        function GetDetails(id) {
-            $.ajax({
-                url: "/Admin/Author/" + id,
-                type: "GET",
-                dataType: "json",
-                success: function (response) {
-                    $('#hfId').val(response.CustomerId);
-                    $('#txtUpdateName').val(response.Name);
-                    $('#modal-Update').modal('show');
+        var Popup, dataTable;
+
+        $(document).ready(function () {
+            dataTable = $("#authorTable").DataTable({
+                "ajax": {
+                    "url": "/Admin/Author/GetData",
+                    "type": "GET",
+                    "datetype": "json"
+
                 },
-                error: function (response) {
-                    alert(response.responseText);
+                "columns": [
+                    { "data": "id" },
+                    { "data": "author_name" },
+                    {"data":"id" , "render" : function (data) {
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","Author")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                    }
+                ],
+
+                "language": {
+                    "emptyTable": "No data found"
+                },
+            });
+        });
+
+
+        function PopupFrom(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+
+                    Popup = formDiv.dialog({
+                        autoOpen: true,
+                        resizable: false,
+                        title: "Add new author",
+                        height: 300,
+                        width: 700,
+                        close: function () {
+                            Popup.dialog("destroy").remove();
+                        }
+                    });
+                });
+        };
+
+        function SubmitForm(form) {
+            $.ajax({
+                type: "POST",
+                url: $form.action,
+                data: $(form).serialize(),
+                success: function (data) {
+                    if (data.success) {
+                        Popup.dialog('close');
+                        dataTable.ajax.reload();
+                        $.notify(data.message, {
+                            globalPosition: "top center",
+                            className: "success"
+                        })
+                    }
                 }
             });
             return false;
         }
+
+        function Delete(id) {
+            if(confirm('Are You Sure to Delete this Author Record ?'))
+            {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Delete","Author")/' + id,
+                    success: function (data) {
+                        if (data.success)
+                        {
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                    }
+
+                });
+            }
+        }
+
     </script>
+
+}
+
+@section css{
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/datatables/css/dataTables.bootstrap4.css">
 }
 

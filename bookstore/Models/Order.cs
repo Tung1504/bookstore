@@ -20,15 +20,15 @@ namespace bookstore.Models
         }
     
         public int id { get; set; }
-        public int order_item_id { get; set; }
         public int shipping_price { get; set; }
         public int user_id { get; set; }
         public string status { get; set; }
         public double total_price { get; set; }
-        public int payment_id { get; set; }
+        public int order_number { get; set; }
+        public string payment_status { get; set; }
+        public System.DateTime date { get; set; }
     
         public virtual ICollection<Order_Detail> Order_Detail { get; set; }
-        public virtual Payment_card Payment_card { get; set; }
         public virtual User User { get; set; }
     }
 }
