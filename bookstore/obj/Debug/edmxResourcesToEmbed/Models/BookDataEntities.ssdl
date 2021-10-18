@@ -46,13 +46,13 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="order_item_id" Type="int" Nullable="false" />
+    <Property Name="order_number" Type="int" Nullable="false" />
     <Property Name="shipping_price" Type="int" Nullable="false" />
-    <Property Name="user_id" Type="int" Nullable="false" />
     <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="payment_status" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="total_price" Type="float" Nullable="false" />
-    <Property Name="payment_id" Type="int" Nullable="false" />
-    <Property Name="order_number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Order_Detail">
     <Key>
@@ -62,6 +62,7 @@
     <Property Name="book_id" Type="int" Nullable="false" />
     <Property Name="order_id" Type="int" Nullable="false" />
     <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="total_price" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Payment_card">
     <Key>
@@ -176,18 +177,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Order_Payment_method">
-    <End Role="Payment_card" Type="Self.Payment_card" Multiplicity="1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Payment_card">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="payment_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Order_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -196,6 +185,18 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="Order">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_card_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Payment_card" Type="Self.Payment_card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Payment_card">
         <PropertyRef Name="user_id" />
       </Dependent>
     </ReferentialConstraint>
@@ -235,13 +236,13 @@
       <End Role="Order" EntitySet="Order" />
       <End Role="Order_Detail" EntitySet="Order_Detail" />
     </AssociationSet>
-    <AssociationSet Name="FK_Order_Payment_method" Association="Self.FK_Order_Payment_method">
-      <End Role="Payment_card" EntitySet="Payment_card" />
-      <End Role="Order" EntitySet="Order" />
-    </AssociationSet>
     <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
       <End Role="User" EntitySet="User" />
       <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_card_User" Association="Self.FK_Payment_card_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Payment_card" EntitySet="Payment_card" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

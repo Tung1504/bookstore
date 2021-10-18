@@ -1,0 +1,170 @@
+﻿
+
+@{
+    ViewBag.Title = "ManageAuthor";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Category</h2>
+
+
+
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        <div class="row">
+            <div class="col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">AUTHORS</h5>
+
+                        <a href="#" class="btn btn-success fas fa-plus mb-3" data-toggle="modal" data-target="#createModal"> Create New</a>
+
+
+                        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title">Create new author</h2>
+                                    </div>
+                                    <div class="modal-body"></div>
+                                    <div class="modal-footer"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered first" id="authorTable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Author Name</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+
+                                @*<tbody>
+                                        @foreach (var author in ViewBag.Authors)
+                                        {
+                                            <tr>
+                                                <td>@author.id</td>
+                                                <td>@author.author_name</td>
+                                                <td>
+                                                    <a class='btn btn-default btn-sm' onclick= PopupForm('@Url.Action("AddOrEdit","Author"))><i class='fa fa-pencil'></i> Edit</a>
+
+                                                    <a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>*@
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section js{
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables/js/data-table.js"></script>
+    <script src="~/Areas/Admin/Content/js/notify.min.js"></script>
+
+    <script>
+        var Popup, dataTable;
+
+        $(document).ready(function () {
+            dataTable = $("#authorTable").DataTable({
+                "ajax": {
+                    "url": "/Admin/Author/GetData",
+                    "type": "GET",
+                    "datetype": "json"
+
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "author_name" },
+                    {"data":"id" , "render" : function (data) {
+                        return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","Author")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                    }
+                ],
+
+                "language": {
+                    "emptyTable": "No data found"
+                },
+            });
+        });
+
+
+        function PopupFrom(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+
+                    Popup = formDiv.dialog({
+                        autoOpen: true,
+                        resizable: false,
+                        title: "Add new author",
+                        height: 300,
+                        width: 700,
+                        close: function () {
+                            Popup.dialog("destroy").remove();
+                        }
+                    });
+                });
+        };
+
+        function SubmitForm(form) {
+            $.ajax({
+                type: "POST",
+                url: $form.action,
+                data: $(form).serialize(),
+                success: function (data) {
+                    if (data.success) {
+                        Popup.dialog('close');
+                        dataTable.ajax.reload();
+                        $.notify(data.message, {
+                            globalPosition: "top center",
+                            className: "success"
+                        })
+                    }
+                }
+            });
+            return false;
+        }
+
+        function Delete(id) {
+            if(confirm('Are You Sure to Delete this Author Record ?'))
+            {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Delete","Author")/' + id,
+                    success: function (data) {
+                        if (data.success)
+                        {
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                    }
+
+                });
+            }
+        }
+
+    </script>
+
+}
+
+@section css{
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/datatables/css/dataTables.bootstrap4.css">
+}
+

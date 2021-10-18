@@ -1,0 +1,26 @@
+﻿@model bookstore.Models.Publisher
+@{
+    ViewBag.Title = "Create Publisher";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        @using (Html.BeginForm("Create", "Publisher", FormMethod.Post, new { @class = "form" }))
+        {
+            @Html.ValidationSummary();
+            @Html.AntiForgeryToken();
+            <div>
+                <label>Publisher Name</label>
+                @Html.TextBoxFor(m => m.publisher_name, new { type = "text", @class = "form-control" })
+
+            </div>
+
+
+
+            <br />
+            <button type="submit">Submit</button>
+        }
+    </div>
+</div>

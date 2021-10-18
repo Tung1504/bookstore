@@ -1,0 +1,36 @@
+﻿@model bookstore.Models.Author
+@{
+    ViewBag.Title = "EditAuthor";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                @using (Html.BeginForm("Edit", "Author", new { id = Model.id }, FormMethod.Post, new { @class = "form-control" }))
+                {
+                    @Html.ValidationSummary();
+                    @Html.AntiForgeryToken();
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Author Name</h5>
+                            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </div>
+                        <div class="modal-body">
+                            @Html.TextBoxFor(m => m.author_name, new { type = "text", @class = "form-control" })
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

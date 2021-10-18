@@ -18,7 +18,7 @@ namespace bookstore.Controllers
 
            
 
-            BookCategoryPublisherViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherViewModel(listBook, listCategory, listPublisher);
+            BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(listBook, listCategory, listPublisher);
             
             return View(bookCategoryPublisherViewModel);
         }
@@ -53,7 +53,7 @@ namespace bookstore.Controllers
 
         public ActionResult Admin()
         {
-            return RedirectToAction("Index", "Admin", new { area = "Admin" });
+            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
     }
 }
