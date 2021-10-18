@@ -13,13 +13,16 @@
     @Styles.Render("~/Areas/Admin/Content/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css")
     @Styles.Render("~/Areas/Admin/Content/vendor/charts/c3charts/c3.css")
     @Styles.Render("~/Areas/Admin/Content/vendor/fonts/flag-icon-css/flag-icon.min.css")
-    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    @Scripts.Render("https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
 </head>
 
 <body>
     @Html.Partial("~/Areas/Admin/Views/Shared/Partials/_Header.cshtml")
 
-   
+
 
     @RenderBody();
 
@@ -27,7 +30,9 @@
 
 
     @RenderSection("js", false)
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 
 </body>
 

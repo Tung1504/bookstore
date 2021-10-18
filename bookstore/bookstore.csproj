@@ -135,6 +135,8 @@
     <Compile Include="Areas\Admin\Controllers\ManageOrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagePublisherController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageUserController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\BookCategoryAuthorPublisherViewModels.cs" />
+    <Compile Include="Areas\Admin\ViewModels\CreateModalCategoryViewModels.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAO\ManageUserDAO.cs" />
@@ -659,14 +661,26 @@
       <DependentUpon>BookDataEntities.edmx</DependentUpon>
       <LastGenOutput>BookDataEntities.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\contact.js" />
     <Content Include="Scripts\gmaps.js" />
     <Content Include="Scripts\html5shiv.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.prettyPhoto.js" />
     <Content Include="Scripts\jquery.scrollUp.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\price-range.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -769,6 +783,8 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,7 +1,9 @@
-﻿using bookstore.Models;
+﻿using bookstore.Areas.Admin.ViewModels;
+using bookstore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,9 +14,23 @@ namespace bookstore.Areas.Admin.Controllers
         // GET: Admin/ManageCategory
         public ActionResult Index()
         {
+      
             List<Category> listCategory = db.Categories.ToList();
             return View(listCategory);
         }
+        //POST: Admin/Create Modal
+        //[HttpPost]
+        //public ActionResult Index(Category category)
+        //{
+            
+            
+        //        db.Categories.Add(createCategory.Category);
+        //        db.SaveChanges();
+        //    int id = createCategory.Category.id;
+              
+            
+        //    return View(createCategory);
+        //}
 
 
         public ActionResult Create()
@@ -62,18 +78,31 @@ namespace bookstore.Areas.Admin.Controllers
             return View(category);
         }
 
-        [HttpPost]
+        // GET: Categories/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Category category = db.Categories.Find(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            return View(category);
+        }
+
+        // POST: Categories/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categories.Find(id);
-            if (category != null)
-            {
-                db.Categories.Remove(category);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return HttpNotFound();
+            db.Categories.Remove(category);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
+
     }
 }

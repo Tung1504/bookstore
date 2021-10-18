@@ -14,11 +14,14 @@
         <div class="row">
             <div class="col-sm-12 col-12">
                 <div class="card">
-                    <h5 class="card-header">LIST OF AUTHORS</h5>
-                    <div class="card-header">
-                        <button type="button"><a href="@Url.Action("Create", "ManageAuthor")">Create New</a></button>
-                    </div>
                     <div class="card-body">
+                    <div class="card-header">
+                        <h5 class="card-title">LIST OF AUTHORS</h5>
+
+                       <a href="@Url.Action("Create", "ManageAuthor")" class="btn btn-primary mb-3">Create New</a>
+                    </div>
+                       
+                   
                         <table class="table">
                             <thead>
                                 <tr>
@@ -36,12 +39,12 @@
                                         <td>@author.id</td>
                                         <td>@author.author_name</td>
                                         <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = author.id })
-                                            
-                                            @using (Html.BeginForm("Delete", "ManageCategory", new { id = author.id }, FormMethod.Post))
+                                            @Html.ActionLink("Edit", "Edit", new { id = author.id },new { @class="btn btn-danger"})
+
+                                            @using (Html.BeginForm("Delete", "ManageAuthor", new { id = author.id }, FormMethod.Post,new { @style = "display:inline" }))
                                             {
                                                 @Html.AntiForgeryToken()
-                                                <button type="submit">Delete</button>
+                                                <button type="submit" class="btn btn-primary">Delete</button>
                                             }
                                         </td>
                                     </tr>

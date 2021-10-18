@@ -12,11 +12,13 @@
         <div class="row">
             <div class="col-sm-12 col-12">
                 <div class="card">
-                    <h5 class="card-header">LIST OF BOOKS</h5>
-                    <div class="card-header">
-                        <button type="button"><a href="@Url.Action("Create", "ManageUser")">Create New</a></button>
-                    </div>
                     <div class="card-body">
+                    <div class="card-header">
+                        <h5 class="card-title">LIST OF BOOKS</h5>
+
+                       <a href="@Url.Action("Create", "ManageUser")"class="btn btn-primary mb-3">Create New</a>
+                    </div>
+                    
                         <table class="table">
                             <thead>
                                 <tr>
@@ -32,23 +34,23 @@
                             <tbody>
                                 @foreach (var book in Model)
                                 {
-                                <tr>
-                                    <td>@book.id</td>
-                                    <td>@book.title</td>
-                                    <td>@book.price</td>
-                                    <td>@book.quantity_in_stock</td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = book.id })
-                                    
-                                        @Html.ActionLink("ViewDetail", "ViewDetail", new { id = book.id })
-                                    
-                                        @using (Html.BeginForm("Delete", "ManageBook", new { id = book.id }, FormMethod.Post))
-                                        {
-                                            @Html.AntiForgeryToken()
-                                            <button type="submit">Delete</button>
-                                        }
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>@book.id</td>
+                                        <td>@book.title</td>
+                                        <td>@book.price</td>
+                                        <td>@book.quantity_in_stock</td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = book.id },new { @class = "btn btn-warning" })
+
+                                            @Html.ActionLink("ViewDetail", "ViewDetail", new { id = book.id }, new { @class = "btn btn-default" })
+
+                                            @using (Html.BeginForm("Delete", "ManageBook", new { id = book.id }, FormMethod.Post, new { @style = "display:inline" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-primary">Delete</button>
+                                            }
+                                        </td>
+                                    </tr>
                                 }
                             </tbody>
                         </table>

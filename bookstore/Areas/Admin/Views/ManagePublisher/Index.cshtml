@@ -14,43 +14,46 @@
         <div class="row">
             <div class="col-sm-12 col-12">
                 <div class="card">
-                    <h5 class="card-header">LIST OF PUBLISHERS</h5>
-                    <div class="card-header">
-                        <button type="button"><a href="@Url.Action("Create", "ManagePublisher")">Create New</a></button>
-                    </div>
                     <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Publisher Name</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
+                        <div class="card-header">
 
+                            <h5 class="card-title">LIST OF PUBLISHERS</h5>
 
-                            <tbody>
-                                @foreach (var publisher in Model)
-                                {
+                            <a href="@Url.Action("Create", "ManagePublisher")" class="btn btn-primary mb-3"">Create New</a>
+                        </div>
+                       
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>@publisher.id</td>
-                                        <td>@publisher.publisher_name</td>
-                                        <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = publisher.id })
-
-                                            @using (Html.BeginForm("Delete", "ManageCategory", new { id = publisher.id }, FormMethod.Post))
-                                            {
-                                                @Html.AntiForgeryToken()
-                                                <button type="submit">Delete</button>
-                                            }
-                                        </td>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Publisher Name</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+
+
+                                <tbody>
+                                    @foreach (var publisher in Model)
+                                    {
+                                        <tr>
+                                            <td>@publisher.id</td>
+                                            <td>@publisher.publisher_name</td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = publisher.id }, new { @class = "btn btn-warning" })
+
+                                                @using (Html.BeginForm("Delete", "ManageCategory", new { id = publisher.id }, FormMethod.Post, new { @style = "display:inline" }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

@@ -13,46 +13,49 @@
         <div class="row">
             <div class="col-sm-12 col-12">
                 <div class="card">
-                    <h5 class="card-header">LIST OF USERS</h5>
-                    <div class="card-header">
-                        <button type="button"><a href="@Url.Action("Create", "ManageUser")">Create New</a></button>
-                    </div>
                     <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">User Name</th>
-                                    <th scopt="col">Role</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
+                        <div class="card-header">
 
+                            <h5 class="card-title">LIST OF USERS</h5>
 
-                            <tbody>
-                                @foreach (var user in Model)
-                                {
+                            <button type="button"><a href="@Url.Action("Create", "ManageUser")">Create New</a></button>
+                        </div>
+                      
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>@user.id</td>
-                                        <td>@user.name</td>
-                                        <td>@user.role</td>
-                                        <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = user.id })
-                                            @Html.ActionLink("ViewDetail", "ViewDetail", new { id = user.id })
-                                        
-                                            @using (Html.BeginForm("Delete", "ManageUser", new { id = user.id }, FormMethod.Post))
-                                            {
-                                                @Html.AntiForgeryToken()
-                                                <button type="submit">Delete</button>
-                                            }
-                                        </td>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">User Name</th>
+                                        <th scopt="col">Role</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+
+
+                                <tbody>
+                                    @foreach (var user in Model)
+                                    {
+                                        <tr>
+                                            <td>@user.id</td>
+                                            <td>@user.name</td>
+                                            <td>@user.role</td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = user.id }, new { @class = "btn btn-danger" })
+                                                @Html.ActionLink("ViewDetail", "ViewDetail", new { id = user.id },new { @class="btn btn-default"})
+
+                                                @using (Html.BeginForm("Delete", "ManageUser", new { id = user.id }, FormMethod.Post, new { @style = "display:inline" }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>
