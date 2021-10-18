@@ -14,18 +14,13 @@ namespace bookstore.Models
     
     public partial class Payment_card
     {
-        public Payment_card()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
         public int id { get; set; }
         public int card_number { get; set; }
         public System.DateTime from_date { get; set; }
         public System.DateTime to_date { get; set; }
         public int user_id { get; set; }
+        public string card_type { get; set; }
     
-        public virtual ICollection<Order> Orders { get; set; }
         public virtual User User { get; set; }
     }
 }
