@@ -44,7 +44,7 @@
                                             @using (Html.BeginForm("Delete", "ManageAuthor", new { id = author.id }, FormMethod.Post,new { @style = "display:inline" }))
                                             {
                                                 @Html.AntiForgeryToken()
-                                                <button type="submit" class="btn btn-primary">Delete</button>
+                                                <button type="submit" class="btn btn-danger">Delete</button>
                                             }
                                         </td>
                                     </tr>
