@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<bookstore.Models.Publisher>
 
 @{
-    ViewBag.Title = "ManagePublisher";
+    ViewBag.Title = "Manage Publisher";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,37 +17,38 @@
                     <div class="card-body">
                         <h5 class="card-title">PUBLISHERS</h5>
 
-                        <a class="btn btn-primary mb-3" href="@Url.Action("Create", "Publisher")">Create New</a>
-
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Publisher Name</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-
-
-                            <tbody>
-                                @foreach (var publisher in Model)
-                                {
+                        <a class="btn btn-success fas fa-plus mb-3" href="@Url.Action("Create", "Publisher")"> Create New</a>
+                        <div class="table-responsive">
+                            <table class="table table-bordered first">
+                                <thead>
                                     <tr>
-                                        <td>@publisher.id</td>
-                                        <td>@publisher.publisher_name</td>
-                                        <td>
-                                            @Html.ActionLink(" Edit", "Edit", new { id = publisher.id }, new { @class = "btn btn-light fas fa-edit" })
-
-                                            @using (Html.BeginForm("Delete", "Publisher", new { id = publisher.id }, FormMethod.Post, new { style = "display:inline" }))
-                                            {
-                                                @Html.AntiForgeryToken()
-                                                <button type="submit" class="btn btn-light fas fa-trash"> Delete</button>
-                                            }
-                                        </td>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Publisher Name</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+
+
+                                <tbody>
+                                    @foreach (var publisher in Model)
+                                    {
+                                        <tr>
+                                            <td>@publisher.id</td>
+                                            <td>@publisher.publisher_name</td>
+                                            <td>
+                                                @Html.ActionLink(" Edit", "Edit", new { id = publisher.id }, new { @class = "btn btn-light fas fa-edit" })
+
+                                                @using (Html.BeginForm("Delete", "Publisher", new { id = publisher.id }, FormMethod.Post, new { style = "display:inline" }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <button type="submit" class="btn btn-danger fas fa-trash"> Delete</button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,9 +58,12 @@
 
 
 @section js{
-    <script src="@Url.Content("~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js")"></script>
-    <script src="@Url.Content("~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.bundle.js")"></script>
-    <script src="@Url.Content("~/Areas/Admin/Content/vendor/slimscroll/jquery.slimscroll.js")"></script>
-    <script src="@Url.Content("~/Areas/Admin/Content/vendor/custom-js/jquery.multi-select.html")"></script>
-    <script src="@Url.Content("~/Areas/Admin/Content/js/main-js.js")"></script>
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables/js/data-table.js"></script>
+}
+
+@section css{
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/datatables/css/dataTables.bootstrap4.css">
 }
