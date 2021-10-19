@@ -1,39 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using bookstore.Models;
 using bookstore.ViewModels;
 
-namespace bookstore.DAO
+namespace bookstore.Models
 {
-    public class ManageUserDAO
+    [MetadataType(typeof(UserMetadata))]
+    public partial class User
     {
-        //protected BookStoreEntities db = new BookStoreEntities();
-        //public UserViewModel User(int id)
-        //{
-        //    var model = from u in db.Users
-        //                join a in db.Addresses on u.id equals a.user_id
-        //                join p in db.Payment_card on u.id equals p.user_id
-        //                where a.user_id == id
-        //                select new UserViewModel()
-        //                {
-        //                    Name = u.name,
-        //                    Username = u.username,
-        //                    Role = u.role,
-        //                    Phone = u.phone,
-        //                    Email = u.email,
-        //                    Dob = u.dob,
-        //                    Address = a.address1,
-        //                    City = a.city,
-        //                    District = a.district,
-        //                    PostalCode = a.postal_code,
-        //                    CardNumber = p.card_number,
-        //                    CardType = p.card_type,
-        //                    FromDate = p.from_date,
-        //                    ToDate = p.to_date
-        //                };
-        //    return model;
-        //}
+
+    }
+
+    public class UserMetadata
+    {
+        [Required(ErrorMessage = "This field is required")]
+        public string username { get; set; }
+
+        [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Password)]
+        public string password { get; set; }
+
+        [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Password)]
+        [Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
+        [NotMapped]
+        public string repassword { get; set; }
+
+
+        public string role { get; set; }
+        public string phone { get; set; }
+        public string email { get; set; }
+        public Nullable<System.DateTime> dob { get; set; }
+
+        public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Payment_card> Payment_card { get; set; }
     }
 }

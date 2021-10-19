@@ -7,6 +7,16 @@
             </button>
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto navbar-right-top">
+
+                    <li class="nav-item">
+                            @if (Session["UserName"] != null)
+                            {
+                                <li><p style="color: black; margin-top: 15px;">Hello @Session["UserName"]</p></li>
+                                <li><a href="@Url.Action("Logout","Home", new { area = ""})"><i class="fas fas fa-sign-out-alt"></i>Logout</a></li>
+                                
+                            }
+                    </li>
+
                     <li class="nav-item">
                         <div id="custom-search" class="top-search-bar">
                             <input class="form-control" type="text" placeholder="Search..">

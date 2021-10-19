@@ -28,7 +28,7 @@ namespace bookstore.Models
         public string role { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
-        public System.DateTime dob { get; set; }
+        public Nullable<System.DateTime> dob { get; set; }
     
         public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
