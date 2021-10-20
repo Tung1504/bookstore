@@ -117,9 +117,22 @@ namespace bookstore.Controllers
             return View();
         }
 
-        public ActionResult ProductDetail()
+        public ActionResult ProductDetail(int id)
         {
-            return View();
+            Book book = db.Books.Find(id);
+            List<Category> listCategory = db.Categories.ToList();
+            List<Publisher> listPublisher = db.Publishers.ToList();
+            List<Author> listAuthor = db.Authors.ToList();
+
+            BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(book, listCategory, listPublisher, listAuthor);
+            
+
+            
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            return View(bookCategoryPublisherViewModel);
         }
 
         public ActionResult Admin()

@@ -64,25 +64,27 @@
                 <div class="col-md-8 clearfix">
                     <div class="shop-menu clearfix pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href=""><i class="fa fa-user"></i> Account</a></li>
+                            @*<li><a href=""><i class="fa fa-user"></i> Account</a></li>*@
                             @*<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>*@
 
 
                             @if (Session["UserName"] != null)
                             {
-                                <li><p style="color: black; margin-top: 15px;">Hello @Session["UserName"]</p></li>
-                                <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
-
-                                
                                 <li><a href="@Url.Action("Cart", "Home")"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+
+                                <li><a href=""><i class="fa fa-user"></i> Hello @Session["UserName"]</a></li>
+
+                                <li><a href="@Url.Action("Logout", "Home")"><i class="fa fa-sign-out"></i> Logout</a></li>
+
+
                             }
                             else
                             {
-                                <li>@Html.ActionLink("LoginOrSignUp", "LoginOrSignUp", "Home")</li>
-                                
-
                                 <li><a href="@Url.Action("Cart", "Home")"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                
+
+                                <li><a href="@Url.Action("LoginOrSignUp", "Home")"><i class="fa fa-lock"></i> LoginOrSignUp</a></li>
+
+
                             }
 
                         </ul>
@@ -109,24 +111,24 @@
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="@Url.Action("Index", "Home")" class="active">Home</a></li>
                             @*<li class="dropdown">
-                                <a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="shop.html">Products</a></li>
-                                    <li><a href="product-details.html">Product Details</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li>@Html.ActionLink("Cart", "Cart", "Home")</li>
-                                    <li><a href="login.html">Login</a></li><!--Login-->
-                                    
-                                </ul>
-                            </li>*@
+                                    <a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="shop.html">Products</a></li>
+                                        <li><a href="product-details.html">Product Details</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                        <li>@Html.ActionLink("Cart", "Cart", "Home")</li>
+                                        <li><a href="login.html">Login</a></li><!--Login-->
+
+                                    </ul>
+                                </li>*@
                             @*<li class="dropdown">
-                                <a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="blog.html">Blog List</a></li>
-                                    <li><a href="blog-single.html">Blog Single</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="404.html">404</a></li>*@
+                                    <a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="blog.html">Blog List</a></li>
+                                        <li><a href="blog-single.html">Blog Single</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="404.html">404</a></li>*@
                             <li><a href="@Url.Action("ProductDetail", "Home")">Product Details</a></li>
                             <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
                         </ul>
