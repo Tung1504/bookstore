@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6216a083d4d84d65a8ff7767f8237e59" Name="Diagram1">
+        <EntityTypeShape EntityType="BookStoreModel.Address" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Author" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Book" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Category" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Order" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Order_Detail" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Payment_card" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Publisher" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.User" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="BookStoreModel.FK_Address_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.FK_Book_Author" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.FK_Book_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.FK_Book_Publisher" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.FK_Order_Detail_Book" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.FK_Order_Detail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.FK_Order_User" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.FK_Payment_card_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

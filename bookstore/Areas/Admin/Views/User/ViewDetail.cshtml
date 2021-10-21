@@ -7,107 +7,142 @@
 <h2>User Details</h2>
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        <div class="container-fluid  dashboard-content">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title border-bottom pb-2">Profile</h3>
-                    <div>
-                        <lable>Name: </lable>
-                        <p>@Model.User.name</p>
+        
+           
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5">
+                        <div class="section-block">
+                            <h5 class="section-title">Simple Card Outline Tabs</h5>
+                            <p>Takes the basic nav from above and adds the .nav-tabs class to generate a tabbed interface..</p>
+                        </div>
+                        <div class="simple-outline-card">
+                            <ul class="nav nav-tabs" id="myTab6" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active border-left-0" id="home-tab-simple-outline" data-toggle="tab" href="#home-simple-outline" role="tab" aria-controls="home" aria-selected="true">Tab#1</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab-simple-outline" data-toggle="tab" href="#profile-simple-outline" role="tab" aria-controls="profile" aria-selected="false">Tab#2</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="contact-tab-simple-outline" data-toggle="tab" href="#contact-simple-outline" role="tab" aria-controls="contact" aria-selected="false">Tab#3</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent6">
+                                <div class="tab-pane fade show active" id="home-simple-outline" role="tabpanel" aria-labelledby="home-tab-simple-outline">
+                                    <div>
+                                        <lable>Name: </lable>
+                                        <p>@Model.User.name</p>
 
 
+                                    </div>
+
+                                    <div>
+                                        <lable>User Name: </lable>
+                                        <p>@Model.User.username</p>
+
+                                    </div>
+
+
+
+                                    <div>
+                                        <lable>Role: </lable>
+                                        <p>@Model.User.role</p>
+
+                                    </div>
+
+                                    <div>
+                                        <lable>Phone: </lable>
+                                        <p>@Model.User.phone</p>
+
+                                    </div>
+
+                                    <div>
+                                        <lable>Email:</lable>
+                                        <p>@Model.User.email</p>
+
+                                    </div>
+
+                                    <div>
+                                        <lable>Date of birth: </lable>
+                                        @*@Html.TextBoxFor(m => m.User.dob, "{0:dd-MM-yyyy}", new { type = "text", @class = "form-control" })*@
+                                        <p>@Model.User.dob.Day/@Model.User.dob.Month/@Model.User.dob.Year</p>
+
+                                    </div>
+                                    <div class="card" id="images">
+                                        <h5 class="card-header">Images</h5>
+                                        <div class="card-body">
+                                            <img src="http://via.placeholder.com/200x150" class="img-fluid mr-3" alt="User Image">
+
+                                        </div>
+                                    </div>                                   
+                                    <a href="#" class="btn btn-secondary">Go somewhere</a>
+                                </div>
+                                <div class="tab-pane fade" id="profile-simple-outline" role="tabpanel" aria-labelledby="profile-tab-simple-outline">
+                                    <h3>Simple Card Outline Tabs</h3>
+                                    <div>
+                                        <lable>Address: </lable>
+                                        <p>@Model.Address.address1</p>
+
+                                    </div>
+
+                                    <div>
+                                        <lable>City: </lable>
+                                        <p>@Model.Address.city</p>
+
+                                    </div>
+
+                                    <div>
+                                        <lable>District:</lable>
+                                        <p>@Model.Address.district</p>
+
+                                    </div>
+
+                                    <div>
+                                        <lable>Postal Code:</lable>
+                                        <p>@Model.Address.postal_code</p>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="contact-simple-outline" role="tabpanel" aria-labelledby="contact-tab-simple-outline">
+                                    <h3>Simple Card Outline Tabs</h3>
+                                    <div>
+                                        <lable>Card Number:</lable>
+                                        <p>@Model.PaymentCard.card_number</p>
+
+                                    </div>
+
+                                    <div>
+                                        <lable>Card Type:</lable>
+                                        <p>@Model.PaymentCard.card_type</p>
+                                    </div>
+
+                                    <div>
+                                        <lable>From Date:</lable>
+                                        <p>@Model.PaymentCard.from_date.Month/@Model.PaymentCard.from_date.Year</p>
+
+                                    </div>
+
+                                    <div>
+                                        <lable>To Date:</lable>
+                                        <p>@Model.PaymentCard.to_date.Month/@Model.PaymentCard.to_date.Year</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div>
-                        <lable>User Name: </lable>
-                        <p>@Model.User.username</p>
-
                     </div>
+                    @*=====================================================================*@
 
-
-
-                    <div>
-                        <lable>Role: </lable>
-                        <p>@Model.User.role</p>
-
-                    </div>
-
-                    <div>
-                        <lable>Phone: </lable>
-                        <p>@Model.User.phone</p>
-
-                    </div>
-
-                    <div>
-                        <lable>Email:</lable>
-                        <p>@Model.User.email</p>
-
-                    </div>
-
-                    <div>
-                        <lable>Date of birth: </lable>
-                        @*@Html.TextBoxFor(m => m.User.dob, "{0:dd-MM-yyyy}", new { type = "text", @class = "form-control" })*@
-                        <p>@Model.User.dob.Day/@Model.User.dob.Month/@Model.User.dob.Year</p>
-
-                    </div>
-
-                    <div>
-                        <lable>Address: </lable>
-                        <p>@Model.Address.address1</p>
-
-                    </div>
-
-                    <div>
-                        <lable>City: </lable>
-                        <p>@Model.Address.city</p>
-
-                    </div>
-
-                    <div>
-                        <lable>District:</lable>
-                        <p>@Model.Address.district</p>
-
-                    </div>
-
-                    <div>
-                        <lable>Postal Code:</lable>
-                        <p>@Model.Address.postal_code</p>
-
-                    </div>
                 </div>
             </div>
-
-
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title border-bottom pb-2">Payment Card</h3>
-                    <div>
-                        <lable>Card Number:</lable>
-                        <p>@Model.PaymentCard.card_number</p>
-
-                    </div>
-
-                    <div>
-                        <lable>Card Type:</lable>
-                        <p>@Model.PaymentCard.card_type</p>
-                    </div>
-
-                    <div>
-                        <lable>From Date:</lable>
-                        <p>@Model.PaymentCard.from_date.Month/@Model.PaymentCard.from_date.Year</p>
-
-                    </div>
-
-                    <div>
-                        <lable>To Date:</lable>
-                        <p>@Model.PaymentCard.to_date.Month/@Model.PaymentCard.to_date.Year</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+@section js{
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="~/Areas/Admin/Content/js/main-js.js"></script>
+}
 
 
 

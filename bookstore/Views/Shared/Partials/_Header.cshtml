@@ -1,4 +1,4 @@
-﻿
+﻿<body style>
 <header id="header">
     <!--header-->
     <div class="header_top">
@@ -67,7 +67,13 @@
                             @*<li><a href=""><i class="fa fa-user"></i> Account</a></li>
                             <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>*@
                             <li><a href="@Url.Action("Checkout", "Home")"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="@Url.Action("Cart", "Home")"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li>
+                            
+                            <a href="@Url.Action("AddToCart", "Home")"><i class="fa fa-shopping-cart"></i> Cart</a>
+                            
+                            
+                            </li>
+                           
                             <li><a href="@Url.Action("Login", "Home")"><i class="fa fa-lock"></i> Login</a></li>
                             
                         </ul>
@@ -126,3 +132,5 @@
         </div>
     </div><!--/header-bottom-->
 </header><!--/header-->
+@section js{
+    }

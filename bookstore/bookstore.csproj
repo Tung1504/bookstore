@@ -126,13 +126,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthorController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ManageAuthorController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ManageBookController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ManageCategoryController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ManageOrderController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ManagePublisherController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ManageUserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BookController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PublisherController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\ViewModels\BookCategoryAuthorPublisherViewModels.cs" />
     <Compile Include="Areas\Admin\ViewModels\CreateModalCategoryViewModels.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -142,52 +143,52 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Address.cs">
-      <DependentUpon>BookDataEntities.tt</DependentUpon>
+      <DependentUpon>BookData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Author.cs">
-      <DependentUpon>BookDataEntities.tt</DependentUpon>
+      <DependentUpon>BookData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Book.cs">
-      <DependentUpon>BookDataEntities.tt</DependentUpon>
+      <DependentUpon>BookData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookDataEntities.Context.cs">
+    <Compile Include="Models\BookData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookDataEntities.Context.tt</DependentUpon>
+      <DependentUpon>BookData.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookDataEntities.cs">
+    <Compile Include="Models\BookData.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookDataEntities.tt</DependentUpon>
+      <DependentUpon>BookData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookDataEntities.Designer.cs">
+    <Compile Include="Models\BookData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookDataEntities.edmx</DependentUpon>
+      <DependentUpon>BookData.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
-      <DependentUpon>BookDataEntities.tt</DependentUpon>
+      <DependentUpon>BookData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomizedUser.cs" />
+    <Compile Include="Models\Home\Item.cs" />
     <Compile Include="Models\Order.cs">
-      <DependentUpon>BookDataEntities.tt</DependentUpon>
+      <DependentUpon>BookData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order_Detail.cs">
-      <DependentUpon>BookDataEntities.tt</DependentUpon>
+      <DependentUpon>BookData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Payment_card.cs">
-      <DependentUpon>BookDataEntities.tt</DependentUpon>
+      <DependentUpon>BookData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Publisher.cs">
-      <DependentUpon>BookDataEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>BookDataEntities.tt</DependentUpon>
+      <DependentUpon>BookData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>BookDataEntities.tt</DependentUpon>
+      <DependentUpon>BookData.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Data\Entity\EntityState.cs" />
+    <Compile Include="ViewModels\BookCategoryPublisherAuthorViewModel.cs" />
     <Compile Include="ViewModels\BookCategoryPublisherViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\UserAddressPaymentCardViewModels.cs" />
@@ -579,6 +580,10 @@
     <Content Include="Areas\Admin\Content\vendor\timeline\img\cd-icon-picture.svg" />
     <Content Include="Areas\Admin\Content\vendor\timeline\js\main.js" />
     <Content Include="Areas\Admin\Content\vendor\vector-map\jqvmap.css" />
+    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\ViewDetail.cshtml" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\font-awesome.min.css" />
@@ -649,21 +654,47 @@
     <Content Include="images\shop\product7.jpg" />
     <Content Include="images\shop\product8.jpg" />
     <Content Include="images\shop\product9.jpg" />
-    <Content Include="Models\BookDataEntities.Context.tt">
+    <Content Include="Models\BookData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BookDataEntities.Context.cs</LastGenOutput>
-      <DependentUpon>BookDataEntities.edmx</DependentUpon>
+      <DependentUpon>BookData.edmx</DependentUpon>
+      <LastGenOutput>BookData.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\BookDataEntities.tt">
+    <Content Include="Models\BookData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BookDataEntities.edmx</DependentUpon>
-      <LastGenOutput>BookDataEntities.cs</LastGenOutput>
+      <DependentUpon>BookData.edmx</DependentUpon>
+      <LastGenOutput>BookData.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\contact.js" />
     <Content Include="Scripts\gmaps.js" />
     <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Areas\Admin\Views\Author\AddOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\View.cshtml" />
+    <Content Include="Areas\Admin\Views\Book\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Book\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Book\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Book\ViewDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\ViewDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Publisher\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Publisher\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Publisher\Index.cshtml" />
+    <EntityDeploy Include="Models\BookData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BookData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BookData.edmx.diagram">
+      <DependentUpon>BookData.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -693,13 +724,12 @@
     <Content Include="Views\Shared\Partials\_Footer.cshtml" />
     <Content Include="Views\Shared\Partials\_Header.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Cart.cshtml" />
+    <Content Include="Views\Home\AddToCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\ManageProduct\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -710,14 +740,6 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
-    <EntityDeploy Include="Models\BookDataEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BookDataEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\BookDataEntities.edmx.diagram">
-      <DependentUpon>BookDataEntities.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Content\vendor\fonts\circular-std\CircularStd-Black.woff" />
@@ -760,22 +782,6 @@
     <Content Include="Areas\Admin\Views\Shared\Partials\_Footer.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Partials\_Header.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Partials\_Navbar.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageCategory\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageCategory\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageCategory\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageAuthor\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageAuthor\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageAuthor\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ManagePublisher\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ManagePublisher\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ManagePublisher\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageUser\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageUser\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageUser\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageUser\ViewDetail.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageBook\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageBook\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ManageOrder\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Checkout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />

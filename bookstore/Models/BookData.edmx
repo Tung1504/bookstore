@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BookStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BookStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="id" />
@@ -86,16 +86,6 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="publisher_name" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -215,7 +205,6 @@
           <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment_card" EntityType="Self.Payment_card" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Address_User" Association="Self.FK_Address_User">
             <End Role="User" EntitySet="User" />
@@ -250,7 +239,8 @@
             <End Role="Payment_card" EntitySet="Payment_card" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BookStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -258,7 +248,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="city" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="district" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -270,7 +260,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="author_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Book_Author" FromRole="Author" ToRole="Book" />
         </EntityType>
@@ -278,7 +268,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="price" Type="Int32" Nullable="false" />
           <Property Name="quantity_in_stock" Type="Int32" Nullable="false" />
@@ -286,19 +276,19 @@
           <Property Name="category_id" Type="Int32" Nullable="false" />
           <Property Name="author_id" Type="Int32" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="public_date" Type="DateTime" Precision="0" />
+          <Property Name="edition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Author" Relationship="Self.FK_Book_Author" FromRole="Book" ToRole="Author" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Book_Category" FromRole="Book" ToRole="Category" />
           <NavigationProperty Name="Publisher" Relationship="Self.FK_Book_Publisher" FromRole="Book" ToRole="Publisher" />
           <NavigationProperty Name="Order_Detail" Relationship="Self.FK_Order_Detail_Book" FromRole="Book" ToRole="Order_Detail" />
-          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="public_date" Type="DateTime" Precision="0" />
-          <Property Name="edition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Book_Category" FromRole="Category" ToRole="Book" />
         </EntityType>
@@ -306,34 +296,46 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_number" Type="Int32" Nullable="false" />
           <Property Name="shipping_price" Type="Int32" Nullable="false" />
-          <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="payment_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="total_price" Type="Double" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Order_Detail" Relationship="Self.FK_Order_Detail_Order" FromRole="Order" ToRole="Order_Detail" />
           <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
-          <Property Name="order_number" Type="Int32" Nullable="false" />
-          <Property Name="payment_status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="date" Type="DateTime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order_Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_id" Type="Int32" Nullable="false" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="total_price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Order_Detail_Book" FromRole="Order_Detail" ToRole="Book" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Detail_Order" FromRole="Order_Detail" ToRole="Order" />
         </EntityType>
         <EntityType Name="Payment_card">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="card_number" Type="Int32" Nullable="false" />
           <Property Name="from_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="to_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="BookStoreModel.FK_Payment_card_User" FromRole="Payment_card" ToRole="User" />
-          <Property Name="card_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="card_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Payment_card_User" FromRole="Payment_card" ToRole="User" />
         </EntityType>
         <EntityType Name="Publisher">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="publisher_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Book_Publisher" FromRole="Publisher" ToRole="Book" />
         </EntityType>
@@ -341,7 +343,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
@@ -351,19 +353,7 @@
           <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_User" FromRole="User" ToRole="Address" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
-          <NavigationProperty Name="Payment_card" Relationship="BookStoreModel.FK_Payment_card_User" FromRole="User" ToRole="Payment_card" />
-        </EntityType>
-        <EntityType Name="Order_Detail">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="book_id" Type="Int32" Nullable="false" />
-          <Property Name="order_id" Type="Int32" Nullable="false" />
-          <Property Name="quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Book" Relationship="Self.FK_Order_Detail_Book" FromRole="Order_Detail" ToRole="Book" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Detail_Order" FromRole="Order_Detail" ToRole="Order" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="total_price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Payment_card" Relationship="Self.FK_Payment_card_User" FromRole="User" ToRole="Payment_card" />
         </EntityType>
         <Association Name="FK_Address_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -449,16 +439,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Payment_card_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Payment_card" Type="Self.Payment_card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Payment_card">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BookStoreEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="Authors" EntityType="Self.Author" />
           <EntitySet Name="Books" EntityType="Self.Book" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" />
           <EntitySet Name="Payment_card" EntityType="Self.Payment_card" />
           <EntitySet Name="Publishers" EntityType="Self.Publisher" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="Order_Detail" EntityType="Self.Order_Detail" />
           <AssociationSet Name="FK_Address_User" Association="Self.FK_Address_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Address" EntitySet="Addresses" />
@@ -487,34 +489,11 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="BookStoreModel.sysdiagram" />
-          <AssociationSet Name="FK_Payment_card_User" Association="BookStoreModel.FK_Payment_card_User">
+          <AssociationSet Name="FK_Payment_card_User" Association="Self.FK_Payment_card_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Payment_card" EntitySet="Payment_card" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <Association Name="FK_Payment_card_User">
-          <End Type="BookStoreModel.User" Role="User" Multiplicity="1" />
-          <End Type="BookStoreModel.Payment_card" Role="Payment_card" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Payment_card">
-              <PropertyRef Name="user_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -544,9 +523,6 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="BookStoreModel.Book">
               <MappingFragment StoreEntitySet="Book">
-                <ScalarProperty Name="edition" ColumnName="edition" />
-                <ScalarProperty Name="public_date" ColumnName="public_date" />
-                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="price" ColumnName="price" />
@@ -555,6 +531,9 @@
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="author_id" ColumnName="author_id" />
                 <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="public_date" ColumnName="public_date" />
+                <ScalarProperty Name="edition" ColumnName="edition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -569,13 +548,24 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="BookStoreModel.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="payment_status" ColumnName="payment_status" />
-                <ScalarProperty Name="order_number" ColumnName="order_number" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="order_number" ColumnName="order_number" />
                 <ScalarProperty Name="shipping_price" ColumnName="shipping_price" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="payment_status" ColumnName="payment_status" />
+                <ScalarProperty Name="total_price" ColumnName="total_price" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Detail">
+            <EntityTypeMapping TypeName="BookStoreModel.Order_Detail">
+              <MappingFragment StoreEntitySet="Order_Detail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="book_id" ColumnName="book_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="total_price" ColumnName="total_price" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -583,12 +573,12 @@
           <EntitySetMapping Name="Payment_card">
             <EntityTypeMapping TypeName="BookStoreModel.Payment_card">
               <MappingFragment StoreEntitySet="Payment_card">
-                <ScalarProperty Name="card_type" ColumnName="card_type" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="card_number" ColumnName="card_number" />
                 <ScalarProperty Name="from_date" ColumnName="from_date" />
                 <ScalarProperty Name="to_date" ColumnName="to_date" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="card_type" ColumnName="card_type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -611,28 +601,6 @@
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="dob" ColumnName="dob" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Order_Detail">
-            <EntityTypeMapping TypeName="BookStoreModel.Order_Detail">
-              <MappingFragment StoreEntitySet="Order_Detail">
-                <ScalarProperty Name="total_price" ColumnName="total_price" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="book_id" ColumnName="book_id" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="BookStoreModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using bookstore.ViewModels;
 using System.Web.Security;
+using bookstore.Models.Home;
 
 namespace bookstore.Controllers
 {
@@ -17,18 +18,82 @@ namespace bookstore.Controllers
             List<Category> listCategory = db.Categories.ToList();
             List<Publisher> listPublisher = db.Publishers.ToList();
 
-           
+
 
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(listBook, listCategory, listPublisher);
-            
+
             return View(bookCategoryPublisherViewModel);
         }
-
-        public ActionResult Cart()
-        { 
+        public ActionResult AddToCart()
+        {
 
             return View();
+
         }
+        /// <summary>
+        /// Add to cart handler
+        /// </summary>
+        /// <returns></returns>
+        /// 
+        [HttpPost]
+        public ActionResult AddToCart(int bookId)
+        {
+            if (Session["cart"] == null)
+            {
+                List<Item> cart = new List<Item>();
+                Book book = db.Books.Find(bookId);
+                cart.Add(new Item(book, 1));
+                Session["cart"] = cart;
+            }
+            else
+            {
+                List<Item> cart = (List<Item>)Session["cart"];
+                var book = db.Books.Find(bookId);
+                foreach (var item in cart)
+                {
+                    if (item.Book.id == bookId)
+                    {
+                        int previous_quantity = item.Quantity;
+                        cart.Remove(item);
+                        cart.Add(new Item(book, previous_quantity + 1));
+                        break;
+                        
+                    }
+
+                    else
+                    {
+                        cart.Add(new Item(book, 1));
+                        break;
+                        
+                    }
+                }
+                Session["cart"] = cart;
+            }
+
+
+            return RedirectToAction("Index");
+        }
+        //public ActionResult DecreaseItem(int bookId) 
+        //{
+
+        //}
+        public ActionResult RemoveFromCart(int bookId)
+        {
+            List<Item> cart = (List<Item>)Session["cart"];
+            // var book = db.Books.Find(bookId);
+            foreach (var item in cart)
+            {
+                if (item.Book.id == bookId)
+                {
+                    cart.Remove(item);
+                    break;
+                }
+            }
+            // cart.Add(new Item(book, 1));
+            Session["cart"] = cart;
+            return RedirectToAction("AddToCart");
+        }
+    
 
         public ActionResult Contact()
         {

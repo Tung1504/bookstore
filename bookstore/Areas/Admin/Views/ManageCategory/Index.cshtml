@@ -1,36 +1,47 @@
 ﻿@model IEnumerable<bookstore.Models.Category>
 
-
 @{
-    ViewBag.Title = "ManageCategory";
+    ViewBag.Title = "Manage Category";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Manage Category</h2>
 
 
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="#" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                <div class="modal-body">
+                    <p>Woohoo, You are readng this text in a modal! Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                    <button type="submit" href="#" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        <div class="container">
-          
 
-            
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CATEGORIES</h5>
+                        <a class="btn btn-success fas fa-plus mb-3" href="@Url.Action("Create", "Category")"> Create New</a>
 
-
-            <div class="row">
-                <div class="col-sm-12 col-12">
-                    <div class="card">
-
-                        <div class="card-body">
-                            <div class="card-header">
-                                <h5 class="card-title">CATEGORIES</h5>
-
-
-                                <a class="btn btn-primary mb-3" href="@Url.Action("Create", "ManageCategory")">Create New</a>
-
-                            </div>
-                            <table class="table">
+                        <div class="table-responsive">
+                            <table class="table table-bordered first">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
@@ -48,46 +59,39 @@
                                             <td>@category.id</td>
                                             <td>@category.category_name</td>
                                             <td>
-                                                @Html.ActionLink("Edit", "Edit", new { id = category.id }, new { @class = "btn btn-warning" })
-                                                @using (Html.BeginForm("Delete", "ManageCategory", new { id = category.id }, FormMethod.Post, new { @style = "display:inline" }))
+                                                @Html.ActionLink(" Edit", "Edit", new { id = category.id }, new { @class = "btn btn-light fas fa-edit" })
+
+                                                @using (Html.BeginForm("Delete", "Category", new { id = category.id }, FormMethod.Post, new { style = "display:inline" }))
                                                 {
                                                     @Html.AntiForgeryToken()
-                                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                                    <button type="submit" class="btn btn-danger fas fa-trash"> Delete</button>
                                                 }
+                                                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                    Add new by modals
+                                                </button>
                                             </td>
-
                                         </tr>
-
-
-
                                     }
-
                                 </tbody>
                             </table>
-                           
-
-
-                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    @section scripts{
-    <script>
+</div>
 
 
-    </script>
+@section js{
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables/js/data-table.js"></script>
+}
 
-    }
+@section css{
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/datatables/css/dataTables.bootstrap4.css">
+}
+>
 
-    @section js{
-
-        <script src="@Url.Content("~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js")"></script>
-        <script src="@Url.Content("~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.bundle.js")"></script>
-        <script src="@Url.Content("~/Areas/Admin/Content/vendor/slimscroll/jquery.slimscroll.js")"></script>
-        <script src="@Url.Content("~/Areas/Admin/Content/vendor/custom-js/jquery.multi-select.html")"></script>
-        <script src="@Url.Content("~/Areas/Admin/Content/js/main-js.js")"></script>
-    }

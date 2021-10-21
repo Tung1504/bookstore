@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace bookstore.Areas.Admin.Controllers
 {
-    public class ManageCategoryController : BaseController
+    public class CategoryController : BaseController
     {
         // GET: Admin/ManageCategory
         public ActionResult Index()

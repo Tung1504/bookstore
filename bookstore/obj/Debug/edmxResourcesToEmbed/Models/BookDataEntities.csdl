@@ -62,6 +62,12 @@
     <Property Name="order_number" Type="Int32" Nullable="false" />
     <Property Name="payment_status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="date" Type="DateTime" Precision="0" Nullable="false" />
+    <Property Name="order_item_id" Type="Int32" Nullable="false" />
+    <Property Name="payment_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Payment_card" Relationship="BookStoreModel.FK_Order_Payment_method" FromRole="Order" ToRole="Payment_card" />
+    <Property Name="order_number1" Type="Int32" Nullable="false" />
+    <Property Name="payment_status1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="date1" Type="DateTime" Nullable="false" Precision="0" />
   </EntityType>
   <EntityType Name="Payment_card">
     <Key>
@@ -74,6 +80,8 @@
     <Property Name="user_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="User" Relationship="BookStoreModel.FK_Payment_card_User" FromRole="Payment_card" ToRole="User" />
     <Property Name="card_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="BookStoreModel.FK_Order_Payment_method" FromRole="Payment_card" ToRole="Order" />
+    <Property Name="card_type1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Publisher">
     <Key>
@@ -102,6 +110,7 @@
   <EntityType Name="Order_Detail">
     <Key>
       <PropertyRef Name="id" />
+      <PropertyRef Name="id1" />
     </Key>
     <Property Name="book_id" Type="Int32" Nullable="false" />
     <Property Name="order_id" Type="Int32" Nullable="false" />
@@ -110,6 +119,8 @@
     <NavigationProperty Name="Order" Relationship="Self.FK_Order_Detail_Order" FromRole="Order_Detail" ToRole="Order" />
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="total_price" Type="Int32" Nullable="false" />
+    <Property Name="id1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="total_price1" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_Address_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -238,6 +249,10 @@
       <End Role="User" EntitySet="Users" />
       <End Role="Payment_card" EntitySet="Payment_card" />
     </AssociationSet>
+    <AssociationSet Name="FK_Order_Payment_method" Association="BookStoreModel.FK_Order_Payment_method">
+      <End Role="Payment_card" EntitySet="Payment_card" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="sysdiagram">
     <Key>
@@ -258,6 +273,18 @@
       </Principal>
       <Dependent Role="Payment_card">
         <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Payment_method">
+    <End Type="BookStoreModel.Payment_card" Role="Payment_card" Multiplicity="1" />
+    <End Type="BookStoreModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment_card">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="payment_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
