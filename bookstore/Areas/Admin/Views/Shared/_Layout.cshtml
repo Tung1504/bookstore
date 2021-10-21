@@ -13,24 +13,25 @@
     @Styles.Render("~/Areas/Admin/Content/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css")
     @Styles.Render("~/Areas/Admin/Content/vendor/charts/c3charts/c3.css")
     @Styles.Render("~/Areas/Admin/Content/vendor/fonts/flag-icon-css/flag-icon.min.css")
-    <script src="~/Areas/Admin/Content/js/notify.min.js"></script>
+    
     @RenderSection("css", false)
 
 </head>
 
 <body>
-    @Html.Partial("~/Areas/Admin/Views/Shared/Partials/_Header.cshtml")
-
-   
-
-    @RenderBody();
-
-    @Html.Partial("~/Areas/Admin/Views/Shared/Partials/_Footer.cshtml")
+    <div class="dashboard-main-wrapper">
+        @Html.Partial("~/Areas/Admin/Views/Shared/Partials/_Header.cshtml")
 
 
-    @RenderSection("js", false)
 
-    
+        @RenderBody();
+
+        @Html.Partial("~/Areas/Admin/Views/Shared/Partials/_Footer.cshtml")
+    </div>
+
+        @RenderSection("js", false)
+
+
 
 </body>
 

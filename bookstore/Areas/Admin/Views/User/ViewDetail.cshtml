@@ -4,110 +4,180 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>User Details</h2>
+
 <div class="dashboard-wrapper">
-    <div class="container-fluid  dashboard-content">
-        <div class="container-fluid  dashboard-content">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title border-bottom pb-2">Profile</h3>
-                    <div>
-                        <lable>Name: </lable>
-                        <p>@Model.User.name</p>
-
-
-                    </div>
-
-                    <div>
-                        <lable>User Name: </lable>
-                        <p>@Model.User.username</p>
-
-                    </div>
-
-
-
-                    <div>
-                        <lable>Role: </lable>
-                        <p>@Model.User.role</p>
-
-                    </div>
-
-                    <div>
-                        <lable>Phone: </lable>
-                        <p>@Model.User.phone</p>
-
-                    </div>
-
-                    <div>
-                        <lable>Email:</lable>
-                        <p>@Model.User.email</p>
-
-                    </div>
-
-                    <div>
-                        <lable>Date of birth: </lable>
-                        @*@Html.TextBoxFor(m => m.User.dob, "{0:dd-MM-yyyy}", new { type = "text", @class = "form-control" })*@
-                        <p>@Model.User.dob.Day/@Model.User.dob.Month/@Model.User.dob.Year</p>
-
-                    </div>
-
-                    <div>
-                        <lable>Address: </lable>
-                        <p>@Model.Address.address1</p>
-
-                    </div>
-
-                    <div>
-                        <lable>City: </lable>
-                        <p>@Model.Address.city</p>
-
-                    </div>
-
-                    <div>
-                        <lable>District:</lable>
-                        <p>@Model.Address.district</p>
-
-                    </div>
-
-                    <div>
-                        <lable>Postal Code:</lable>
-                        <p>@Model.Address.postal_code</p>
-
+    <div class="influence-profile">
+        <div class="container-fluid dashboard-content ">
+            <!-- ============================================================== -->
+            <!-- pageheader -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h3 class="mb-2">User Profile </h3>
+                        <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "User")" class="breadcrumb-link">User</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                                </ol>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title border-bottom pb-2">Payment Card</h3>
-                    <div>
-                        <lable>Card Number:</lable>
-                        <p>@Model.PaymentCard.card_number</p>
+            <!-- ============================================================== -->
+            <!-- end pageheader -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- content -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <!-- ============================================================== -->
+                <!-- profile -->
+                <!-- ============================================================== -->
+                <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
+                    <!-- ============================================================== -->
+                    <!-- card profile -->
+                    <!-- ============================================================== -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="user-avatar text-center d-block">
+                                <img src="~/images/author/1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                            </div>
+                            <div class="text-center">
+                                <h2 class="font-24 mb-0">@Model.User.name</h2>
+                                <p>User Name: @Model.User.username</p>
+                                <p>Day of birth: @Model.User.dob.Day/@Model.User.dob.Month/@Model.User.dob.Year</p>
+                            </div>
+                        </div>
+                        <div class="card-body border-top">
+                            <h3 class="font-16">Contact Information</h3>
+                            <div class="">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><i class="fas fa-fw fa-envelope mr-2"></i>@Model.User.email</li>
+                                    <li class="mb-0"><i class="fas fa-fw fa-phone mr-2"></i>@Model.User.phone</li>
+                                </ul>
+                            </div>
+                        </div>
 
                     </div>
+                    <!-- ============================================================== -->
+                    <!-- end card profile -->
+                    <!-- ============================================================== -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- end profile -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- campaign data -->
+                <!-- ============================================================== -->
+                <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
+                    <!-- ============================================================== -->
+                    <!-- campaign tab one -->
+                    <!-- ============================================================== -->
+                    <div class="influence-profile-content pills-regular">
+                        <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#address" role="tab" aria-controls="address" aria-selected="true">Billing Address</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-packages-tab" data-toggle="pill" href="#card" role="tab" aria-controls="pills-packages" aria-selected="false">Payment Card</a>
+                            </li>
+                        </ul>
 
-                    <div>
-                        <lable>Card Type:</lable>
-                        <p>@Model.PaymentCard.card_type</p>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="address" role="tabpanel" aria-labelledby="address">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <ul class="list-unstyled">
+                                                    <li class="media">
+                                                        <div class="media-body">
+                                                            <h3 class="mt-0 mb-1">Address: </h3>
+                                                            @Html.DisplayFor(m => m.Address.address1)
+                                                        </div>
+                                                    </li>
+                                                    <li class="media my-4">
+                                                        <div class="media-body">
+                                                            <h3 class="mt-0 mb-1">District: </h3>
+                                                            @Html.DisplayFor(m => m.Address.district)
+                                                        </div>
+                                                    </li>
+                                                    <li class="media">
+                                                        <div class="media-body">
+                                                            <h3 class="mt-0 mb-1">City: </h3>
+                                                            @Html.DisplayFor(m => m.Address.city)
+                                                        </div>
+                                                    </li>
+                                                    <li class="media my-4">
+                                                        <div class="media-body">
+                                                            <h3 class="mt-0 mb-1">Postal Code: </h3>
+                                                            @Html.DisplayFor(m => m.Address.postal_code)
+                                                        </div>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="card" role="tabpanel" aria-labelledby="card">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <ul class="list-unstyled">
+                                                    <li class="media">
+                                                        <div class="media-body">
+                                                            <h3 class="mt-0 mb-1">Card Number: </h3>
+                                                            @Html.DisplayFor(m => m.PaymentCard.card_number)
+                                                        </div>
+                                                    </li>
+                                                    <li class="media my-4">
+                                                        <div class="media-body">
+                                                            <h3 class="mt-0 mb-1">Card Type: </h3>
+                                                            @Html.DisplayFor(m => m.PaymentCard.card_type)
+
+                                                        </div>
+                                                    </li>
+                                                    <li class="media">
+                                                        <div class="media-body">
+                                                            <h3 class="mt-0 mb-1">To Date: </h3>
+                                                            @Html.DisplayFor(m => m.PaymentCard.to_date)
+                                                        </div>
+                                                    </li>
+                                                    <li class="media my-4">
+                                                        <div class="media-body">
+                                                            <h3 class="mt-0 mb-1">From Date: </h3>
+                                                            @Html.DisplayFor(m => m.PaymentCard.from_date)
+                                                        </div>
+                                                    </li>
+
+
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end campaign tab one -->
+                        <!-- ============================================================== -->
                     </div>
-
-                    <div>
-                        <lable>From Date:</lable>
-                        <p>@Model.PaymentCard.from_date.Month/@Model.PaymentCard.from_date.Year</p>
-
-                    </div>
-
-                    <div>
-                        <lable>To Date:</lable>
-                        <p>@Model.PaymentCard.to_date.Month/@Model.PaymentCard.to_date.Year</p>
-
-                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end campaign data -->
+                    <!-- ============================================================== -->
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-

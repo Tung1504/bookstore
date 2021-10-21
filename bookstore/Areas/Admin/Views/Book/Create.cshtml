@@ -33,19 +33,19 @@
 
             <div>
                 <lable>Publisher</lable>
-                @Html.DropDownListFor(m => m.Book.publisher_id, new SelectList(Model.listPublisher, "id", "publisher_name"), "-----Select Publisher-----")
+                @Html.DropDownListFor(m => m.Book.publisher_id, new SelectList(Model.ListPublisher, "id", "publisher_name"), "-----Select Publisher-----")
 
             </div>
 
             <div>
                 <lable>Category</lable>
-                @Html.DropDownListFor(m => m.Book.category_id, new SelectList(Model.listCategory, "id", "category_name"), "-----Select Category-----")
+                @Html.DropDownListFor(m => m.Book.category_id, new SelectList(Model.ListCategory, "id", "category_name"), "-----Select Category-----")
 
             </div>
 
             <div>
                 <lable>Author</lable>
-                @Html.DropDownListFor(m => m.Book.author_id, new SelectList(Model.listAuthor, "id", "author_name"), "-----Select Author-----")
+                @Html.DropDownListFor(m => m.Book.author_id, new SelectList(Model.ListAuthor, "id", "author_name"), "-----Select Author-----")
 
             </div>
 
