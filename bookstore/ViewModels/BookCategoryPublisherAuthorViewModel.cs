@@ -43,5 +43,17 @@ namespace bookstore.ViewModels
             Publisher = publisher;
             Author = author;
         }
+
+        public BookCategoryPublisherAuthorViewModel(Book book, Category category, Publisher publisher, Author author, List<Book> listBook, List<Category> listCategory, List<Publisher> listPublisher, List<Author> listAuthor) : this(book, category, publisher, author)
+        {
+            Book = book;
+            Category = category;
+            Publisher = publisher;
+            Author = author;
+            this.listBook = listBook;
+            this.listCategory = listCategory;
+            this.listPublisher = listPublisher;
+            this.listAuthor = listAuthor;
+        }
     }
 }
