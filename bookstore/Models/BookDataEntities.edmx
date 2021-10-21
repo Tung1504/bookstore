@@ -22,6 +22,10 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="author_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="birth_year" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="image" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Book">
           <Key>
@@ -86,6 +90,9 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="publisher_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="est_date" Type="nvarchar" MaxLength="10" />
+          <Property Name="image" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -170,7 +177,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Detail_Order">
+        <Association Name="FK_Order_Detail_Order1">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -237,7 +244,7 @@
             <End Role="Book" EntitySet="Book" />
             <End Role="Order_Detail" EntitySet="Order_Detail" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Detail_Order" Association="Self.FK_Order_Detail_Order">
+          <AssociationSet Name="FK_Order_Detail_Order1" Association="Self.FK_Order_Detail_Order1">
             <End Role="Order" EntitySet="Order" />
             <End Role="Order_Detail" EntitySet="Order_Detail" />
           </AssociationSet>
@@ -273,6 +280,10 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="author_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Book_Author" FromRole="Author" ToRole="Book" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="birth_year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Book">
           <Key>
@@ -336,6 +347,9 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="publisher_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Book_Publisher" FromRole="Publisher" ToRole="Book" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="est_date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -536,6 +550,10 @@
           <EntitySetMapping Name="Authors">
             <EntityTypeMapping TypeName="BookStoreModel.Author">
               <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="birth_year" ColumnName="birth_year" />
+                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="author_name" ColumnName="author_name" />
               </MappingFragment>
@@ -595,6 +613,9 @@
           <EntitySetMapping Name="Publishers">
             <EntityTypeMapping TypeName="BookStoreModel.Publisher">
               <MappingFragment StoreEntitySet="Publisher">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="est_date" ColumnName="est_date" />
+                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="publisher_name" ColumnName="publisher_name" />
               </MappingFragment>

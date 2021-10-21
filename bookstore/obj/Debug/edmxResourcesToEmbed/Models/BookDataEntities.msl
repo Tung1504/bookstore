@@ -16,6 +16,10 @@
     <EntitySetMapping Name="Authors">
       <EntityTypeMapping TypeName="BookStoreModel.Author">
         <MappingFragment StoreEntitySet="Author">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="birth_year" ColumnName="birth_year" />
+          <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="author_name" ColumnName="author_name" />
         </MappingFragment>
@@ -75,6 +79,9 @@
     <EntitySetMapping Name="Publishers">
       <EntityTypeMapping TypeName="BookStoreModel.Publisher">
         <MappingFragment StoreEntitySet="Publisher">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="est_date" ColumnName="est_date" />
+          <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="publisher_name" ColumnName="publisher_name" />
         </MappingFragment>

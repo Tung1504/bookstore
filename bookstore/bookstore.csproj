@@ -135,6 +135,7 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extensions\NotificationExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -553,6 +554,7 @@
     <Content Include="Areas\Admin\Content\vendor\gauge\gauge.min.js" />
     <Content Include="Areas\Admin\Content\vendor\inputmask\css\inputmask.css" />
     <Content Include="Areas\Admin\Content\vendor\inputmask\js\jquery.inputmask.bundle.js" />
+    <Content Include="Areas\Admin\Content\vendor\jquery\jquery-1.10.2.min.js" />
     <Content Include="Areas\Admin\Content\vendor\jquery\jquery-3.3.1.min.js" />
     <Content Include="Areas\Admin\Content\vendor\jvectormap\jquery-jvectormap-2.0.2.css" />
     <Content Include="Areas\Admin\Content\vendor\jvectormap\jquery-jvectormap-2.0.2.min.js" />
@@ -590,6 +592,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\404\404.png" />
+    <Content Include="images\author\1.jpg" />
     <Content Include="images\blog\blog-one.jpg" />
     <Content Include="images\blog\blog-three.jpg" />
     <Content Include="images\blog\blog-two.jpg" />
@@ -640,6 +643,7 @@
     <Content Include="images\product-details\similar1.jpg" />
     <Content Include="images\product-details\similar2.jpg" />
     <Content Include="images\product-details\similar3.jpg" />
+    <Content Include="images\publisher\1.jpg" />
     <Content Include="images\shop\advertisement.jpg" />
     <Content Include="images\shop\product10.jpg" />
     <Content Include="images\shop\product11.jpg" />
@@ -765,11 +769,14 @@
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\ViewDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Author\AddOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\ViewDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Publisher\ViewDetail.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Checkout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
