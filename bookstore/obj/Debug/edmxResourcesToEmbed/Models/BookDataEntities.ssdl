@@ -17,6 +17,10 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="author_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="birth_year" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="image" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Book">
     <Key>
@@ -81,6 +85,9 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="publisher_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="est_date" Type="nvarchar" MaxLength="10" />
+    <Property Name="image" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -165,7 +172,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Order_Detail_Order">
+  <Association Name="FK_Order_Detail_Order1">
     <End Role="Order" Type="Self.Order" Multiplicity="1" />
     <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -232,7 +239,7 @@
       <End Role="Book" EntitySet="Book" />
       <End Role="Order_Detail" EntitySet="Order_Detail" />
     </AssociationSet>
-    <AssociationSet Name="FK_Order_Detail_Order" Association="Self.FK_Order_Detail_Order">
+    <AssociationSet Name="FK_Order_Detail_Order1" Association="Self.FK_Order_Detail_Order1">
       <End Role="Order" EntitySet="Order" />
       <End Role="Order_Detail" EntitySet="Order_Detail" />
     </AssociationSet>

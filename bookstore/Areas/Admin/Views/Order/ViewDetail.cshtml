@@ -12,10 +12,15 @@
             <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header p-4">
-                        <a class="pt-2 d-inline-block" href="index.html">Concept</a>
-
                         <div class="float-right">
-                            <h3 class="mb-0">Invoice #@Model.Order.id</h3>
+                            <a class="mb-0" href="#">@Model.Order.status</a>
+                            <br />
+                            @Html.ActionLink("Update Status", "Edit", new { id = Model.Order.id }, new { @class = "btn btn-primary float-right" })
+                        </div>
+                        
+
+                        <div class="float-left">
+                            <h3 class="pt-2">Invoice #@Model.Order.id</h3>
                             @Model.Order.date
                         </div>
                     </div>
@@ -52,11 +57,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model.ListOrderDetail)
+                                    @foreach (var item in Model.ListOrderDetail.Where(m => m.order_id == Model.Order.id))
                                     {
                                         <tr>
                                             <td>@item.id</td>
-                                            <td>@item.Book.title</td>
+                                            <td><a href="@Url.Action("ViewDetail","Book", new { id = Model.OrderDetail.book_id} )">@item.Book.title</a></td>
                                             <td>@item.Book.description</td>
                                             <td>$@item.Book.price</td>
                                             <td>@item.quantity</td>
@@ -100,6 +105,8 @@
                     </div>
                     <div class="card-footer bg-white">
                         <p class="mb-0">2983 Glenview Drive Corpus Christi, TX 78476</p>
+                       
+                        
                     </div>
                 </div>
             </div>

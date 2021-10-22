@@ -13,27 +13,27 @@ namespace bookstore.ViewModels
         public Publisher Publisher { get; set; }
         public Author Author { get; set; }
 
-        public List<Book> listBook { get; set; }
-        public List<Category> listCategory { get; set; }
-        public List<Publisher> listPublisher { get; set; }
-        public List<Author> listAuthor { get; set; }
+        public List<Book> ListBook { get; set; }
+        public List<Category> ListCategory { get; set; }
+        public List<Publisher> ListPublisher { get; set; }
+        public List<Author> ListAuthor { get; set; }
 
         public BookCategoryPublisherAuthorViewModel() { }
 
-        public BookCategoryPublisherAuthorViewModel(List<Book> _listBook, List<Category> _listCategory, List<Publisher> _listPublisher)
+        public BookCategoryPublisherAuthorViewModel(List<Book> _ListBook, List<Category> _ListCategory, List<Publisher> _ListPublisher)
         {
           
-            this.listBook = _listBook;
-            this.listCategory = _listCategory;
-            this.listPublisher = _listPublisher;
+            this.ListBook = _ListBook;
+            this.ListCategory = _ListCategory;
+            this.ListPublisher = _ListPublisher;
         }
 
-        public BookCategoryPublisherAuthorViewModel(Book book, List<Category> listCategory, List<Publisher> listPublisher, List<Author> listAuthor)
+        public BookCategoryPublisherAuthorViewModel(Book book, List<Category> ListCategory, List<Publisher> ListPublisher, List<Author> ListAuthor)
         {
             Book = book;
-            this.listCategory = listCategory;
-            this.listPublisher = listPublisher;
-            this.listAuthor = listAuthor;
+            this.ListCategory = ListCategory;
+            this.ListPublisher = ListPublisher;
+            this.ListAuthor = ListAuthor;
         }
 
         public BookCategoryPublisherAuthorViewModel(Book book, Category category, Publisher publisher, Author author)
@@ -44,16 +44,20 @@ namespace bookstore.ViewModels
             Author = author;
         }
 
-        public BookCategoryPublisherAuthorViewModel(Book book, Category category, Publisher publisher, Author author, List<Book> listBook, List<Category> listCategory, List<Publisher> listPublisher, List<Author> listAuthor) : this(book, category, publisher, author)
+        public BookCategoryPublisherAuthorViewModel(List<Book> bs, List<Category> cs, List<Author> aus, List<Publisher> ps)
         {
-            Book = book;
-            Category = category;
-            Publisher = publisher;
-            Author = author;
-            this.listBook = listBook;
-            this.listCategory = listCategory;
-            this.listPublisher = listPublisher;
-            this.listAuthor = listAuthor;
+            this.ListBook = bs;
+            this.ListCategory = cs;
+            this.ListAuthor = aus;
+            this.ListPublisher = ps;
+        }
+
+        public BookCategoryPublisherAuthorViewModel(Book book, Category category, Publisher publisher, Author author, List<Book> ListBook, List<Category> ListCategory, List<Publisher> ListPublisher, List<Author> ListAuthor) : this(book, category, publisher, author)
+        {
+            this.ListBook = ListBook;
+            this.ListCategory = ListCategory;
+            this.ListPublisher = ListPublisher;
+            this.ListAuthor = ListAuthor;
         }
     }
 }

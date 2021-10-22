@@ -17,7 +17,7 @@
                         <!--category-productsr-->
                         <div class="panel panel-default">
 
-                            @foreach (var category in Model.listCategory)
+                            @foreach (var category in Model.ListCategory)
                             {
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -36,7 +36,7 @@
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
 
-                                @foreach (var item in Model.listPublisher)
+                                @foreach (var item in Model.ListPublisher)
                                 {
                                     <li><a href="">@item.publisher_name</a></li>
                                 }
@@ -267,7 +267,7 @@
                     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="item active">
-                                @foreach (var book in Model.listBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
+                                @foreach (var book in Model.ListBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
                                 {
 
                                     <div class="col-sm-4">
@@ -298,7 +298,7 @@
                                 }
                             </div>
                             <div class="item">
-                                @foreach (var book in Model.listBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
+                                @foreach (var book in Model.ListBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
                                 {
 
                                     <div class="col-sm-4">
