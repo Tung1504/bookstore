@@ -20,20 +20,20 @@ namespace bookstore.ViewModels
 
         public BookCategoryPublisherAuthorViewModel() { }
 
-        public BookCategoryPublisherAuthorViewModel(List<Book> _listBook, List<Category> _listCategory, List<Publisher> _listPublisher)
+        public BookCategoryPublisherAuthorViewModel(List<Book> _ListBook, List<Category> _ListCategory, List<Publisher> _ListPublisher)
         {
           
-            this.ListBook = _listBook;
-            this.ListCategory = _listCategory;
-            this.ListPublisher = _listPublisher;
+            this.ListBook = _ListBook;
+            this.ListCategory = _ListCategory;
+            this.ListPublisher = _ListPublisher;
         }
 
-        public BookCategoryPublisherAuthorViewModel(Book book, List<Category> listCategory, List<Publisher> listPublisher, List<Author> listAuthor)
+        public BookCategoryPublisherAuthorViewModel(Book book, List<Category> ListCategory, List<Publisher> ListPublisher, List<Author> ListAuthor)
         {
             Book = book;
-            this.ListCategory = listCategory;
-            this.ListPublisher = listPublisher;
-            this.ListAuthor = listAuthor;
+            this.ListCategory = ListCategory;
+            this.ListPublisher = ListPublisher;
+            this.ListAuthor = ListAuthor;
         }
 
         public BookCategoryPublisherAuthorViewModel(Book book, Category category, Publisher publisher, Author author)
@@ -50,6 +50,14 @@ namespace bookstore.ViewModels
             this.ListCategory = cs;
             this.ListAuthor = aus;
             this.ListPublisher = ps;
+        }
+
+        public BookCategoryPublisherAuthorViewModel(Book book, Category category, Publisher publisher, Author author, List<Book> ListBook, List<Category> ListCategory, List<Publisher> ListPublisher, List<Author> ListAuthor) : this(book, category, publisher, author)
+        {
+            this.ListBook = ListBook;
+            this.ListCategory = ListCategory;
+            this.ListPublisher = ListPublisher;
+            this.ListAuthor = ListAuthor;
         }
     }
 }
