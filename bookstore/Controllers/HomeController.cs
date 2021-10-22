@@ -143,5 +143,18 @@ namespace bookstore.Controllers
         {
             return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
+
+        public ActionResult Shop()
+        {
+            List<Book> listBook = db.Books.ToList();
+            List<Category> listCategory = db.Categories.ToList();
+            List<Publisher> listPublisher = db.Publishers.ToList();
+
+
+
+            BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(listBook, listCategory, listPublisher);
+
+            return View(bookCategoryPublisherViewModel);
+        }
     }
 }
