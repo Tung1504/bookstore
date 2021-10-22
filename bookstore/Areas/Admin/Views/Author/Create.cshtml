@@ -4,17 +4,32 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>User Details</h2>
+
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        <div class="container-fluid  dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">AUTHOR DETAILS </h3>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Author")" class="breadcrumb-link">Manage Authors</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Create New Author</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
             @using (Html.BeginForm("Create", "Author", FormMethod.Post))
             {
                 @Html.ValidationSummary();
                 @Html.AntiForgeryToken();
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="card-title">Create New Author</h2>
+                        @*<h2 class="card-title">Create New Author</h2>*@
                         <br />
                         <div class="row">
 
@@ -55,4 +70,3 @@
             }
         </div>
     </div>
-</div>

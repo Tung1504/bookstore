@@ -262,7 +262,6 @@ C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\obj\Debug\bookstor
 C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\obj\Debug\bookstore.csproj.CopyComplete
 C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\obj\Debug\bookstore.dll
 C:\Users\viet\Desktop\DotNet project\code\bookstore\bookstore\obj\Debug\bookstore.pdb
-D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\bookstore.dll.config
 D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\csc.exe
 D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\csc.exe.config
 D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\csc.rsp

@@ -4,14 +4,31 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>User Details</h2>
+
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        <div class="container-fluid  dashboard-content">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title">About Author</h2>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">AUTHOR DETAILS </h3>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Author")" class="breadcrumb-link">Manage Authors</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Author Details</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h2 class="card-title">@Model.author_name</h2>
                     <br />
+                    </div>
                     <div class="row">
 
                         <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
@@ -21,25 +38,23 @@
                         </div>
                         <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 col-12">
                             <div class="user-avatar-info">
-                                <div class="m-b-20">
-                                    <div class="user-avatar-name">
-                                        <p class="mb-1">Author Name: @Model.author_name</p>
-                                    </div>
+                                @*<div class="m-b-20">
+                            <div class="user-avatar-name">
+                                <p class="mb-1">Author Name: @Model.author_name</p>
+                            </div>
 
-                                </div>
+                        </div>*@
                                 <!--  <div class="float-right"><a href="#" class="user-avatar-email text-secondary">www.henrybarbara.com</a></div> -->
                                 <div class="user-avatar-address">
-                                    <p>Birth Years: @Model.birth_year</p>
+                                    <p>Birth Year: @Model.birth_year</p>
                                     <p>Active Status: @Model.status</p>
                                     <p>Description:@Model.description</p>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
+

@@ -15,6 +15,10 @@ namespace bookstore.Areas.Admin.Controllers
         public ActionResult Index()
         {
             List<Book> listBook = db.Books.ToList();
+            if (TempData["result"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["result"];
+            }
             return View(listBook);
         }
 
@@ -53,7 +57,7 @@ namespace bookstore.Areas.Admin.Controllers
                     b.image = _FileName;
                     db.SaveChanges();
                 }
-
+                TempData["result"] = "Create New Book Successfully!";
                 return RedirectToAction("Index");
             }
 
@@ -119,10 +123,10 @@ namespace bookstore.Areas.Admin.Controllers
                 Book b = db.Books.FirstOrDefault(x => x.id == id);
                 b.image = _FileName;
                 db.SaveChanges();
-
+                TempData["result"] = "Edit book detail successfully!";
                 return RedirectToAction("Index");
             }
-
+            
             return View(book);
         }
 
@@ -135,6 +139,7 @@ namespace bookstore.Areas.Admin.Controllers
             {
                 db.Books.Remove(book);
                 db.SaveChanges();
+                TempData["result"] = "Delete book successfully!";
                 return RedirectToAction("Index");
             }
             return HttpNotFound();

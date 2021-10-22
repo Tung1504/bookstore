@@ -84,7 +84,7 @@
                         <!--category-productsr-->
                         <div class="panel panel-default">
 
-                            @foreach (var category in Model.listCategory)
+                            @foreach (var category in Model.ListCategory)
                             {
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -103,7 +103,7 @@
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
                                 
-                                @foreach(var item in Model.listPublisher)
+                                @foreach(var item in Model.ListPublisher)
                                 {
                                     <li><a href="">@item.publisher_name</a></li>
                                 }
@@ -132,7 +132,7 @@
                 <div class="features_items">
                     <!--features_items-->
                     <h2 class="title text-center">Features Items</h2>
-                    @foreach (var book in Model.listBook)
+                    @foreach (var book in Model.ListBook)
                     {
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">

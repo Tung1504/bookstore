@@ -54,34 +54,34 @@
                         </div>
 
                         @*<div class="modal fade" id="editModal">
-            <div class="modal-dialog">
+                                <div class="modal-dialog">
 
-                <div class="modal-content">
+                                    <div class="modal-content">
 
-                        <div class="modal-header">
+                                            <div class="modal-header">
 
-                            <h2 class="modal-title">Edit author</h2>
-                        </div>
-                        <div class="modal-body">
-                            <input type="hidden" id="editId" />
+                                                <h2 class="modal-title">Edit author</h2>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="hidden" id="editId" />
 
-                            <label>Author Name</label>
-                            <input type="text" class="form-control" id="editName" />
-                            <span class="error text-danger"></span>
+                                                <label>Author Name</label>
+                                                <input type="text" class="form-control" id="editName" />
+                                                <span class="error text-danger"></span>
 
 
-                        </div>
-                        <div class="modal-footer">
-                            <div class="btn-group">
-                                <a href="#" id="btnEditSave" class="btn btn-primary mr-2">Save</a>
-                                <a href="#" id="btnEditCancel" class="btn btn-danger" data-dismiss="modal">Cancel</a>
-                            </div>
-                        </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="btn-group">
+                                                    <a href="#" id="btnEditSave" class="btn btn-primary mr-2">Save</a>
+                                                    <a href="#" id="btnEditCancel" class="btn btn-danger" data-dismiss="modal">Cancel</a>
+                                                </div>
+                                            </div>
 
-                </div>
+                                    </div>
 
-            </div>
-        </div>*@
+                                </div>
+                            </div>*@
 
 
                         <div class="#">
@@ -95,7 +95,7 @@
                                 </thead>
                                 @*<tbody id="tableData">
 
-                </tbody>*@
+                                    </tbody>*@
                                 <tbody>
                                     @foreach (var category in Model)
                                     {
@@ -148,10 +148,10 @@
                             if (res.success) {
                                 //LoadData();
                                 $('#createModal').modal('hide');
-                                window.location.reload(function () { $('#success').show;});
+                                window.location.reload(function () { $('#success').show; });
                                 //Reset();
                                 //alert("Updated Succesfully!");
-                                
+
                             }
                         }
                     })
@@ -200,7 +200,7 @@
                 var id = $(this).data('id');
 
                 if (id > 0) {
-                    
+
                     GetDataById(id);
                 }
             });
@@ -299,6 +299,11 @@
             }
         });
 
+    </script>
+    <script>
+        setTimeout(function () {
+            $('#success').fadeOut('slow');
+        }, 2000);
     </script>
 
 }

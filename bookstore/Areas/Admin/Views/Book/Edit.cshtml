@@ -4,10 +4,24 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">EDIT BOOK DETAILS </h3>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Book")" class="breadcrumb-link">Books</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit Book Details</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
         @using (Html.BeginForm("Edit", "Book", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
         {
             @Html.HiddenFor(m => m.Book.id)
