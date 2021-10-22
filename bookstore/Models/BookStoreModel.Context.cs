@@ -33,7 +33,6 @@ namespace bookstore.Models
         public DbSet<Order_Detail> Order_Detail { get; set; }
         public DbSet<Payment_card> Payment_card { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }

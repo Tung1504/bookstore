@@ -9,12 +9,10 @@
 
 namespace bookstore.Models
 {
-    using bookstore.Areas.Admin.Controllers;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
-    public partial class Category : BaseController
+    
+    public partial class Category
     {
         public Category()
         {
@@ -25,11 +23,6 @@ namespace bookstore.Models
         public string category_name { get; set; }
     
         public virtual ICollection<Book> Books { get; set; }
-
-        public List<Book> findBookByCategory()
-        {
-            List<Book> listBook = db.Books.Where(b => b.category_id == id).ToList();
-            return listBook;
-        }
+        
     }
 }

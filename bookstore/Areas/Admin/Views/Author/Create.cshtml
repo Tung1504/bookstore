@@ -4,23 +4,55 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>User Details</h2>
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        @using (Html.BeginForm("Create", "Author", FormMethod.Post, new { @class = "form" }))
-        {
-            @Html.ValidationSummary();
-            @Html.AntiForgeryToken();
-            <div>
-                <lable>New Author</lable>
-                @Html.TextBoxFor(m => m.author_name, new { type = "text", @class = "form-control" })
+        <div class="container-fluid  dashboard-content">
+            @using (Html.BeginForm("Create", "Author", FormMethod.Post))
+            {
+                @Html.ValidationSummary();
+                @Html.AntiForgeryToken();
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Create New Author</h2>
+                        <br />
+                        <div class="row">
 
-            </div>
+                            @*<div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
+                                <div class="text-center">
+                                    <img src="~/Areas/Admin/Content/images/avatar-1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                </div>
+                            </div>*@
+                            <div class="col-xl-12 col-lg-8 col-md-8 col-sm-8 col-12">
+                                <div class="user-avatar-info">
+
+                                    <!--  <div class="float-right"><a href="#" class="user-avatar-email text-secondary">www.henrybarbara.com</a></div> -->
+                                    <div class="user-avatar-address">
+                                        <label>Author Name</label>
+                                        @Html.TextBoxFor(m => m.author_name, new { type = "text", @class = "form-control" })
+                                        <br />
+                                        <label>Author Birth Year</label>
+                                        @Html.TextBoxFor(m => m.birth_year, new { type = "text", @class = "form-control" })
+                                        <br />
+                                        <label>Author Active Status</label>
+                                        @Html.TextBoxFor(m => m.status, new { type = "text", @class = "form-control" })
+                                        <br />
+                                        <lable>Image</lable>
+                                        <input type="file" name="upload_image" id="upload_image" class="form-control" />
+                                        <br />
+                                        <label>Description</label>
+                                        @Html.TextAreaFor(m => m.description, new { type = "text", @class = "form-control" })
+                                        <br />
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
 
 
-
-            <br />
-            <button type="submit">Submit</button>
-        }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>

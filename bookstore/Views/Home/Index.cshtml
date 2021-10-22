@@ -81,7 +81,7 @@
                     <div class="panel-group category-products" id="accordian">
                         <div class="panel panel-default">
 
-                            @foreach (var category in Model.listCategory)
+                            @foreach (var category in Model.ListCategory)
                             {
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -99,7 +99,7 @@
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
 
-                                @foreach (var item in Model.listPublisher)
+                                @foreach (var item in Model.ListPublisher)
                                 {
                                     <li><a href="">@item.publisher_name</a></li>
                                 }
@@ -125,7 +125,7 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items">
                     <h2 class="title text-center">Features Items</h2>
-                    @foreach (var book in Model.listBook)
+                    @foreach (var book in Model.ListBook)
                     {
                         <div class="col-sm-4">
                             <div class="product-image-wrapper ">
@@ -163,9 +163,9 @@
                         <ul class="nav nav-tabs">
 
 
-                            @foreach (var category in Model.listCategory)
+                            @foreach (var category in Model.ListCategory)
                             {
-                                if (Model.listCategory.IndexOf(category) == 0)
+                                if (Model.ListCategory.IndexOf(category) == 0)
                                 {
                                     <li class="active"><a href="#category_@category.id" data-toggle="tab">@category.category_name</a></li>
                                 }
@@ -179,7 +179,7 @@
                     </div>
                     <div class="tab-content">
 
-                        @foreach (var category in Model.listCategory)
+                        @foreach (var category in Model.ListCategory)
                         {
                             <div class="tab-pane fade active in" id="category_@category.id">
                                 @foreach (var book in category.findBookByCategory())
@@ -225,7 +225,7 @@
                     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="item active">
-                                @foreach (var book in Model.listBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
+                                @foreach (var book in Model.ListBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
                                 {
 
                                     <div class="col-sm-4">
@@ -256,7 +256,7 @@
                                 }
                             </div>
                             <div class="item">
-                                @foreach (var book in Model.listBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
+                                @foreach (var book in Model.ListBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
                                 {
 
                                     <div class="col-sm-4">
