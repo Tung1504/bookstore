@@ -15,6 +15,10 @@ namespace bookstore.Areas.Admin.Controllers
         public ActionResult Index()
         {
             List<User> listUser = db.Users.ToList();
+            if (TempData["result"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["result"];
+            }
             return View(listUser);
         }
 
@@ -90,11 +94,34 @@ namespace bookstore.Areas.Admin.Controllers
 
             if (user != null)
             {
-                db.Users.Remove(user);
-                db.Addresses.Remove(address);
-                db.Payment_card.Remove(paymentCard);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (address != null)
+                {
+                    if (paymentCard != null)
+                    {
+                        db.Users.Remove(user);
+                        db.Addresses.Remove(address);
+                        db.Payment_card.Remove(paymentCard);
+                        db.SaveChanges();
+                        TempData["result"] = "Edit category successfully!";
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        db.Users.Remove(user);
+                        db.Addresses.Remove(address);
+                        db.SaveChanges();
+                        TempData["result"] = "Edit category successfully!";
+                        return RedirectToAction("Index");
+                    }
+                }
+                else
+                {
+                    db.Users.Remove(user);
+                    db.SaveChanges();
+                    TempData["result"] = "Edit category successfully!";
+                    return RedirectToAction("Index");
+                }
+
             }
             return HttpNotFound();
         }

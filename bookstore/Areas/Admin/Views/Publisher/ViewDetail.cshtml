@@ -4,41 +4,57 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>User Details</h2>
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        <div class="container-fluid  dashboard-content">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title">About Publisher</h2>
-                    <br />
-                    <div class="row">
-
-                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
-                            <div class="text-center">
-                                <img src="~/images/publisher/@Model.image" alt="User Avatar" class="rounded-circle user-avatar-xxl">
-                            </div>
-                        </div>
-                        <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 col-12">
-                            <div class="user-avatar-info">
-                                <div class="m-b-20">
-                                    <div class="user-avatar-name">
-                                        <p class="mb-1">Publisher Name: @Model.est_date</p>
-                                    </div>
-
-                                </div>
-                                <!--  <div class="float-right"><a href="#" class="user-avatar-email text-secondary">www.henrybarbara.com</a></div> -->
-                                <div class="user-avatar-address">
-                                    <p>Establish Date: @Model.est_date</p>
-                                    <p>Description:@Model.description</p>
-                                </div>
-                            </div>
-                        </div>
-
-
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">PUBLISHER DETAIL</h3>
+                    <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Publisher")" class="breadcrumb-link">Manage Publisher</a></li>
+                                <li class="breadcrumb-item active">Publisher Details</li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title"> @Model.publisher_name</h2>
+                <br />
+                <div class="row">
+
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
+                        <div class="text-center">
+                            <img src="~/images/publisher/@Model.image" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-8 col-md-8 col-sm-8 col-12">
+                        <div class="user-avatar-info">
+                            @*<div class="m-b-20">
+                                <div class="user-avatar-name">
+                                    <p class="mb-1">Publisher Name: @Model.publisher_name</p>
+                                </div>
+
+                            </div>*@
+                            <!--  <div class="float-right"><a href="#" class="user-avatar-email text-secondary">www.henrybarbara.com</a></div> -->
+                            <div class="user-avatar-address">
+                                <p>Establish Date: @Model.est_date</p>
+                                <p>Description:@Model.description</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </div>

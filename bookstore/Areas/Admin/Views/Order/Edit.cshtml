@@ -8,36 +8,35 @@
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="page-header">
-                    <h3 class="mb-2">ORDER DETAILS</h3>
-                    <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
-                    <div class="page-breadcrumb">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Order")" class="breadcrumb-link">Manage Orders</a></li>
-                                <li class="breadcrumb-item active">Order Details</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header p-4">
                         <div class="float-right">
-                            <a class="mb-0" href="#">@Model.Order.status</a>
-                            <br />
-                            @Html.ActionLink(" Update Status", "Edit", new { id = Model.Order.id }, new { @class = "btn btn-primary" })
+                            @using (Html.BeginForm("Edit", "Order", FormMethod.Post))
+                            {
+                                @Html.ValidationSummary();
+                                @Html.AntiForgeryToken();
+
+                                @Html.HiddenFor(m => m.Order.order_number)
+                                @Html.HiddenFor(m => m.Order.payment_status)
+                                @Html.HiddenFor(m => m.Order.shipping_price)
+                                @Html.HiddenFor(m => m.Order.total_price)
+                                @Html.HiddenFor(m => m.Order.user_id)
+                                @Html.HiddenFor(m => m.Order.date)
+
+
+
+                                <a class="mb-0" href="#">@Model.Order.status</a> <br />
+                                @Html.TextBoxFor(m => m.Order.status, new { type = "text", @class = "form-control" })
+                                <button type="submit" class="btn btn-primary">Update Status</button>
+
+                            }
                         </div>
 
 
                         <div class="float-left">
-                            <h3 class="pt-2">Invoice #@Model.Order.order_number</h3>
-                            @Model.Order.date.Day/@Model.Order.date.Month/@Model.Order.date.Year
+                            <h3 class="pt-2">Invoice #@Model.Order.id</h3>
+                            @Model.Order.date
                         </div>
                     </div>
                     <div class="card-body">
@@ -69,6 +68,7 @@
                                         <th>Description</th>
                                         <th class="right">Unit Cost</th>
                                         <th class="center">Qty</th>
+                                        <th class="center">Qty in stock</th>
                                         <th class="right">Total Price</th>
                                     </tr>
                                 </thead>
@@ -80,7 +80,8 @@
                                             <td><a href="@Url.Action("ViewDetail","Book", new { id = Model.OrderDetail.book_id} )">@item.Book.title</a></td>
                                             <td>@item.Book.description</td>
                                             <td>$@item.Book.price</td>
-                                            <td>@item.quantity</td>
+                                            <td id="qty" class="">@item.quantity</td>
+                                            <td>@item.Book.quantity_in_stock</td>
                                             <td id="price">$@item.total_price</td>
                                         </tr>
                                     }
@@ -95,11 +96,11 @@
                                 <table class="table table-clear">
                                     <tbody>
                                         @*<tr>
-                                            <td class="left">
-                                                <strong class="text-dark">Subtotal</strong>
-                                            </td>
-                                            <td class="right" id="subTotal" onload="SubTotal"></td>
-                                        </tr>*@
+                                                <td class="left">
+                                                    <strong class="text-dark">Subtotal</strong>
+                                                </td>
+                                                <td class="right" id="subTotal" onload="SubTotal"></td>
+                                            </tr>*@
                                         <tr>
                                             <td class="left">
                                                 <strong class="text-dark">Shipping</strong>
@@ -131,7 +132,28 @@
     </div>
 </div>
 
+@section js {
+    <script>
+        @*function checkAvail() {
+            var qty = document.getElementById('qty');
+            if (@Model.OrderDetail.quantity >= @Model.OrderDetail.Book.quantity_in_stock) {
+                qty.className += "text-success";
+            }
+            else {
+                qty.className += "text-danger"
+            }
+        }*@
 
-<script>
-    
-</script>
+        $(document).ready(function () {
+            if (@Model.OrderDetail.quantity < @Model.OrderDetail.Book.quantity_in_stock) {
+                $('#qty').addClass('text-success');
+            }
+            else {
+                $('#qty').addClass('text-danger');
+            }
+            //$('#about').addClass('expand');
+        });
+
+    </script>
+
+}

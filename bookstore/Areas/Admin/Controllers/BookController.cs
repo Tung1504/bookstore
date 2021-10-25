@@ -15,6 +15,10 @@ namespace bookstore.Areas.Admin.Controllers
         public ActionResult Index()
         {
             List<Book> listBook = db.Books.ToList();
+            if (TempData["result"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["result"];
+            }
             return View(listBook);
         }
 
@@ -24,8 +28,6 @@ namespace bookstore.Areas.Admin.Controllers
             List<Author> authors = db.Authors.ToList();
             List<Publisher> publishers = db.Publishers.ToList();
             List<Category> categories = db.Categories.ToList();
-
-
 
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(book, categories, publishers, authors);
             return View(bookCategoryPublisherViewModel);
@@ -53,14 +55,14 @@ namespace bookstore.Areas.Admin.Controllers
                     b.image = _FileName;
                     db.SaveChanges();
                 }
-
+                //db.Books.Add(book);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             //nếu validate thất bại
             return View(book);
         }
-
 
         public ActionResult ViewDetail(int id)
         {
@@ -119,10 +121,10 @@ namespace bookstore.Areas.Admin.Controllers
                 Book b = db.Books.FirstOrDefault(x => x.id == id);
                 b.image = _FileName;
                 db.SaveChanges();
-
+                TempData["result"] = "Edit book detail successfully!";
                 return RedirectToAction("Index");
             }
-
+            
             return View(book);
         }
 
@@ -135,6 +137,7 @@ namespace bookstore.Areas.Admin.Controllers
             {
                 db.Books.Remove(book);
                 db.SaveChanges();
+                TempData["result"] = "Delete book successfully!";
                 return RedirectToAction("Index");
             }
             return HttpNotFound();

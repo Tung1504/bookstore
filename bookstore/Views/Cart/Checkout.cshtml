@@ -14,7 +14,7 @@
                 <li class="active">Check out</li>
             </ol>
         </div><!--/breadcrums-->
-        @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, new { @class = "form" }))
         {
             @Html.ValidationSummary();
             @Html.AntiForgeryToken();
@@ -25,24 +25,24 @@
                         <div class="bill-to">
                             <p>Address</p>
                             <div class="form-one">
-                                <form>
-                                    @Html.DropDownListFor(m =>m.AddressAndPayment.Address, new SelectList(Model.AddressList, "id", "city"), "-----Select Address-----")
+                                    @Html.DropDownListFor(m =>m.Address, new SelectList(Model.AddressList, "id", "city"), "-----Select Address-----")
 
                                     <p>Or new Address</p>
-
-
-                                </form>
                             </div>
                             <div class="form-two">
+
                                 <form>
                                     
-                                    @Html.DropDownListFor(m => m.AddressAndPayment.Payment_card, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----")
+                                    
+
+                                    <input type="text" placeholder="Zip / Postal Code *">
+                                    @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----")
+
 
                                     <p>Or new Address</p>
                                    
 
 
-                                </form>
                             </div>
                         </div>
                     </div>

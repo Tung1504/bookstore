@@ -4,17 +4,35 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">BOOK DETAILS </h3>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Manage Books</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-5">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title"><strong class="text-dark">BOOKS</strong></h3>
-
+                        @*<h3 class="card-title"><strong class="text-dark">BOOKS</strong></h3>*@
+                        @if (ViewBag.SuccessMsg != null)
+                        {
+                            <div class="alert alert-success" id="success">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <p>@ViewBag.SuccessMsg</p>
+                            </div>
+                        }
                         <a href="@Url.Action("Create", "Book")" class="btn btn-success fas fa-plus mb-3"> Create New</a>
 
                         <div class="table-responsive">
@@ -29,7 +47,7 @@
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody >
+                                <tbody>
                                     @foreach (var book in Model)
                                     {
                                         <tr>
@@ -70,5 +88,10 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="~/Areas/Admin/Content/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Areas/Admin/Content/vendor/datatables/js/data-table.js"></script>
+    <script>
+        setTimeout(function () {
+            $('#success').fadeOut('slow');
+        }, 2000);
+    </script>
 }
 

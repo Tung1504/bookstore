@@ -1,97 +1,221 @@
-﻿@model bookstore.ViewModels.BookCategoryPublisherAuthorViewModel
+﻿@model bookstore.ViewModels.AdminDashboardViewModel
 @{
 
     ViewBag.Title = "Dashboard";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+
 
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
-        <h1>Dashboard Page</h1>
-   
-            <div class="row">
-                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="text-muted">Total Books </h5>
-                            <div class="metric-value d-inline-block">
-                                <h1 class="mb-1">@Model.ListBook.Count()</h1>
-                            </div>
-                            <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                @*<span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>*@
-                            </div>
-                        </div>
-                        <div id="sparkline-revenue"></div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="text-muted">Total Category</h5>
-                            <div class="metric-value d-inline-block">
-                                <h1 class="mb-1">@Model.ListCategory.Count()</h1>
-                            </div>
-                            <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                @*<span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>*@
-                            </div>
-                        </div>
-                        <div id="sparkline-revenue2"></div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="text-muted">Total Publiser</h5>
-                            <div class="metric-value d-inline-block">
-                                <h1 class="mb-1">@Model.ListPublisher.Count()</h1>
-                            </div>
-                            <div class="metric-label d-inline-block float-right text-primary font-weight-bold">
-                                @*<span>N/A</span>*@
-                            </div>
-                        </div>
-                        <div id="sparkline-revenue3"></div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="text-muted">Total Author</h5>
-                            <div class="metric-value d-inline-block">
-                                <h1 class="mb-1">@Model.ListAuthor.Count()</h1>
-                            </div>
-                            <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
-                                @*<span>-2.00%</span>*@
-                            </div>
-                        </div>
-                        <div id="sparkline-revenue4"></div>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">DASHBOARD</h3>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
-            <div class="row">
+        </div>
+        <div class="row">
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-muted">Total User</h5>
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1">@Model.ListUser.Count()</h1>
+                        </div>
+                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                            @*<span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>*@
+                        </div>
+                    </div>
+                    <div id="sparkline-revenue"></div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-muted">Total Books </h5>
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1">@Model.ListBook.Count()</h1>
+                        </div>
+                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                            @*<span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>*@
+                        </div>
+                    </div>
+                    <div id="sparkline-revenue"></div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-muted">Total Category</h5>
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1">@Model.ListCategory.Count()</h1>
+                        </div>
+                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                            @*<span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>*@
+                        </div>
+                    </div>
+                    <div id="sparkline-revenue2"></div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-muted">Total Publisher</h5>
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1">@Model.ListPublisher.Count()</h1>
+                        </div>
+                        <div class="metric-label d-inline-block float-right text-primary font-weight-bold">
+                            @*<span>N/A</span>*@
+                        </div>
+                    </div>
+                    <div id="sparkline-revenue3"></div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-muted">Total Author</h5>
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1">@Model.ListAuthor.Count()</h1>
+                        </div>
+                        <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+                            @*<span>-2.00%</span>*@
+                        </div>
+                    </div>
+                    <div id="sparkline-revenue4"></div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="text-muted">Total Order</h5>
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1">@Model.ListOrder.Count()</h1>
+                        </div>
+                        <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+                            @*<span>-2.00%</span>*@
+                        </div>
+                    </div>
+                    <div id="sparkline-revenue4"></div>
+                </div>
+            </div>
+        </div>
 
-                <div class="col-xl-12 col-lg-12 col-md-8 col-sm-12 col-16">
-                    <div class="card">
-                        <h5 class="card-header">Recent Book</h5>
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead class="bg-light">
-                                        <tr class="border-0">
-                                            <th class="border-0">ID</th>
-                                            <th class="border-0">Title</th>
-                                            <th class="border-0">Quantity</th>
-                                            <th class="border-0">Price</th>
-                                            <th class="border-0">Author</th>
-                                            <th class="border-0">Publisher</th>
-                                            <th class="border-0">Category</th>
-                                            <th class="border-0">Image</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.ListBook)
-                                        {
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <h4 class="card-header">USERS</h4>
+                        <ul class="social-sales list-group list-group-flush">
+                            @foreach (var item in Model.ListUser.Take(3).OrderByDescending(m => m.id))
+                            {
+                                <li class="list-group-item social-sales-content">
+                                    <span class="">@item.name</span>@*<span class="social-sales-count text-dark">@item.Books.Where(m => m.publisher_id == item.id).Count() Books</span>*@
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="@Url.Action("Index", "Publisher")" class="btn-primary-link">View Details</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <h4 class="card-header">AUTHORS</h4>
+                        <ul class="social-sales list-group list-group-flush">
+                            @foreach (var item in Model.ListAuthor.Take(3).OrderByDescending(m => Model.ListBook.Where(p => p.author_id == m.id).Count()))
+                            {
+                                <li class="list-group-item social-sales-content">
+                                    <span class="">@item.author_name</span><span class="social-sales-count text-dark">@item.Books.Where(m => m.author_id == item.id).Count() Books</span>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="@Url.Action("Index", "Author")" class="btn-primary-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <h4 class="card-header">CATEGORIES</h4>
+                        <ul class="social-sales list-group list-group-flush">
+                            @foreach (var item in Model.ListCategory.Take(3).OrderByDescending(m => Model.ListBook.Where(p => p.category_id == m.id).Count()))
+                            {
+                                <li class="list-group-item social-sales-content">
+                                    <span class="">@item.category_name</span><span class="social-sales-count text-dark">@item.Books.Where(m => m.category_id == item.id).Count() Books</span>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="@Url.Action("Index", "Category")" class="btn-primary-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <h4 class="card-header">PUBLISHERS</h4>
+                        <ul class="social-sales list-group list-group-flush">
+                            @foreach (var item in Model.ListPublisher.Take(3).OrderByDescending(m => Model.ListBook.Where(p => p.publisher_id == m.id).Count()))
+                            {
+                                <li class="list-group-item social-sales-content">
+                                    <span class="">@item.publisher_name</span><span class="social-sales-count text-dark">@item.Books.Where(m => m.publisher_id == item.id).Count() Books</span>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="@Url.Action("Index", "Publisher")" class="btn-primary-link">View Details</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-8 col-sm-12 col-16">
+                <div class="card">
+
+                    <div class="card-body">
+                        <h3 class="card-title">RECENT ADDED BOOKS</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="bg-light">
+                                    <tr class="border-0">
+                                        <th class="border-0 m-b-10">#</th>
+                                        <th class="border-0">Title</th>
+                                        <th class="border-0">Quantity</th>
+                                        <th class="border-0">Price</th>
+                                        <th class="border-0">Author</th>
+                                        <th class="border-0">Publisher</th>
+                                        <th class="border-0">Category</th>
+                                        <th class="border-0">Image</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ListBook.OrderByDescending(m => m.id).Take(5))
+                                    {
                                         <tr>
 
                                             <td>@item.id</td>
@@ -102,100 +226,62 @@
                                             <td>@item.Publisher.publisher_name</td>
                                             <td>@item.Category.category_name</td>
                                             <td><img style="width:50px;height:50px" src="~/images/shop/@item.image" /></td>
-                                            <td colspan="9"><a href="@Url.Action("ViewDetail", "Book",  new { id = item.id })" class="btn btn-outline-light float-right">View Details</a></td>
                                         </tr>
-                                        }
+                                    }
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                    <div class="card-footer text-center">
+                        <a href="@Url.Action("Index", "Book")" class="btn-primary-link">View Details</a>
+                    </div>
                 </div>
-
             </div>
+        </div>
 
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-8 col-sm-12 col-16">
+                <div class="card">
 
+                    <div class="card-body">
+                        <h3 class="card-title">RECENT ORDERS</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="bg-light">
+                                    <tr class="border-0">
+                                        <th class="border-0 m-b-10">#</th>
+                                        <th class="border-0">Order Number</th>
+                                        <th class="border-0">Payment Status</th>
+                                        <th class="border-0">Status</th>
+                                        <th class="border-0">Order Date</th>
+                                        <th class="border-0">Total Price</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ListOrder.OrderByDescending(m => m.id).Take(5).Where(m => m.status == "Preparing"))
+                                    {
+                                        <tr>
 
+                                            <td>@item.id</td>
+                                            <td>@item.order_number</td>
+                                            <td>@item.payment_status</td>
+                                            <td id="status"><span class="badge-dot badge-primary mr-1"></span>@item.status</td>
+                                            <td>@item.date.Year/@item.date.Month/@item.date.Day</td>
+                                            <td>@item.total_price</td>
+                                        </tr>    
+                                    }
 
-            <div class="row">
-                <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <!-- ============================================================== -->
-                    <!-- social source  -->
-                    <!-- ============================================================== -->
-                    <div class="card">
-                        <h5 class="card-header"> Author</h5>
-                        <div class="card-body p-0">
-                            <ul class="social-sales list-group list-group-flush">
-                                @foreach (var item in Model.ListAuthor)
-                                {
-                                    <li class="list-group-item social-sales-content">
-                                        <span class="social-sales-icon-circle facebook-bgcolor mr-2"><i class="fab fa-facebook-f"></i></span><span class="social-sales-name">@item.author_name</span><span class="social-sales-count text-dark">@item.id</span>
-                                    </li>
-                                }
-
-                            </ul>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="@Url.Action("Index", "Author")" class="btn-primary-link">View Details</a>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- end social source  -->
-                    <!-- ============================================================== -->
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <!-- ============================================================== -->
-                    <!-- sales traffice source  -->
-                    <!-- ============================================================== -->
-                    <div class="card">
-                        <h5 class="card-header"> Category</h5>
-                        <div class="card-body p-0">
-                            <ul class="traffic-sales list-group list-group-flush">
-                                @foreach (var item in Model.ListCategory)
-                                {
-                                    <li class="traffic-sales-content list-group-item ">
-                                        <span class="traffic-sales-name">@item.id</span><span class="traffic-sales-amount">@item.category_name <span class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span></span>
-                                    </li>
-                                }
-
-                            </ul>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="@Url.Action("Index", "Category")" class="btn-primary-link">View Details</a>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- end sales traffice source  -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- sales traffic country source  -->
-                <!-- ============================================================== -->
-                <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
-                    <div class="card">
-                        <h5 class="card-header">Publisher</h5>
-                        <div class="card-body p-0">
-                            <ul class="country-sales list-group list-group-flush">
-                                @foreach (var pub in Model.ListPublisher)
-                                {
-                                    <li class="country-sales-content list-group-item">
-
-                                        <span class="">@pub.publisher_name</span><span class="float-right text-dark">@pub.id</span>
-                                    </li>
-                                }
-
-
-                            </ul>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="@Url.Action("Index", "Publisher")" class="btn-primary-link">View Details</a>
-                        </div>
+                    <div class="card-footer text-center">
+                        <a href="@Url.Action("Index", "Order")" class="btn-primary-link">View Details</a>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- end sales traffice country source  -->
-                <!-- ============================================================== -->
             </div>
         </div>
     </div>
+</div>

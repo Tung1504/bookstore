@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
 namespace bookstore.ViewModels
 {
     public class BookCategoryPublisherAuthorViewModel
@@ -58,6 +59,23 @@ namespace bookstore.ViewModels
             this.ListCategory = ListCategory;
             this.ListPublisher = ListPublisher;
             this.ListAuthor = ListAuthor;
+        }
+
+
+        public BookCategoryPublisherAuthorViewModel(Category category, List<Book> listBook, List<Category> listCategory, List<Publisher> listPublisher)
+        {
+            Category = category;
+            ListBook = listBook;
+            ListCategory = listCategory;
+            ListPublisher = listPublisher;
+        }
+
+        public BookCategoryPublisherAuthorViewModel(Publisher publisher, List<Book> listBook, List<Category> listCategory, List<Publisher> listPublisher)
+        {
+            Publisher = publisher;
+            ListBook = listBook;
+            ListCategory = listCategory;
+            ListPublisher = listPublisher;
         }
     }
 }

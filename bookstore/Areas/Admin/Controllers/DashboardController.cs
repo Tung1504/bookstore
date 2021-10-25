@@ -17,12 +17,15 @@ namespace bookstore.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            var books = db.Books.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher);
+            List<User> users = db.Users.ToList();
+            List<Book> book = db.Books.ToList();
             List<Author> authors = db.Authors.ToList();
             List<Category> categories = db.Categories.ToList();
             List<Publisher> publishers = db.Publishers.ToList();
-            BookCategoryPublisherAuthorViewModel bookCategoryAuthorPublisherViewModels = new BookCategoryPublisherAuthorViewModel(books.ToList(), categories, authors, publishers);
-            return View(bookCategoryAuthorPublisherViewModels);
+            List<Order> order = db.Orders.ToList();
+
+            AdminDashboardViewModel adminDashboardViewModel = new AdminDashboardViewModel(users, book, categories, publishers, authors, order);
+            return View(adminDashboardViewModel);
         }
 
 

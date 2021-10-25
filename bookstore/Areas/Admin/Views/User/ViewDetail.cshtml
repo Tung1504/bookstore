@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="page-header">
-                        <h3 class="mb-2">User Profile </h3>
+                        <h3 class="mb-2">USER PROFILE</h3>
                         <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
@@ -149,24 +149,20 @@
                                                     <li class="media">
                                                         <div class="media-body">
                                                             <h3 class="mt-0 mb-1">To Date: </h3>
-                                                            @Html.DisplayFor(m => m.PaymentCard.to_date)
+                                                            @Model.PaymentCard.from_date.Month/@Model.PaymentCard.from_date.Year
                                                         </div>
                                                     </li>
                                                     <li class="media my-4">
                                                         <div class="media-body">
                                                             <h3 class="mt-0 mb-1">From Date: </h3>
-                                                            @Html.DisplayFor(m => m.PaymentCard.from_date)
+                                                            @Model.PaymentCard.to_date.Month/@Model.PaymentCard.to_date.Year
                                                         </div>
                                                     </li>
-
-
                                                 </ul>
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <!-- ============================================================== -->
@@ -181,3 +177,11 @@
         </div>
     </div>
 </div>
+
+@section js{
+
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="~/Areas/Admin/Content/js/main-js.js"></script>
+}
