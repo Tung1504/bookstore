@@ -1,9 +1,14 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@ViewBag.Title |  E-Shopper</title>
+
     @Styles.Render("~/Areas/Admin/Content/vendor/bootstrap/css/bootstrap.min.css")
     @Styles.Render("~/Areas/Admin/Content/vendor/fonts/circular-std/style.css")
     @Styles.Render("~/Areas/Admin/Content/css/style.css")
@@ -13,9 +18,8 @@
     @Styles.Render("~/Areas/Admin/Content/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css")
     @Styles.Render("~/Areas/Admin/Content/vendor/charts/c3charts/c3.css")
     @Styles.Render("~/Areas/Admin/Content/vendor/fonts/flag-icon-css/flag-icon.min.css")
-    
-    @RenderSection("css", false)
 
+    @RenderSection("css", false)
 </head>
 
 <body>
@@ -29,9 +33,12 @@
         @Html.Partial("~/Areas/Admin/Views/Shared/Partials/_Footer.cshtml")
     </div>
 
-        @RenderSection("js", false)
 
 
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+
+    @RenderSection("js", false)
 
 </body>
 

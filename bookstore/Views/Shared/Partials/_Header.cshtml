@@ -129,15 +129,20 @@
                                     </ul>
                                 </li>
                                 <li><a href="404.html">404</a></li>*@
-                            
+
                             <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="search_box pull-right">
-                        <input type="text" placeholder="Search" />
-                    </div>
+                    @*<div class="search_box pull-right">
+                            <input type="text" placeholder="Search" />
+                        </div>*@
+
+                    @using (Html.BeginForm("Shop", "Home", FormMethod.Get))
+                    {
+                        @Html.TextBox("search")<input type="submit" value="Search" />
+                    }
                 </div>
             </div>
         </div>

@@ -37,6 +37,7 @@ namespace bookstore.Areas.Admin.Controllers
         {
             // #TODO: save duong dan file image vao images/shop..
 
+
             if (ModelState.IsValid)
             {
                 if (upload_image != null && upload_image.ContentLength > 0)
@@ -52,7 +53,9 @@ namespace bookstore.Areas.Admin.Controllers
                     Book b = db.Books.FirstOrDefault(x => x.id == id);
                     b.image = _FileName;
                     db.SaveChanges();
+
                 }
+
 
                 return RedirectToAction("Index");
             }

@@ -1,8 +1,13 @@
 ﻿@model bookstore.ViewModels.BookCategoryPublisherAuthorViewModel
+
 @{
-    ViewBag.Title = "Shop";
+    ViewBag.Title = "Publisher";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h2>Publisher</h2>
+
+
 
 <section id="advertisement">
     <div class="container">
@@ -66,40 +71,44 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items">
                     <!--features_items-->
-                    @{
-                        string search = ViewBag.search;
-                    }
-                    <h2 class="title text-center">Searched: @search</h2>
-
-                    @foreach (var book in Model.ListBook)
+                    <h2 class="title text-center">@Model.Publisher.publisher_name</h2>
+                    @if (Model.ListBook.Count() == 0)
                     {
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper ">
+                        <h2 style="color:#FE980F">No Match Any Book</h2>
+                    }
+                    else
+                    {
+                        foreach (var book in Model.ListBook)
+                        {
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper ">
 
-                                <div class="single-products ">
-                                    <div class="productinfo text-center">
+                                    <div class="single-products ">
+                                        <div class="productinfo text-center">
 
-                                        <img src="~/images/shop/@book.image" alt="" />
-                                        <h2>$@book.price</h2>
-                                        <p>@book.title</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                    <a href="@Url.Action("ProductDetail", "Home", new { id = book.id})">
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <img src="~/images/shop/@book.image" alt="" />
-                                                <h2>$@book.price</h2>
-                                                <p>@book.title</p>
-
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
+                                            <img src="~/images/shop/@book.image" alt="" />
+                                            <h2>$@book.price</h2>
+                                            <p>@book.title</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
-                                    </a>
+                                        <a href="@Url.Action("ProductDetail", "Home", new { id = book.id})">
+                                            <div class="product-overlay">
+                                                <div class="overlay-content">
+                                                    <img src="~/images/shop/@book.image" alt="" />
+                                                    <h2>$@book.price</h2>
+                                                    <p>@book.title</p>
 
+                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     }
+
 
 
 
