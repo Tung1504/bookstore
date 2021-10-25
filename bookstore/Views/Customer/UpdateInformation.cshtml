@@ -1,0 +1,65 @@
+﻿@model bookstore.Models.User
+@{
+    ViewBag.Title = "UpdateInfromation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="shopper-informations">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="shopper-info">
+                        <p>User Information</p>
+                        @using (Html.BeginForm("UpdateInformation", "Customer", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
+                        {
+                            @Html.HiddenFor(m => m.id)
+
+                            @Html.ValidationSummary();
+                            @Html.AntiForgeryToken();
+                            <div>
+                                <lable>Name</lable>
+                                @Html.TextBoxFor(m => m.name, new { type = "text", @class = "form-control" })
+
+                            </div>
+
+                            <div>
+                                <lable>UserName</lable>
+                                @Html.TextBoxFor(m => m.username, new { type = "text", @class = "form-control" })
+
+                            </div>
+
+                            <div>
+                                <lable>Password</lable>
+                                @Html.PasswordFor(m => m.password, new { type = "password", @class = "form-control" })
+
+                            </div>
+
+                            <div>
+                                <lable>Phone</lable>
+                                @Html.TextBoxFor(m => m.phone, new { type = "text", @class = "form-control" })
+
+                            </div>
+                            <div>
+                                <lable>Email</lable>
+                                @Html.TextBoxFor(m => m.email, new { type = "text", @class = "form-control" })
+
+                            </div>
+                            <div>
+                                <lable>Date of birth</lable>
+                                @Html.TextBoxFor(m => m.dob, new { type = "date", @class = "form-control" })
+
+                            </div>
+                            
+
+                            <button type="reset"> Reset </button>
+                            <button type="submit"> Submit </button>
+                        }
+                    </div>
+                       
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
