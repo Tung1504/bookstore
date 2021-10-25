@@ -12,6 +12,10 @@ namespace bookstore.Models
     [MetadataType(typeof(UserMetadata))]
     public partial class User
     {
+        [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Password)]
+        [Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
+        [NotMapped]
         public string repassword { get; set; }
     }
 
@@ -24,10 +28,10 @@ namespace bookstore.Models
         [DataType(DataType.Password)]
         public string password { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
-        [DataType(DataType.Password)]
-        [Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
-        [NotMapped]
+        //[Required(ErrorMessage = "This field is required")]
+        //[DataType(DataType.Password)]
+        //[Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
+        //[NotMapped]
         
 
 
