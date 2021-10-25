@@ -12,7 +12,7 @@ namespace bookstore.Models
     [MetadataType(typeof(UserMetadata))]
     public partial class User
     {
-
+        public string repassword { get; set; }
     }
 
     public class UserMetadata
@@ -28,7 +28,7 @@ namespace bookstore.Models
         [DataType(DataType.Password)]
         [Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
         [NotMapped]
-        public string repassword { get; set; }
+        
 
 
         public string role { get; set; }

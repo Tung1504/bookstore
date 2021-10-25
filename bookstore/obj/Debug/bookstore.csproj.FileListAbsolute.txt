@@ -308,4 +308,5 @@ D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\vbc.exe.c
 D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\vbc.rsp
 D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe
 D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe.config
+D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\bookstore.dll.config
 D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\obj\Debug\bookstore.csprojAssemblyReference.cache

@@ -14,26 +14,22 @@ namespace bookstore.Models
     [MetadataType(typeof(CategoryMetadata))]
     public partial class Category
     {
-        BookStoreEntities db = new BookStoreEntities();
+        //BookStoreEntities db = new BookStoreEntities();
 
-        public List<Book> findBookByCategory()
-        {
-            List<Book> listBook = db.Books.Where(b => b.category_id == id).ToList();
-            return listBook;
-        }
+        //public List<Book> findBookByCategory()
+        //{
+        //    List<Book> listBook = db.Books.Where(b => b.category_id == id).ToList();
+        //    return listBook;
+        //}
     }
 
-    public class CategoryMetadata : BaseController
+    public class CategoryMetadata
     {
         public int id { get; set; }
         public string category_name { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }
 
-        public List<Book> findBookByCategory()
-        {
-            List<Book> listBook = db.Books.Where(b => b.category_id == id).ToList();
-            return listBook;
-        }
+
     }
 }

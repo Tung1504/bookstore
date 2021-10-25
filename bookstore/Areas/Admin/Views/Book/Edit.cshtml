@@ -26,74 +26,77 @@
         {
             @Html.HiddenFor(m => m.Book.id)
 
-            @Html.ValidationSummary();
+            @*@Html.ValidationSummary();*@
             @Html.AntiForgeryToken();
-            <div>
-                <lable>Title</lable>
-                @Html.TextBoxFor(m => m.Book.title, new { type = "text", @class = "form-control" })
+            <div class="card">
+                <div class="card-body">
 
+                    <h2 class="card-title">Book Information</h2>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-16">
+                            <div class="text-center">
+                                <img src="~/images/shop/@Model.Book.image" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                <input type="file" name="upload_image" id="upload_image" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 col-12">
+                            <div class="user-avatar-info">
+
+                                <div class="user-avatar-address">
+                                    <label>Book title:</label>
+                                    @Html.TextBoxFor(m => m.Book.title, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Book.title, "", new { @class = "text-danger" })
+                                    <br />
+
+                                    <label>Edition:</label>
+                                    @Html.TextBoxFor(m => m.Book.edition, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Book.edition, "", new { @class = "text-danger" })
+                                    <br />
+
+                                    <label>By:</label> <br />
+                                    @Html.DropDownListFor(m => m.Book.author_id, new SelectList(Model.ListAuthor, "id", "author_name"), "-----Select Author-----") <br />
+                                    @Html.ValidationMessageFor(m => m.Book.author_id, "", new { @class = "text-danger" })
+                                    <br />
+
+                                    <label>Publisher</label> <br />
+                                    @Html.DropDownListFor(m => m.Book.publisher_id, new SelectList(Model.ListPublisher, "id", "publisher_name"), "-----Select Publisher-----") <br />
+                                    @Html.ValidationMessageFor(m => m.Book.publisher_id, "", new { @class = "text-danger" })
+                                    <br />
+
+                                    <label>Category:</label> <br />
+                                    @Html.DropDownListFor(m => m.Book.category_id, new SelectList(Model.ListCategory, "id", "category_name"), "-----Select Category-----") <br />
+                                    @Html.ValidationMessageFor(m => m.Book.author_id, "", new { @class = "text-danger" })
+                                    <br />
+
+                                    <label>Quantity in stock:</label>
+                                    @Html.TextBoxFor(m => m.Book.quantity_in_stock, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Book.quantity_in_stock, "", new { @class = "text-danger" })
+                                    <br />
+
+                                    <label>Public Date:</label>
+                                    @Html.TextBoxFor(m => m.Book.public_date, new { type = "date", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Book.public_date, "", new { @class = "text-danger" })
+                                    <br />
+
+                                    <label>Price</label>
+                                    @Html.TextBoxFor(m => m.Book.price, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Book.price, "", new { @class = "text-danger" })
+                                    <br />
+
+                                    <label>Description:@Model.Book.description</label>
+                                    @Html.TextBoxFor(m => m.Book.description, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Book.description, "", new { @class = "text-danger" })
+                                    <br />
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div>
-                <lable>Price</lable>
-                @Html.TextBoxFor(m => m.Book.price, new { type = "text", @class = "form-control" })
-
-            </div>
-
-            <div>
-                <lable>Quantity In Stock</lable>
-                @Html.TextBoxFor(m => m.Book.quantity_in_stock, new { type = "text", @class = "form-control" })
-
-            </div>
-
-            <div>
-                <lable>Publisher</lable>
-                @Html.DropDownListFor(m => m.Book.publisher_id, new SelectList(Model.ListPublisher, "id", "publisher_name"), "-----Select Publisher-----")
-
-            </div>
-
-            <div>
-                <lable>Category</lable>
-                @Html.DropDownListFor(m => m.Book.category_id, new SelectList(Model.ListCategory, "id", "category_name"), "-----Select Category-----")
-
-            </div>
-
-            <div>
-                <lable>Author</lable>
-                @Html.DropDownListFor(m => m.Book.author_id, new SelectList(Model.ListAuthor, "id", "author_name"), "-----Select Author-----")
-
-            </div>
-
-            <div>
-                <lable>Description</lable>
-                @Html.TextBoxFor(m => m.Book.description, new { type = "text", @class = "form-control" })
-
-            </div>
-
-            <div>
-                <lable>Image</lable>
-                <input type="file" name="upload_image" id="upload_image" class="form-control" />
-
-            </div>
-
-            <div>
-                <lable>Public date</lable>
-                @Html.TextBoxFor(m => m.Book.public_date, new { type = "date", @class = "form-control" })
-
-            </div>
-
-            <div>
-                <lable>Edition</lable>
-                @Html.TextBoxFor(m => m.Book.edition, new { type = "text", @class = "form-control" })
-
-            </div>
-
-
-
-
-
-            <br />
-            <button type="submit">Submit</button>
         }
     </div>
 </div>

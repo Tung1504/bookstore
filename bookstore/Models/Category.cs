@@ -23,6 +23,5 @@ namespace bookstore.Models
         public string category_name { get; set; }
     
         public virtual ICollection<Book> Books { get; set; }
-        
     }
 }

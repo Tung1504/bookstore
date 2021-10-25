@@ -25,7 +25,7 @@
         </div>
             @using (Html.BeginForm("Create", "Author", FormMethod.Post))
             {
-                @Html.ValidationSummary();
+               
                 @Html.AntiForgeryToken();
                 <div class="card">
                     <div class="card-body">
@@ -45,18 +45,27 @@
                                     <div class="user-avatar-address">
                                         <label>Author Name</label>
                                         @Html.TextBoxFor(m => m.author_name, new { type = "text", @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.author_name, "", new { @class = "text-danger" })
                                         <br />
+
                                         <label>Author Birth Year</label>
                                         @Html.TextBoxFor(m => m.birth_year, new { type = "text", @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.birth_year, "", new { @class = "text-danger" })
                                         <br />
+
                                         <label>Author Active Status</label>
                                         @Html.TextBoxFor(m => m.status, new { type = "text", @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.status, "", new { @class = "text-danger" })
                                         <br />
+
                                         <lable>Image</lable>
                                         <input type="file" name="upload_image" id="upload_image" class="form-control" />
+                                        @Html.ValidationMessageFor(m => m.image, "", new { @class = "text-danger" })
                                         <br />
+
                                         <label>Description</label>
                                         @Html.TextAreaFor(m => m.description, new { type = "text", @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
                                         <br />
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>

@@ -6,17 +6,29 @@
 
 }
 
-<h2>Manage Category</h2>
-
-@*<script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>*@
-
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">CATEGORIES</h3>
+                    <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Manage Category</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-12 col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">CATEGORIES</h5>
+                        @*<h5 class="card-title">CATEGORIES</h5>*@
                         @if (ViewBag.SuccessMsg != null)
                         {
                             <div class="alert alert-success" id="success">
@@ -53,36 +65,6 @@
                             </div>
                         </div>
 
-                        @*<div class="modal fade" id="editModal">
-                                <div class="modal-dialog">
-
-                                    <div class="modal-content">
-
-                                            <div class="modal-header">
-
-                                                <h2 class="modal-title">Edit author</h2>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="hidden" id="editId" />
-
-                                                <label>Author Name</label>
-                                                <input type="text" class="form-control" id="editName" />
-                                                <span class="error text-danger"></span>
-
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <div class="btn-group">
-                                                    <a href="#" id="btnEditSave" class="btn btn-primary mr-2">Save</a>
-                                                    <a href="#" id="btnEditCancel" class="btn btn-danger" data-dismiss="modal">Cancel</a>
-                                                </div>
-                                            </div>
-
-                                    </div>
-
-                                </div>
-                            </div>*@
-
 
                         <div class="#">
                             <table class="table table-bordered first" id="authorTable">
@@ -95,7 +77,7 @@
                                 </thead>
                                 @*<tbody id="tableData">
 
-                                    </tbody>*@
+                                </tbody>*@
                                 <tbody>
                                     @foreach (var category in Model)
                                     {

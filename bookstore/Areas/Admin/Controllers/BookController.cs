@@ -29,8 +29,6 @@ namespace bookstore.Areas.Admin.Controllers
             List<Publisher> publishers = db.Publishers.ToList();
             List<Category> categories = db.Categories.ToList();
 
-
-
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(book, categories, publishers, authors);
             return View(bookCategoryPublisherViewModel);
         }
@@ -57,14 +55,14 @@ namespace bookstore.Areas.Admin.Controllers
                     b.image = _FileName;
                     db.SaveChanges();
                 }
-                TempData["result"] = "Create New Book Successfully!";
+                //db.Books.Add(book);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             //nếu validate thất bại
             return View(book);
         }
-
 
         public ActionResult ViewDetail(int id)
         {
