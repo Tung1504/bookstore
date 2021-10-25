@@ -91,8 +91,9 @@ namespace bookstore.Controllers
             if (u != null)
             {
                 // Login: goc man hinh: camnh
-                Session["Id"] = user.id.ToString();
-                Session["UserName"] = user.username;
+                Session["Id"] = u.id.ToString();
+                Session["UserName"] = u.username;
+                Session["auth"] = u;
 
                 if (u.role == "Customer")
                 {
@@ -144,15 +145,107 @@ namespace bookstore.Controllers
             return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
 
-        public ActionResult Shop()
+        public ActionResult Shop(int? page, string search)
         {
-            List<Book> listBook = db.Books.ToList();
+
+
+            List<Book> listBook = db.Books.Where(b => b.title.Contains(search) || search == null).ToList();
+            if (page > 0)
+            {
+                page = page;
+            }
+            else
+            {
+                page = 1;
+            }
+            int limit = 5;
+            int start = (int)(page - 1) * limit;
+            int totalBook = listBook.Count();
+            ViewBag.totalBook = totalBook;
+            ViewBag.pageCurrent = page;
+            int numberPage = (totalBook / limit);
+            ViewBag.numberPage = numberPage;
+            List<Book> paginated_listBook = listBook.OrderByDescending(s => s.id).Skip(start).Take(limit).ToList();
+
+            ViewBag.search = search;
+
+
             List<Category> listCategory = db.Categories.ToList();
             List<Publisher> listPublisher = db.Publishers.ToList();
 
 
 
-            BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(listBook, listCategory, listPublisher);
+            BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(paginated_listBook, listCategory, listPublisher);
+
+            return View(bookCategoryPublisherViewModel);
+        }
+
+        public ActionResult Category(int id, int? page)
+        {
+
+
+            List<Book> listBook = db.Books.Where(b => b.category_id == id).ToList();
+            if (page > 0)
+            {
+                page = page;
+            }
+            else
+            {
+                page = 1;
+            }
+            int limit = 5;
+            int start = (int)(page - 1) * limit;
+            int totalBook = listBook.Count();
+            ViewBag.totalBook = totalBook;
+            ViewBag.pageCurrent = page;
+            int numberPage = (totalBook / limit);
+            ViewBag.numberPage = numberPage;
+            List<Book> paginated_listBook = listBook.OrderByDescending(s => s.id).Skip(start).Take(limit).ToList();
+
+
+
+            Category category = db.Categories.Find(id);
+            List<Category> listCategory = db.Categories.ToList();
+            List<Publisher> listPublisher = db.Publishers.ToList();
+
+
+
+            BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(category, paginated_listBook, listCategory, listPublisher);
+
+            return View(bookCategoryPublisherViewModel);
+        }
+
+        public ActionResult Publisher(int id, int? page)
+        {
+
+
+            List<Book> listBook = db.Books.Where(b => b.publisher_id == id).ToList();
+            if (page > 0)
+            {
+                page = page;
+            }
+            else
+            {
+                page = 1;
+            }
+            int limit = 5;
+            int start = (int)(page - 1) * limit;
+            int totalBook = listBook.Count();
+            ViewBag.totalBook = totalBook;
+            ViewBag.pageCurrent = page;
+            int numberPage = (totalBook / limit);
+            ViewBag.numberPage = numberPage;
+            List<Book> paginated_listBook = listBook.OrderByDescending(s => s.id).Skip(start).Take(limit).ToList();
+
+
+
+            Publisher publisher = db.Publishers.Find(id);
+            List<Category> listCategory = db.Categories.ToList();
+            List<Publisher> listPublisher = db.Publishers.ToList();
+
+
+
+            BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(publisher, paginated_listBook, listCategory, listPublisher);
 
             return View(bookCategoryPublisherViewModel);
         }

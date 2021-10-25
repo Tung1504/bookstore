@@ -1,0 +1,102 @@
+﻿@model  IEnumerable<bookstore.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model == null || Model.Count() == 0)
+{
+    <p class="text-info text-center">
+        Giỏ hàng của bạn rỗng!
+    </p>
+}
+else
+{
+    <section id="cart_items">
+        <div class="container">
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a href="~/Views/Home/Index.cshtml">Home</a></li>
+                    <li class="active">Shopping Cart</li>
+                </ol>
+            </div>
+            <div class="table-responsive cart_info">
+                <table class="table table-condensed cart-table">
+                    <thead>
+                        <tr class="cart_menu">
+                            <td class="image">Item</td>
+                            <td class="description"></td>
+                            <td class="price">Price</td>
+                            <td class="quantity">Quantity</td>
+                            <td class="total">Total</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @if (Session["cart"] != null)
+                        {
+
+                            double total_price = 0;
+
+                            foreach (var item in Model)
+                            {
+                                double LineTotal = item.Linetotal;
+                                total_price = total_price + LineTotal;
+                        <tr>
+                            <td class="cart_product">
+                                <a href=""><img src="images/cart/one.png" alt=""></a>
+                            </td>
+                            <td class="cart_description">
+                                <h4><a href="">@item.Book.title</a></h4>
+                                <p>available quantity: @item.Book.quantity_in_stock</p>
+                            </td>
+                            <td class="cart_price">
+                                <p>$ @item.Book.price</p>
+                            </td>
+                            <td class="cart_quantity">
+                                <form action="@Url.Action("UpdateQuantity")" method="post">
+                                    <input type="hidden" name="bookId" value="@item.Book.id" />
+                                    <input type="number" min="1" step="1" name="quantity" value="@item.Quantity" style="width: 75px" />
+                                    <button type="submit" class="btn btn-default update"> Update </button>
+                                </form>
+                            </td>
+                            <td class="cart_total">
+                                <p class="cart_total_price">$ @LineTotal</p>
+                            </td>
+                            <td class="cart_delete">
+                                <a class="cart_quantity_delete" href="@Url.Action("DeleteFromCart",new { bookId = item.Book.id})" onclick="return confirm('Delete this item?');"><i class="fa fa-times"></i></a>
+                                
+                            </td>
+                        </tr>
+
+                            }
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <h4>Total Price</h4>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price"> $ @total_price</p>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Checkout")" class="btn btn-default check_out"> Check out </a>
+                                </td>
+                            </tr>
+
+                        }
+
+
+
+
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+}
