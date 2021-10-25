@@ -1,0 +1,69 @@
+﻿@model bookstore.ViewModels.UserPaymentListAndAddressListViewModels
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Checkout</h2>
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Check out</li>
+            </ol>
+        </div><!--/breadcrums-->
+        @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary();
+            @Html.AntiForgeryToken();
+            <div class="shopper-informations">
+                <div class="row">
+
+                    <div class="col-sm-5 clearfix">
+                        <div class="bill-to">
+                            <p>Address</p>
+                            <div class="form-one">
+                                <form>
+                                    @Html.DropDownListFor(m =>m.AddressAndPayment.Address, new SelectList(Model.AddressList, "id", "city"), "-----Select Address-----")
+
+                                    <p>Or new Address</p>
+
+
+                                </form>
+                            </div>
+                            <div class="form-two">
+                                <form>
+                                    <input type="text" placeholder="Zip / Postal Code *">
+                                    @Html.DropDownListFor(m => m.AddressAndPayment.Payment_card, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----")
+
+                                    <p>Or new Address</p>
+                                    <input type="text" placeholder="CardNumber*">
+                                    <input type="text" placeholder="Date-from">
+                                    <input type="text" placeholder="Date-to">
+                                    <input type="text" placeholder="Card Type">
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-info" />
+                </div>
+            </div>
+
+        }
+    </div>
+</section> <!--/#cart_items-->
+
+
+
+@section js
+{
+    <script src="@Url.Content("~/Scripts/jquery.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.scrollUp.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.prettyPhoto.js")"></script>
+    <script src="@Url.Content("~/Scripts//main.js")"></script>
+    }

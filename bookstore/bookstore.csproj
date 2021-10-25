@@ -134,7 +134,9 @@
     <Compile Include="Areas\Admin\Controllers\PublisherController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="DAO\ManageCategoryDAO.cs" />
     <Compile Include="DAO\ManageUserDAO.cs" />
     <Compile Include="Extensions\NotificationExtensions.cs" />
@@ -144,6 +146,7 @@
     <Compile Include="Models\Address.cs">
       <DependentUpon>BookStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddressAndPayment.cs" />
     <Compile Include="Models\Author.cs">
       <DependentUpon>BookStoreModel.tt</DependentUpon>
     </Compile>
@@ -165,6 +168,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BookStoreModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>BookStoreModel.tt</DependentUpon>
     </Compile>
@@ -186,7 +190,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Data\Entity\EntityState.cs" />
     <Compile Include="ViewModels\BookCategoryPublisherAuthorViewModel.cs" />
+    <Compile Include="ViewModels\BookCategoryPublisherViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\UserPaymentListAndAddressListViewModels.cs" />
     <Compile Include="ViewModels\UserAddressPaymentCardViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -689,6 +695,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -777,6 +784,10 @@
     <Content Include="Views\Home\ProductDetail.cshtml" />
     <Content Include="Views\Home\LoginOrSignUp.cshtml" />
     <Content Include="Views\Home\Shop.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\UpdateInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
