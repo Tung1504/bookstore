@@ -9,8 +9,8 @@ namespace bookstore.ViewModels
     public class UserPaymentListAndAddressListViewModels
     {
         public User User { get; set; }
-        public Address Address { get; set; }
-        public Payment_card Payment { get; set; }
+        public string Address { get; set; }
+        public string Payment { get; set; }
         public AddressAndPayment AddressAndPayment { get; set; }
         public List<Address> AddressList { get; set; }
         public List<Payment_card> PaymentCardList { get; set; }
@@ -26,11 +26,11 @@ namespace bookstore.ViewModels
             AddressAndPayment = ap;
            
         }
-        public UserPaymentListAndAddressListViewModels(Address a,Payment_card p)
+        public UserPaymentListAndAddressListViewModels(string address, string paymentCard)
         {
-            this.Address = a;
-            this.Payment = p;
-        }
+            Address = address;
+            Payment = paymentCard;
+        }        
 
     }
 }

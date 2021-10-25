@@ -82,7 +82,7 @@ namespace bookstore.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Checkout(AddressAndPayment addressAndPayment)
+        public ActionResult Checkout(UserPaymentListAndAddressListViewModels model)
         {
             if (ModelState.IsValid)
             {
@@ -95,8 +95,9 @@ namespace bookstore.Controllers
                 
                 string status = "Preparing";
                 string payment_status;
-                if (addressAndPayment.Payment_card != null)
-                { payment_status = "Paid";
+                if (model.Payment != null)
+                {
+                    payment_status = "Paid";
                 }
                 else
                 {
@@ -126,14 +127,22 @@ namespace bookstore.Controllers
                         quantity = item.Quantity,
                         total_price =(int) item.Linetotal
                         
-                    });
-                    cart.Remove(item);
+                    });                   
                 }
+                Session["cart"] = new List<CartItem>();
+                cart.Clear();
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
             else
-            { return RedirectToAction("Index", "Cart"); }
+            {
+                User user = (User)Session["auth"];
+                List<Address> AddressList = db.Addresses.Where(m => m.user_id == user.id).ToList();
+                List<Payment_card> PaymentList = db.Payment_card.Where(m => m.user_id == user.id).ToList();
+                AddressAndPayment addressAndPayment = new AddressAndPayment();
+                UserPaymentListAndAddressListViewModels paymentListAndAddressListViewModels = new UserPaymentListAndAddressListViewModels(user, AddressList, PaymentList, addressAndPayment);
+                return View(paymentListAndAddressListViewModels);
+            }
            
         }
     }
