@@ -35,14 +35,11 @@
                             </div>
                             <div class="form-two">
                                 <form>
-                                    <input type="text" placeholder="Zip / Postal Code *">
+                                    
                                     @Html.DropDownListFor(m => m.AddressAndPayment.Payment_card, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----")
 
                                     <p>Or new Address</p>
-                                    <input type="text" placeholder="CardNumber*">
-                                    <input type="text" placeholder="Date-from">
-                                    <input type="text" placeholder="Date-to">
-                                    <input type="text" placeholder="Card Type">
+                                   
 
 
                                 </form>

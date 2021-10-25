@@ -90,8 +90,16 @@ namespace bookstore.Controllers
                 User user = (User)Session["auth"];
                
                 int orderNo = db.Orders.Count()+1;
-                
-                    int shipping_price = 15000;
+                int shipping_price;
+                if (addressAndPayment.Address.city.Equals("Hanoi"))
+                {
+                    shipping_price = 15000;
+                }
+                else
+                {
+                    shipping_price = 30000;
+                }
+                    
                 
                 string status = "Preparing";
                 string payment_status;
