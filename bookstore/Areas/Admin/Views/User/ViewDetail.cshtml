@@ -149,13 +149,15 @@
                                                     <li class="media">
                                                         <div class="media-body">
                                                             <h3 class="mt-0 mb-1">To Date: </h3>
-                                                            @Model.PaymentCard.from_date.Month/@Model.PaymentCard.from_date.Year
+                                                            @Html.DisplayFor(m => m.PaymentCard.from_date.Month)/@Html.DisplayFor(m => m.PaymentCard.from_date.Year)
+                                                            @*@Model.PaymentCard.from_date.Month/@Model.PaymentCard.from_date.Year*@
                                                         </div>
                                                     </li>
                                                     <li class="media my-4">
                                                         <div class="media-body">
                                                             <h3 class="mt-0 mb-1">From Date: </h3>
-                                                            @Model.PaymentCard.to_date.Month/@Model.PaymentCard.to_date.Year
+                                                            @Html.DisplayFor(m => m.PaymentCard.to_date.Month)/@Html.DisplayFor(m => m.PaymentCard.to_date.Year)
+                                                            @*@Model.PaymentCard.to_date.Month/@Model.PaymentCard.to_date.Year*@
                                                         </div>
                                                     </li>
                                                 </ul>

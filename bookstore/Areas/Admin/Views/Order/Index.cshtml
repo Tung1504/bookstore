@@ -58,13 +58,13 @@
 
 
                                     <tbody>
-                                        @foreach (var order in Model.Where(m => m.status == "Preparing").OrderByDescending(m => m.date))
+                                        @foreach (var order in Model.Where(m => m.status == "Pending").OrderByDescending(m => m.date))
                                         {
                                             <tr>
                                                 <td>@order.id</td>
                                                 <td>@order.order_number</td>
                                                 <td>@order.payment_status</td>
-                                                <td id="status"><span class="badge-dot badge-primary mr-1"></span>@order.status</td>
+                                                <td id="status"><span class="badge-dot badge-primary mr-1"></span>Pending</td>
                                                 <td>@order.date.Year/@order.date.Month/@order.date.Day</td>
                                                 <td>$@order.total_price</td>
                                                 <td>
@@ -107,7 +107,7 @@
                                                 <td>@order.id</td>
                                                 <td>@order.order_number</td>
                                                 <td>@order.payment_status</td>
-                                                <td id="status"><span class="badge-dot badge-warning mr-1"></span>@order.status</td>
+                                                <td id="status"><span class="badge-dot badge-warning mr-1"></span>Shipping</td>
                                                 <td>@order.date.Year/@order.date.Month/@order.date.Day</td>
                                                 <td>$@order.total_price</td>
                                                 <td>
@@ -149,7 +149,7 @@
                                                 <td>@order.id</td>
                                                 <td>@order.order_number</td>
                                                 <td>@order.payment_status</td>
-                                                <td id="status"><span class="badge-dot badge-success mr-1"></span>@order.status</td>
+                                                <td id="status"><span class="badge-dot badge-success mr-1"></span>Complete</td>
                                                 <td>@order.date.Year/@order.date.Month/@order.date.Day</td>
                                                 <td>$@order.total_price</td>
                                                 <td>

@@ -197,7 +197,6 @@
     <Compile Include="System\Data\Entity\EntityState.cs" />
     <Compile Include="ViewModels\AdminDashboardViewModel.cs" />
     <Compile Include="ViewModels\BookCategoryPublisherAuthorViewModel.cs" />
-    <Compile Include="ViewModels\BookCategoryPublisherViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\UserAddressPaymentCardViewModels.cs" />
     <Compile Include="ViewModels\UserAddressPaymentListAndCartViewModels.cs" />
@@ -659,6 +658,14 @@
     <Content Include="images\product-details\similar3.jpg" />
     <Content Include="images\publisher\1.jpg" />
     <Content Include="images\shop\advertisement.jpg" />
+    <Content Include="images\shop\book1.jpg" />
+    <Content Include="images\shop\book16.jpg" />
+    <Content Include="images\shop\book17.jpg" />
+    <Content Include="images\shop\book18.jpg" />
+    <Content Include="images\shop\book19.jpg" />
+    <Content Include="images\shop\book3.jpg" />
+    <Content Include="images\shop\book4.jpg" />
+    <Content Include="images\shop\book8.jpg" />
     <Content Include="images\shop\product10.jpg" />
     <Content Include="images\shop\product11.jpg" />
     <Content Include="images\shop\product12.jpg" />

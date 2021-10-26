@@ -38,7 +38,7 @@
           <Property Name="publisher_id" Type="int" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
           <Property Name="author_id" Type="int" Nullable="false" />
-          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
           <Property Name="image" Type="nvarchar(max)" />
           <Property Name="public_date" Type="date" />
           <Property Name="edition" Type="nvarchar(max)" />
@@ -296,7 +296,7 @@
           <Property Name="publisher_id" Type="Int32" Nullable="false" />
           <Property Name="category_id" Type="Int32" Nullable="false" />
           <Property Name="author_id" Type="Int32" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="public_date" Type="DateTime" Precision="0" />
           <Property Name="edition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -320,7 +320,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="order_number" Type="Int32" Nullable="false" />
           <Property Name="shipping_price" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="payment_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="total_price" Type="Double" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />

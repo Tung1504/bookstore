@@ -25,8 +25,6 @@
         @using (Html.BeginForm("Edit", "Book", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
         {
             @Html.HiddenFor(m => m.Book.id)
-
-            @*@Html.ValidationSummary();*@
             @Html.AntiForgeryToken();
             <div class="card">
                 <div class="card-body">
@@ -60,14 +58,14 @@
                                     @Html.ValidationMessageFor(m => m.Book.author_id, "", new { @class = "text-danger" })
                                     <br />
 
-                                    <label>Publisher</label> <br />
+                                    <label>Publisher:</label> <br />
                                     @Html.DropDownListFor(m => m.Book.publisher_id, new SelectList(Model.ListPublisher, "id", "publisher_name"), "-----Select Publisher-----") <br />
                                     @Html.ValidationMessageFor(m => m.Book.publisher_id, "", new { @class = "text-danger" })
                                     <br />
 
                                     <label>Category:</label> <br />
                                     @Html.DropDownListFor(m => m.Book.category_id, new SelectList(Model.ListCategory, "id", "category_name"), "-----Select Category-----") <br />
-                                    @Html.ValidationMessageFor(m => m.Book.author_id, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.category_id, "", new { @class = "text-danger" })
                                     <br />
 
                                     <label>Quantity in stock:</label>
@@ -85,7 +83,7 @@
                                     @Html.ValidationMessageFor(m => m.Book.price, "", new { @class = "text-danger" })
                                     <br />
 
-                                    <label>Description:@Model.Book.description</label>
+                                    <label>Description:</label>
                                     @Html.TextBoxFor(m => m.Book.description, new { type = "text", @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.Book.description, "", new { @class = "text-danger" })
                                     <br />

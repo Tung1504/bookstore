@@ -1,18 +1,23 @@
-﻿using System;
+﻿using bookstore.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using bookstore.ViewModels;
+
 
 namespace bookstore.Models
 {
     [MetadataType(typeof(BookMetaData))]
     public partial class Book
     {
+
     }
 
     public class BookMetaData
     {
+
         [Required(ErrorMessage = "Please enter book title")]
         public string title { get; set; }
 
@@ -42,5 +47,9 @@ namespace bookstore.Models
 
         [Required(ErrorMessage = "Please enter book edition")]
         public string edition { get; set; }
+
+
+
+
     }
 }

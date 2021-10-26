@@ -58,17 +58,17 @@ namespace bookstore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, OrderViewModel orderViewModel)
+        public ActionResult Edit(int id, OrderViewModel model)
         {
-            if (ModelState.IsValid)
+            Order order = db.Orders.FirstOrDefault(p => p.id == id);
+            if (order != null)
             {
-                
-                db.Entry(orderViewModel).State = System.Data.EntityState.Modified;
+                order.status = model.Order.status;
                 db.SaveChanges();
-                return RedirectToAction("ViewDetail");
+                return RedirectToAction("Index");
             }
 
-            return View(orderViewModel);
+            return RedirectToAction("Edit");
         }
     }
 }
