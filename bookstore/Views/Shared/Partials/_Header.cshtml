@@ -72,7 +72,7 @@
                             {
                                 <li><a href="@Url.Action("Index", "Cart")"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 
-                                <li><a href="@Url.Action("Index","Customer")"><i class="fa fa-user"></i> Hello @Session["UserName"]</a></li>
+                                <li><a href="@Url.Action("Index", "Customer")"><i class="fa fa-user"></i> Hello @Session["UserName"]</a></li>
 
                                 <li><a href="@Url.Action("Logout", "Home")"><i class="fa fa-sign-out"></i> Logout</a></li>
 
@@ -139,9 +139,9 @@
                             <input type="text" placeholder="Search" />
                         </div>*@
 
-                    @using (Html.BeginForm("Shop", "Home", FormMethod.Get))
+                    @using (Html.BeginForm("Shop", "Home", FormMethod.Get, new { @class = "search_box pull-right" }))
                     {
-                        @Html.TextBox("search")<input type="submit" value="Search" />
+                        @Html.TextBox("search", "", new {placeholder="Search..."})
                     }
                 </div>
             </div>
