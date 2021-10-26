@@ -17,6 +17,9 @@ namespace bookstore.Models
         [Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
         [NotMapped]
         public string repassword { get; set; }
+
+        public const string CUSTOMER = "Customer";
+        public const string ADMIN = "Admin";
     }
 
     public class UserMetadata
@@ -33,8 +36,6 @@ namespace bookstore.Models
         //[Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
         //[NotMapped]
         
-
-
         public string role { get; set; }
         public string phone { get; set; }
         public string email { get; set; }

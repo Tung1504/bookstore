@@ -17,9 +17,6 @@ namespace bookstore.Controllers
             List<Book> listBook = db.Books.ToList();
             List<Category> listCategory = db.Categories.ToList();
             List<Publisher> listPublisher = db.Publishers.ToList();
-
-
-
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(listBook, listCategory, listPublisher);
 
             return View(bookCategoryPublisherViewModel);
@@ -39,79 +36,7 @@ namespace bookstore.Controllers
         }
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SignUp(User user)
-        {
-            user.role = "Customer";
-            if (db.Users.Any(x => x.username == user.username))
-            {
-
-                ViewBag.SignUpFail = "This account has already existed";
-                return View("~/Views/Home/LoginOrSignUp.cshtml");
-            }
-            else
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Users.Add(user);
-
-                    db.SaveChanges();
-
-                    Session["Id"] = user.id.ToString();
-                    Session["UserName"] = user.username;
-
-                    return RedirectToAction("Index", "Home");
-                }
-            }
-
-            return View("~/Views/Home/LoginOrSignUp.cshtml");
-
-
-        }
-
-
-        public ActionResult Logout()
-        {
-            Session.Clear();
-            return RedirectToAction("Index", "Home", new { area = "" });
-        }
-
-
-        public ActionResult LoginOrSignUp()
-        {
-            return View();
-        }
-
-
-        [HttpPost]
-        public ActionResult Login(User user)
-        {
-            User u = db.Users.FirstOrDefault(p => p.username == user.username && p.password == user.password);
-            if (u != null)
-            {
-                // Login: goc man hinh: camnh
-                Session["Id"] = u.id.ToString();
-                Session["UserName"] = u.username;
-                Session["auth"] = u;
-
-                if (u.role == "Customer")
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                if (u.role == "Admin")
-                {
-                    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
-
-                }
-            }
-            else
-            {
-                ViewBag.LoginFail = "Wrong UserName or Password";
-            }
-
-            return View("~/Views/Home/LoginOrSignUp.cshtml");
-        }
+       
 
         public ActionResult Checkout()
         {
@@ -130,9 +55,7 @@ namespace bookstore.Controllers
             List<Book> listBook = db.Books.ToList();
 
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(book, category, publisher, author, listBook, listCategory, listPublisher, listAuthor);
-            
-
-            
+                        
             if (book == null)
             {
                 return HttpNotFound();
@@ -147,8 +70,6 @@ namespace bookstore.Controllers
 
         public ActionResult Shop(int? page, string search)
         {
-
-
             List<Book> listBook = db.Books.Where(b => b.title.Contains(search) || search == null).ToList();
             if (page > 0)
             {
@@ -161,22 +82,17 @@ namespace bookstore.Controllers
             int limit = 5;
             int start = (int)(page - 1) * limit;
             int totalBook = listBook.Count();
-            ViewBag.totalBook = totalBook;
-            ViewBag.pageCurrent = page;
             int numberPage = (totalBook / limit);
-            ViewBag.numberPage = numberPage;
             List<Book> paginated_listBook = listBook.OrderByDescending(s => s.id).Skip(start).Take(limit).ToList();
-
-            ViewBag.search = search;
-
 
             List<Category> listCategory = db.Categories.ToList();
             List<Publisher> listPublisher = db.Publishers.ToList();
-
-
-
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(paginated_listBook, listCategory, listPublisher);
 
+            ViewBag.numberPage = numberPage;
+            ViewBag.totalBook = totalBook;
+            ViewBag.pageCurrent = page;
+            ViewBag.search = search;
             return View(bookCategoryPublisherViewModel);
         }
 
@@ -201,15 +117,9 @@ namespace bookstore.Controllers
             int numberPage = (totalBook / limit);
             ViewBag.numberPage = numberPage;
             List<Book> paginated_listBook = listBook.OrderByDescending(s => s.id).Skip(start).Take(limit).ToList();
-
-
-
             Category category = db.Categories.Find(id);
             List<Category> listCategory = db.Categories.ToList();
             List<Publisher> listPublisher = db.Publishers.ToList();
-
-
-
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(category, paginated_listBook, listCategory, listPublisher);
 
             return View(bookCategoryPublisherViewModel);
