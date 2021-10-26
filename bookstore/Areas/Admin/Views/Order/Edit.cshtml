@@ -12,22 +12,22 @@
                 <div class="card">
                     <div class="card-header p-4">
                         <div class="float-right">
-                            @using (Html.BeginForm("Edit", "Order", FormMethod.Post))
+                            <strong>Order Status:</strong> 
+                            @using (Html.BeginForm("Edit", "Order", new { id = Model.Order.id }, FormMethod.Post))
                             {
                                 @Html.ValidationSummary();
                                 @Html.AntiForgeryToken();
 
-                                @Html.HiddenFor(m => m.Order.order_number)
-                                @Html.HiddenFor(m => m.Order.payment_status)
-                                @Html.HiddenFor(m => m.Order.shipping_price)
-                                @Html.HiddenFor(m => m.Order.total_price)
-                                @Html.HiddenFor(m => m.Order.user_id)
-                                @Html.HiddenFor(m => m.Order.date)
 
-
-
-                                <a class="mb-0" href="#">@Model.Order.status</a> <br />
-                                @Html.TextBoxFor(m => m.Order.status, new { type = "text", @class = "form-control" })
+                                @*<a class="mb-0" href="#">@Model.Order.status</a> <br />*@
+                                @*@Html.TextBoxFor(m => m.Order.status, new { type = "text", @class = "form-control" })*@
+                                @Html.DropDownListFor(x => x.Order.status, new List<SelectListItem>
+                                {
+                                    new SelectListItem() {Text = "Pending", Value="Pending"},
+                                    new SelectListItem() {Text = "Shipping", Value="Shipping"},
+                                    new SelectListItem() {Text = "Complete", Value="Complete"},
+                                    new SelectListItem() {Text = "Cancel", Value="Cancel"}
+                                }) <br />
                                 <button type="submit" class="btn btn-primary">Update Status</button>
 
                             }
@@ -36,7 +36,7 @@
 
                         <div class="float-left">
                             <h3 class="pt-2">Invoice #@Model.Order.id</h3>
-                            @Model.Order.date
+                            @Model.Order.date.Day/@Model.Order.date.Month/@Model.Order.date.Year
                         </div>
                     </div>
                     <div class="card-body">
@@ -69,21 +69,23 @@
                                         <th class="right">Unit Cost</th>
                                         <th class="center">Qty</th>
                                         <th class="center">Qty in stock</th>
+                                        <th class="center">Checking</th>
                                         <th class="right">Total Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model.ListOrderDetail.Where(m => m.order_id == Model.Order.id))
                                     {
-                                        <tr>
-                                            <td>@item.id</td>
-                                            <td><a href="@Url.Action("ViewDetail","Book", new { id = Model.OrderDetail.book_id} )">@item.Book.title</a></td>
-                                            <td>@item.Book.description</td>
-                                            <td>$@item.Book.price</td>
-                                            <td id="qty" class="">@item.quantity</td>
-                                            <td>@item.Book.quantity_in_stock</td>
-                                            <td id="price">$@item.total_price</td>
-                                        </tr>
+                                    <tr>
+                                        <td>@item.id</td>
+                                        <td><a href="@Url.Action("ViewDetail","Book", new { id = Model.OrderDetail.book_id} )">@item.Book.title</a></td>
+                                        <td>@item.Book.description</td>
+                                        <td>$@item.Book.price</td>
+                                        <td id="qty" class="">@item.quantity</td>
+                                        <td>@item.Book.quantity_in_stock</td>
+                                        <td id="check"></td>
+                                        <td id="price">$@item.total_price</td>
+                                    </tr>
                                     }
 
                                 </tbody>
@@ -134,26 +136,15 @@
 
 @section js {
     <script>
-        @*function checkAvail() {
-            var qty = document.getElementById('qty');
-            if (@Model.OrderDetail.quantity >= @Model.OrderDetail.Book.quantity_in_stock) {
-                qty.className += "text-success";
-            }
-            else {
-                qty.className += "text-danger"
-            }
-        }*@
-
-        $(document).ready(function () {
-            if (@Model.OrderDetail.quantity < @Model.OrderDetail.Book.quantity_in_stock) {
-                $('#qty').addClass('text-success');
-            }
-            else {
-                $('#qty').addClass('text-danger');
-            }
-            //$('#about').addClass('expand');
-        });
-
+        
+        if (@Model.OrderDetail.quantity <= @Model.OrderDetail.Book.quantity_in_stock) {
+            document.getElementById("check").innerHTML = "Okay";
+            document.getElementById("check").classList.add = "text-success";
+        }
+        else if(@Model.OrderDetail.quantity > @Model.OrderDetail.Book.quantity_in_stock){
+            document.getElementById("check").innerHTML = "Out of stock";
+            document.getElementById("check").classList.add = "text-success";
+        }
     </script>
 
 }

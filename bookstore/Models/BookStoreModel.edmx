@@ -38,8 +38,8 @@
           <Property Name="publisher_id" Type="int" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
           <Property Name="author_id" Type="int" Nullable="false" />
-          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)"  />
+          <Property Name="image" Type="nvarchar(max)" />
           <Property Name="public_date" Type="date" />
           <Property Name="edition" Type="nvarchar(max)" />
         </EntityType>
@@ -169,7 +169,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Detail_Order">
+        <Association Name="FK_Order_Detail_Order1">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -235,7 +235,7 @@
             <End Role="Book" EntitySet="Book" />
             <End Role="Order_Detail" EntitySet="Order_Detail" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Detail_Order" Association="Self.FK_Order_Detail_Order">
+          <AssociationSet Name="FK_Order_Detail_Order1" Association="Self.FK_Order_Detail_Order1">
             <End Role="Order" EntitySet="Order" />
             <End Role="Order_Detail" EntitySet="Order_Detail" />
           </AssociationSet>
@@ -288,8 +288,8 @@
           <Property Name="publisher_id" Type="Int32" Nullable="false" />
           <Property Name="category_id" Type="Int32" Nullable="false" />
           <Property Name="author_id" Type="Int32" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="public_date" Type="DateTime" Precision="0" />
           <Property Name="edition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Author" Relationship="Self.FK_Book_Author" FromRole="Book" ToRole="Author" />
@@ -312,7 +312,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="order_number" Type="Int32" Nullable="false" />
           <Property Name="shipping_price" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="payment_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="total_price" Type="Double" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
@@ -332,7 +332,7 @@
           <Property Name="quantity" Type="Int32" Nullable="false" />
           <Property Name="total_price" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Book" Relationship="Self.FK_Order_Detail_Book" FromRole="Order_Detail" ToRole="Book" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Detail_Order" FromRole="Order_Detail" ToRole="Order" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Detail_Order1" FromRole="Order_Detail" ToRole="Order" />
         </EntityType>
         <EntityType Name="Payment_card">
           <Key>
@@ -433,7 +433,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Detail_Order">
+        <Association Name="FK_Order_Detail_Order1">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="Order_Detail" Type="Self.Order_Detail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -499,7 +499,7 @@
             <End Role="Book" EntitySet="Books" />
             <End Role="Order_Detail" EntitySet="Order_Detail" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Detail_Order" Association="Self.FK_Order_Detail_Order">
+          <AssociationSet Name="FK_Order_Detail_Order1" Association="Self.FK_Order_Detail_Order1">
             <End Role="Order" EntitySet="Orders" />
             <End Role="Order_Detail" EntitySet="Order_Detail" />
           </AssociationSet>
