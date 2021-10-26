@@ -146,52 +146,50 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AuthUser.cs" />
     <Compile Include="Models\Address.cs">
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AddressAndPayment.cs" />
     <Compile Include="Models\Author.cs">
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Book.cs">
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookStoreModel.Context.cs">
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookStoreModel.Context.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BookStoreModel.cs">
+    <Compile Include="Models\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BookStoreModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BookStoreModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\CartItem.cs" />
-    <Compile Include="Models\Category.cs">
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order_Detail.cs">
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Payment_card.cs">
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Publisher.cs">
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Data\Entity\EntityState.cs" />
@@ -665,15 +663,15 @@
     <Content Include="images\shop\product7.jpg" />
     <Content Include="images\shop\product8.jpg" />
     <Content Include="images\shop\product9.jpg" />
-    <Content Include="Models\BookStoreModel.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BookStoreModel.edmx</DependentUpon>
-      <LastGenOutput>BookStoreModel.Context.cs</LastGenOutput>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\BookStoreModel.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BookStoreModel.edmx</DependentUpon>
-      <LastGenOutput>BookStoreModel.cs</LastGenOutput>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\contact.js" />
@@ -780,6 +778,7 @@
     <Content Include="Areas\Admin\Views\Author\AddOrEdit.cshtml" />
     <Content Include="Areas\Admin\Views\Author\ViewDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Publisher\ViewDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
     <EntityDeploy Include="Models\BookStoreModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BookStoreModel.Designer.cs</LastGenOutput>
@@ -787,7 +786,6 @@
     <Content Include="Models\BookStoreModel.edmx.diagram">
       <DependentUpon>BookStoreModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Checkout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />

@@ -35,5 +35,6 @@ namespace bookstore.Models
         public virtual Category Category { get; set; }
         public virtual Publisher Publisher { get; set; }
         public virtual ICollection<Order_Detail> Order_Detail { get; set; }
+       
     }
 }

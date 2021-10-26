@@ -9,10 +9,13 @@ namespace bookstore.Models
     {
         public Book Book { get; set; } 
         public int Quantity { get; set; }
-        public CartItem(Book b, int q)
+        public int UserId { get; set; }
+        public CartItem(Book b, int q, int id)
+         
         {
             this.Book = b;
             this.Quantity = q;
+            this.UserId = id;
         }
         public double Linetotal
         {

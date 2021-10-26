@@ -1,4 +1,5 @@
-﻿using bookstore.Models;
+﻿using bookstore.Helpers;
+using bookstore.Models;
 using bookstore.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -19,18 +20,18 @@ namespace bookstore.Controllers
         }
         public RedirectToRouteResult AddToCart(int bookId)
         {
-            if ((User)Session["auth"] != null)
+            if (AuthUser.GetLogin() != null)
             {
                 if (Session["cart"] == null)
                 {
                     Session["cart"] = new List<CartItem>();
                 }
-
+               int id  = AuthUser.GetLogin().id;
                 List<CartItem> cart = Session["cart"] as List<CartItem>;
                 if (cart.FirstOrDefault(m => m.Book.id == bookId) == null)
                 {
                     Book book = db.Books.Find(bookId);
-                    CartItem newItem = new CartItem(book, 1);
+                    CartItem newItem = new CartItem(book, 1,id);
                     cart.Add(newItem);
                 }
                 else
@@ -62,7 +63,7 @@ namespace bookstore.Controllers
         {
             List<CartItem> giohang = Session["cart"] as List<CartItem>;
             CartItem itemXoa = giohang.FirstOrDefault(m => m.Book.id == bookId);
-            if (itemXoa != null)
+            if (itemXoa != null && itemXoa.UserId== AuthUser.GetLogin().id)
             {
                 giohang.Remove(itemXoa);
             }
@@ -77,6 +78,7 @@ namespace bookstore.Controllers
             List<Address> AddressList= db.Addresses.Where(m => m.user_id == user.id).ToList();
             List<Payment_card> PaymentList = db.Payment_card.Where(m => m.user_id == user.id).ToList();
             AddressAndPayment addressAndPayment = new AddressAndPayment();
+          
             UserPaymentListAndAddressListViewModels paymentListAndAddressListViewModels = new UserPaymentListAndAddressListViewModels(user,AddressList, PaymentList,addressAndPayment);
             return View(paymentListAndAddressListViewModels);
         }
@@ -86,24 +88,31 @@ namespace bookstore.Controllers
         {
             if (ModelState.IsValid)
             {
+                int n;
+                string city;
+                bool isNumeric = int.TryParse(model.Address, out n);
+                if (isNumeric)
+                {
+                    n = int.Parse(model.Address);
+                    Address address = db.Addresses.Find(n);
+                     city = address.address1 + " "+ address.city+" "+ address.district+" "+ address.postal_code;
+                }
+                else
+                {
+                    city = model.Address;
+                }
                 List<CartItem> cart = Session["cart"] as List<CartItem>;
                 User user = (User)Session["auth"];
                
                 int orderNo = db.Orders.Count()+1;
                 int shipping_price;
-                if (addressAndPayment.Address.city.Equals("Hanoi"))
-                {
-                    shipping_price = 15000;
-                }
-                else
-                {
-                    shipping_price = 30000;
-                }
+
+                shipping_price = 15000;
                     
                 
                 string status = "Preparing";
                 string payment_status;
-                if (model.Payment != null)
+                if (!model.Payment.Equals("COD (Cash on delivery)"))
                 {
                     payment_status = "Paid";
                 }
@@ -111,8 +120,8 @@ namespace bookstore.Controllers
                 {
                    payment_status = "Unpaid";
                 }
-
-               double total_price = cart.Sum(x=> x.Linetotal);
+                string note = model.Note;
+               double total_price = cart.Sum(x=> x.Linetotal)+shipping_price;
                int user_id = user.id;
                DateTime date = DateTime.Now;
                 Order order = new Order
@@ -123,22 +132,41 @@ namespace bookstore.Controllers
                     payment_status = payment_status,
                     total_price = total_price,
                     user_id = user_id,
-                    date = date
+                    date = date,
+                    delivery_location= city,
+                    note= note
                 };
                 db.Orders.Add(order);
                 foreach(var item in cart)
                 {
-                    db.Order_Detail.Add(new Order_Detail
+                    if (item.UserId == AuthUser.GetLogin().id)
                     {
-                        book_id = item.Book.id,
-                        order_id = order.id,
-                        quantity = item.Quantity,
-                        total_price =(int) item.Linetotal
+                        db.Order_Detail.Add(new Order_Detail
+                        {
+                            book_id = item.Book.id,
+                            order_id = order.id,
+                            quantity = item.Quantity,
+                            total_price = (int)item.Linetotal
+
+                        });
+                
                         
-                    });                   
+                    }
                 }
-                Session["cart"] = new List<CartItem>();
-                cart.Clear();
+                //foreach (var item in cart)
+                //{
+                //    if (item.UserId == AuthUser.GetLogin().id)
+                //    {
+
+                //        Book book = db.Books.FirstOrDefault(p => p.id == item.Book.id);
+                //        book.quantity_in_stock = book.quantity_in_stock - item.Quantity;
+
+                //    }
+                //}
+                cart.RemoveAll(x => x.UserId == AuthUser.GetLogin().id);
+                Session["Cart"] = cart;
+
+
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }

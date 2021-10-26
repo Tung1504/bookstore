@@ -4,7 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Checkout</h2>
+
+
 
 <section id="cart_items">
     <div class="container">
@@ -14,47 +15,153 @@
                 <li class="active">Check out</li>
             </ol>
         </div><!--/breadcrums-->
-        @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, new { @class = "form" }))
-        {
-            @Html.ValidationSummary();
-            @Html.AntiForgeryToken();
+      
             <div class="shopper-informations">
                 <div class="row">
+                    @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, new { @class = "form" }))
+                    {
+                        @Html.ValidationSummary();
+                        @Html.AntiForgeryToken();
+                        <div class="col-sm-6">
 
-                    <div class="col-sm-5 clearfix">
-                        <div class="bill-to">
-                            <p>Address</p>
-                            <div class="form-one">
-                                    @Html.DropDownListFor(m =>m.Address, new SelectList(Model.AddressList, "id", "city"), "-----Select Address-----")
+                            <div class="shopper-info">
+                                <p>User addresses</p>
+                                <div class="form-two">
+                                    <form>
+                                        <p>Address</p>
+                                        @Html.DropDownListFor(m => m.Address, new SelectList(Model.AddressList, "id", "city"), "-----Select Address-----")
+                                        <p>Payment</p>
+                                     <label>Cash on delivery</label>   @Html.RadioButtonFor(m => m.Payment, "COD (Cash on delivery)")
+                                        @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----")
 
-                                    <p>Or new Address</p>
-                            </div>
-                            <div class="form-two">
+                                        <div class="order-message">
+                                            <p>Shipping Order</p>
 
-                                <form>
-                                    
-                                    
+                                            @Html.TextAreaFor(m => m.Note, new { type = "text", @class = "form-control", @placeholder = "Notes about your order, Special Notes for Delivery" })
+                                        </div>
 
-                                    <input type="text" placeholder="Zip / Postal Code *">
-                                    @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----")
-
-
-                                    <p>Or new Address</p>
-                                   
-
+                                        <button class="btn btn-primary" type="reset">Reset</button>
+                                        <button class="btn btn-primary" type="submit"> Order </button>
+                                    </form>
+                                </div>
 
                             </div>
                         </div>
+                    }
+                    @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, new { @class = "form" }))
+                    {
+                        @Html.ValidationSummary();
+                        @Html.AntiForgeryToken();
+                        <div class="col-sm-6">
+                            <div class="shopper-info">
+                                <p>New Address</p>
+                                <div class="form-two">
+                                    <form>
+                                        <p>Address</p>
+                                        @Html.TextAreaFor(m => m.Address, new { type = "text", @class = "form-control", @placeholder = "recipient address" })
+
+                                        <p>Payment </p>
+                                        <label>Cash on delivery</label>  @Html.RadioButtonFor(m => m.Payment, "COD (Cash on delivery)")
+                                        @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----")
+
+                                        <div class="order-message">
+                                            <p>Shipping Order</p>
+                                            @Html.TextAreaFor(m => m.Note, new { type = "text", @class = "form-control", @placeholder = "Notes about your order, Special Notes for Delivery" })
+
+                                        </div>
+
+
+                                        <button class="btn btn-primary" type="reset">Reset</button>
+                                        <button class="btn btn-primary" type="submit"> Order </button>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    }
+
                     </div>
-                    <input type="submit" value="Submit" class="btn btn-info" />
-                </div>
             </div>
+            <div class="review-payment">
+                <h2>Review & Payment</h2>
+            </div>
+            <div class="table-responsive cart_info">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr class="cart_menu">
+                            <td class="image">Item</td>
+                            <td class="description"></td>
+                            <td class="price">Price</td>
+                            <td class="quantity">Quantity</td>
+                            <td class="total">Total</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    @*<tbody>
 
-        }
-    </div>
+                        @if (Session["cart"] != null)
+                        {
+
+                            double total_price = 0;
+
+                            foreach (var item in Model.CartItems)
+                            {
+                                double LineTotal = item.Linetotal;
+                                total_price = total_price + LineTotal;
+                                <tr>
+                                    <td class="cart_product">
+                                        <a href=""><img src="images/cart/one.png" alt=""></a>
+                                    </td>
+                                    <td class="cart_description">
+                                        <h4><a href="">@item.Book.title</a></h4>
+                                        <p>available quantity: @item.Book.quantity_in_stock</p>
+                                    </td>
+                                    <td class="cart_price">
+                                        <p>$ @item.Book.price</p>
+                                    </td>
+                                    <td class="cart_quantity">
+                                        <form action="@Url.Action("UpdateQuantity")" method="post">
+                                            <input type="hidden" name="bookId" value="@item.Book.id" />
+                                            <input type="number" min="1" step="1" name="quantity" value="@item.Quantity" style="width: 75px" />
+                                            <button type="submit" class="btn btn-default update"> Update </button>
+                                        </form>
+                                    </td>
+                                    <td class="cart_total">
+                                        <p class="cart_total_price">$ @LineTotal</p>
+                                    </td>
+                                    <td class="cart_delete">
+                                        <a class="cart_quantity_delete" href="@Url.Action("DeleteFromCart", new { bookId = item.Book.id })" onclick="return confirm('Delete this item?');"><i class="fa fa-times"></i></a>
+
+                                    </td>
+                                </tr>
+
+                            }
+<td colspan="4">&nbsp;</td>
+                            <td colspan="2">
+                                <table class="table table-condensed total-result">
+                                    <tr>
+                                        <td>Cart Sub Total</td>
+                                        <td>@total_price</td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td>Total</td>
+                                        <td><span>$ @total_price</span></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        }
+                        </tr>
+
+                    </tbody>*@
+                        
+                </table>
+            </div>
+         
+        </div>
 </section> <!--/#cart_items-->
-
-
 
 @section js
 {
@@ -63,4 +170,4 @@
     <script src="@Url.Content("~/Scripts/jquery.scrollUp.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery.prettyPhoto.js")"></script>
     <script src="@Url.Content("~/Scripts//main.js")"></script>
-    }
+}

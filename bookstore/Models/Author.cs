@@ -25,7 +25,7 @@ namespace bookstore.Models
         public string birth_year { get; set; }
         public string status { get; set; }
         public string image { get; set; }
-
+    
         public virtual ICollection<Book> Books { get; set; }
     }
 }

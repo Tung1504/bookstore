@@ -310,7 +310,6 @@ D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\VBCSCompi
 D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe.config
 D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\bin\bookstore.dll.config
 D:\Project\Project\HCL\Book-Final\final\bookstore\bookstore\obj\Debug\bookstore.csprojAssemblyReference.cache
-E:\Code\Project\bookstore\bookstore\obj\Debug\bookstore.csprojAssemblyReference.cache
 E:\Code\Project\bookstore\bookstore\obj\Debug\bookstore.csproj.CoreCompileInputs.cache
 E:\Code\Project\bookstore\bookstore\obj\Debug\bookstore.dll
 E:\Code\Project\bookstore\bookstore\obj\Debug\bookstore.pdb
@@ -466,3 +465,4 @@ C:\Users\Administrator\Desktop\bookstore\bookstore\obj\Debug\bookstore.csproj.Co
 C:\Users\Administrator\Desktop\bookstore\bookstore\obj\Debug\bookstore.csproj.CopyComplete
 C:\Users\Administrator\Desktop\bookstore\bookstore\obj\Debug\bookstore.dll
 C:\Users\Administrator\Desktop\bookstore\bookstore\obj\Debug\bookstore.pdb
+E:\Code\Project\bookstore\bookstore\obj\Debug\bookstore.csprojAssemblyReference.cache
