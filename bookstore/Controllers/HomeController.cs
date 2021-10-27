@@ -183,9 +183,9 @@ namespace bookstore.Controllers
 
         public ActionResult Category(int id, int? page)
         {
+            List<Book> listBook = db.Books.Select(b => b).ToList();
 
 
-            List<Book> listBook = db.Books.Where(b => b.category_id == id).ToList();
             if (page > 0)
             {
                 page = page;
@@ -199,10 +199,11 @@ namespace bookstore.Controllers
             int totalBook = listBook.Count();
             ViewBag.totalBook = totalBook;
             ViewBag.pageCurrent = page;
+
+
             int numberPage = (totalBook / limit);
             ViewBag.numberPage = numberPage;
-            List<Book> paginated_listBook = listBook.OrderByDescending(s => s.id).Skip(start).Take(limit).ToList();
-
+            List<Book> paginated_listBook = listBook.Where(b => b.category_id == id).OrderByDescending(s => s.id).Skip(start).Take(limit).ToList();
 
 
             Category category = db.Categories.Find(id);
@@ -213,14 +214,14 @@ namespace bookstore.Controllers
 
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(category, paginated_listBook, listCategory, listPublisher);
 
+
             return View(bookCategoryPublisherViewModel);
         }
 
         public ActionResult Publisher(int id, int? page)
         {
+            List<Book> listBook = db.Books.Select(b => b).ToList();
 
-
-            List<Book> listBook = db.Books.Where(b => b.publisher_id == id).ToList();
             if (page > 0)
             {
                 page = page;
@@ -236,7 +237,7 @@ namespace bookstore.Controllers
             ViewBag.pageCurrent = page;
             int numberPage = (totalBook / limit);
             ViewBag.numberPage = numberPage;
-            List<Book> paginated_listBook = listBook.OrderByDescending(s => s.id).Skip(start).Take(limit).ToList();
+            List<Book> paginated_listBook = listBook.Where(b => b.publisher_id == id).OrderByDescending(s => s.id).Skip(start).Take(limit).ToList();
 
 
 

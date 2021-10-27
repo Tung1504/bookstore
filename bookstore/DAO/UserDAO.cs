@@ -12,7 +12,7 @@ namespace bookstore.Models
     [MetadataType(typeof(UserMetadata))]
     public partial class User
     {
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "The reentered password field is required")]
         [DataType(DataType.Password)]
         [Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
         [NotMapped]
@@ -21,19 +21,20 @@ namespace bookstore.Models
 
     public class UserMetadata
     {
-        [Required(ErrorMessage = "This field is required")]
+        public int id { get; set; }
+        [Required]
+        public string name { get; set; }
+
+        [Required]
         public string username { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+        [Required]
+        [StringLength(16, ErrorMessage = "Password must be 8-16 characters", MinimumLength = 8)]
+        [RegularExpression(@"^(?=.*\d)$", ErrorMessage = "Password must contain at least one digit")]
         [DataType(DataType.Password)]
         public string password { get; set; }
 
-        //[Required(ErrorMessage = "This field is required")]
-        //[DataType(DataType.Password)]
-        //[Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
-        //[NotMapped]
         
-
 
         public string role { get; set; }
         public string phone { get; set; }

@@ -133,13 +133,17 @@
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublisherController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentCardController.cs" />
+    <Compile Include="DAO\AddressDAO.cs" />
     <Compile Include="DAO\AuthorDAO.cs" />
     <Compile Include="DAO\BookDAO.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
+    <Compile Include="DAO\PaymentCardDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="DAO\PublisherDAO.cs" />
     <Compile Include="Global.asax.cs">
@@ -201,6 +205,7 @@
     <Compile Include="ViewModels\UserAddressPaymentCardViewModels.cs" />
     <Compile Include="ViewModels\UserAddressPaymentListAndCartViewModels.cs" />
     <Compile Include="ViewModels\UserPaymentListAndAddressListViewModels.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Content\css\style.css" />
@@ -713,6 +718,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -806,6 +812,15 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\UpdateInformation.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\Home\Publisher.cshtml" />
+    <Content Include="Views\Home\Category.cshtml" />
+    <Content Include="Views\Address\Index.cshtml" />
+    <Content Include="Views\Address\Create.cshtml" />
+    <Content Include="Views\Address\Edit.cshtml" />
+    <Content Include="Views\PaymentCard\Create.cshtml" />
+    <Content Include="Views\PaymentCard\Index.cshtml" />
+    <Content Include="Views\PaymentCard\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
