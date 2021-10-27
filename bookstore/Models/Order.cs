@@ -27,6 +27,8 @@ namespace bookstore.Models
         public double total_price { get; set; }
         public int user_id { get; set; }
         public System.DateTime date { get; set; }
+        public string delivery_location { get; set; }
+        public string note { get; set; }
     
         public virtual ICollection<Order_Detail> Order_Detail { get; set; }
         public virtual User User { get; set; }

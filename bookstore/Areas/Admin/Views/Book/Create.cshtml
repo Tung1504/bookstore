@@ -89,7 +89,7 @@
                                     @Html.ValidationMessageFor(m => m.Book.description, "", new { @class = "text-danger" })
                                     <br />
 
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary" onclick="Validate()">Submit</button>
                                 </div>
                             </div>
 
@@ -104,8 +104,19 @@
 
 @section js{
     <script>
-
-
+        function Validate() {
+            var check = false;
+            var name = $('#name').val();
+            if (name === '') {
+                $('#name').next().html('Please enter category name');
+                check = false;
+            }
+            else {
+                $('#name').next().html('');
+                check = true;
+            }
+            return check;
+        }
     </script>
     
     

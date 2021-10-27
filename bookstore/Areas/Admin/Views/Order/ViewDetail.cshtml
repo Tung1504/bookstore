@@ -55,15 +55,15 @@
                             <div class="col-sm-6">
                                 <h5 class="mb-3">To:</h5>
                                 <h3 class="text-dark mb-1">@Model.User.name</h3>
-                                <div>@Model.Address.district</div>
-                                <div>@Model.Address.address1</div>
+                                <div>Address: @Model.Order.delivery_location</div>
+                                @*<div>@Model.Address.address1</div>*@
                                 <div>Email: @Model.User.email</div>
                                 <div>Phone: @Model.User.phone</div>
                             </div>
                         </div>
                         <div class="table-responsive-sm">
-                            <table class="table table-striped">
-                                <thead>
+                            <table class="table">
+                                <thead class="bg-light">
                                     <tr>
                                         <th class="center">#</th>
                                         <th>Item</th>
@@ -90,7 +90,13 @@
                             </table>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-sm-5">
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Note:</h3>
+                                        <p class="card-text">@Model.Order.note</p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-4 col-sm-5 ml-auto">
                                 <table class="table table-clear">
