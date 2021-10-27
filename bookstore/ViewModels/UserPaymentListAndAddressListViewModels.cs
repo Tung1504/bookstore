@@ -11,6 +11,8 @@ namespace bookstore.ViewModels
         public User User { get; set; }
         public string Address { get; set; }
         public string Payment { get; set; }
+        public string Note { get; set; }
+
         public AddressAndPayment AddressAndPayment { get; set; }
         public List<Address> AddressList { get; set; }
         public List<Payment_card> PaymentCardList { get; set; }
@@ -18,19 +20,20 @@ namespace bookstore.ViewModels
         {
         }
 
-        public UserPaymentListAndAddressListViewModels(User u, List<Address> addressL, List<Payment_card> paymentCardL,AddressAndPayment ap)
+        public UserPaymentListAndAddressListViewModels(User u, List<Address> addressL, List<Payment_card> paymentCardL, AddressAndPayment ap)
         {
             User = u;
             AddressList = addressL;
             PaymentCardList = paymentCardL;
             AddressAndPayment = ap;
-           
+
+
         }
         public UserPaymentListAndAddressListViewModels(string address, string paymentCard)
         {
             Address = address;
             Payment = paymentCard;
-        }        
+        }
 
     }
 }
