@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using System.Net;
-using bookstore.Extensions;
 using System.IO;
 
 namespace bookstore.Areas.Admin.Controllers
