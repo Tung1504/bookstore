@@ -11,7 +11,7 @@
                 <div class="col-sm-9">
                     <div class="shopper-info">
                         <p>User Information</p>
-                        @using (Html.BeginForm("UpdateInformation", "Customer", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("UpdateInformation", "Customer", FormMethod.Post, new { @class = "form" }))
                         {
                             @Html.HiddenFor(m => m.id)
 
@@ -20,18 +20,11 @@
                             <div>
                                 <lable>Name</lable>
                                 @Html.TextBoxFor(m => m.name, new { type = "text", @class = "form-control" })
-
                             </div>
 
                             <div>
                                 <lable>UserName</lable>
                                 @Html.TextBoxFor(m => m.username, new { type = "text", @class = "form-control" })
-
-                            </div>
-
-                            <div>
-                                <lable>Password</lable>
-                                @Html.PasswordFor(m => m.password, new { type = "password", @class = "form-control" })
 
                             </div>
 
@@ -48,12 +41,11 @@
                             <div>
                                 <lable>Date of birth</lable>
                                 @Html.TextBoxFor(m => m.dob, new { type = "date", @class = "form-control" })
-
                             </div>
                             
 
-                            <button type="reset"> Reset </button>
-                            <button type="submit"> Submit </button>
+                            <button type="reset" class="btn btn-default"> Reset </button>
+                            <button type="submit" class="btn btn-primary"> Submit </button>
                         }
                     </div>
                        

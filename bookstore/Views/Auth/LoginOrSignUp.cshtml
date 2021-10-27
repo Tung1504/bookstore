@@ -1,5 +1,4 @@
-﻿
-@model bookstore.Models.User
+﻿@model bookstore.ViewModels.Auth.LoginSignUpViewModel
 
 @{
     ViewBag.Title = "LoginOrSignUp";
@@ -24,11 +23,11 @@
                         }
 
                         <div>
-                            @Html.TextBoxFor(m => m.username, new { placeholder = "User Name" })
-                            @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.LoginViewModel.Username, new { placeholder = "User Name" })
+                            @Html.ValidationMessageFor(m => m.LoginViewModel.Username, "", new { @class = "text-danger" })
 
-                            @Html.PasswordFor(m => m.password, new { placeholder = "Password" })
-                            @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+                            @Html.PasswordFor(m => m.LoginViewModel.Password, new { placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.LoginViewModel.Password, "", new { @class = "text-danger" })
 
                         </div>
                         <button type="submit" class="btn btn-default" name="login">Login</button>
@@ -54,26 +53,26 @@
                         }
                         <label>@ViewBag.SignUpFail</label>
                         <div>
-                            @Html.TextBoxFor(m => m.username, new { placeholder = "Username" })
-                            @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.SignupViewModel.Username, new { placeholder = "Username" })
+                            @Html.ValidationMessageFor(m => m.SignupViewModel.Username, "", new { @class = "text-danger" })
 
-                            @Html.PasswordFor(m => m.password, new { placeholder = "Password" })
-                            @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+                            @Html.PasswordFor(m => m.SignupViewModel.Password, new { placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.SignupViewModel.Password, "", new { @class = "text-danger" })
 
-                            @Html.PasswordFor(m => m.repassword, new { placeholder = "Reentered Password" })
-                            @Html.ValidationMessageFor(m => m.repassword, "", new { @class = "text-danger" })
+                            @Html.PasswordFor(m => m.SignupViewModel.RePassword, new { placeholder = "Reentered Password" })
+                            @Html.ValidationMessageFor(m => m.SignupViewModel.RePassword, "", new { @class = "text-danger" })
 
-                            @Html.TextBoxFor(m => m.name, new { placeholder = "Your Name" })
-                            @Html.ValidationMessageFor(m => m.name, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.SignupViewModel.Name, new { placeholder = "Your Name" })
+                            @Html.ValidationMessageFor(m => m.SignupViewModel.Name, "", new { @class = "text-danger" })
 
-                            @Html.TextBoxFor(m => m.phone, new { placeholder = "Phone" })
-                            @Html.ValidationMessageFor(m => m.phone, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.SignupViewModel.Phone, new { placeholder = "Phone" })
+                            @Html.ValidationMessageFor(m => m.SignupViewModel.Phone, "", new { @class = "text-danger" })
 
-                            @Html.TextBoxFor(m => m.email, new { placeholder = "Email" })
-                            @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.SignupViewModel.Email, new { placeholder = "Email" })
+                            @Html.ValidationMessageFor(m => m.SignupViewModel.Email, "", new { @class = "text-danger" })
 
-                            @Html.TextBoxFor(m => m.dob, new { type = "date", placeholder = "Date of birth" })
-                            @Html.ValidationMessageFor(m => m.dob, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.SignupViewModel.Dob, new { type = "date", placeholder = "Date of birth" })
+                            @Html.ValidationMessageFor(m => m.SignupViewModel.Dob, "", new { @class = "text-danger" })
                         </div>
                         <button type="submit" class="btn btn-default" name="signup">Sign Up</button>
                     }

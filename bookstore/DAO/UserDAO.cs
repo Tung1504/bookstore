@@ -1,48 +1,16 @@
-﻿using System;
+﻿using bookstore.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using bookstore.Models;
-using bookstore.ViewModels;
 
-namespace bookstore.Models
+namespace bookstore.DAO
 {
-    [MetadataType(typeof(UserMetadata))]
-    public partial class User
+    public class UserDAO : BaseDAO<User>
     {
-        [Required(ErrorMessage = "This field is required")]
-        [DataType(DataType.Password)]
-        [Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
-        [NotMapped]
-        public string repassword { get; set; }
-
-        public const string CUSTOMER = "Customer";
-        public const string ADMIN = "Admin";
-    }
-
-    public class UserMetadata
-    {
-        [Required(ErrorMessage = "This field is required")]
-        public string username { get; set; }
-
-        [Required(ErrorMessage = "This field is required")]
-        [DataType(DataType.Password)]
-        public string password { get; set; }
-
-        //[Required(ErrorMessage = "This field is required")]
-        //[DataType(DataType.Password)]
-        //[Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
-        //[NotMapped]
-        
-        public string role { get; set; }
-        public string phone { get; set; }
-        public string email { get; set; }
-        public Nullable<System.DateTime> dob { get; set; }
-
-        public virtual ICollection<Address> Addresses { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<Payment_card> Payment_card { get; set; }
+        public UserDAO()
+        {
+            dbSet = db.Users;
+        }
     }
 }

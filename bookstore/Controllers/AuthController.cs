@@ -1,5 +1,7 @@
-﻿using bookstore.Helpers;
+﻿using bookstore.DAO;
+using bookstore.Helpers;
 using bookstore.Models;
+using bookstore.ViewModels.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,21 +14,30 @@ namespace bookstore.Controllers
     {
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignUp(User user)
+        public ActionResult SignUp(LoginSignUpViewModel loginSignUpViewModel, UserDAO userDAO)
         {
             if (ModelState.IsValid)
             {
-                if (db.Users.Any(x => x.username != user.username))
+                if (userDAO.Any(x => x.username == loginSignUpViewModel.SignupViewModel.Username))
                 {
                     SetErrorFlash("Account exists", "signup-fail");
                     return RedirectToAction("LoginOrSignup");
                 }
                 else
                 {
-                    user.role = Models.User.CUSTOMER;
-                    db.Users.Add(user);
-                    db.SaveChanges();
-                    AuthUser.SetLogin(user);
+                    User u = new User()
+                    {
+                        username = loginSignUpViewModel.SignupViewModel.Username,
+                        password = loginSignUpViewModel.SignupViewModel.Password,
+                        name = loginSignUpViewModel.SignupViewModel.Name,
+                        phone = loginSignUpViewModel.SignupViewModel.Phone,
+                        email = loginSignUpViewModel.SignupViewModel.Email,
+                        dob = loginSignUpViewModel.SignupViewModel.Dob,
+                        role = Models.User.CUSTOMER
+                    };
+
+                    userDAO.Create(u);
+                    AuthUser.SetLogin(u);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -48,30 +59,35 @@ namespace bookstore.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(User user)
+        public ActionResult Login(LoginSignUpViewModel LoginSignupViewModel, UserDAO userDAO)
         {
-            User u = db.Users.FirstOrDefault(p => p.username == user.username && p.password == user.password);
-            if (u != null)
+            if (ModelState.IsValid)
             {
-                // Login: goc man hinh: camnh
-                AuthUser.SetLogin(u);
-
-                if (u.role == Models.User.CUSTOMER)
+                User u = userDAO.FirstOrDefault(p => p.username == LoginSignupViewModel.LoginViewModel.Username && 
+                p.password == LoginSignupViewModel.LoginViewModel.Password);
+                if (u != null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    // Login: goc man hinh: camnh
+                    AuthUser.SetLogin(u);
+
+                    if (u.role == Models.User.CUSTOMER)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    if (u.role == Models.User.ADMIN)
+                    {
+                        return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+
+                    }
                 }
-                if (u.role == Models.User.ADMIN)
+                else
                 {
-                    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
-
+                    SetErrorFlash("Wrong UserName or Password", "login-failed");
                 }
-            }
-            else
-            {
-                SetErrorFlash("Wrong UserName or Password", "login-failed");
+
             }
 
-            return RedirectToAction("LoginOrSignup");
+            return View("LoginOrSignUp");
         }
     }
 }

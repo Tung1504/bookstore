@@ -14,16 +14,13 @@ namespace bookstore.Helpers
             HttpContext.Current.Session["auth"] = u;
         }
 
-        public static string Username()
+        public static User GetLogin()
         {
-            User u = (User)HttpContext.Current.Session["auth"];
-            return u.name;
-        }
+            if (HttpContext.Current.Session["auth"] != null) {
+                return (User)HttpContext.Current.Session["auth"];
+            }
 
-        public static int Id()
-        {
-            User u = (User)HttpContext.Current.Session["auth"];
-            return u.id;
+            return null;
         }
     }
 }

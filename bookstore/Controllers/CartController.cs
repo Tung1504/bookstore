@@ -1,4 +1,5 @@
-﻿using bookstore.Models;
+﻿using bookstore.Helpers;
+using bookstore.Models;
 using bookstore.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace bookstore.Controllers
         }
         public RedirectToRouteResult AddToCart(int bookId)
         {
-            if ((User)Session["auth"] != null)
+            if (AuthUser.GetLogin() != null)
             {
                 if (Session["cart"] == null)
                 {
@@ -71,7 +72,7 @@ namespace bookstore.Controllers
 
         public ActionResult Checkout()
         {
-            User user = (User)Session["auth"];
+            User user = AuthUser.GetLogin();
             // Fetch the userprofile
 
             List<Address> AddressList= db.Addresses.Where(m => m.user_id == user.id).ToList();
@@ -84,10 +85,10 @@ namespace bookstore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Checkout(UserPaymentListAndAddressListViewModels model)
         {
+            User user = AuthUser.GetLogin();
             if (ModelState.IsValid)
             {
                 List<CartItem> cart = Session["cart"] as List<CartItem>;
-                User user = (User)Session["auth"];
                
                 int orderNo = db.Orders.Count()+1;
                 
@@ -136,12 +137,7 @@ namespace bookstore.Controllers
             }
             else
             {
-                User user = (User)Session["auth"];
-                List<Address> AddressList = db.Addresses.Where(m => m.user_id == user.id).ToList();
-                List<Payment_card> PaymentList = db.Payment_card.Where(m => m.user_id == user.id).ToList();
-                AddressAndPayment addressAndPayment = new AddressAndPayment();
-                UserPaymentListAndAddressListViewModels paymentListAndAddressListViewModels = new UserPaymentListAndAddressListViewModels(user, AddressList, PaymentList, addressAndPayment);
-                return View(paymentListAndAddressListViewModels);
+                return RedirectToAction("Checkout");
             }
            
         }
