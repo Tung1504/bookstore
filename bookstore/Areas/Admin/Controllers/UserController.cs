@@ -27,21 +27,21 @@ namespace bookstore.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(User user)
-        {
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(User user)
+        //{
 
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(user);
-                db.SaveChanges(); //Apply insert statement
-                return RedirectToAction("Index");
-            }
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Users.Add(user);
+        //        db.SaveChanges(); //Apply insert statement
+        //        return RedirectToAction("Index");
+        //    }
 
-            //nếu validate thất bại
-            return View(user);
-        }
+        //    //nếu validate thất bại
+        //    return View(user);
+        //}
 
 
         public ActionResult ViewDetail(int id)
@@ -64,21 +64,26 @@ namespace bookstore.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, User user)
         {
-            if (ModelState.IsValid)
+            User u = db.Users.FirstOrDefault(x => x.id == id);
+            if(u != null)
             {
-                db.Entry(user).State = System.Data.EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    u.role = user.role;
+                    db.SaveChanges();
+                    TempData["result"] = "Update user " + user.username + " role successfully!";
+                    return RedirectToAction("Index");
+                }
             }
-
-            return View(user);
+            TempData["result"] = "Update user " + user.username + " role failed successfully!";
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

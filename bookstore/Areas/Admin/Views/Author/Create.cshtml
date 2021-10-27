@@ -23,10 +23,11 @@
                 </div>
             </div>
         </div>
-            @using (Html.BeginForm("Create", "Author", FormMethod.Post))
+            @using (Html.BeginForm("Create", "Author", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
             {
                
                 @Html.AntiForgeryToken();
+                <label class="text-danger">@ViewBag.CreateFail</label>
                 <div class="card">
                     <div class="card-body">
                         @*<h2 class="card-title">Create New Author</h2>*@

@@ -100,16 +100,36 @@ namespace bookstore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Author author)
+        public ActionResult Edit(int id, Author author, HttpPostedFileBase upload_image)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(author).State = System.Data.EntityState.Modified;
-                db.SaveChanges();
-                TempData["result"] = "Edit author successfully!";
-                return RedirectToAction("Index");
-            }
+                //db.SaveChanges();
+                Author a = db.Authors.FirstOrDefault(x => x.id == id);
+                // generate image file name (eg. book27.png)
 
+
+                // save image file 
+                if (upload_image != null && upload_image.ContentLength > 0)
+                {
+                    int index = upload_image.FileName.IndexOf('.');
+                    string _FileName = "author" + id.ToString() + '.' + upload_image.FileName.Substring(index + 1);
+                    string _path = Path.Combine(Server.MapPath("~/images/author"), _FileName);
+                    upload_image.SaveAs(_path);
+                    a.image = _FileName;
+                    db.SaveChanges();
+
+                }
+                else
+                {
+                    db.SaveChanges();
+                }
+
+                TempData["result"] = "Edit author detail successfully!";
+                return RedirectToAction("Index");
+
+            }
             return View(author);
         }
 
@@ -164,33 +184,40 @@ namespace bookstore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Author author, HttpPostedFileBase upload_image)
         {
-
-            if (ModelState.IsValid)
+            if (db.Authors.Any(x => x.author_name == author.author_name))
             {
-                if (upload_image != null && upload_image.ContentLength > 0)
-                {
-                    int id = int.Parse(db.Authors.ToList().Last().id.ToString());
-                    string _FileName = "";
-                    int index = upload_image.FileName.IndexOf('.');
-                    _FileName = "author" + id.ToString() + '.' + upload_image.FileName.Substring(index + 1);
-                    string _path = Path.Combine(Server.MapPath("~/images/author"), _FileName);
-
-                    upload_image.SaveAs(_path);
-
-                    
-
-                    Author a = db.Authors.FirstOrDefault(x => x.id == id);
-                    a.image = _FileName;
-
-                    db.SaveChanges();
-                    TempData["result"] = "Create new author successfully!";
-                }
-                //db.Authors.Add(author);
-                //db.SaveChanges();
-                //TempData["result"] = "Create new author successfully!";
-                return RedirectToAction("Index");
+                ViewBag.CreateFail = "This name has been accounted";
+                return View();
             }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    if (upload_image != null && upload_image.ContentLength > 0)
+                    {
+                        int id = int.Parse(db.Authors.ToList().Last().id.ToString());
+                        string _FileName = "";
+                        int index = upload_image.FileName.IndexOf('.');
+                        _FileName = "author" + id.ToString() + '.' + upload_image.FileName.Substring(index + 1);
+                        string _path = Path.Combine(Server.MapPath("~/images/author"), _FileName);
 
+                        upload_image.SaveAs(_path);
+
+
+
+                        //Author a = db.Authors.FirstOrDefault(x => x.id == id);
+                        Author a = db.Authors.Add(author);
+                        a.image = _FileName;
+
+                        db.SaveChanges();
+                        TempData["result"] = "Create new author successfully!";
+                    }
+                    //db.Authors.Add(author);
+                    //db.SaveChanges();
+                    //TempData["result"] = "Create new author successfully!";
+                    return RedirectToAction("Index");
+                }
+            }
             //nếu validate thất bại
             return View(author);
         }

@@ -5,177 +5,49 @@
 }
 
 
-    <div class="dashboard-wrapper">
-        <div class="container-fluid  dashboard-content">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="page-header">
-                        <h3 class="mb-2">ORDERS</h3>
-                        <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
-                        <div class="page-breadcrumb">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Manage Order</li>
-                                </ol>
-                            </nav>
-                        </div>
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">ORDERS</h3>
+                    <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Manage Order</li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="pills-regular">
-                <ul class="nav nav-pills mb-1" id="pills-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pending" role="tab" aria-controls="pending" aria-selected="true">Pending</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#shipping" role="tab" aria-controls="shipping" aria-selected="false">Shipping</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#complete" role="tab" aria-controls="complete" aria-selected="false">Complete</a>
-                    </li>
-                </ul>
-
-                <div class="tab-content" id="myTabContent2">
-                    <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending">
-
-                        <div class="card-body">
-                            <h2 class="card-title"><strong class="text-dark">PENDING ORDERS</strong></h2>
-                            <div class="table-responsive">
-                                <table class="table table-bordered first">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Order Number</th>
-                                            <th scope="col">Payment Status</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Order Date</th>
-                                            <th scope="col">Total Price</th>
-                                            <th scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-
-
-                                    <tbody>
-                                        @foreach (var order in Model.Where(m => m.status == "Pending").OrderByDescending(m => m.date))
-                                        {
-                                            <tr>
-                                                <td>@order.id</td>
-                                                <td>@order.order_number</td>
-                                                <td>@order.payment_status</td>
-                                                <td id="status"><span class="badge-dot badge-primary mr-1"></span>Pending</td>
-                                                <td>@order.date.Year/@order.date.Month/@order.date.Day</td>
-                                                <td>$@order.total_price</td>
-                                                <td>
-
-                                                    @Html.ActionLink(" Detail", "ViewDetail", new { id = order.id }, new { @class = "btn btn-primary fas fa-file" })
-
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping">
-
-                        <div class="card-body">
-                            <h2 class="card-title"><strong class="text-dark">SHIPPING ORDERS</strong></h2>
-                            <div class="table-responsive">
-                                <table class="table table-bordered first">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Order Number</th>
-                                            <th scope="col">Payment Status</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Order Date</th>
-                                            <th scope="col">Total Price</th>
-                                            <th scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-
-
-                                    <tbody>
-                                        @foreach (var order in Model.Where(m => m.status == "Shipping").OrderByDescending(m => m.date))
-                                        {
-                                            <tr>
-                                                <td>@order.id</td>
-                                                <td>@order.order_number</td>
-                                                <td>@order.payment_status</td>
-                                                <td id="status"><span class="badge-dot badge-warning mr-1"></span>Shipping</td>
-                                                <td>@order.date.Year/@order.date.Month/@order.date.Day</td>
-                                                <td>$@order.total_price</td>
-                                                <td>
-
-                                                    @Html.ActionLink(" Detail", "ViewDetail", new { id = order.id }, new { @class = "btn btn-primary fas fa-file" })
-
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="complete" role="tabpanel" aria-labelledby="complete">
-
-                        <div class="card-body">
-                            <h2 class="card-title"><strong class="text-dark">COMPLETED ORDERS</strong></h2>
-                            <div class="table-responsive">
-                                <table class="table table-bordered first">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Order Number</th>
-                                            <th scope="col">Payment Status</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Order Date</th>
-                                            <th scope="col">Total Price</th>
-                                            <th scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-
-
-                                    <tbody>
-                                        @foreach (var order in Model.Where(m => m.status == "Complete").OrderByDescending(m => m.date))
-                                        {
-                                            <tr>
-                                                <td>@order.id</td>
-                                                <td>@order.order_number</td>
-                                                <td>@order.payment_status</td>
-                                                <td id="status"><span class="badge-dot badge-success mr-1"></span>Complete</td>
-                                                <td>@order.date.Year/@order.date.Month/@order.date.Day</td>
-                                                <td>$@order.total_price</td>
-                                                <td>
-
-                                                    @Html.ActionLink(" Detail", "ViewDetail", new { id = order.id }, new { @class = "btn btn-primary fas fa-file" })
-
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
+        <div class="pills-regular">
+            <ul class="nav nav-pills mb-1" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pending" role="tab" aria-controls="pending" aria-selected="true">Pending</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#shipping" role="tab" aria-controls="shipping" aria-selected="false">Shipping</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#complete" role="tab" aria-controls="complete" aria-selected="false">Complete</a>
+                </li>
+            </ul>
+            @if (ViewBag.SuccessMsg != null)
+            {
+                <div class="alert alert-success" id="success">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <p>@ViewBag.SuccessMsg</p>
                 </div>
-            </div>
+            }
+            <div class="tab-content" id="myTabContent2">
+                <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending">
 
-
-
-
-            @*<div class="row">
-            <div class="col-sm-12 col-12">
-                <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"><strong class="text-dark">ORDERS</strong></h5>
+                        <h2 class="card-title"><strong class="text-dark">PENDING ORDERS</strong></h2>
                         <div class="table-responsive">
                             <table class="table table-bordered first">
                                 <thead>
@@ -184,6 +56,7 @@
                                         <th scope="col">Order Number</th>
                                         <th scope="col">Payment Status</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Order Date</th>
                                         <th scope="col">Total Price</th>
                                         <th scope="col">Actions</th>
                                     </tr>
@@ -191,13 +64,14 @@
 
 
                                 <tbody>
-                                    @foreach (var order in Model)
+                                    @foreach (var order in Model.Where(m => m.status == "Pending").OrderByDescending(m => m.date))
                                     {
                                         <tr>
                                             <td>@order.id</td>
                                             <td>@order.order_number</td>
                                             <td>@order.payment_status</td>
-                                            <td onload="colorChange" id="status">@order.status</td>
+                                            <td id="status"><span class="badge-dot badge-primary mr-1"></span>Pending</td>
+                                            <td>@order.date.Year/@order.date.Month/@order.date.Day</td>
                                             <td>$@order.total_price</td>
                                             <td>
 
@@ -211,10 +85,142 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping">
+
+                    <div class="card-body">
+                        <h2 class="card-title"><strong class="text-dark">SHIPPING ORDERS</strong></h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered first">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Order Number</th>
+                                        <th scope="col">Payment Status</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Order Date</th>
+                                        <th scope="col">Total Price</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+                                    @foreach (var order in Model.Where(m => m.status == "Shipping").OrderByDescending(m => m.date))
+                                    {
+                                        <tr>
+                                            <td>@order.id</td>
+                                            <td>@order.order_number</td>
+                                            <td>@order.payment_status</td>
+                                            <td id="status"><span class="badge-dot badge-warning mr-1"></span>Shipping</td>
+                                            <td>@order.date.Year/@order.date.Month/@order.date.Day</td>
+                                            <td>$@order.total_price</td>
+                                            <td>
+
+                                                @Html.ActionLink(" Detail", "ViewDetail", new { id = order.id }, new { @class = "btn btn-primary fas fa-file" })
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="complete" role="tabpanel" aria-labelledby="complete">
+
+                    <div class="card-body">
+                        <h2 class="card-title"><strong class="text-dark">COMPLETED ORDERS</strong></h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered first">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Order Number</th>
+                                        <th scope="col">Payment Status</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Order Date</th>
+                                        <th scope="col">Total Price</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+                                    @foreach (var order in Model.Where(m => m.status == "Complete").OrderByDescending(m => m.date))
+                                    {
+                                        <tr>
+                                            <td>@order.id</td>
+                                            <td>@order.order_number</td>
+                                            <td>@order.payment_status</td>
+                                            <td id="status"><span class="badge-dot badge-success mr-1"></span>Complete</td>
+                                            <td>@order.date.Year/@order.date.Month/@order.date.Day</td>
+                                            <td>$@order.total_price</td>
+                                            <td>
+
+                                                @Html.ActionLink(" Detail", "ViewDetail", new { id = order.id }, new { @class = "btn btn-primary fas fa-file" })
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>*@
         </div>
+
+
+
+
+        @*<div class="row">
+                <div class="col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><strong class="text-dark">ORDERS</strong></h5>
+                            <div class="table-responsive">
+                                <table class="table table-bordered first">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Order Number</th>
+                                            <th scope="col">Payment Status</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Total Price</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                        @foreach (var order in Model)
+                                        {
+                                            <tr>
+                                                <td>@order.id</td>
+                                                <td>@order.order_number</td>
+                                                <td>@order.payment_status</td>
+                                                <td onload="colorChange" id="status">@order.status</td>
+                                                <td>$@order.total_price</td>
+                                                <td>
+
+                                                    @Html.ActionLink(" Detail", "ViewDetail", new { id = order.id }, new { @class = "btn btn-primary fas fa-file" })
+
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
     </div>
+</div>
 
 
 
@@ -228,7 +234,11 @@
     <script src="~/Areas/Admin/Content/vendor/slimscroll/jquery.slimscroll.js"></script>
     <script src="~/Areas/Admin/Content/js/main-js.js"></script>
 
-
+    <script>
+        setTimeout(function () {
+            $('#success').fadeOut('slow');
+        }, 2000);
+    </script>
 }
 
 @section css{
