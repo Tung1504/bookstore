@@ -235,7 +235,7 @@
             <End Role="Book" EntitySet="Book" />
             <End Role="Order_Detail" EntitySet="Order_Detail" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Detail_Order1" Association="Self.FK_Order_Detail_Order1">
+          <AssociationSet Name="FK_Order_Detail_Order" Association="Self.FK_Order_Detail_Order">
             <End Role="Order" EntitySet="Order" />
             <End Role="Order_Detail" EntitySet="Order_Detail" />
           </AssociationSet>
