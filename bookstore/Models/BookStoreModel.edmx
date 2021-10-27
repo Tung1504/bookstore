@@ -322,7 +322,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="order_number" Type="Int32" Nullable="false" />
           <Property Name="shipping_price" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="payment_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="total_price" Type="Double" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />

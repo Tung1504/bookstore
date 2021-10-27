@@ -1,6 +1,6 @@
 ﻿@model bookstore.ViewModels.BookCategoryPublisherAuthorViewModel
 @{
-    ViewBag.Title = "Edit Book";
+    ViewBag.Title = "CreateBook";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -24,7 +24,7 @@
         </div>
         @using (Html.BeginForm("Create", "Book", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
         {
-            @*@Html.ValidationSummary();*@
+            
             @Html.AntiForgeryToken();
             <div class="card">
                 <div class="card-body">
@@ -56,17 +56,17 @@
 
                                     <label>By:</label> <br />
                                     @Html.DropDownListFor(m => m.Book.author_id, new SelectList(Model.ListAuthor, "id", "author_name"), "-----Select Author-----") <br />
-                                    @Html.ValidationMessageFor(m => m.Book.author_id, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.Author.id, "", new { @class = "text-danger" })
                                     <br />
 
                                     <label>Publisher</label> <br />
                                     @Html.DropDownListFor(m => m.Book.publisher_id, new SelectList(Model.ListPublisher, "id", "publisher_name"), "-----Select Publisher-----") <br />
-                                    @Html.ValidationMessageFor(m => m.Book.publisher_id, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.Publisher.id, "", new { @class = "text-danger" })
                                     <br />
 
                                     <label>Category:</label> <br />
                                     @Html.DropDownListFor(m => m.Book.category_id, new SelectList(Model.ListCategory, "id", "category_name"), "-----Select Category-----") <br />
-                                    @Html.ValidationMessageFor(m => m.Book.author_id, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.Category.id, "", new { @class = "text-danger" })
                                     <br />
 
                                     <label>Quantity in stock:</label>
@@ -84,12 +84,12 @@
                                     @Html.ValidationMessageFor(m => m.Book.price, "", new { @class = "text-danger" })
                                     <br />
 
-                                    <label>Description:@Model.Book.description</label>
+                                    <label>Description: </label>
                                     @Html.TextBoxFor(m => m.Book.description, new { type = "text", @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.Book.description, "", new { @class = "text-danger" })
                                     <br />
 
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary" onclick="Validate()">Submit</button>
                                 </div>
                             </div>
 
@@ -100,3 +100,24 @@
         }
     </div>
 </div>
+
+
+@section js{
+    <script>
+        function Validate() {
+            var check = false;
+            var name = $('#name').val();
+            if (name === '') {
+                $('#name').next().html('Please enter category name');
+                check = false;
+            }
+            else {
+                $('#name').next().html('');
+                check = true;
+            }
+            return check;
+        }
+    </script>
+    
+    
+    }

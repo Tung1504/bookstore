@@ -12,22 +12,22 @@
                 <div class="card">
                     <div class="card-header p-4">
                         <div class="float-right">
-                            @using (Html.BeginForm("Edit", "Order", FormMethod.Post))
+                            <h4>Order Status:</h4> 
+                            @using (Html.BeginForm("Edit", "Order", new { id = Model.Order.id }, FormMethod.Post))
                             {
                                 @Html.ValidationSummary();
                                 @Html.AntiForgeryToken();
 
-                                @Html.HiddenFor(m => m.Order.order_number)
-                                @Html.HiddenFor(m => m.Order.payment_status)
-                                @Html.HiddenFor(m => m.Order.shipping_price)
-                                @Html.HiddenFor(m => m.Order.total_price)
-                                @Html.HiddenFor(m => m.Order.user_id)
-                                @Html.HiddenFor(m => m.Order.date)
 
-
-
-                                <a class="mb-0" href="#">@Model.Order.status</a> <br />
-                                @Html.TextBoxFor(m => m.Order.status, new { type = "text", @class = "form-control" })
+                                @*<a class="mb-0" href="#">@Model.Order.status</a> <br />*@
+                                @*@Html.TextBoxFor(m => m.Order.status, new { type = "text", @class = "form-control" })*@
+                                @Html.DropDownListFor(x => x.Order.status, new List<SelectListItem>
+                                {
+                                    new SelectListItem() {Text = "Pending", Value="Pending"},
+                                    new SelectListItem() {Text = "Shipping", Value="Shipping"},
+                                    new SelectListItem() {Text = "Complete", Value="Complete"},
+                                    new SelectListItem() {Text = "Cancel", Value="Cancel"}
+                                }) <br />
                                 <button type="submit" class="btn btn-primary">Update Status</button>
 
                             }
@@ -36,7 +36,7 @@
 
                         <div class="float-left">
                             <h3 class="pt-2">Invoice #@Model.Order.id</h3>
-                            @Model.Order.date
+                            @Model.Order.date.Day/@Model.Order.date.Month/@Model.Order.date.Year
                         </div>
                     </div>
                     <div class="card-body">
@@ -53,15 +53,14 @@
                             <div class="col-sm-6">
                                 <h5 class="mb-3">To:</h5>
                                 <h3 class="text-dark mb-1">@Model.User.name</h3>
-                                <div>@Model.Address.district</div>
-                                <div>@Model.Address.address1</div>
+                                <div>Address: @Model.Order.delivery_location</div>
                                 <div>Email: @Model.User.email</div>
                                 <div>Phone: @Model.User.phone</div>
                             </div>
                         </div>
                         <div class="table-responsive-sm">
-                            <table class="table table-striped">
-                                <thead>
+                            <table class="table">
+                                <thead class="bg-light">
                                     <tr>
                                         <th class="center">#</th>
                                         <th>Item</th>
@@ -69,28 +68,36 @@
                                         <th class="right">Unit Cost</th>
                                         <th class="center">Qty</th>
                                         <th class="center">Qty in stock</th>
+                                        <th class="center">Checking</th>
                                         <th class="right">Total Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model.ListOrderDetail.Where(m => m.order_id == Model.Order.id))
                                     {
-                                        <tr>
-                                            <td>@item.id</td>
-                                            <td><a href="@Url.Action("ViewDetail","Book", new { id = Model.OrderDetail.book_id} )">@item.Book.title</a></td>
-                                            <td>@item.Book.description</td>
-                                            <td>$@item.Book.price</td>
-                                            <td id="qty" class="">@item.quantity</td>
-                                            <td>@item.Book.quantity_in_stock</td>
-                                            <td id="price">$@item.total_price</td>
-                                        </tr>
+                                    <tr>
+                                        <td>@item.id</td>
+                                        <td><a href="@Url.Action("ViewDetail","Book", new { id = Model.OrderDetail.book_id} )">@item.Book.title</a></td>
+                                        <td>@item.Book.description</td>
+                                        <td>$@item.Book.price</td>
+                                        <td id="qty" class="">@item.quantity</td>
+                                        <td>@item.Book.quantity_in_stock</td>
+                                        <td id="check"></td>
+                                        <td id="price">$@item.total_price</td>
+                                    </tr>
                                     }
 
                                 </tbody>
                             </table>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-sm-5">
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="card" style="border:2px">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Note:</h3>
+                                        <p class="card-text">@Model.Order.note</p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-4 col-sm-5 ml-auto">
                                 <table class="table table-clear">
@@ -134,26 +141,15 @@
 
 @section js {
     <script>
-        @*function checkAvail() {
-            var qty = document.getElementById('qty');
-            if (@Model.OrderDetail.quantity >= @Model.OrderDetail.Book.quantity_in_stock) {
-                qty.className += "text-success";
-            }
-            else {
-                qty.className += "text-danger"
-            }
-        }*@
-
-        $(document).ready(function () {
-            if (@Model.OrderDetail.quantity < @Model.OrderDetail.Book.quantity_in_stock) {
-                $('#qty').addClass('text-success');
-            }
-            else {
-                $('#qty').addClass('text-danger');
-            }
-            //$('#about').addClass('expand');
-        });
-
+        
+        if (@Model.OrderDetail.quantity <= @Model.OrderDetail.Book.quantity_in_stock) {
+            document.getElementById("check").innerHTML = "Okay";
+            document.getElementById("check").classList.add = "text-success";
+        }
+        else if(@Model.OrderDetail.quantity > @Model.OrderDetail.Book.quantity_in_stock){
+            document.getElementById("check").innerHTML = "Out of stock";
+            document.getElementById("check").classList.add = "text-success";
+        }
     </script>
 
 }

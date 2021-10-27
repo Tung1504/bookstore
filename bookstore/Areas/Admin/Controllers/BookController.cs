@@ -51,13 +51,16 @@ namespace bookstore.Areas.Admin.Controllers
 
                     upload_image.SaveAs(_path);
 
-                    Book b = db.Books.FirstOrDefault(x => x.id == id);
+                    Book b = db.Books.Add(book);
+                    //Book b = db.Books.FirstOrDefault(x => x.id == id);
                     b.image = _FileName;
                     db.SaveChanges();
+                    TempData["result"] = "Create new book successfully!";
                 }
-                //db.Books.Add(book);
-                //db.SaveChanges();
-                return RedirectToAction("Index");
+                    //db.Books.Add(book);
+                    //db.SaveChanges();
+                    //TempData["result"] = "Create new book successfully!";
+                    return RedirectToAction("Index");
             }
 
             //nếu validate thất bại
