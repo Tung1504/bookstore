@@ -38,7 +38,7 @@
           <Property Name="publisher_id" Type="int" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
           <Property Name="author_id" Type="int" Nullable="false" />
-          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" />
           <Property Name="image" Type="nvarchar(max)" />
           <Property Name="public_date" Type="date" />
           <Property Name="edition" Type="nvarchar(max)" />
@@ -62,6 +62,8 @@
           <Property Name="total_price" Type="float" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="delivery_location" Type="nvarchar" MaxLength="500" />
+          <Property Name="note" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Order_Detail">
           <Key>
@@ -296,7 +298,7 @@
           <Property Name="publisher_id" Type="Int32" Nullable="false" />
           <Property Name="category_id" Type="Int32" Nullable="false" />
           <Property Name="author_id" Type="Int32" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="public_date" Type="DateTime" Precision="0" />
           <Property Name="edition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -327,6 +329,8 @@
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Order_Detail" Relationship="Self.FK_Order_Detail_Order1" FromRole="Order" ToRole="Order_Detail" />
           <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
+          <Property Name="delivery_location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Order_Detail">
           <Key>
@@ -587,6 +591,8 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="BookStoreModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="delivery_location" ColumnName="delivery_location" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="order_number" ColumnName="order_number" />
                 <ScalarProperty Name="shipping_price" ColumnName="shipping_price" />

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<bookstore.Models.Address>
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="shopper-informations">
+            <div class="row">
+                
+                
+                <div class="shopper-info">
+
+
+                    <div class="heading">
+                        <h3>Address Management</h3>
+                        <p>You can Update your addresses here!</p>
+                    </div>
+
+                    <a href="@Url.Action("Create", "Address")" class="btn btn-success"> Create New</a>
+                    <br /><br />
+
+                    <div class="col-sm-11">
+                        <div class="table-responsive cart_info">
+                            <br /><br />
+                            <table class="table table-bordered first">
+                                <thead>
+                                    <tr class="cart_menu">
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">City</th>
+                                        <th scope="col">District</th>
+                                        <th scope="col">Postal Code</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var address in Model)
+                                    {
+                                        <tr>
+                                            <td>@address.id</td>
+                                            <td>@address.address1</td>
+                                            <td>@address.city</td>
+                                            <td>@address.district</td>
+                                            <td>@address.postal_code</td>
+                                            <td>
+                                                @Html.ActionLink(" Edit", "Edit", new { id = address.id }, new { @class = "btn btn-info" })
+                                                @using (Html.BeginForm("Delete", "Address", new { id = address.id }, FormMethod.Post, new { style = "display:inline" }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <button type="submit" class="btn btn-danger "> Delete</button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                            <a href="@Url.Action("Index","Customer")" class="btn btn-default update"> Back </a>
+                            <br /><br />
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
