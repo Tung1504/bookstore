@@ -149,6 +149,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AuthUser.cs" />
     <Compile Include="Models\Address.cs">
       <DependentUpon>BookStoreModel.tt</DependentUpon>
     </Compile>

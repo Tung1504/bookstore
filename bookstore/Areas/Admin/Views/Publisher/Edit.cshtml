@@ -24,51 +24,52 @@
                 </div>
             </div>
         </div>
-            @using (Html.BeginForm("Edit", "Publisher", FormMethod.Post))
-            {
-                @Html.ValidationSummary();
-                @Html.AntiForgeryToken();
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Publisher Information</h2>
-                        <br />
-                        <div class="row">
+        @using (Html.BeginForm("Edit", "Publisher", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
+        {
+            @*@Html.ValidationSummary();*@
+            @Html.AntiForgeryToken()
+            <label class="text-danger">@ViewBag.EditFail</label>
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Publisher Information</h2>
+                    <br />
+                    <div class="row">
 
-                            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
-                                <div class="text-center">
-                                    <img src="~/images/publisher/@Model.image" alt="User Avatar" class="rounded-circle user-avatar-xxl">
-                                    <lable>Image</lable>
-                                    <input type="file" name="upload_image" id="upload_image" class="form-control" />
-                                    <br />
-                                </div>
+                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
+                            <div class="text-center">
+                                <img src="~/images/publisher/@Model.image" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                <lable>Image</lable>
+                                <input type="file" name="upload_image" id="upload_image" class="form-control" />
+                                <br />
                             </div>
-                            <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 col-12">
-                                <div class="user-avatar-info">
-                                    <div class="user-avatar-address">
-                                        <label>Publisher Name</label>
-                                        @Html.TextBoxFor(m => m.publisher_name, new { type = "text", @class = "form-control" })
-                                        @Html.ValidationMessageFor(m => m.publisher_name, "", new { @class = "text-danger" })
-                                        <br />
-                                        <label>Publisher Established Date</label>
-                                        @Html.TextBoxFor(m => m.est_date, new { type = "text", @class = "form-control" })
-                                        @Html.ValidationMessageFor(m => m.est_date, "", new { @class = "text-danger" })
-                                        <br />
-
-
-                                        <label>Description</label>
-                                        @Html.TextAreaFor(m => m.description, new { type = "text", @class = "form-control" })
-                                        @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
-                                        <br />
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                            </div>
-
-
                         </div>
+                        <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 col-12">
+                            <div class="user-avatar-info">
+                                <div class="user-avatar-address">
+                                    <label>Publisher Name</label>
+                                    @Html.TextBoxFor(m => m.publisher_name, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.publisher_name, "", new { @class = "text-danger" })
+                                    <br />
+                                    <label>Publisher Established Date</label>
+                                    @Html.TextBoxFor(m => m.est_date, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.est_date, "", new { @class = "text-danger" })
+                                    <br />
+
+
+                                    <label>Description</label>
+                                    @Html.TextAreaFor(m => m.description, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
+                                    <br />
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
-            }
-        </div>
+            </div>
+        }
     </div>
 </div>
+

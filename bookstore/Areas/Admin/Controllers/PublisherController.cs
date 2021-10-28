@@ -54,39 +54,7 @@ namespace bookstore.Areas.Admin.Controllers
             return Json(new { data = item }, JsonRequestBehavior.AllowGet);
         }
 
-        //[HttpPost]
-        //public ActionResult Edit(int id)
-        //{
 
-        //    //if (publisher.id > 0)
-        //    //{
-        //    //db.publishers.Attach(publisher);
-        //    var listpublisher = db.publishers.Find(id);
-        //    //listpublisher.id = publisher.id;
-        //    //listpublisher.publisher_name = publisher.publisher_name;
-        //    db.Entry(listpublisher).State = System.Data.EntityState.Modified;
-        //    TempData["result"] = "Edit publisher successfully!";
-        //    db.SaveChanges();
-
-        //    return Json(new { success = true }, JsonRequestBehavior.AllowGet);
-        //    //}
-        //    //else
-        //    //{
-        //    //    db.publishers.Add(publisher);
-        //    //    try
-        //    //    {
-
-        //    //        db.SaveChanges();
-        //    //        this.AddNotification("Success", NotificationType.SUCCESS);
-        //    //        return Json(new { success = true });
-        //    //    }
-        //    //    catch (Exception e)
-        //    //    {
-        //    //        Console.WriteLine(e);
-        //    //        return Json(new { success = false });
-        //    //    }
-        //    //}
-        //}
 
         public ActionResult Edit(int id)
         {
@@ -100,16 +68,37 @@ namespace bookstore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Publisher publisher)
+        public ActionResult Edit(int id, Publisher publisher, HttpPostedFileBase upload_image)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(publisher).State = System.Data.EntityState.Modified;
-                db.SaveChanges();
-                TempData["result"] = "Edit publisher successfully!";
-                return RedirectToAction("Index");
-            }
+                //db.SaveChanges();
+                Publisher p = db.Publishers.FirstOrDefault(x => x.id == id);
+                // generate image file name (eg. book27.png)
 
+
+                // save image file 
+                if (upload_image != null && upload_image.ContentLength > 0)
+                {
+                    int index = upload_image.FileName.IndexOf('.');
+                    string _FileName = "publisher" + id.ToString() + '.' + upload_image.FileName.Substring(index + 1);
+                    string _path = Path.Combine(Server.MapPath("~/images/publisher"), _FileName);
+                    upload_image.SaveAs(_path);
+                    p.image = _FileName;
+                    db.SaveChanges();
+
+                }
+                else
+                {
+                    db.SaveChanges();
+                }
+
+                TempData["result"] = "Edit publisher detail successfully!";
+                return RedirectToAction("Index");
+
+            }
             return View(publisher);
         }
 
@@ -131,22 +120,6 @@ namespace bookstore.Areas.Admin.Controllers
             }
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id)
-        //{
-        //    Order order = db.Orders.Find(id);
-        //    if (order != null)
-        //    {
-        //        db.Orders.Remove(order);
-        //        db.SaveChanges();
-        //        TempData["result"] = "Delete publisher successfully!";
-        //        return RedirectToAction("Index");
-        //    }
-        //    TempData["result"] = "Delete publisher failed sucefully!";
-        //    return HttpNotFound();
-        //}
-
 
         public ActionResult ViewDetail(int id)
         {
@@ -164,33 +137,40 @@ namespace bookstore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Publisher publisher, HttpPostedFileBase upload_image)
         {
-
-            if (ModelState.IsValid)
+            if (db.Publishers.Any(x => x.publisher_name == publisher.publisher_name))
             {
-                //if (upload_image != null && upload_image.ContentLength > 0)
-                //{
-                //    int id = int.Parse(db.Publishers.ToList().Last().id.ToString());
-                //    string _FileName = "";
-                //    int index = upload_image.FileName.IndexOf('.');
-                //    _FileName = "publisher" + id.ToString() + '.' + upload_image.FileName.Substring(index + 1);
-                //    string _path = Path.Combine(Server.MapPath("~/images/publisher"), _FileName);
-
-                //    upload_image.SaveAs(_path);
-
-
-
-                //    Publisher a = db.Publishers.FirstOrDefault(x => x.id == id);
-                //    a.image = _FileName;
-
-                //    db.SaveChanges();
-                //    TempData["result"] = "Create new publisher successfully!";
-                //}
-                db.Publishers.Add(publisher);
-                db.SaveChanges();
-                TempData["result"] = "Create new publisher successfully!";
-                return RedirectToAction("Index");
+                ViewBag.CreateFail = "This name has been accounted";
+                return View();
             }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    if (upload_image != null && upload_image.ContentLength > 0)
+                    {
+                        int id = int.Parse(db.Publishers.ToList().Last().id.ToString());
+                        string _FileName = "";
+                        int index = upload_image.FileName.IndexOf('.');
+                        _FileName = "publisher" + id.ToString() + '.' + upload_image.FileName.Substring(index + 1);
+                        string _path = Path.Combine(Server.MapPath("~/images/publisher"), _FileName);
 
+                        upload_image.SaveAs(_path);
+
+
+
+                        //Publisher a = db.Publishers.FirstOrDefault(x => x.id == id);
+                        Publisher a = db.Publishers.Add(publisher);
+                        a.image = _FileName;
+
+                        db.SaveChanges();
+                        TempData["result"] = "Create new publisher successfully!";
+                    }
+                    //db.Publishers.Add(publisher);
+                    //db.SaveChanges();
+                    //TempData["result"] = "Create new publisher successfully!";
+                    return RedirectToAction("Index");
+                }
+            }
             //nếu validate thất bại
             return View(publisher);
         }

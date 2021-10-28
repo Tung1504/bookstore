@@ -49,23 +49,26 @@
 
 
                                 <tbody>
+
                                     @foreach (var user in Model)
                                     {
-                                        <tr>
-                                            <td>@user.id</td>
-                                            <td>@user.name</td>
-                                            <td>@user.role</td>
-                                            <td>
-                                                @Html.ActionLink(" Edit", "Edit", new { id = user.id }, new { @class = "btn btn-light fas fa-edit" })
-                                                @Html.ActionLink(" Detail", "ViewDetail", new { id = user.id }, new { @class = "btn btn-primary fas fa-file" })
+                                        
+                                            <tr>
+                                                <td>@user.id</td>
+                                                <td>@user.name</td>
+                                                <td>@user.role</td>
+                                                <td>
+                                                    @Html.ActionLink(" Edit", "Edit", new { id = user.id }, new { @class = "btn btn-light fas fa-edit" })
+                                                    @Html.ActionLink(" Detail", "ViewDetail", new { id = user.id }, new { @class = "btn btn-primary fas fa-file" })
 
-                                                @using (Html.BeginForm("Delete", "User", new { id = user.id }, FormMethod.Post, new { style = "display:inline" }))
-                                                {
-                                                    @Html.AntiForgeryToken()
-                                                    <button type="submit" class="btnDel btn btn-danger fas fa-trash"> Delete</button>
-                                                }
-                                            </td>
-                                        </tr>
+                                                    @using (Html.BeginForm("Delete", "User", new { id = user.id }, FormMethod.Post, new { style = "display:inline" }))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+                                                        <button type="submit" class="btnDel btn btn-danger fas fa-trash"> Delete</button>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
                                     }
                                 </tbody>
                             </table>
@@ -128,10 +131,15 @@
             }
         });
 
-        }
 
 
 
+
+    </script>
+    <script>
+        setTimeout(function () {
+            $('#success').fadeOut('slow');
+        }, 2000);
     </script>
 
 }

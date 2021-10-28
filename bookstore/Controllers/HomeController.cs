@@ -1,4 +1,5 @@
-﻿using bookstore.Models;
+﻿
+using bookstore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -130,9 +131,9 @@ namespace bookstore.Controllers
             List<Book> listBook = db.Books.ToList();
 
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(book, category, publisher, author, listBook, listCategory, listPublisher, listAuthor);
-            
 
-            
+
+
             if (book == null)
             {
                 return HttpNotFound();
