@@ -52,21 +52,13 @@
 
                                     @foreach (var user in Model)
                                     {
-                                        using (Html.BeginForm("Edit", "User", new { id = user.id }, FormMethod.Post))
-                                        {
+                                        
                                             <tr>
                                                 <td>@user.id</td>
                                                 <td>@user.name</td>
+                                                <td>@user.role</td>
                                                 <td>
-                                                    @Html.DropDownListFor(x => user.role, new List<SelectListItem>
-                                                    {
-                                                        new SelectListItem() {Text = "Admin", Value="Admin"},
-                                                        new SelectListItem() {Text = "Customer", Value="Customer"}
-                                                    })
-                                                </td>
-                                                <td>
-                                                    @*@Html.ActionLink(" Edit", "Edit", new { id = user.id }, new { @class = "btn btn-light fas fa-edit" })*@
-                                                    <button type="submit" class="btn btn-light fas fa-edit"> Edit</button>
+                                                    @Html.ActionLink(" Edit", "Edit", new { id = user.id }, new { @class = "btn btn-light fas fa-edit" })
                                                     @Html.ActionLink(" Detail", "ViewDetail", new { id = user.id }, new { @class = "btn btn-primary fas fa-file" })
 
                                                     @using (Html.BeginForm("Delete", "User", new { id = user.id }, FormMethod.Post, new { style = "display:inline" }))
