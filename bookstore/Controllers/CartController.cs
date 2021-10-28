@@ -46,7 +46,8 @@ namespace bookstore.Controllers
                 return RedirectToAction("LoginOrSignup", "Home");
             }
         }
-        public RedirectToRouteResult UpdateQuantity(int bookId, int quantity)
+        [HttpPost]
+        public ActionResult UpdateQuantity(int bookId, int quantity)
         {
             List<CartItem> cart = Session["cart"] as List<CartItem>;
             CartItem updateItem = cart.FirstOrDefault(m => m.Book.id == bookId);
@@ -55,6 +56,10 @@ namespace bookstore.Controllers
                 if (updateItem.Book.quantity_in_stock >= quantity)
                 {
                     updateItem.Quantity = quantity;
+                }
+                else
+                {
+                    ViewBag.Message = "quantity is greater than quantity in stock";
                 }
             }
             return RedirectToAction("Index");
@@ -168,7 +173,7 @@ namespace bookstore.Controllers
 
 
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("PurchasedSuccess");
             }
             else
             {
@@ -179,7 +184,15 @@ namespace bookstore.Controllers
                 UserPaymentListAndAddressListViewModels paymentListAndAddressListViewModels = new UserPaymentListAndAddressListViewModels(user, AddressList, PaymentList, addressAndPayment);
                 return View(paymentListAndAddressListViewModels);
             }
-
+        
         }
+        public ActionResult PurchasedSuccess()
+        {
+            int userId = AuthUser.GetLogin().id;
+            List<Order> orders = db.Orders.Where(o => o.user_id == userId).ToList();
+            orders.OrderByDescending(o => o.date);
+            return View(orders);
+        }
+
     }
 }
