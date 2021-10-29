@@ -14,7 +14,6 @@ namespace bookstore.Areas.Admin.Controllers
     public class DashboardController : BaseController
     {
         // GET: Admin/Admin
-
         public ActionResult Index()
         {
             List<User> users = db.Users.ToList();
