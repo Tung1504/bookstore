@@ -11,7 +11,6 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header">
                     <h3 class="mb-2">ORDER DETAILS</h3>
-                    <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -29,23 +28,51 @@
                 <div class="card">
                     <div class="card-header p-4">
                         <div class="float-right">
-                            <strong>Order Status:</strong> 
-                            <p class="mb-0" href="#" id="status">@Model.Order.status</p>
-                            
-                            @Html.ActionLink(" Update Status", "Edit", new { id = Model.Order.id }, new { @class = "btn btn-primary" })
+                            <strong>Order Status:</strong> <br />
+
+                            @if (Model.Order.status == "Pending")
+                            {
+                                <span class="text-primary">@Model.Order.status</span> <br/>
+                                @Html.ActionLink(" Update Status", "Edit", new { id = Model.Order.id }, new { @class = "btn btn-primary" })
+                            }
+                            else if (Model.Order.status == "Shipping")
+                            {
+                                <span class="text-warning">@Model.Order.status</span> <br />
+                                @Html.ActionLink(" Update Status", "Edit", new { id = Model.Order.id }, new { @class = "btn btn-primary" })
+                            }
+                            else if (Model.Order.status == "Complete")
+                            {
+                                <span class="text-success">@Model.Order.status</span> <br />
+                                @Html.ActionLink(" Update Status", "Edit", new { id = Model.Order.id }, new { @class = "btn btn-primary" })
+                            }
+                            else if (Model.Order.status == "Cancel")
+                            {
+                                <span class="text-danger">@Model.Order.status</span>
+                            }
                         </div>
 
 
                         <div class="float-left">
                             <h3 class="pt-2">Invoice #@Model.Order.order_number</h3>
-                            @Model.Order.date.Day/@Model.Order.date.Month/@Model.Order.date.Year
+                            <strong>Order date: </strong>@Model.Order.date.Day/@Model.Order.date.Month/@Model.Order.date.Year
+                            <br />
+
+                            @if (Model.Order.payment_status == "Unpaid")
+                            {
+                                <p><strong>Payment Status: </strong><span class="text-warning">Cash on delivery</span></p>
+                            }
+                            else
+                            {
+                                <p><strong>Payment Status: </strong><span class="text-success">Paid by card</span></p>
+                            }
+
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row mb-4">
                             <div class="col-sm-6">
                                 <h5 class="mb-3">From:</h5>
-                                <h3 class="text-dark mb-1">Gerald A. Garcia</h3>
+                                <h3 class="text-dark mb-1">E-SHOPPER</h3>
 
                                 <div>2546 Penn Street</div>
                                 <div>Sikeston, MO 63801</div>
@@ -102,11 +129,11 @@
                                 <table class="table table-clear">
                                     <tbody>
                                         @*<tr>
-                                            <td class="left">
-                                                <strong class="text-dark">Subtotal</strong>
-                                            </td>
-                                            <td class="right" id="subTotal" onload="SubTotal"></td>
-                                        </tr>*@
+                                                <td class="left">
+                                                    <strong class="text-dark">Subtotal</strong>
+                                                </td>
+                                                <td class="right" id="subTotal" onload="SubTotal"></td>
+                                            </tr>*@
                                         <tr>
                                             <td class="left">
                                                 <strong class="text-dark">Shipping</strong>

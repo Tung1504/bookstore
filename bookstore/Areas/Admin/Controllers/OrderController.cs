@@ -69,7 +69,7 @@ namespace bookstore.Areas.Admin.Controllers
             {
                 order.status = model.Order.status;
                 db.SaveChanges();
-                TempData["result"] = "Update order #" + order.order_number + " successfully!";
+                TempData["result"] = "Order #" + order.order_number + " updated successfully!";
                 return RedirectToAction("Index");
             }
 

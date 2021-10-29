@@ -27,8 +27,6 @@
             <div class="col-sm-12 col-12">
                 <div class="card">
                     <div class="card-body">
-                        @*<h3 class="card-title"><strong class="text-dark">USERS</strong></h3>*@
-                        @*<a class="btn btn-success fas fa-plus mb-3 card-title"  href="@Url.Action("Create", "User")"> Create New</a>*@
                         @if (ViewBag.SuccessMsg != null)
                         {
                             <div class="alert alert-success" id="success">
@@ -55,21 +53,17 @@
                                         
                                             <tr>
                                                 <td>@user.id</td>
-                                                <td>@user.name</td>
+                                                <td>@user.username</td>
                                                 <td>@user.role</td>
                                                 <td>
-                                                    @Html.ActionLink(" Edit", "Edit", new { id = user.id }, new { @class = "btn btn-light fas fa-edit" })
+                                                    @*@Html.ActionLink(" Edit", "Edit", new { id = user.id }, new { @class = "btn btn-light fas fa-edit" })*@
                                                     @Html.ActionLink(" Detail", "ViewDetail", new { id = user.id }, new { @class = "btn btn-primary fas fa-file" })
 
-                                                    @using (Html.BeginForm("Delete", "User", new { id = user.id }, FormMethod.Post, new { style = "display:inline" }))
-                                                    {
-                                                        @Html.AntiForgeryToken()
-                                                        <button type="submit" class="btnDel btn btn-danger fas fa-trash"> Delete</button>
-                                                    }
+                                                    <a data-id="@user.id" href='#' class='btn btn-danger fas fa-trash btnDel'> Delete</a>
                                                 </td>
                                             </tr>
                                         }
-                                    }
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -96,7 +90,7 @@
                 var id = $(this).data('id');
 
                 if (parseInt(id) > 0) {
-                    var conf = confirm("Are you sure to delete this category?");
+                    var conf = confirm("Are you sure to delete this user?");
                     if (conf) {
                         Delete(id)
                         //alert("Deleted Successfully!")
@@ -113,13 +107,7 @@
                     url: "/Admin/User/Delete",
                     type: "POST",
                     data: { id: id }
-                    //success: function (rs) {
-                    //    if (rs.success) {
-                    //        $('trow' + id).remove();
-                    //    } else {
-                    //        console.log('error');
-                    //    }
-                    //}
+                   
                 }).done(function (res) {
                     if (res.success) {
                         $('#trow' + id).remove();
@@ -136,11 +124,7 @@
 
 
     </script>
-    <script>
-        setTimeout(function () {
-            $('#success').fadeOut('slow');
-        }, 2000);
-    </script>
+    
 
 }
 

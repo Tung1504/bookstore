@@ -7,6 +7,7 @@ using System.Web;
 
 namespace bookstore.ViewModels
 {
+
     public class BookCategoryPublisherAuthorViewModel
     {
         public Book Book { get; set; }

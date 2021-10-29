@@ -57,10 +57,14 @@ namespace bookstore.Areas.Admin.Controllers
                     db.SaveChanges();
                     TempData["result"] = "Create new book successfully!";
                 }
-                    //db.Books.Add(book);
-                    //db.SaveChanges();
-                    //TempData["result"] = "Create new book successfully!";
-                    return RedirectToAction("Index");
+                else
+                {
+                    db.Books.Add(book);
+                    db.SaveChanges();
+                    TempData["result"] = "Create new book successfully!";
+                }
+
+                return RedirectToAction("Index");
             }
 
             //nếu validate thất bại
@@ -110,23 +114,31 @@ namespace bookstore.Areas.Admin.Controllers
                 //db.SaveChanges();
 
                 // generate image file name (eg. book27.png)
-                int index = upload_image.FileName.IndexOf('.');
-                string _FileName = "book" + id.ToString() + '.' + upload_image.FileName.Substring(index + 1);
+                
 
                 // save image file 
                 if (upload_image != null && upload_image.ContentLength > 0)
                 {
+                    int index = upload_image.FileName.IndexOf('.');
+                    string _FileName = "book" + id.ToString() + '.' + upload_image.FileName.Substring(index + 1);
                     string _path = Path.Combine(Server.MapPath("~/images/shop"), _FileName);
                     upload_image.SaveAs(_path);
+                    Book b = db.Books.FirstOrDefault(x => x.id == id);
+                    b.image = _FileName;
+                    db.SaveChanges();
+                    
+                }
+                else
+                {
+                    db.SaveChanges();
+                    
                 }
 
                 // update image file name of the book
-                Book b = db.Books.FirstOrDefault(x => x.id == id);
-                b.image = _FileName;
-                db.SaveChanges();
                 TempData["result"] = "Edit book detail successfully!";
                 return RedirectToAction("Index");
             }
+            
             
             return View(book);
         }

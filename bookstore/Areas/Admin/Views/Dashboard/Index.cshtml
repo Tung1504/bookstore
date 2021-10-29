@@ -260,7 +260,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model.ListOrder.OrderByDescending(m => m.id).Take(5).Where(m => m.status == "Preparing"))
+                                    @foreach (var item in Model.ListOrder.OrderByDescending(m => m.id).Take(5).Where(m => m.status == "Pending"))
                                     {
                                         <tr>
 
