@@ -165,9 +165,13 @@ namespace bookstore.Areas.Admin.Controllers
                         db.SaveChanges();
                         TempData["result"] = "Create new publisher successfully!";
                     }
-                    //db.Publishers.Add(publisher);
-                    //db.SaveChanges();
-                    //TempData["result"] = "Create new publisher successfully!";
+                    else
+                    {
+                        db.Publishers.Add(publisher);
+                        db.SaveChanges();
+                        TempData["result"] = "Create new publisher successfully!";
+                    }
+
                     return RedirectToAction("Index");
                 }
             }

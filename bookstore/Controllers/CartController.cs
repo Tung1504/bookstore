@@ -105,12 +105,13 @@ namespace bookstore.Controllers
                 User user = (User)Session["auth"];
 
                 int orderNo = db.Orders.Count() + 1;
+                string orderNumber = "1000" + orderNo;
                 int shipping_price;
 
                 shipping_price = 15000;
 
 
-                string status = "Preparing";
+                string status = "Pending";
                 string payment_status;
                 if (!model.Payment.Equals("COD (Cash on delivery)"))
                 {
@@ -126,7 +127,7 @@ namespace bookstore.Controllers
                 DateTime date = DateTime.Now;
                 Order order = new Order
                 {
-                    order_number = orderNo,
+                    order_number = Int32.Parse(orderNumber),
                     shipping_price = shipping_price,
                     status = status,
                     payment_status = payment_status,

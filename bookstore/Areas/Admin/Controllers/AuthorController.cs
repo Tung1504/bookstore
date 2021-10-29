@@ -212,9 +212,13 @@ namespace bookstore.Areas.Admin.Controllers
                         db.SaveChanges();
                         TempData["result"] = "Create new author successfully!";
                     }
-                    //db.Authors.Add(author);
-                    //db.SaveChanges();
-                    //TempData["result"] = "Create new author successfully!";
+                    else
+                    {
+                        db.Authors.Add(author);
+                        db.SaveChanges();
+                        TempData["result"] = "Create new author successfully!";
+                    }
+
                     return RedirectToAction("Index");
                 }
             }

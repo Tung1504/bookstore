@@ -15,7 +15,6 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="page-header">
                         <h3 class="mb-2">USER PROFILE</h3>
-                        <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -45,7 +44,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="user-avatar text-center d-block">
-                                <img src="~/images/author/1.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                <img src="~/images/home/avatar.png" alt="User Avatar" class="rounded-circle user-avatar-xxl">
                             </div>
                             <div class="text-center">
                                 <h2 class="font-24 mb-0">@Model.User.name</h2>
@@ -60,6 +59,26 @@
                                     <li class="mb-2"><i class="fas fa-fw fa-envelope mr-2"></i>@Model.User.email</li>
                                     <li class="mb-0"><i class="fas fa-fw fa-phone mr-2"></i>@Model.User.phone</li>
                                 </ul>
+                            </div>
+                        </div>
+                        <div class="card-body border-top">
+                            <h3 class="font-16">Role</h3>
+                            <div class="">
+                                @*@using (Html.BeginForm("Edit", "User", new { id = Model.User.id }, FormMethod.Post))
+        {
+            @Html.ValidationSummary();
+            @Html.AntiForgeryToken();
+
+            <a class="mb-0" href="#">@Model.Order.status</a> <br />
+                                @Html.TextBoxFor(m => m.Order.status, new { type = "text", @class = "form-control" })
+                                @Html.DropDownListFor(x => x.User.role, new List<SelectListItem>
+                                {
+                                    new SelectListItem() {Text = "Admin", Value="Admin"},
+                                    new SelectListItem() {Text = "Customer", Value="Customer"}
+                                }) <br />
+                                <button type="submit" class="btn btn-primary">Update Status</button>
+                                }*@
+                                @Html.ActionLink(" Update Status", "Edit", new { id = Model.User.id }, new { @class = "btn btn-primary" })
                             </div>
                         </div>
 
@@ -94,92 +113,86 @@
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="card">
                                             <div class="card-body">
-                                                <ul class="list-unstyled">
-                                                    <li class="media">
-                                                        <div class="media-body">
-                                                            <h3 class="mt-0 mb-1">Address: </h3>
-                                                            @Html.DisplayFor(m => m.Address.address1)
-                                                        </div>
-                                                    </li>
-                                                    <li class="media my-4">
-                                                        <div class="media-body">
-                                                            <h3 class="mt-0 mb-1">District: </h3>
-                                                            @Html.DisplayFor(m => m.Address.district)
-                                                        </div>
-                                                    </li>
-                                                    <li class="media">
-                                                        <div class="media-body">
-                                                            <h3 class="mt-0 mb-1">City: </h3>
-                                                            @Html.DisplayFor(m => m.Address.city)
-                                                        </div>
-                                                    </li>
-                                                    <li class="media my-4">
-                                                        <div class="media-body">
-                                                            <h3 class="mt-0 mb-1">Postal Code: </h3>
-                                                            @Html.DisplayFor(m => m.Address.postal_code)
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                                <table class="table table-bordered first">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Address</th>
+                                                            <th scope="col">District</th>
+                                                            <th scopt="col">City</th>
+                                                            <th scope="col">Postal Code</th>
+                                                        </tr>
+                                                    </thead>
 
+
+                                                    <tbody>
+
+                                                        @foreach (var address in Model.User.Addresses)
+                                                        {
+
+                                                            <tr>
+                                                                <td>@address.address1</td>
+                                                                <td>@address.district</td>
+                                                                <td>@address.city</td>
+                                                                <td>@address.postal_code</td>
+                                                            </tr>
+                                                        }
+
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="tab-pane fade" id="card" role="tabpanel" aria-labelledby="card">
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="card">
                                             <div class="card-body">
-                                                <ul class="list-unstyled">
-                                                    <li class="media">
-                                                        <div class="media-body">
-                                                            <h3 class="mt-0 mb-1">Card Number: </h3>
-                                                            @Html.DisplayFor(m => m.PaymentCard.card_number)
-                                                        </div>
-                                                    </li>
-                                                    <li class="media my-4">
-                                                        <div class="media-body">
-                                                            <h3 class="mt-0 mb-1">Card Type: </h3>
-                                                            @Html.DisplayFor(m => m.PaymentCard.card_type)
 
-                                                        </div>
-                                                    </li>
-                                                    <li class="media">
-                                                        <div class="media-body">
-                                                            <h3 class="mt-0 mb-1">To Date: </h3>
-                                                            @Html.DisplayFor(m => m.PaymentCard.from_date.Month)/@Html.DisplayFor(m => m.PaymentCard.from_date.Year)
-                                                            @*@Model.PaymentCard.from_date.Month/@Model.PaymentCard.from_date.Year*@
-                                                        </div>
-                                                    </li>
-                                                    <li class="media my-4">
-                                                        <div class="media-body">
-                                                            <h3 class="mt-0 mb-1">From Date: </h3>
-                                                            @Html.DisplayFor(m => m.PaymentCard.to_date.Month)/@Html.DisplayFor(m => m.PaymentCard.to_date.Year)
-                                                            @*@Model.PaymentCard.to_date.Month/@Model.PaymentCard.to_date.Year*@
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                                <table class="table table-bordered first">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Card Number</th>
+                                                            <th scope="col">Card Type</th>
+                                                            <th scopt="col">From Date</th>
+                                                            <th scope="col">To Date</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+
+                                                        @foreach (var card in Model.User.Payment_card)
+                                                        {
+
+                                                            <tr>
+                                                                <td>****@card.card_number.ToString().Substring(card.card_number.ToString().Length - 4)</td>
+                                                                <td>@card.card_type</td>
+                                                                <td>@card.from_date.Month/@card.from_date.Year</td>
+                                                                <td>@card.to_date.Month/@card.to_date.Year</td>
+                                                            </tr>
+                                                        }
+
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- ============================================================== -->
+                            <!-- end campaign tab one -->
+                            <!-- ============================================================== -->
                         </div>
                         <!-- ============================================================== -->
-                        <!-- end campaign tab one -->
+                        <!-- end campaign data -->
                         <!-- ============================================================== -->
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- end campaign data -->
-                    <!-- ============================================================== -->
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @section js{
 
     <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>

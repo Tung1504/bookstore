@@ -8,11 +8,29 @@
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">ORDER DETAILS</h3>
+                    <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Order")" class="breadcrumb-link">Manage Orders</a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("ViewDetail", "Order" , new { id = Model.Order.id })" class="breadcrumb-link">Order Details</a></li>
+                                <li class="breadcrumb-item active">Edit Order Details</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header p-4">
                         <div class="float-right">
-                            <h4>Order Status:</h4> 
+                            <h4>Order Status:</h4>
                             @using (Html.BeginForm("Edit", "Order", new { id = Model.Order.id }, FormMethod.Post))
                             {
                                 @Html.ValidationSummary();
@@ -37,13 +55,21 @@
                         <div class="float-left">
                             <h3 class="pt-2">Invoice #@Model.Order.id</h3>
                             @Model.Order.date.Day/@Model.Order.date.Month/@Model.Order.date.Year
+                            @if (Model.Order.payment_status == "Unpaid")
+                            {
+                                <p>Payment Status: <span class="text-warning">Cash on delivery</span></p>
+                            }
+                            else
+                            {
+                                <p>Payment Status: <span class="text-success">Paid by card</span></p>
+                            }
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row mb-4">
                             <div class="col-sm-6">
                                 <h5 class="mb-3">From:</h5>
-                                <h3 class="text-dark mb-1">Gerald A. Garcia</h3>
+                                <h3 class="text-dark mb-1">E-SHOPPER</h3>
 
                                 <div>2546 Penn Street</div>
                                 <div>Sikeston, MO 63801</div>
@@ -75,16 +101,25 @@
                                 <tbody>
                                     @foreach (var item in Model.ListOrderDetail.Where(m => m.order_id == Model.Order.id))
                                     {
-                                    <tr>
-                                        <td>@item.id</td>
-                                        <td><a href="@Url.Action("ViewDetail","Book", new { id = Model.OrderDetail.book_id} )">@item.Book.title</a></td>
-                                        <td>@item.Book.description</td>
-                                        <td>$@item.Book.price</td>
-                                        <td id="qty" class="">@item.quantity</td>
-                                        <td>@item.Book.quantity_in_stock</td>
-                                        <td id="check"></td>
-                                        <td id="price">$@item.total_price</td>
-                                    </tr>
+                                        <tr>
+                                            <td>@item.id</td>
+                                            <td><a href="@Url.Action("ViewDetail","Book", new { id = Model.OrderDetail.book_id} )">@item.Book.title</a></td>
+                                            <td>@item.Book.description</td>
+                                            <td>$@item.Book.price</td>
+                                            <td id="qty" class="">@item.quantity</td>
+                                            <td>@item.Book.quantity_in_stock</td>
+                                            <td>
+                                                @if (item.quantity <= item.Book.quantity_in_stock)
+                                                {
+                                                    <span class="text-success">Okay</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-danger">Out of stock</span>
+                                                }
+                                            </td>
+                                            <td id="price">$@item.total_price</td>
+                                        </tr>
                                     }
 
                                 </tbody>
@@ -103,11 +138,11 @@
                                 <table class="table table-clear">
                                     <tbody>
                                         @*<tr>
-                                                <td class="left">
-                                                    <strong class="text-dark">Subtotal</strong>
-                                                </td>
-                                                <td class="right" id="subTotal" onload="SubTotal"></td>
-                                            </tr>*@
+                                            <td class="left">
+                                                <strong class="text-dark">Subtotal</strong>
+                                            </td>
+                                            <td class="right" id="subTotal" onload="SubTotal"></td>
+                                        </tr>*@
                                         <tr>
                                             <td class="left">
                                                 <strong class="text-dark">Shipping</strong>
@@ -140,16 +175,6 @@
 </div>
 
 @section js {
-    <script>
-        
-        if (@Model.OrderDetail.quantity <= @Model.OrderDetail.Book.quantity_in_stock) {
-            document.getElementById("check").innerHTML = "Okay";
-            document.getElementById("check").classList.add = "text-success";
-        }
-        else if(@Model.OrderDetail.quantity > @Model.OrderDetail.Book.quantity_in_stock){
-            document.getElementById("check").innerHTML = "Out of stock";
-            document.getElementById("check").classList.add = "text-success";
-        }
-    </script>
+   
 
 }
