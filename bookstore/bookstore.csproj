@@ -138,6 +138,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserOrderController.cs" />
     <Compile Include="Controllers\PaymentCardController.cs" />
     <Compile Include="DAO\AddressDAO.cs" />
     <Compile Include="DAO\AuthorDAO.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Models\Order.cs">
       <DependentUpon>BookStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderDetailView.cs" />
     <Compile Include="Models\Order_Detail.cs">
       <DependentUpon>BookStoreModel.tt</DependentUpon>
     </Compile>
@@ -189,9 +191,6 @@
       <DependentUpon>BookStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Publisher.cs">
-      <DependentUpon>BookStoreModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>BookStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
@@ -718,7 +717,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -812,9 +810,6 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\UpdateInformation.cshtml" />
-
-    <Content Include="Views\Cart\PurchasedSuccess.cshtml" />
-
     <Content Include="Views\Shared\_Notifications.cshtml" />
     <Content Include="Views\Home\Publisher.cshtml" />
     <Content Include="Views\Home\Category.cshtml" />
@@ -824,7 +819,8 @@
     <Content Include="Views\PaymentCard\Create.cshtml" />
     <Content Include="Views\PaymentCard\Index.cshtml" />
     <Content Include="Views\PaymentCard\Edit.cshtml" />
-
+    <Content Include="Views\UserOrder\ViewDetails.cshtml" />
+    <Content Include="Views\UserOrder\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

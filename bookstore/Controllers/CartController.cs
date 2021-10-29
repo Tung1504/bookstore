@@ -59,7 +59,7 @@ namespace bookstore.Controllers
                 }
                 else
                 {
-                    ViewBag.Message = "quantity is greater than quantity in stock";
+                    TempData["Message"] = "quantity is greater than quantity in stock";
                 }
             }
             return RedirectToAction("Index");
@@ -115,7 +115,7 @@ namespace bookstore.Controllers
                 shipping_price = 15000;
 
 
-                string status = "Preparing";
+                string status = "Pending";
                 string payment_status;
                 if (!model.Payment.Equals("COD (Cash on delivery)"))
                 {
@@ -158,22 +158,22 @@ namespace bookstore.Controllers
 
                     }
                 }
-                //foreach (var item in cart)
-                //{
-                //    if (item.UserId == AuthUser.GetLogin().id)
-                //    {
+                foreach (var item in cart)
+                {
+                    if (item.UserId == AuthUser.GetLogin().id)
+                    {
 
-                //        Book book = db.Books.FirstOrDefault(p => p.id == item.Book.id);
-                //        book.quantity_in_stock = book.quantity_in_stock - item.Quantity;
+                        Book book = db.Books.FirstOrDefault(p => p.id == item.Book.id);
+                        book.quantity_in_stock = book.quantity_in_stock - item.Quantity;
 
-                //    }
-                //}
+                    }
+                }
                 cart.RemoveAll(x => x.UserId == AuthUser.GetLogin().id);
                 Session["Cart"] = cart;
 
 
                 db.SaveChanges();
-                return RedirectToAction("PurchasedSuccess");
+                return RedirectToAction("Index","UserOrder");
             }
             else
             {
@@ -186,13 +186,10 @@ namespace bookstore.Controllers
             }
         
         }
-        public ActionResult PurchasedSuccess()
-        {
-            int userId = AuthUser.GetLogin().id;
-            List<Order> orders = db.Orders.Where(o => o.user_id == userId).ToList();
-            orders.OrderByDescending(o => o.date);
-            return View(orders);
-        }
+        //public ActionResult PurchasedSuccess()
+        //{
+            
+        //}
 
     }
 }

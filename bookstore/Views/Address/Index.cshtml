@@ -48,6 +48,7 @@
                                             <td>@address.postal_code</td>
                                             <td>
                                                 @Html.ActionLink(" Edit", "Edit", new { id = address.id }, new { @class = "btn btn-info" })
+                                               
                                                 @using (Html.BeginForm("Delete", "Address", new { id = address.id }, FormMethod.Post, new { style = "display:inline" }))
                                                 {
                                                     @Html.AntiForgeryToken()

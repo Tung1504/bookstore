@@ -1,0 +1,63 @@
+﻿@model bookstore.Models.OrderDetailView
+@{
+    ViewBag.Title = "ViewDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="cart_items">
+    <div id="contact-page" class="container">
+        <div class="bg">
+
+            <div class="row">
+
+                <div class="col-sm-12 padding-right">
+                    <div class="product-details">
+
+                        <div class="col-sm-8">
+                            <h2 class="title text-center">Order</h2>
+                            <address>
+                                <p>Order number : @Model.Order.order_number</p>
+                                <p>Payment Status : @Model.Order.payment_status</p>
+                                <p>Status : @Model.Order.status</p>
+                                <p>Order Date : @Model.Order.date</p>
+                                <p>Address : @Model.Order.delivery_location</p>
+
+                            </address>
+                        </div>
+                    </div>
+                </div><!--/#contact-page-->
+            </div>
+            <h2 class="title text-center">Order Details</h2>
+            <div class="col-sm-11">
+                <div class="table-responsive cart_info">
+                    <br /><br />
+                    <table class="table table-bordered first">
+                        <thead>
+                            <tr class="cart_menu">
+                                <th scope="col">Book</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in Model.OrderDetails)
+                            {
+                                <tr>
+                                    <td>@order.Book.title</td>
+                                    <td>@order.quantity</td>
+                                    <td>@order.total_price</td>
+
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div><!--/product-details-->
+        </div>
+         
+            </div>
+        
+</section>
+

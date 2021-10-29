@@ -649,7 +649,6 @@ E:\Code\BookStore27102021\bookstore\bookstore\bin\System.Web.WebPages.Deployment
 E:\Code\BookStore27102021\bookstore\bookstore\bin\System.Web.WebPages.Razor.xml
 E:\Code\BookStore27102021\bookstore\bookstore\bin\Newtonsoft.Json.xml
 E:\Code\BookStore27102021\bookstore\bookstore\bin\Antlr3.Runtime.pdb
-E:\Code\BookStore27102021\bookstore\bookstore\obj\Debug\bookstore.csprojAssemblyReference.cache
 E:\Code\BookStore27102021\bookstore\bookstore\obj\Debug\bookstore.csproj.CoreCompileInputs.cache
 E:\Code\BookStore27102021\bookstore\bookstore\obj\Debug\bookstore.csproj.CopyComplete
 E:\Code\BookStore27102021\bookstore\bookstore\obj\Debug\bookstore.dll
@@ -700,3 +699,4 @@ E:\Code\BookStore27102021\bookstore\bookstore\bin\roslyn\vbc.exe.config
 E:\Code\BookStore27102021\bookstore\bookstore\bin\roslyn\vbc.rsp
 E:\Code\BookStore27102021\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe
 E:\Code\BookStore27102021\bookstore\bookstore\bin\roslyn\VBCSCompiler.exe.config
+E:\Code\BookStore27102021\bookstore\bookstore\obj\Debug\bookstore.csprojAssemblyReference.cache
