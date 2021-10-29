@@ -35,10 +35,16 @@ namespace bookstore.Models
         public string password { get; set; }
 
 
-
+        [Required]
         public string role { get; set; }
+
+        [Required]
         public string phone { get; set; }
+
+        [Required]
         public string email { get; set; }
+
+        [Required]
         public Nullable<System.DateTime> dob { get; set; }
 
         public virtual ICollection<Address> Addresses { get; set; }

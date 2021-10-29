@@ -4,59 +4,80 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+
 <div class="dashboard-wrapper">
     <div class="container-fluid  dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">CREATE NEW USER</h3>
+                    <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "User")" class="breadcrumb-link">Manage User</a></li>
+                                <li class="breadcrumb-item active">Create User</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
         @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "form" }))
         {
-            @Html.ValidationSummary();
+            @*@Html.ValidationSummary();*@
             @Html.AntiForgeryToken();
-            <div>
-                <lable>Name</lable>
-                @Html.TextBoxFor(m => m.name, new { type = "text", @class = "form-control" })
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-8 col-md-8 col-sm-8 col-12">
+                            <div class="user-avatar-info">
 
+                                <div class="user-avatar-address">
+
+                                    <lable>Name</lable>
+                                    @Html.TextBoxFor(m => m.name, new { type = "text", @class = "form-control" }) 
+                                    @Html.ValidationMessageFor(m => m.name , "", new { @class = "text-danger" }) <br />
+
+                                    <lable>UserName</lable>
+                                    @Html.TextBoxFor(m => m.username, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" }) <br />
+
+                                    <lable>Password</lable>
+                                    @Html.TextBoxFor(m => m.password, new { type = "password", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" }) <br />
+
+                                    <lable>Re-Password</lable>
+                                    @Html.TextBoxFor(m => m.repassword, new { type = "password", @class = "form-control" }) 
+                                    @Html.ValidationMessageFor(m => m.repassword, "", new { @class = "text-danger" }) <br />
+
+                                    <lable>Role</lable>
+                                    @Html.TextBoxFor(m => m.role, new { type = "text", @class = "form-control" }) 
+                                    @Html.ValidationMessageFor(m => m.role, "", new { @class = "text-danger" }) <br />
+
+                                    <lable>Phone</lable>
+                                    @Html.TextBoxFor(m => m.phone, new { type = "text", @class = "form-control" }) 
+                                    @Html.ValidationMessageFor(m => m.phone, "", new { @class = "text-danger" }) <br />
+
+                                    <lable>Email</lable>
+                                    @Html.TextBoxFor(m => m.email, new { type = "text", @class = "form-control" }) 
+                                    @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger" }) <br />
+
+                                    <lable>Dob</lable>
+                                    @Html.TextBoxFor(m => m.dob, new { type = "date", @class = "form-control" }) 
+                                    @Html.ValidationMessageFor(m => m.dob, "", new { @class = "text-danger" }) <br />
+
+
+
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div>
-                <lable>UserName</lable>
-                @Html.TextBoxFor(m => m.username, new { type = "text", @class = "form-control" })
-
-            </div>
-
-            <div>
-                <lable>Password</lable>
-                @Html.TextBoxFor(m => m.password, new { type = "password", @class = "form-control" })
-
-            </div>
-
-            <div>
-                <lable>Role</lable>
-                @Html.TextBoxFor(m => m.role, new { type = "text", @class = "form-control" })
-
-            </div>
-
-            <div>
-                <lable>Phone</lable>
-                @Html.TextBoxFor(m => m.phone, new { type = "text", @class = "form-control" })
-
-            </div>
-
-            <div>
-                <lable>Email</lable>
-                @Html.TextBoxFor(m => m.email, new { type = "text", @class = "form-control" })
-
-            </div>
-
-            <div>
-                <lable>Dob</lable>
-                @Html.TextBoxFor(m => m.dob, new { type = "date", @class = "form-control"})
-
-            </div>
-
-
-
-            <br />
-            <button type="submit">Submit</button>
         }
     </div>
 </div>
