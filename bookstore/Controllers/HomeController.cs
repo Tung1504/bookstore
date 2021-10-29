@@ -79,39 +79,6 @@ namespace bookstore.Controllers
             return View();
         }
 
-        public ActionResult Publisher(int id, int? page)
-        {
-
-
-            List<Book> listBook = db.Books.Where(b => b.publisher_id == id).ToList();
-            if (page > 0)
-            {
-                page = page;
-            }
-            else
-            {
-                page = 1;
-            }
-            int limit = 5;
-            int start = (int)(page - 1) * limit;
-            int totalBook = listBook.Count();
-            ViewBag.totalBook = totalBook;
-            ViewBag.pageCurrent = page;
-            int numberPage = (totalBook / limit);
-            ViewBag.numberPage = numberPage;
-            List<Book> paginated_listBook = listBook.OrderByDescending(s => s.id).Skip(start).Take(limit).ToList();
-
-
-
-            Publisher publisher = db.Publishers.Find(id);
-            List<Category> listCategory = db.Categories.ToList();
-            List<Publisher> listPublisher = db.Publishers.ToList();
-
-
-
-            BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(publisher, paginated_listBook, listCategory, listPublisher);
-
-            return View(bookCategoryPublisherViewModel);
-        }
+        
     }
 }

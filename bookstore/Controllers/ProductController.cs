@@ -1,4 +1,7 @@
-﻿using bookstore.Models;
+﻿using bookstore.DAO;
+using bookstore.Models;
+using bookstore.ViewModels.Home;
+using bookstore.ViewModels.ProductDetailViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,26 +12,42 @@ namespace bookstore.Controllers
 {
     public class ProductController : BaseController
     {
+        CategoryDAO categoryDAO;
+        PublisherDAO publisherDAO;
+        BookDAO bookDAO;
+        AuthorDAO authorDAO;
+
+        public ProductController(CategoryDAO categoryDAO, PublisherDAO publisherDAO, BookDAO bookDAO, AuthorDAO authorDAO)
+        {
+            this.categoryDAO = categoryDAO;
+            this.publisherDAO = publisherDAO;
+            this.bookDAO = bookDAO;
+            this.authorDAO = authorDAO;
+        }
+
         // GET: Product
         public ActionResult Detail(int id)
         {
-            //Book book = db.Books.Find(id);
-            //Category category = db.Categories.Where(m => m.id == book.category_id).FirstOrDefault();
-            //Publisher publisher = db.Publishers.Where(m => m.id == book.publisher_id).FirstOrDefault();
-            //Author author = db.Authors.Where(m => m.id == book.author_id).FirstOrDefault();
-            //List<Category> listCategory = db.Categories.ToList();
-            //List<Publisher> listPublisher = db.Publishers.ToList();
-            //List<Author> listAuthor = db.Authors.ToList();
-            //List<Book> listBook = db.Books.ToList();
+            Book book = bookDAO.Find(id);
+            Category category = categoryDAO.FirstOrDefault(m => m.id == book.category_id);
+            Publisher publisher = publisherDAO.FirstOrDefault(m => m.id == book.publisher_id);
+            Author author = authorDAO.FirstOrDefault(m => m.id == book.author_id);   
+            List<Author> listAuthor = authorDAO.All();
+            List<Book> listBook = bookDAO.All();
 
-            //BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(book, category, publisher, author, listBook, listCategory, listPublisher, listAuthor);
+            ProductDetailViewModel productDetailViewModel = new ProductDetailViewModel()
+            {
+                Category = category,
+                Book = book,
+                Author = author,
+                Publisher = publisher
+            };
 
-            //if (book == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(bookCategoryPublisherViewModel);
-            return Content("1");
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            return View(productDetailViewModel);
         }
     }
 }

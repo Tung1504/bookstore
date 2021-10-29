@@ -154,7 +154,9 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\PublisherProductController.cs" />
     <Compile Include="Controllers\WidgetController.cs" />
+    <Compile Include="DAO\AuthorDAO.cs" />
     <Compile Include="DAO\BaseDAO.cs" />
     <Compile Include="DAO\BookDAO.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
@@ -223,9 +225,12 @@
     <Compile Include="ViewModels\Auth\SignupViewModel.cs" />
     <Compile Include="ViewModels\Auth\LoginViewModel.cs" />
     <Compile Include="ViewModels\CategoryProduct\CategoryBookViewModel.cs" />
+    <Compile Include="ViewModels\Customer\CustomerUpdateInformationViewModel.cs" />
     <Compile Include="ViewModels\Home\BookCategoryPublisherAuthorViewModel.cs" />
     <Compile Include="ViewModels\BookCategoryPublisherViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\ProductDetailViewModel\ProductDetailViewModel.cs" />
+    <Compile Include="ViewModels\PublisherProduct\PublisherProductViewModel.cs" />
     <Compile Include="ViewModels\UserAddressPaymentCardViewModels.cs" />
     <Compile Include="ViewModels\UserAddressPaymentListAndCartViewModels.cs" />
     <Compile Include="ViewModels\UserPaymentListAndAddressListViewModels.cs" />
@@ -733,9 +738,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\Category\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -829,9 +831,11 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\UpdateInformation.cshtml" />
     <Content Include="Views\Shared\_Notifications.cshtml" />
-    <Content Include="Views\Home\Publisher.cshtml" />
-    <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Widget\_Sidebar.cshtml" />
+    <Content Include="Views\PublisherProduct\Index.cshtml" />
+    <Content Include="Views\Shared\_WithSidebarLayout.cshtml" />
+    <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Product\_Item.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

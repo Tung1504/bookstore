@@ -40,6 +40,11 @@ namespace bookstore.DAO
             return dbSet.FirstOrDefault(expression);
         }
 
+        public T Find(int id)
+        {
+            return dbSet.Find(id);
+        }
+
         public void SaveChanges()
         {
             db.SaveChanges();

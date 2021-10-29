@@ -1,16 +1,13 @@
-﻿@model bookstore.ViewModels.CategoryProduct.CategoryBookViewModel
+﻿@model bookstore.ViewModels.PublisherProduct.PublisherProductViewModel
 
 @{
-    ViewBag.Title = "Category";
+    ViewBag.Title = "Publisher";
     Layout = "~/Views/Shared/_WithSidebarLayout.cshtml";
 }
 
-
-
-<div class="padding-right">
     <div class="features_items">
         <!--features_items-->
-        <h2 class="title text-center">Category: @Model.Category.category_name</h2>
+        <h2 class="title text-center">Publisher: @Model.Publisher.publisher_name</h2>
         @if (Model.Books.Count() == 0)
         {
             <h2 style="color:#FE980F">No Match Any Book</h2>
@@ -21,15 +18,11 @@
             {
                 <div class="col-sm-4">
                     <div class="product-image-wrapper ">
-
                         @Html.Partial("~/Views/Product/_Item.cshtml", book)
                     </div>
                 </div>
             }
         }
-
-
-
 
     </div><!--features_items-->
 
@@ -40,18 +33,11 @@
             int i;
             for (i = 1; i <= numberPage; i++)
             {
-                if (i == pageCurrent)
-                {
-                    <li class="active"><a href="?page=@i">@i</a></li>
-                }
-                else
-                {
-                    <li><a href="?page=@i">@i</a></li>
-                }
+                <li class="@(i == pageCurrent ? "active" : "")"><a href="?page=@i">@i</a></li>
             }
         }
     </ul>
-</div>
+
 
 @section js{
     <script src="@Url.Content("~/Scripts/jquery.js")"></script>

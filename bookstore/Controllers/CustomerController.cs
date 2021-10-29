@@ -1,5 +1,7 @@
-﻿using bookstore.Helpers;
+﻿using bookstore.DAO;
+using bookstore.Helpers;
 using bookstore.Models;
+using bookstore.ViewModels.Customer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,13 @@ namespace bookstore.Controllers
 {
     public class CustomerController : BaseController
     {
+        UserDAO UserDAO;
+
+        public CustomerController(UserDAO userDAO)
+        {
+            UserDAO = userDAO;
+        }
+
         // GET: User
         public ActionResult Index()
         {
@@ -26,29 +35,31 @@ namespace bookstore.Controllers
 
         public ActionResult UpdateInformation()
         {
-            User u = AuthUser.GetLogin();
-            return View(u);
+            int authId = AuthUser.GetLogin().id;
+            User u = UserDAO.FirstOrDefault(p => p.id == authId);
+            CustomerUpdateInformationViewModel customerUpdateInformationViewModel = new CustomerUpdateInformationViewModel()
+            {
+                Username = u.username,
+                Phone = u.phone,
+                Name = u.name,
+                Dob = u.dob,
+                Email = u.email
+            };
+            return View(customerUpdateInformationViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateInformation([Bind(Exclude ="password")]User user)
+        public ActionResult UpdateInformation(CustomerUpdateInformationViewModel customerUpdateInformationViewModel)
         {
-            ModelState.Remove("password");
-            ModelState.Remove("repassword");
-
             if (ModelState.IsValid)
             {
-                //user.password = AuthUser.GetLogin().password;
-                //user.role = AuthUser.GetLogin().role;
-                //user.repassword = user.password;
-                //user.dob = user.dob.Date;
-                //db.Entry(user).State = System.Data.EntityState.Modified;
-                //db.SaveChanges();
-                //return RedirectToAction("Index");
+               // db.Entry(user).State = System.Data.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             
-            return View(user);
+            return View(customerUpdateInformationViewModel);
         }
     }
 }
