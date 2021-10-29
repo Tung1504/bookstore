@@ -94,6 +94,7 @@ namespace bookstore.Controllers
                 // Login: goc man hinh: camnh
                 Session["Id"] = u.id.ToString();
                 Session["UserName"] = u.username;
+                Session["Role"] = u.role;
                 Session["auth"] = u;
 
                 if (u.role == "Customer")

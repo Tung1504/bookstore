@@ -16,7 +16,6 @@
                 <div class="col-sm-6">
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
-                            @*<li><a href="@Url.Action("Admin", "Home")">Admin</a></li>*@
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -73,6 +72,11 @@
                                 <li><a href="@Url.Action("Index", "Cart")"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 
                                 <li><a href="@Url.Action("Index", "Customer")"><i class="fa fa-user"></i> Hello @Session["UserName"]</a></li>
+
+                                if (Session["Role"].ToString() == "Admin")
+                                {
+                                    <li><a href="@Url.Action("Admin", "Home")"><i class="fa fa-users"></i>Admin</a></li>
+                                }
 
                                 <li><a href="@Url.Action("Logout", "Home")"><i class="fa fa-sign-out"></i> Logout</a></li>
 
