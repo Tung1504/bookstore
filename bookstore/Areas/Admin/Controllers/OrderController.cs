@@ -14,6 +14,10 @@ namespace bookstore.Areas.Admin.Controllers
         public ActionResult Index()
         {
             List<Order> order = db.Orders.ToList();
+            if (TempData["result"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["result"];
+            }
             return View(order);
         }
 
@@ -65,6 +69,7 @@ namespace bookstore.Areas.Admin.Controllers
             {
                 order.status = model.Order.status;
                 db.SaveChanges();
+                TempData["result"] = "Order #" + order.order_number + " updated successfully!";
                 return RedirectToAction("Index");
             }
 

@@ -621,6 +621,7 @@
     <Content Include="images\cart\one.png" />
     <Content Include="images\cart\three.png" />
     <Content Include="images\cart\two.png" />
+    <Content Include="images\home\avatar.png" />
     <Content Include="images\home\bg_border.png" />
     <Content Include="images\home\gallery1.jpg" />
     <Content Include="images\home\gallery2.jpg" />

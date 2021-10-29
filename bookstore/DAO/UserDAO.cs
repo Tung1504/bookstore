@@ -29,12 +29,12 @@ namespace bookstore.Models
         public string username { get; set; }
 
         [Required]
-        [StringLength(16, ErrorMessage = "Password must be 8-16 characters", MinimumLength = 8)]
-        [RegularExpression(@"^(?=.*\d)$", ErrorMessage = "Password must contain at least one digit")]
+        [StringLength(24, ErrorMessage = "Password must be 8-24 characters", MinimumLength = 8)]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$", ErrorMessage = "Password must contain at least 1 uppercase, 1 lowercase, 1 digit, 1 special character")]
         [DataType(DataType.Password)]
         public string password { get; set; }
 
-        
+
 
         public string role { get; set; }
         public string phone { get; set; }

@@ -81,7 +81,7 @@
                     <div class="panel-group category-products" id="accordian">
                         <div class="panel panel-default">
 
-                            @foreach (var category in Model.ListCategory)
+                            @foreach (var category in Model.ListCategory.Take(5))
                             {
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -99,7 +99,7 @@
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
 
-                                @foreach (var item in Model.ListPublisher)
+                                @foreach (var item in Model.ListPublisher.Take(5))
                                 {
                                     <li><a href="@Url.Action("Publisher","Home", new {id = item.id })">@item.publisher_name</a></li>
                                 }
@@ -125,7 +125,7 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items">
                     <h2 class="title text-center">Features Items</h2>
-                    @foreach (var book in Model.ListBook)
+                    @foreach (var book in Model.ListBook.Take(6))
                     {
                         <div class="col-sm-4">
                             <div class="product-image-wrapper ">
@@ -133,7 +133,7 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center">
 
-                                        <img src="~/images/shop/@book.image" alt="" style="width: 256px; height: 238px"/>
+                                        <img src="~/images/shop/@book.image" alt="" style="width: 256px; height: 238px" />
                                         <h2>$@book.price</h2>
                                         <p>@book.title</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -166,12 +166,9 @@
                 </div>
 
                 <div class="category-tab">
-
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">
-
-
-                            @foreach (var category in Model.ListCategory)
+                            @foreach (var category in Model.ListCategory.Take(5))
                             {
                                 if (Model.ListCategory.IndexOf(category) == 0)
                                 {
@@ -186,18 +183,17 @@
                         </ul>
                     </div>
                     <div class="tab-content">
-
-                        @foreach (var category in Model.ListCategory)
+                        @foreach (var category in Model.ListCategory.Take(4))
                         {
                             <div class="tab-pane fade active in" id="category_@category.id">
-                                @foreach (var book in Model.ListBook.Where(m => m.category_id == category.id))
+                                @foreach (var book in Model.ListBook.Where(m => m.category_id == category.id).Take(4))
                                 {
                                     <div class="col-sm-3">
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
 
-                                                    <img src="~/images/shop/@book.image" alt="" style="width: 184px; height: 171px"/>
+                                                    <img src="~/images/shop/@book.image" alt="" style="width: 184px; height: 171px" />
                                                     <h2>$@book.price</h2>
                                                     <p>@book.title</p>
                                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -205,7 +201,7 @@
                                                 <div class="product-overlay">
                                                     <div class="overlay-content">
                                                         <a href="@Url.Action("ProductDetail", "Home", new { id = book.id})">
-                                                            <img src="~/images/shop/@book.image"/>
+                                                            <img src="~/images/shop/@book.image" />
                                                             <h2>$@book.price</h2>
                                                             <p>@book.title</p>
                                                         </a>

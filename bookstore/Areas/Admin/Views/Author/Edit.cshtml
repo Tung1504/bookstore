@@ -22,9 +22,9 @@
                 </div>
             </div>
         </div>
-        @using (Html.BeginForm("Edit", "Author", FormMethod.Post))
+        @using (Html.BeginForm("Edit", "Author", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
         {
-            
+
             @Html.AntiForgeryToken();
             <div class="card">
                 <div class="card-body">

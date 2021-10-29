@@ -59,7 +59,11 @@ namespace bookstore.Areas.Admin.Controllers
 
             if (category.id > 0)
             {
+
                 db.Categories.Attach(category);
+                var listCategory = db.Categories.Find(category.id);
+                listCategory.id = category.id;
+                listCategory.category_name= category.category_name;
                 db.Entry(category).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
                 TempData["result"] = "Edit category successfully!";

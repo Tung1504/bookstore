@@ -10,7 +10,7 @@ namespace bookstore.Areas.Admin.Controllers
 {
     public class UserController : BaseController
     {
-        
+
         // GET: Admin/ManageUser
         public ActionResult Index()
         {
@@ -19,6 +19,7 @@ namespace bookstore.Areas.Admin.Controllers
             {
                 ViewBag.SuccessMsg = TempData["result"];
             }
+
             return View(listUser);
         }
 
@@ -27,21 +28,21 @@ namespace bookstore.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(User user)
-        {
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(User user)
+        //{
 
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(user);
-                db.SaveChanges(); //Apply insert statement
-                return RedirectToAction("Index");
-            }
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Users.Add(user);
+        //        db.SaveChanges(); //Apply insert statement
+        //        return RedirectToAction("Index");
+        //    }
 
-            //nếu validate thất bại
-            return View(user);
-        }
+        //    //nếu validate thất bại
+        //    return View(user);
+        //}
 
 
         public ActionResult ViewDetail(int id)
@@ -64,26 +65,37 @@ namespace bookstore.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, User user)
         {
-            if (ModelState.IsValid)
+            User u = db.Users.FirstOrDefault(x => x.id == id);
+            if (u != null)
             {
-                db.Entry(user).State = System.Data.EntityState.Modified;
+                if(u.role == "Admin")
+                {
+                    user.role = "Customer";
+                }
+                else if (u.role == "Customer")
+                {
+                    user.role = "Admin";
+                }
+                
                 db.SaveChanges();
+                TempData["result"] = "Update user " + user.username + " role successfully!";
                 return RedirectToAction("Index");
-            }
 
-            return View(user);
+            }
+            TempData["result"] = "Update user " + user.username + " role failed successfully!";
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        //[ValidateAntiForgeryToken]
+        public JsonResult Delete(int id)
         {
             List<Address> listAddress = db.Addresses.ToList();
             List<Payment_card> listPayments = db.Payment_card.ToList();
@@ -102,28 +114,29 @@ namespace bookstore.Areas.Admin.Controllers
                         db.Addresses.Remove(address);
                         db.Payment_card.Remove(paymentCard);
                         db.SaveChanges();
-                        TempData["result"] = "Edit category successfully!";
-                        return RedirectToAction("Index");
+                        //TempData["result"] = "Edit user successfully!";
+                        return Json(new { success = true });
                     }
                     else
                     {
                         db.Users.Remove(user);
                         db.Addresses.Remove(address);
                         db.SaveChanges();
-                        TempData["result"] = "Edit category successfully!";
-                        return RedirectToAction("Index");
+                        //TempData["result"] = "Edit user successfully!";
+                        return Json(new { success = true });
                     }
                 }
                 else
                 {
                     db.Users.Remove(user);
                     db.SaveChanges();
-                    TempData["result"] = "Edit category successfully!";
-                    return RedirectToAction("Index");
+                    TempData["result"] = "Delete user successfully!";
+                    return Json(new { success = true });
                 }
 
             }
-            return HttpNotFound();
+            TempData["result"] = "Delete user failed successfully!";
+            return Json(new { success = false });
         }
     }
 }

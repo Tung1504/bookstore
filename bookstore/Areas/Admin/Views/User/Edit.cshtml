@@ -1,25 +1,203 @@
-﻿@model bookstore.Models.User
+﻿@model bookstore.ViewModels.UserAddressPaymentCardViewModels
 @{
-    ViewBag.Title = "Edit";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "ViewDetail";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+
 <div class="dashboard-wrapper">
-    <div class="container-fluid  dashboard-content">
-        @using (Html.BeginForm("Edit", "ManageUser", FormMethod.Post, new { @class = "form" }))
-        {
-            @Html.ValidationSummary();
-            @Html.AntiForgeryToken();
-            <div>
-                <label>New Role</label>
-                @Html.TextBoxFor(m => m.role, new { type = "text", @class = "form-control" })
+    <div class="influence-profile">
+        <div class="container-fluid dashboard-content ">
+            <!-- ============================================================== -->
+            <!-- pageheader -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h3 class="mb-2">USER PROFILE</h3>
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="@Url.Action("Index", "User")" class="breadcrumb-link">User</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- ============================================================== -->
+            <!-- end pageheader -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- content -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <!-- ============================================================== -->
+                <!-- profile -->
+                <!-- ============================================================== -->
+                <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
+                    <!-- ============================================================== -->
+                    <!-- card profile -->
+                    <!-- ============================================================== -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="user-avatar text-center d-block">
+                                <img src="~/images/home/avatar.png" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                            </div>
+                            <div class="text-center">
+                                <h2 class="font-24 mb-0">@Model.User.name</h2>
+                                <p>User Name: @Model.User.username</p>
+                                <p>Day of birth: @Model.User.dob.Day/@Model.User.dob.Month/@Model.User.dob.Year</p>
+                            </div>
+                        </div>
+                        <div class="card-body border-top">
+                            <h3 class="font-16">Contact Information</h3>
+                            <div class="">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><i class="fas fa-fw fa-envelope mr-2"></i>@Model.User.email</li>
+                                    <li class="mb-0"><i class="fas fa-fw fa-phone mr-2"></i>@Model.User.phone</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body border-top">
+                            <h3 class="font-16">Role</h3>
+                            <div class="">
+                                @using (Html.BeginForm("Edit", "User", new { id = Model.User.id }, FormMethod.Post))
+                                {
+                                    @Html.ValidationSummary();
+                                    @Html.AntiForgeryToken();
+
+                                    @*<a class="mb-0" href="#">@Model.Order.status</a> <br />*@
+                                    @*@Html.TextBoxFor(m => m.Order.status, new { type = "text", @class = "form-control" })*@
+                                    @Html.DropDownListFor(x => x.User.role, new List<SelectListItem>
+                                    {
+                                        new SelectListItem() {Text = "Admin", Value="Admin"},
+                                        new SelectListItem() {Text = "Customer", Value="Customer"}
+                                    }) <br />
+                                    <button type="submit" class="btn btn-primary">Update Status</button>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end card profile -->
+                    <!-- ============================================================== -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- end profile -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- campaign data -->
+                <!-- ============================================================== -->
+                <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
+                    <!-- ============================================================== -->
+                    <!-- campaign tab one -->
+                    <!-- ============================================================== -->
+                    <div class="influence-profile-content pills-regular">
+                        <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-campaign-tab" data-toggle="pill" href="#address" role="tab" aria-controls="address" aria-selected="true">Billing Address</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-packages-tab" data-toggle="pill" href="#card" role="tab" aria-controls="pills-packages" aria-selected="false">Payment Card</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="address" role="tabpanel" aria-labelledby="address">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <table class="table table-bordered first">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Address</th>
+                                                            <th scope="col">District</th>
+                                                            <th scopt="col">City</th>
+                                                            <th scope="col">Postal Code</th>
+                                                        </tr>
+                                                    </thead>
 
 
+                                                    <tbody>
 
-            <br />
-            <button type="submit">Submit</button>
-        }
+                                                        @foreach (var address in Model.User.Addresses)
+                                                        {
+
+                                                            <tr>
+                                                                <td>@address.address1</td>
+                                                                <td>@address.district</td>
+                                                                <td>@address.city</td>
+                                                                <td>@address.postal_code</td>
+                                                            </tr>
+                                                        }
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="card" role="tabpanel" aria-labelledby="card">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+
+                                                <table class="table table-bordered first">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Card Number</th>
+                                                            <th scope="col">Card Type</th>
+                                                            <th scopt="col">From Date</th>
+                                                            <th scope="col">To Date</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+
+                                                        @foreach (var card in Model.User.Payment_card)
+                                                        {
+
+                                                            <tr>
+                                                                <td>****@card.card_number.ToString().Substring(card.card_number.ToString().Length - 4)</td>
+                                                                <td>@card.card_type</td>
+                                                                <td>@card.from_date.Month/@card.from_date.Year</td>
+                                                                <td>@card.to_date.Month/@card.to_date.Year</td>
+                                                            </tr>
+                                                        }
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end campaign tab one -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end campaign data -->
+                        <!-- ============================================================== -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+@section js{
+
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="~/Areas/Admin/Content/js/main-js.js"></script>
+}
