@@ -8,8 +8,15 @@ namespace bookstore.Models
     public class CartItem
     {
         public Book Book { get; set; } 
+
         public int Quantity { get; set; }
-        public CartItem(Book b, int q)
+
+        public CartItem()
+        {
+
+        }
+
+        public CartItem (Book b, int q)
         {
             this.Book = b;
             this.Quantity = q;
