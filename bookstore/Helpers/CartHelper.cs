@@ -26,17 +26,17 @@ namespace bookstore.Helpers
             return cartItems;
         }
 
-        public void AddProductToCart(int bookId)
+        public void AddProductToCart(int bookId, int quantity = 1)
         {
             CartItem existingCartItem = FindBookInCart(bookId);
             if (existingCartItem != null)
             {
-                existingCartItem.Quantity++;
+                existingCartItem.Quantity += quantity;
             }
             else
             {
                 Book book = BookDAO.Find(bookId);
-                cartItems.Add(new CartItem(book, 1));
+                cartItems.Add(new CartItem(book, quantity));
             }
             RefreshCartSession();
         }

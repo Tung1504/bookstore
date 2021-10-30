@@ -28,5 +28,7 @@ namespace bookstore.ViewModels.ProductDetailViewModel
 
         public Author Author { get; set; }
 
+        public int Quantity { get; set; } = 1;
+
     }
 }

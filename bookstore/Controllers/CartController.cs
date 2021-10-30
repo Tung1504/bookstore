@@ -3,6 +3,7 @@ using bookstore.Helpers;
 using bookstore.Models;
 using bookstore.ViewModels;
 using bookstore.ViewModels.Cart;
+using bookstore.ViewModels.ProductDetailViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +22,12 @@ namespace bookstore.Controllers
             return View(cartViewModel);
         }
 
-        public RedirectToRouteResult AddToCart(int bookId, CartHelper cartHelper)
+        public ActionResult AddToCart(int id, ProductDetailViewModel productDetailViewModel, CartHelper cartHelper)
         {
             if (AuthUser.GetLogin() != null)
             {
-                cartHelper.AddProductToCart(bookId);
-                return RedirectToAction("Index", "Home");
+                cartHelper.AddProductToCart(id, productDetailViewModel.Quantity);
+                return Redirect(Request.UrlReferrer.ToString());
             }
             else
             {
