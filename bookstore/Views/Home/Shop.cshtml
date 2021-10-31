@@ -77,7 +77,7 @@
                                         <p>@book.title</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
-                                    <a href="@Url.Action("ProductDetail", "Home", new { id = book.id})">
+                                    <a href="@Url.Action("Detail", "Product", new { id = book.id})">
                                         <div class="product-overlay">
                                             <div class="overlay-content">
                                                 <img src="~/images/shop/@book.image" alt="" />
