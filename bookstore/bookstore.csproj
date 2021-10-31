@@ -850,6 +850,8 @@
     <Content Include="Views\CategoryProduct\Index.cshtml" />
     <Content Include="Views\Shared\_WithSidebarLayout.cshtml" />
     <Content Include="Views\PublisherProduct\Index.cshtml" />
+    <Content Include="Views\Home\Category.cshtml" />
+    <Content Include="Views\Home\Publisher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

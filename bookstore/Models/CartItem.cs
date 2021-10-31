@@ -12,8 +12,8 @@ namespace bookstore.Models
     
         public int Quantity { get; set; }
         public int UserId { get; set; }
-        public CartItem(Book b, int q, int id)
 
+        public CartItem(Book b, int q, int id)
         {
             this.Book = b;
             this.Quantity = q;

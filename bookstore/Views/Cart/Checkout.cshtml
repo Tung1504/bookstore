@@ -23,22 +23,21 @@
                     @Html.ValidationSummary();
                     @Html.AntiForgeryToken();
                     <div class="col-sm-6">
-
                         <div class="shopper-info">
-                            <p>User addresses</p>
                             <div class="form-two">
+                                <h3>FROM ADDRESS BOOKS</h3> <br />
                                 <form>
-                                    <p>Address</p>
-                                    @Html.DropDownListFor(m => m.Address, new SelectList(Model.AddressList, "id", "city"), "-----Select Address-----")
-                                    <p>Payment</p>
+                                    <h5>ADDRESS</h5>
+                                    @Html.DropDownListFor(m => m.Address, new SelectList(Model.AddressList, "id", "city"), "-----Select Address-----") <br />
+                                    <br /> 
+                                    <h5>PAYMENT</h5>
                                     <label>Cash on delivery</label>   @Html.RadioButtonFor(m => m.Payment, "COD (Cash on delivery)")
-                                    @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----")
+                                    @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----") <br /> <br />
 
                                     <div class="order-message">
-                                        <p>Shipping Order</p>
-
+                                        <h5>NOTE</h5>
                                         @Html.TextAreaFor(m => m.Note, new { type = "text", @class = "form-control", @placeholder = "Notes about your order, Special Notes for Delivery" })
-                                    </div>
+                                    </div> <br />
 
                                     <button class="btn btn-primary" type="reset">Reset</button>
                                     <button class="btn btn-primary" type="submit"> Order </button>
@@ -54,22 +53,21 @@
                     @Html.AntiForgeryToken();
                     <div class="col-sm-6">
                         <div class="shopper-info">
-                            <p>New Address</p>
                             <div class="form-two">
+                                <h3>NEW ADDRESS</h3> <br />
                                 <form>
-                                    <p>Address</p>
-                                    @Html.TextAreaFor(m => m.Address, new { type = "text", @class = "form-control", @placeholder = "recipient address" })
+                                    <h5>ADDRESS</h5>
+                                    @Html.TextBoxFor(m => m.Address, new { type = "text", @class = "form-control", @placeholder = "recipient address" }) <br /> 
 
-                                    <p>Payment </p>
+                                    <h5>PAYMENT</h5>
                                     <label>Cash on delivery</label>  @Html.RadioButtonFor(m => m.Payment, "COD (Cash on delivery)")
-                                    @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----")
+                                    @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----") <br /> <br />
 
                                     <div class="order-message">
-                                        <p>Shipping Order</p>
+                                        <h5>NOTE</h5>
                                         @Html.TextAreaFor(m => m.Note, new { type = "text", @class = "form-control", @placeholder = "Notes about your order, Special Notes for Delivery" })
 
                                     </div>
-
 
                                     <button class="btn btn-primary" type="reset">Reset</button>
                                     <button class="btn btn-primary" type="submit"> Order </button>
@@ -84,7 +82,7 @@
 
             </div>
         </div>
-        <div class="review-payment">
+        @*<div class="review-payment">
             <h2>Review & Payment</h2>
         </div>
         <div class="table-responsive cart_info">
@@ -99,7 +97,7 @@
                         <td></td>
                     </tr>
                 </thead>
-                @*<tbody>
+                <tbody>
 
                                             @if (Session["cart"] != null)
                                             {
@@ -155,10 +153,10 @@
                                             }
                                             </tr>
 
-                                        </tbody>*@
+                                        </tbody>
 
             </table>
-        </div>
+        </div>*@
 
     </div>
 </section> <!--/#cart_items-->
