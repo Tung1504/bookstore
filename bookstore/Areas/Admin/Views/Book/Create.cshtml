@@ -55,17 +55,17 @@
                                     <br />
 
                                     <label>By:</label> <br />
-                                    @Html.DropDownListFor(m => m.Book.author_id, new SelectList(Model.ListAuthor, "id", "author_name"), "-----Select Author-----") <br />
+                                    @Html.DropDownListFor(m => m.Book.author_id, new SelectList(Model.ListAuthor, "id", "author_name"), "-----Select Author-----", new { @class ="form-control", style = "width:210px" }) <br />
                                     @Html.ValidationMessageFor(m => m.Book.Author.id, "", new { @class = "text-danger" })
                                     <br />
 
                                     <label>Publisher</label> <br />
-                                    @Html.DropDownListFor(m => m.Book.publisher_id, new SelectList(Model.ListPublisher, "id", "publisher_name"), "-----Select Publisher-----") <br />
+                                    @Html.DropDownListFor(m => m.Book.publisher_id, new SelectList(Model.ListPublisher, "id", "publisher_name"), "-----Select Publisher-----", new { @class = "form-control", style = "width:210px" }) <br />
                                     @Html.ValidationMessageFor(m => m.Book.Publisher.id, "", new { @class = "text-danger" })
                                     <br />
 
                                     <label>Category:</label> <br />
-                                    @Html.DropDownListFor(m => m.Book.category_id, new SelectList(Model.ListCategory, "id", "category_name"), "-----Select Category-----") <br />
+                                    @Html.DropDownListFor(m => m.Book.category_id, new SelectList(Model.ListCategory, "id", "category_name"), "-----Select Category-----", new { @class = "form-control", style = "width:210px" }) <br />
                                     @Html.ValidationMessageFor(m => m.Book.Category.id, "", new { @class = "text-danger" })
                                     <br />
 

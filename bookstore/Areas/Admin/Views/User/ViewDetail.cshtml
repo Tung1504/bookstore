@@ -61,10 +61,10 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="card-body border-top">
+                        @*<div class="card-body border-top">
                             <h3 class="font-16">Role</h3>
                             <div class="">
-                                @*@using (Html.BeginForm("Edit", "User", new { id = Model.User.id }, FormMethod.Post))
+                                @using (Html.BeginForm("Edit", "User", new { id = Model.User.id }, FormMethod.Post))
         {
             @Html.ValidationSummary();
             @Html.AntiForgeryToken();
@@ -77,10 +77,10 @@
                                     new SelectListItem() {Text = "Customer", Value="Customer"}
                                 }) <br />
                                 <button type="submit" class="btn btn-primary">Update Status</button>
-                                }*@
+                                }
                                 @Html.ActionLink(" Update Status", "Edit", new { id = Model.User.id }, new { @class = "btn btn-primary" })
                             </div>
-                        </div>
+                        </div>*@
 
                     </div>
                     <!-- ============================================================== -->

@@ -28,6 +28,7 @@
         {
             @*@Html.ValidationSummary();*@
             @Html.AntiForgeryToken();
+            <label class="text-danger">@ViewBag.CreateFail</label>
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -37,8 +38,8 @@
                                 <div class="user-avatar-address">
 
                                     <lable>Name</lable>
-                                    @Html.TextBoxFor(m => m.name, new { type = "text", @class = "form-control" }) 
-                                    @Html.ValidationMessageFor(m => m.name , "", new { @class = "text-danger" }) <br />
+                                    @Html.TextBoxFor(m => m.name, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.name, "", new { @class = "text-danger" }) <br />
 
                                     <lable>UserName</lable>
                                     @Html.TextBoxFor(m => m.username, new { type = "text", @class = "form-control" })
@@ -49,23 +50,26 @@
                                     @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" }) <br />
 
                                     <lable>Re-Password</lable>
-                                    @Html.TextBoxFor(m => m.repassword, new { type = "password", @class = "form-control" }) 
+                                    @Html.TextBoxFor(m => m.repassword, new { type = "password", @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.repassword, "", new { @class = "text-danger" }) <br />
 
                                     <lable>Role</lable>
-                                    @Html.TextBoxFor(m => m.role, new { type = "text", @class = "form-control" }) 
-                                    @Html.ValidationMessageFor(m => m.role, "", new { @class = "text-danger" }) <br />
+                                    @Html.DropDownListFor(x => x.role, new List<SelectListItem>
+                                    {
+                                        new SelectListItem() {Text = "Admin", Value="Admin"},
+                                        new SelectListItem() {Text = "Customer", Value="Customer"}
+                                    }, new { @class = "form-control", style = "width:150px" }) <br />
 
                                     <lable>Phone</lable>
-                                    @Html.TextBoxFor(m => m.phone, new { type = "text", @class = "form-control" }) 
+                                    @Html.TextBoxFor(m => m.phone, new { type = "text", @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.phone, "", new { @class = "text-danger" }) <br />
 
                                     <lable>Email</lable>
-                                    @Html.TextBoxFor(m => m.email, new { type = "text", @class = "form-control" }) 
+                                    @Html.TextBoxFor(m => m.email, new { type = "text", @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger" }) <br />
 
                                     <lable>Dob</lable>
-                                    @Html.TextBoxFor(m => m.dob, new { type = "date", @class = "form-control" }) 
+                                    @Html.TextBoxFor(m => m.dob, new { type = "date", @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.dob, "", new { @class = "text-danger" }) <br />
 
 

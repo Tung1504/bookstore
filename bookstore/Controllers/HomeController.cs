@@ -1,5 +1,4 @@
-﻿
-using bookstore.Models;
+﻿using bookstore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
