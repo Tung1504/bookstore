@@ -1,4 +1,5 @@
-﻿@using bookstore.Models
+﻿@using bookstore.Helpers
+@using bookstore.Models
 <header id="header">
     <!--header-->
     <div class="header_top">
@@ -44,27 +45,25 @@
                             @*<li><a href=""><i class="fa fa-user"></i> Account</a></li>*@
                             @*<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>*@
 
-
-                            @if (Session["UserName"] != null)
+                            @if (AuthUser.GetLogin() != null)
                             {
+
                                 int count = 0;
                                 if (Session["cart"] != null)
                                 {
                                     count = (Session["cart"] as List<CartItem>).Count;
                                 }
                                 <li><a href="@Url.Action("Index", "Cart")"><i class="fa fa-shopping-cart"></i> Cart(@count)</a></li>
-                                <li><a href="@Url.Action("Index", "UserOrder")"> Your Order </a></li>
+                                <li><a href="@Url.Action("Index", "UserOrder")"><i class="fa fa-book"></i> Your Order </a></li>
 
-                                <li><a href="@Url.Action("Index", "Customer")"><i class="fa fa-user"></i> Hello @Session["UserName"]</a></li>
+                                <li><a href="@Url.Action("Index", "Customer")"><i class="fa fa-user"></i> Hello @AuthUser.GetLogin().name</a></li>
 
-                                if (Session["Role"].ToString() == "Admin")
+                                if (AuthUser.GetLogin().role.ToString() == "Admin")
                                 {
                                     <li><a href="@Url.Action("Admin", "Home")"><i class="fa fa-users"></i>Admin</a></li>
                                 }
 
-                                <li><a href="@Url.Action("Logout", "Home")"><i class="fa fa-sign-out"></i> Logout</a></li>
-
-
+                                <li><a href="@Url.Action("Logout", "Auth")"><i class="fa fa-sign-out"></i> Logout</a></li>
                             }
                             else
                             {
@@ -75,9 +74,7 @@
                                 }
                                 <li><a href="@Url.Action("Index", "Cart")"><i class="fa fa-shopping-cart"></i> Cart(@count)</a></li>
 
-                                <li><a href="@Url.Action("LoginOrSignUp", "Home")"><i class="fa fa-lock"></i> LoginOrSignUp</a></li>
-
-
+                                <li><a href="@Url.Action("LoginOrSignUp", "Auth")"><i class="fa fa-lock"></i> LoginOrSignUp</a></li>
                             }
 
                         </ul>
@@ -134,7 +131,7 @@
 
                     @using (Html.BeginForm("Shop", "Home", FormMethod.Get, new { @class = "search_box pull-right" }))
                     {
-                        @Html.TextBox("search", "", new {placeholder="Search..."})
+                        @Html.TextBox("search", "", new { placeholder = "Search..." })
                     }
                 </div>
             </div>

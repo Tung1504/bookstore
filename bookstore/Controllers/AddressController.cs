@@ -1,4 +1,5 @@
-﻿using bookstore.Models;
+﻿using bookstore.Helpers;
+using bookstore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace bookstore.Controllers
         // GET: Address
         public ActionResult Index()
         {
-            int user_id = Convert.ToInt32(Session["Id"]);
+            int user_id = Convert.ToInt32(AuthUser.GetLogin().id);
 
             List<Address> listAddress = db.Addresses.Where(a => a.user_id == user_id).ToList();
 
@@ -31,7 +32,7 @@ namespace bookstore.Controllers
 
             if (ModelState.IsValid)
             {
-                int user_id = Convert.ToInt32(Session["Id"]);
+                int user_id = Convert.ToInt32(AuthUser.GetLogin().id);
                 address.user_id = user_id;
                 db.Addresses.Add(address);
                 db.SaveChanges(); //Apply insert statement
@@ -58,7 +59,7 @@ namespace bookstore.Controllers
         {
             if (ModelState.IsValid)
             {
-                int user_id = Convert.ToInt32(Session["Id"]);
+                int user_id = Convert.ToInt32(AuthUser.GetLogin().id);
                 address.user_id = user_id;
                 db.Entry(address).State = System.Data.EntityState.Modified;
                 db.SaveChanges();

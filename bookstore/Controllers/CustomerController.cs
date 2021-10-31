@@ -1,5 +1,8 @@
-﻿using bookstore.Models;
+﻿using bookstore.DAO;
+using bookstore.Helpers;
+using bookstore.Models;
 using bookstore.ViewModels;
+using bookstore.ViewModels.Customer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,74 +13,69 @@ namespace bookstore.Controllers
 {
     public class CustomerController : BaseController
     {
-        // GET: User
+        UserDAO UserDAO;
+
+        public CustomerController(UserDAO userDAO)
+        {
+            UserDAO = userDAO;
+        }
+
         public ActionResult Index()
         {
-            if (Session["auth"] != null)
+            if (AuthUser.GetLogin() != null)
             {
-                User user = (User)Session["auth"];
-
+                User user = AuthUser.GetLogin();
                 return View(user);
             }
             else
             {
-                return RedirectToAction("LoginOrSignUp", "Home");
+                return RedirectToAction("LoginOrSignUp", "Auth");
             }
-
-
         }
 
         public ActionResult UpdateInformation()
         {
-            User u = (User)Session["auth"];
-
-            return View(u);
+            int authId = AuthUser.GetLogin().id;
+            User u = UserDAO.FirstOrDefault(p => p.id == authId);
+            CustomerUpdateInformationViewModel customerUpdateInformationViewModel = new CustomerUpdateInformationViewModel()
+            {
+                Username = u.username,
+                Phone = u.phone,
+                Name = u.name,
+                Dob = u.dob,
+                Email = u.email
+            };
+            return View(customerUpdateInformationViewModel);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateInformation(User user)
+        public ActionResult UpdateInformation(CustomerUpdateInformationViewModel customerUpdateInformationViewModel)
         {
-            ModelState.Remove("repassword");
             if (ModelState.IsValid)
             {
-                User u = (User)Session["auth"];
-                user.password = u.password;
-                user.repassword = u.password;
-                user.role = u.role;
+
+                User user = new User()
+                {
+                    name = customerUpdateInformationViewModel.Name,
+                    username = customerUpdateInformationViewModel.Username,
+                    email = customerUpdateInformationViewModel.Email,
+                    dob = customerUpdateInformationViewModel.Dob,
+                    phone = customerUpdateInformationViewModel.Phone,
+                    role = AuthUser.GetLogin().role,
+                    id = AuthUser.GetLogin().id,
+                    password = AuthUser.GetLogin().password
+                };
+
+
                 db.Entry(user).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
-                Session["auth"] = user;
+                AuthUser.SetLogin(user);
                 return RedirectToAction("Index");
             }
 
-            return View(user);
+            return View(customerUpdateInformationViewModel);
         }
-
-
-        //#TODO: Use UserViewModel instead of User
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult UpdateInformation(UserViewModel uvm)
-        //{
-
-        //    User u = (User)Session["auth"];
-        //    if (ModelState.IsValid)
-        //    {
-        //        u.name = uvm.name;
-        //        u.username = uvm.username;
-        //        u.phone = uvm.phone;
-        //        u.email = uvm.email;
-        //        db.Entry(u).State = System.Data.EntityState.Modified;
-        //        db.SaveChanges();
-        //        Session["auth"] = u;
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(u);
-        //}
-
 
 
     }

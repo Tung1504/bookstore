@@ -1,4 +1,4 @@
-﻿@model bookstore.Models.User
+﻿@model bookstore.ViewModels.Customer.CustomerUpdateInformationViewModel
 @{
     ViewBag.Title = "Update Infromation";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,54 +6,51 @@
 
 <section id="cart_items">
     <div class="container">
-        
+
         <div class="shopper-informations">
             <div class="row">
-                <div class="shopper-info">
+                <div class="col-sm-9">
+                    <div class="shopper-info">
+                        <div class="heading">
+                            <h3>Edit User Information</h3>
+                            <p>You can Update your personal information here!</p>
+                        </div>
 
-                    <div class="col-sm-12">
-                        <h3>Edit User Information</h3>
-                        <p>You can Update your personal information here!</p>
-                        <br />
-                        <h5 style="color: red"> @Html.ValidationSummary()</h5>
-                        <div class="total_area">
-                            <ul>
-                                <li>
-                                    @using (Html.BeginForm("UpdateInformation", "Customer", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
-                                    {
-                                        @Html.HiddenFor(m => m.id)
-                                        @Html.HiddenFor(m => m.password)
-                                        @Html.HiddenFor(m => m.role)
-                                        @Html.HiddenFor(m => m.repassword)
+                        <div class="row">
+                            <h5 style="color: red"> @Html.ValidationSummary()</h5>
+                            <div class="col-sm-12">
+                                <div class="total_area">
+                                    <ul>
+                                        <li>
+                                            @using (Html.BeginForm("UpdateInformation", "Customer", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
+                                            {
+                                                @Html.AntiForgeryToken();
 
-                                        @Html.AntiForgeryToken();
+                                                <lable>Name</lable>
+                                                @Html.TextBoxFor(m => m.Name, new { type = "text", @class = "form-control" })
+                                                
+                                                <lable>UserName</lable>
+                                                @Html.TextBoxFor(m => m.Username, new { type = "text", @class = "form-control" })
+                                                
+                                                <lable>Phone</lable>
+                                                @Html.TextBoxFor(m => m.Phone, new { type = "text", @class = "form-control" })
 
-                                        <lable>Name</lable>
-                                        @Html.TextBoxFor(m => m.name, new { type = "text", @class = "form-control" }) <br />
+                                                <lable>Email</lable>
+                                                @Html.TextBoxFor(m => m.Email, new { type = "text", @class = "form-control" })
 
+                                                <lable>Date of birth</lable>
+                                                @Html.TextBoxFor(m => m.Dob, new { type = "date", @class = "form-control" })
+                                                
 
+                                                <a href="@Url.Action("Index","Customer")" class="btn btn-default" style="text-align:center"> Back </a>
+                                                <button type="submit" class="btn btn-default" style="text-align:center"> Submit </button>
+                                            }
+                                        </li>
 
-                                        <lable>User Name</lable>
-                                        @Html.TextBoxFor(m => m.username, new { type = "text", @class = "form-control" }) <br />
+                                    </ul>
 
-
-                                        <lable>Phone</lable>
-                                        @Html.TextBoxFor(m => m.phone, new { type = "text", @class = "form-control" }) <br />
-
-                                        <lable>Email</lable>
-                                        @Html.TextBoxFor(m => m.email, new { type = "text", @class = "form-control" }) <br />
-
-                                        <lable>Date of birth</lable>
-                                        @Html.TextBoxFor(m => m.dob, new { type = "date", @class = "form-control" }) <br />
-
-
-                                        <a href="@Url.Action("Index","Customer")" class="btn btn-default" style="text-align:center" > Back </a>
-                                        <button type="submit" class="btn btn-default"style="text-align:center"> Submit </button>
-                                    }
-                                </li>
-
-                            </ul>
-
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

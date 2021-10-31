@@ -43,7 +43,7 @@ namespace bookstore.Controllers
             }
             else
             {
-                return RedirectToAction("LoginOrSignup", "Home");
+                return RedirectToAction("LoginOrSignup", "Auth");
             }
         }
         [HttpPost]

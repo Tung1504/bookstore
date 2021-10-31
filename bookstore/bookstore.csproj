@@ -148,6 +148,7 @@
     <Compile Include="Areas\Admin\Controllers\PublisherController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\AddressController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryProductController.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="DAO\BookDAO.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
     <Compile Include="DAO\PublisherDAO.cs" />
+    <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="DTO\Address.cs" />
     <Compile Include="DTO\Author.cs" />
     <Compile Include="DTO\Book.cs" />
@@ -220,8 +222,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Data\Entity\EntityState.cs" />
     <Compile Include="ViewModels\AdminDashboardViewModel.cs" />
+    <Compile Include="ViewModels\Auth\LoginSignUpViewModel.cs" />
+    <Compile Include="ViewModels\Auth\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Auth\SignupViewModel.cs" />
     <Compile Include="ViewModels\BookCategoryPublisherAuthorViewModel.cs" />
     <Compile Include="ViewModels\CategoryProduct\CategoryProductViewModel.cs" />
+    <Compile Include="ViewModels\Customer\CustomerUpdateInformationViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\PublisherProduct\PublisherProductViewModel.cs" />
@@ -829,8 +835,6 @@
     <Content Include="Views\Home\Checkout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\ProductDetail.cshtml" />
-    <Content Include="Views\Home\LoginOrSignUp.cshtml" />
     <Content Include="Views\Home\Shop.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
@@ -850,8 +854,8 @@
     <Content Include="Views\CategoryProduct\Index.cshtml" />
     <Content Include="Views\Shared\_WithSidebarLayout.cshtml" />
     <Content Include="Views\PublisherProduct\Index.cshtml" />
-    <Content Include="Views\Home\Category.cshtml" />
-    <Content Include="Views\Home\Publisher.cshtml" />
+    <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Auth\LoginOrSignUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
