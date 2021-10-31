@@ -24,7 +24,7 @@ namespace bookstore.Controllers
         [ChildActionOnly]
         public ActionResult Index()
         {
-            CategoriesPublishersViewModel categoriesPublishersViewModel = new CategoriesPublishersViewModel()
+            WidgetViewModel categoriesPublishersViewModel = new WidgetViewModel()
             {
                 Categories = categoryDAO.All(),
                 Publishers = publisherDAO.All()

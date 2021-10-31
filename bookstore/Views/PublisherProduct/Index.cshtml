@@ -1,0 +1,49 @@
+﻿@model bookstore.ViewModels.PublisherProduct.PublisherProductViewModel
+
+@{
+    ViewBag.Title = "Publisher";
+    Layout = "~/Views/Shared/_WithSidebarLayout.cshtml";
+}
+
+<div class="features_items">
+    <!--features_items-->
+    <h2 class="title text-center">Publisher: @Model.Publisher.publisher_name</h2>
+    @if (Model.Books.Count() == 0)
+    {
+        <h2 style="color:#FE980F">No Match Any Book</h2>
+    }
+    else
+    {
+        foreach (var book in Model.Books)
+        {
+            <div class="col-sm-4">
+                <div class="product-image-wrapper ">
+                    @Html.Partial("~/Views/Product/_Item.cshtml", book)
+                </div>
+            </div>
+        }
+    }
+
+</div><!--features_items-->
+
+<ul class="pagination">
+    @{
+        int numberPage = ViewBag.numberPage;
+        int pageCurrent = ViewBag.pageCurrent;
+        int i;
+        for (i = 1; i <= numberPage; i++)
+        {
+            <li class="@(i == pageCurrent ? "active" : "")"><a href="?page=@i">@i</a></li>
+        }
+    }
+</ul>
+
+
+@section js{
+    <script src="@Url.Content("~/Scripts/jquery.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.scrollUp.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/price-range.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.prettyPhoto.js")"></script>
+    <script src="@Url.Content("~/Scripts/main.js")"></script>
+}
