@@ -1,4 +1,5 @@
-﻿using bookstore.Models;
+﻿using bookstore.Helpers;
+using bookstore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace bookstore.Controllers
         // GET: Payment
         public ActionResult Index()
         {
-            int user_id = Convert.ToInt32(Session["Id"]);
+            int user_id = Convert.ToInt32(AuthUser.GetLogin().id);
 
             List<Payment_card> listPaymentCard = db.Payment_card.Where(a => a.user_id == user_id).ToList();
 
@@ -32,7 +33,7 @@ namespace bookstore.Controllers
 
             if (ModelState.IsValid)
             {
-                int user_id = Convert.ToInt32(Session["Id"]);
+                int user_id = Convert.ToInt32(AuthUser.GetLogin().id);
                 paymentCard.user_id = user_id;
                 db.Payment_card.Add(paymentCard);
                 db.SaveChanges(); //Apply insert statement
@@ -59,7 +60,7 @@ namespace bookstore.Controllers
         {
             if (ModelState.IsValid)
             {
-                int user_id = Convert.ToInt32(Session["Id"]);
+                int user_id = Convert.ToInt32(AuthUser.GetLogin().id);
                 paymentCard.user_id = user_id;
                 db.Entry(paymentCard).State = System.Data.EntityState.Modified;
                 db.SaveChanges();

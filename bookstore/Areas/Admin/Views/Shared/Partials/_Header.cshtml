@@ -1,4 +1,4 @@
-﻿
+﻿@using bookstore.Helpers
 <div class="dashboard-header">
     <nav class="navbar navbar-expand-lg bg-white fixed-top">
         <a class="navbar-brand" href="@Url.Action("Index", "Home", new { area = "" })">E-Shopper</a>
@@ -8,14 +8,14 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-right-top">
                 <li class="nav-item dropdown nav-user">
-                    @if (Session["UserName"] != null)
+                    @if (AuthUser.GetLogin().username != null)
                     {
-                        <a class="nav-link" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i> Hello @Session["UserName"]!</a>
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i> Hello @AuthUser.GetLogin().username!</a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
 
                            
                             @*<a class="dropdown-item" href="@Url.Action("ViewDetail", "User" , new { id = Model.id })"><i class="fas fa-user mr-2"></i>Account</a>*@
-                            <a class="dropdown-item" href="@Url.Action("Logout", "Home", new { area = "" })"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            <a class="dropdown-item" href="@Url.Action("Logout", "Auth", new { area = "" })"><i class="fas fa-power-off mr-2"></i>Logout</a>
 
                         </div>
 

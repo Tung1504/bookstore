@@ -19,5 +19,10 @@ namespace bookstore.Controllers
                 writer.WriteLine(s);
             }
         }
+
+        protected void SetErrorFlash(string message, string key = "error")
+        {
+            TempData[key] = message;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using bookstore.Models;
+﻿using bookstore.Helpers;
+using bookstore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace bookstore.Areas.Admin.Controllers
 
         public ActionResult AuthencatedByRole()
         {
-            if (Session["Role"].ToString() == "Customer")
+            if (AuthUser.GetLogin().role.ToString() == "Customer")
             {
-                return RedirectToAction("LoginOrSignUp", "Home", new { area = "" });
+                return RedirectToAction("LoginOrSignUp", "Auth", new { area = "" });
             }
             else
             {

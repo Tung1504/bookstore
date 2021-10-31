@@ -33,5 +33,23 @@ namespace bookstore.DAO
         {
             return dbSet.FirstOrDefault(expression);
         }
+
+        public void Create(T entity)
+        {
+            dbSet.Add(entity);
+            SaveChanges();
+        }
+
+        public void SaveChanges()
+        {
+            db.SaveChanges();
+        }
+
+
+        public bool Any(Expression<Func<T, bool>> expression)
+        {
+            return dbSet.Any(expression);
+        }
+
     }
 }

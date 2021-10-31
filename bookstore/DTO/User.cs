@@ -12,37 +12,23 @@ namespace bookstore.Models
     [MetadataType(typeof(UserMetadata))]
     public partial class User
     {
-        [Required(ErrorMessage = "The reentered password field is required")]
-        [DataType(DataType.Password)]
-        [Compare("password", ErrorMessage = "Confirm password doesn't match, type again!")]
-        [NotMapped]
-        public string repassword { get; set; }
+        public const string CUSTOMER = "Customer";
+        public const string ADMIN = "Admin";
+
+        public User(int id, string name, string username, string password, string role, string phone, string email, DateTime dob)
+        {
+            this.id = id;
+            this.name = name;
+            this.username = username;
+            this.password = password;
+            this.role = role;
+            this.phone = phone;
+            this.email = email;
+            this.dob = dob;
+        }
     }
 
     public class UserMetadata
     {
-        public int id { get; set; }
-        [Required]
-        public string name { get; set; }
-
-        [Required]
-        public string username { get; set; }
-
-        [Required]
-        [StringLength(24, ErrorMessage = "Password must be 8-24 characters", MinimumLength = 8)]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$", ErrorMessage = "Password must contain at least 1 uppercase, 1 lowercase, 1 digit, 1 special character")]
-        [DataType(DataType.Password)]
-        public string password { get; set; }
-
-
-
-        public string role { get; set; }
-        public string phone { get; set; }
-        public string email { get; set; }
-        public Nullable<System.DateTime> dob { get; set; }
-
-        public virtual ICollection<Address> Addresses { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<Payment_card> Payment_card { get; set; }
     }
 }

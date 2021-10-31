@@ -1,4 +1,4 @@
-﻿@model bookstore.Models.User
+﻿@model bookstore.ViewModels.Customer.CustomerUpdateInformationViewModel
 @{
     ViewBag.Title = "UpdateInfromation";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,35 +23,32 @@
                                         <li>
                                             @using (Html.BeginForm("UpdateInformation", "Customer", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
                                             {
-                                                @Html.HiddenFor(m => m.id)
-                                                @Html.HiddenFor(m => m.password)
-
                                                 @Html.AntiForgeryToken();
                                                 <div>
                                                     <lable>Name</lable>
-                                                    @Html.TextBoxFor(m => m.name, new { type = "text", @class = "form-control" })
+                                                    @Html.TextBoxFor(m => m.Name, new { type = "text", @class = "form-control" })
 
                                                 </div>
 
                                                 <div>
                                                     <lable>UserName</lable>
-                                                    @Html.TextBoxFor(m => m.username, new { type = "text", @class = "form-control" })
+                                                    @Html.TextBoxFor(m => m.Username, new { type = "text", @class = "form-control" })
 
                                                 </div>
 
                                                 <div>
                                                     <lable>Phone</lable>
-                                                    @Html.TextBoxFor(m => m.phone, new { type = "text", @class = "form-control" })
+                                                    @Html.TextBoxFor(m => m.Phone, new { type = "text", @class = "form-control" })
 
                                                 </div>
                                                 <div>
                                                     <lable>Email</lable>
-                                                    @Html.TextBoxFor(m => m.email, new { type = "text", @class = "form-control" })
+                                                    @Html.TextBoxFor(m => m.Email, new { type = "text", @class = "form-control" })
 
                                                 </div>
                                                 <div>
                                                     <lable>Date of birth</lable>
-                                                    @Html.TextBoxFor(m => m.dob, new { type = "date", @class = "form-control" })
+                                                    @Html.TextBoxFor(m => m.Dob, new { type = "date", @class = "form-control" })
 
                                                 </div>
 
