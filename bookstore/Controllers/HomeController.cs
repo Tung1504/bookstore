@@ -102,6 +102,7 @@ namespace bookstore.Controllers
 
                     Session["Id"] = user.id.ToString();
                     Session["UserName"] = user.username;
+                    Session["Role"] = user.role;
 
                     return RedirectToAction("Index", "Home");
                 }

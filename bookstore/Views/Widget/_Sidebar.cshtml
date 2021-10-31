@@ -4,7 +4,7 @@
 
     <div class="panel-group category-products" id="accordian">
         <div class="panel panel-default">
-            @foreach (var category in Model.Categories)
+            @foreach (var category in Model.Categories.Take(5))
             {
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -21,7 +21,7 @@
         <h2>Publisher</h2>
         <div class="brands-name">
             <ul class="nav nav-pills nav-stacked">
-                @foreach (var item in Model.Publishers)
+                @foreach (var item in Model.Publishers.Take(5))
                 {
                     <li><a href="@Url.Action("Publisher","Home", new {id = item.id })">@item.publisher_name</a></li>
                 }
@@ -29,12 +29,12 @@
         </div>
     </div>
 
-    <div class="price-range">
+    @*<div class="price-range">
         <h2>Price Range</h2>
         <div class="well text-center">
             <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
             <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
         </div>
-    </div>
+    </div>*@
 
 </div>

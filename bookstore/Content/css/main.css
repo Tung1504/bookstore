@@ -1083,6 +1083,7 @@ h2.title {
     margin-bottom: 25px;
     margin-top: 0;
     padding-left: 15px;
+    text-align:center;
 }
 
 .pagination li:first-child a,
