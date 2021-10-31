@@ -1,0 +1,78 @@
+﻿@model IEnumerable<bookstore.Models.Order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="shopper-informations">
+            <div class="row">
+
+
+                <div class="shopper-info">
+
+
+                    <div class="heading">
+                        <h3>Order List</h3>
+                        <p>You can update your order here</p>
+                    </div>
+
+                    <br /><br />
+
+                    <div class="col-sm-13">
+                        <div class="table-responsive cart_info">
+                            <br /><br />
+                            <table class="table table-bordered first">
+                                <thead>
+                                    <tr class="cart_menu">
+                                        <th scope="col">Order Number</th>
+                                        <th scope="col">Delivery Location</th>
+                                        <th scope="col">Order Total Price</th>
+                                        <th scope="col">Order Status</th>
+                                        <th scope="col">Order Date</th>
+                                        <th scope="col">Order Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var order in Model)
+                                    {
+                                        <tr>
+                                            <td>@order.order_number</td>
+                                            <td>@order.delivery_location</td>
+                                            <td>@order.total_price</td>
+                                            <td>@order.status</td>
+                                            <td>@order.date</td>
+                                            <td>@order.note</td>
+                                            <td>
+                                                @Html.ActionLink("ViewDetails", "ViewDetails", new { order_id = order.id }, new { @class = "btn btn-info" })
+                                                
+                                                <a class="btn btn-danger " style="display:inline" href="@Url.Action("Delete",new {order_id=order.id})" onclick="return confirm('Delete this item?');">Cancel</a>
+                                                @*@using (Html.BeginForm("Delete", "UserOrder", new { order_id = order.id }, FormMethod.Post, new { style = "display:inline" }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    <button type="submit" class="btn btn-danger " onclick="return confirm('Cancel  this order?'" )"> Cancel</button>
+                                                }*@
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                            <a href="@Url.Action("Index","Home")" class="btn btn-default update"> Back </a>
+                            <br /><br />
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

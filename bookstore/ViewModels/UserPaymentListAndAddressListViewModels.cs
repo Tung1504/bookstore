@@ -1,6 +1,7 @@
 ﻿using bookstore.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,9 @@ namespace bookstore.ViewModels
     public class UserPaymentListAndAddressListViewModels
     {
         public User User { get; set; }
+        [Required(ErrorMessage = "Please enter address")]
         public string Address { get; set; }
+        [Required(ErrorMessage = "Please enter payment")]
         public string Payment { get; set; }
         public string Note { get; set; }
 
