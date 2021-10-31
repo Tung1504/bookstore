@@ -28,5 +28,10 @@ namespace bookstore.DAO
         {
             return dbSet.Find(id);
         }
+
+        public T FirstOrDefault(Expression<Func<T, bool>> expression)
+        {
+            return dbSet.FirstOrDefault(expression);
+        }
     }
 }
