@@ -1,4 +1,4 @@
-﻿@model bookstore.ViewModels.Widget.CategoriesPublishersViewModel
+﻿@model bookstore.ViewModels.Widget.WidgetViewModel
 <div class="left-sidebar">
     <h2>Category</h2>
 
@@ -8,7 +8,7 @@
             {
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a href="@Url.Action("Category","Home", new {id = category.id })">@category.category_name</a>
+                        <a href="@Url.Action("Index","CategoryProduct", new {id = category.id })">@category.category_name</a>
                     </h4>
 
                 </div>
@@ -23,7 +23,7 @@
             <ul class="nav nav-pills nav-stacked">
                 @foreach (var item in Model.Publishers)
                 {
-                    <li><a href="@Url.Action("Publisher","Home", new {id = item.id })">@item.publisher_name</a></li>
+                    <li><a href="@Url.Action("Index","PublisherProduct", new {id = item.id })">@item.publisher_name</a></li>
                 }
             </ul>
         </div>

@@ -150,12 +150,15 @@
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryProductController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PublisherProductController.cs" />
     <Compile Include="Controllers\UserOrderController.cs" />
     <Compile Include="Controllers\PaymentCardController.cs" />
     <Compile Include="Controllers\WidgetController.cs" />
     <Compile Include="DAO\BaseDAO.cs" />
+    <Compile Include="DAO\BookDAO.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
     <Compile Include="DAO\PublisherDAO.cs" />
     <Compile Include="DTO\Address.cs" />
@@ -218,13 +221,15 @@
     <Compile Include="System\Data\Entity\EntityState.cs" />
     <Compile Include="ViewModels\AdminDashboardViewModel.cs" />
     <Compile Include="ViewModels\BookCategoryPublisherAuthorViewModel.cs" />
+    <Compile Include="ViewModels\CategoryProduct\CategoryProductViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\PublisherProduct\PublisherProductViewModel.cs" />
     <Compile Include="ViewModels\UserAddressPaymentCardViewModels.cs" />
     <Compile Include="ViewModels\UserAddressPaymentListAndCartViewModels.cs" />
     <Compile Include="ViewModels\UserPaymentListAndAddressListViewModels.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
-    <Compile Include="ViewModels\Widget\CategoriesPublishersViewModel.cs" />
+    <Compile Include="ViewModels\Widget\WidgetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Content\css\style.css" />
@@ -832,8 +837,6 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\UpdateInformation.cshtml" />
     <Content Include="Views\Shared\_Notifications.cshtml" />
-    <Content Include="Views\Home\Publisher.cshtml" />
-    <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Address\Index.cshtml" />
     <Content Include="Views\Address\Create.cshtml" />
     <Content Include="Views\Address\Edit.cshtml" />
@@ -844,6 +847,9 @@
     <Content Include="Views\UserOrder\Index.cshtml" />
     <Content Include="Views\Widget\_Sidebar.cshtml" />
     <Content Include="Views\Product\_Item.cshtml" />
+    <Content Include="Views\CategoryProduct\Index.cshtml" />
+    <Content Include="Views\Shared\_WithSidebarLayout.cshtml" />
+    <Content Include="Views\PublisherProduct\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -6,13 +6,13 @@ using System.Web;
 
 namespace bookstore.ViewModels.Widget
 {
-    public class CategoriesPublishersViewModel
+    public class WidgetViewModel
     {
-        public CategoriesPublishersViewModel()
+        public WidgetViewModel()
         {
         }
 
-        public CategoriesPublishersViewModel(List<Category> categories, List<Publisher> publishers)
+        public WidgetViewModel(List<Category> categories, List<Publisher> publishers)
         {
             Categories = categories;
             Publishers = publishers;
