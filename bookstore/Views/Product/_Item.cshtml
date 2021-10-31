@@ -1,0 +1,32 @@
+﻿@model bookstore.Models.Book
+
+<div class="single-products ">
+    <div class="productinfo text-center">
+        <img src="~/images/shop/@Model.image" alt="" />
+        <h2>$@Model.price</h2>
+        <p>@Model.title</p>
+        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+    </div>
+    <a href="@Url.Action("ProductDetail", "Home", new { id = Model.id})">
+        <div class="product-overlay">
+            <div class="overlay-content">
+                <img src="~/images/shop/@Model.image" alt="" />
+                <h2>$@Model.price</h2>
+                <p>@Model.title</p>
+
+                @if (Model.quantity_in_stock > 0)
+                {
+                    using (Html.BeginForm("AddToCart", "Cart", new { id = Model.id }, FormMethod.Post))
+                    {
+                        <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                    }
+                }
+                else
+                {
+                    <p>Item out of stock</p>
+                }
+            </div>
+        </div>
+    </a>
+
+</div>
