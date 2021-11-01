@@ -1,4 +1,4 @@
-﻿@model bookstore.Models.User
+﻿@model bookstore.ViewModels.Auth.LoginSignUpViewModel
 @{
     ViewBag.Title = "Create User";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -38,39 +38,39 @@
                                 <div class="user-avatar-address">
 
                                     <lable>Name</lable>
-                                    @Html.TextBoxFor(m => m.name, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.name, "", new { @class = "text-danger" }) <br />
+                                    @Html.TextBoxFor(m => m.SignupViewModel.Name, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.SignupViewModel.Name, "", new { @class = "text-danger" }) <br />
 
                                     <lable>UserName</lable>
-                                    @Html.TextBoxFor(m => m.username, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" }) <br />
+                                    @Html.TextBoxFor(m => m.SignupViewModel.Username, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.SignupViewModel.Username, "", new { @class = "text-danger" }) <br />
 
                                     <lable>Password</lable>
-                                    @Html.TextBoxFor(m => m.password, new { type = "password", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" }) <br />
+                                    @Html.TextBoxFor(m => m.SignupViewModel.Password, new { type = "password", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.SignupViewModel.Password, "", new { @class = "text-danger" }) <br />
 
                                     <lable>Re-Password</lable>
-                                    @Html.TextBoxFor(m => m.repassword, new { type = "password", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.repassword, "", new { @class = "text-danger" }) <br />
+                                    @Html.TextBoxFor(m => m.SignupViewModel.RePassword, new { type = "password", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.SignupViewModel.RePassword, "", new { @class = "text-danger" }) <br />
 
                                     <lable>Role</lable>
-                                    @Html.DropDownListFor(x => x.role, new List<SelectListItem>
+                                    @Html.DropDownListFor(x => x.SignupViewModel.Role, new List<SelectListItem>
                                     {
                                         new SelectListItem() {Text = "Admin", Value="Admin"},
                                         new SelectListItem() {Text = "Customer", Value="Customer"}
                                     }, new { @class = "form-control", style = "width:150px" }) <br />
 
                                     <lable>Phone</lable>
-                                    @Html.TextBoxFor(m => m.phone, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.phone, "", new { @class = "text-danger" }) <br />
+                                    @Html.TextBoxFor(m => m.SignupViewModel.Phone, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.SignupViewModel.Phone, "", new { @class = "text-danger" }) <br />
 
                                     <lable>Email</lable>
-                                    @Html.TextBoxFor(m => m.email, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger" }) <br />
+                                    @Html.TextBoxFor(m => m.SignupViewModel.Email, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.SignupViewModel.Email, "", new { @class = "text-danger" }) <br />
 
                                     <lable>Dob</lable>
-                                    @Html.TextBoxFor(m => m.dob, new { type = "date", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.dob, "", new { @class = "text-danger" }) <br />
+                                    @Html.TextBoxFor(m => m.SignupViewModel.Dob, new { type = "date", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.SignupViewModel.Dob, "", new { @class = "text-danger" }) <br />
 
 
 

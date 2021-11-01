@@ -39,7 +39,7 @@ namespace bookstore.Controllers
                     CartItem cartItem = cart.FirstOrDefault(m => m.Book.id == bookId);
                     cartItem.Quantity++;
                 }
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
             else
             {

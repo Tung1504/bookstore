@@ -1,5 +1,7 @@
-﻿using bookstore.Models;
+﻿using bookstore.DAO;
+using bookstore.Models;
 using bookstore.ViewModels;
+using bookstore.ViewModels.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ namespace bookstore.Areas.Admin.Controllers
 {
     public class UserController : BaseController
     {
+        
 
         // GET: Admin/ManageUser
         public ActionResult Index()
@@ -30,26 +33,59 @@ namespace bookstore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(User user)
+        public ActionResult Create(LoginSignUpViewModel loginSignUpViewModel, UserDAO userDAO)
         {
-            if (db.Users.Any(x => x.username == user.username))
+            if (ModelState.IsValid)
             {
-                ViewBag.CreateFail = "This name has been accounted";
-                return View();
-            }
-            else
-            {
-                if (ModelState.IsValid)
+                if (userDAO.Any(x => x.username == loginSignUpViewModel.SignupViewModel.Username))
                 {
-                    db.Users.Add(user);
-                    db.SaveChanges(); //Apply insert statement
+                    ViewBag.CreateFail = "This name has been accounted";
+                    return View();
+                }
+                else
+                {
+                    User u = new User()
+                    {
+                        username = loginSignUpViewModel.SignupViewModel.Username,
+                        password = loginSignUpViewModel.SignupViewModel.Password,
+                        name = loginSignUpViewModel.SignupViewModel.Name,
+                        phone = loginSignUpViewModel.SignupViewModel.Phone,
+                        email = loginSignUpViewModel.SignupViewModel.Email,
+                        dob = loginSignUpViewModel.SignupViewModel.Dob,
+                        role = loginSignUpViewModel.SignupViewModel.Role
+                    };
+                    userDAO.Create(u);
                     TempData["result"] = "Create new user successfully!";
                     return RedirectToAction("Index");
                 }
             }
-            //nếu validate thất bại
-            return View(user);
+
+            return View(loginSignUpViewModel);
         }
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(User user)
+        //{
+        //    if (db.Users.Any(x => x.username == user.username))
+        //    {
+        //        ViewBag.CreateFail = "This name has been accounted";
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            db.Users.Add(user);
+        //            db.SaveChanges(); //Apply insert statement
+        //            TempData["result"] = "Create new user successfully!";
+        //            return RedirectToAction("Index");
+        //        }
+        //    }
+        //    nếu validate thất bại
+        //    return View(user);
+        //}
 
 
         public ActionResult ViewDetail(int id)
