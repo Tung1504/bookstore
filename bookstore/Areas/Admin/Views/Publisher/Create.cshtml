@@ -1,4 +1,4 @@
-﻿@model bookstore.Models.Publisher
+﻿@model bookstore.Areas.Admin.ViewModels.Publisher.CreatePublisherViewModel
 @{
     ViewBag.Title = "CreatePublisher";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        @using (Html.BeginForm("Create", "Publisher", FormMethod.Post))
+        @using (Html.BeginForm("Create", "Publisher", FormMethod.Post, new { enctype="multipart/form-data" }))
         {
             @*@Html.ValidationSummary();*@
             @Html.AntiForgeryToken();
@@ -46,22 +46,22 @@
                                 <!--  <div class="float-right"><a href="#" class="user-avatar-email text-secondary">www.henrybarbara.com</a></div> -->
                                 <div class="user-avatar-address">
                                     <label>Publisher Name</label>
-                                    @Html.TextBoxFor(m => m.publisher_name, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.publisher_name, "", new { @class ="text-danger"})
+                                    @Html.TextBoxFor(m => m.PublisherName, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.PublisherName, "", new { @class ="text-danger"})
                                     <br />
 
                                     <label>Publisher Establish Year</label>
-                                    @Html.TextBoxFor(m => m.est_date, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.est_date, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(m => m.EstDate, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.EstDate, "", new { @class = "text-danger" })
                                     <br />
 
                                     <lable>Image</lable>
-                                    <input type="file" name="upload_image" id="upload_image" class="form-control" />
+                                    @Html.TextBoxFor(p=>p.Image, new { type="file", @class="form-control"})
                                     <br />
 
                                     <label>Description</label>
-                                    @Html.TextAreaFor(m => m.description, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
+                                    @Html.TextAreaFor(m => m.PubliserDescription, new { type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.PubliserDescription, "", new { @class = "text-danger" })
                                     <br />
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>

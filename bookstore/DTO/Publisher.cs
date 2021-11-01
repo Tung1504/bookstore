@@ -10,7 +10,13 @@ namespace bookstore.Models
     [MetadataType(typeof(PublisherMetaData))]
     public partial class Publisher
     {
-
+        public Publisher(string publisher_name, string description, string est_date, string image)
+        {
+            this.publisher_name = publisher_name;
+            this.description = description;
+            this.est_date = est_date;
+            this.image = image;
+        }
     }
 
     public class PublisherMetaData

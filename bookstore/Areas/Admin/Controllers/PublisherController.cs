@@ -10,6 +10,8 @@ using bookstore.Extensions;
 using System.IO;
 using bookstore.DAO;
 using bookstore.Controllers;
+using bookstore.Areas.Admin.ViewModels.Publisher;
+using bookstore.Services;
 
 namespace bookstore.Areas.Admin.Controllers
 {
@@ -78,43 +80,26 @@ namespace bookstore.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            Publisher publisher = new Publisher();
-            return View(publisher);
+            CreatePublisherViewModel publisherViewModel = new CreatePublisherViewModel();
+            return View(publisherViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Publisher publisher, HttpPostedFileBase upload_image)
+        public ActionResult Create(CreatePublisherViewModel createPublisherViewModel, HttpPostedFileBase image)
         {
-
             if (ModelState.IsValid)
-            {
-                //if (upload_image != null && upload_image.ContentLength > 0)
-                //{
-                //    int id = int.Parse(db.Publishers.ToList().Last().id.ToString());
-                //    string _FileName = "";
-                //    int index = upload_image.FileName.IndexOf('.');
-                //    _FileName = "publisher" + id.ToString() + '.' + upload_image.FileName.Substring(index + 1);
-                //    string _path = Path.Combine(Server.MapPath("~/images/publisher"), _FileName);
-
-                //    upload_image.SaveAs(_path);
-
-
-
-                //    Publisher a = db.Publishers.FirstOrDefault(x => x.id == id);
-                //    a.image = _FileName;
-
-                //    db.SaveChanges();
-                //    TempData["result"] = "Create new publisher successfully!";
-                //}
-                db.Publishers.Add(publisher);
-                db.SaveChanges();
-                TempData["result"] = "Create new publisher successfully!";
+            {                
+                Publisher publisher = new Publisher(createPublisherViewModel.PublisherName, createPublisherViewModel.PubliserDescription, 
+                    createPublisherViewModel.EstDate, image.FileName);
+                publisherDAO.Create(publisher);
+                UploadService.Upload(image, UploadService.PUBLISHER_AVATAR_PATH);
+                SetSuccessFlash("Create new publisher successfully!");
                 return RedirectToAction("Index");
             }
 
             //nếu validate thất bại
-            return View(publisher);
+            return View(createPublisherViewModel);
         }
 
     }

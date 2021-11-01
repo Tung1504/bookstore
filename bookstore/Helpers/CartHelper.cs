@@ -72,16 +72,18 @@ namespace bookstore.Helpers
         public bool UpdateQuantity(int bookId, int quantity)
         { 
             Book book = bookDAO.Find(bookId);
+            CartItem cartItem = FindBookInCart(bookId);
             if (quantity <= book.quantity_in_stock)
             {
-                CartItem cartItem = FindBookInCart(bookId);
                 cartItem.Quantity = quantity;
-                RefreshCartSession();
-                return true;
+                RefreshCartSession();               
             }
-
-            return false;
-            
+            else
+            {
+                cartItem.Quantity = book.quantity_in_stock;
+                RefreshCartSession();
+            }
+            return true;
         }
 
         public void RefreshCartSession()

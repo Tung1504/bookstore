@@ -53,6 +53,8 @@ namespace bookstore.Areas.Admin.Controllers
 
                     upload_image.SaveAs(_path);
 
+                    //UploadService.Upload(file, string savePath)
+
                     Book b = db.Books.FirstOrDefault(x => x.id == id);
                     b.image = _FileName;
                     db.SaveChanges();
@@ -82,7 +84,6 @@ namespace bookstore.Areas.Admin.Controllers
         {
             Book book = db.Books.Find(id);
 
-
             if (book == null)
             {
                 return HttpNotFound();
@@ -92,10 +93,7 @@ namespace bookstore.Areas.Admin.Controllers
             List<Publisher> publishers = db.Publishers.ToList();
             List<Category> categories = db.Categories.ToList();
 
-
-
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherAuthorViewModel = new BookCategoryPublisherAuthorViewModel(book, categories, publishers, authors);
-
             return View(bookCategoryPublisherAuthorViewModel);
         }
 
@@ -124,6 +122,7 @@ namespace bookstore.Areas.Admin.Controllers
                 b.image = _FileName;
                 db.SaveChanges();
                 TempData["result"] = "Edit book detail successfully!";
+                
                 return RedirectToAction("Index");
             }
             

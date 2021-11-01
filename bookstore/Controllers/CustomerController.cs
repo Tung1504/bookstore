@@ -20,14 +20,8 @@ namespace bookstore.Controllers
         // GET: User
         public ActionResult Index()
         {
-            if (AuthUser.GetLogin() != null) {
-                User user = AuthUser.GetLogin();
-                return View(user);
-            }
-            else
-            {
-                return RedirectToAction("Login", "Home");
-            }
+            User user = AuthUser.GetLogin();
+            return View(user);           
         }
 
 
