@@ -19,41 +19,43 @@
 
                         <a href="@Url.Action("Create", "Address")" class="btn btn-success"> Create New</a>
                         <br /><br />
-                        <div class="table-responsive cart_info">
-                            <table class="table table-bordered first">
-                                <thead>
-                                    <tr class="cart_menu">
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Address</th>
-                                        <th scope="col">City</th>
-                                        <th scope="col">District</th>
-                                        <th scope="col">Postal Code</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var address in Model)
-                                    {
-                                        <tr>
-                                            <td>@address.id</td>
-                                            <td>@address.address1</td>
-                                            <td>@address.city</td>
-                                            <td>@address.district</td>
-                                            <td>@address.postal_code</td>
-                                            <td>
-                                                @Html.ActionLink(" Edit", "Edit", new { id = address.id }, new { @class = "btn btn-info" })
+                              <div class="table-responsive cart_info" style="padding: 20px;">
+                                  <table class="table table-bordered first">
+                                      <thead>
+                                          <tr class="cart_menu">
+                                              <th scope="col">ID</th>
+                                              <th scope="col">Address</th>
+                                              <th scope="col">City</th>
+                                              <th scope="col">District</th>
+                                              <th scope="col">Postal Code</th>
+                                              <th scope="col">Actions</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          @foreach (var address in Model)
+                                          {
+                                              <tr>
+                                                  <td>@address.id</td>
+                                                  <td>@address.address1</td>
+                                                  <td>@address.city</td>
+                                                  <td>@address.district</td>
+                                                  <td>@address.postal_code</td>
+                                                  <td>
+                                                      @Html.ActionLink(" Edit", "Edit", new { id = address.id }, new { @class = "btn btn-info" })
 
-                                                @using (Html.BeginForm("Delete", "Address", new { id = address.id }, FormMethod.Post, new { style = "display:inline" }))
-                                                {
-                                                    @Html.AntiForgeryToken()
-                                                    <button type="submit" class="btn btn-danger "> Delete</button>
-                                                }
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                                                      @using (Html.BeginForm("Delete", "Address", new { id = address.id }, FormMethod.Post, new { style = "display:inline" }))
+                                                      {
+                                                          @Html.AntiForgeryToken()
+                                                          <button type="submit" class="btn btn-danger "> Delete</button>
+                                                      }
+                                                  </td>
+                                              </tr>
+                                          }
+                                      </tbody>
+                                  </table>
+                                  <a href="@Url.Action("Index","Customer")" class="btn btn-default update pull-right"> Back </a>
+                                  <br /><br />
+                              </div>
                     </div>
                 </div>
             </div>
