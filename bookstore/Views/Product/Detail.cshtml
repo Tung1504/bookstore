@@ -57,13 +57,23 @@
                 <span>
                     <span>US $@Model.Book.price</span>
                     <label>Quantity:</label>
-                    @using (Html.BeginForm("AddToCart", "Cart", new { bookId = Model.Book.id }, FormMethod.Post, new { style = "display:inline" }))
+                    @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post, new { style = "display:inline" }))
                     {
-                        @Html.TextBoxFor(p => p.Quantity, new { @Value = Model.Quantity })
+                        <input type="hidden" name="bookId" value="@Model.Book.id" />
+                        <input type="number" min="1" step="1" name="qty" value="@Model.Quantity" style="width: 75px" />
                         <button type="submit" class="btn btn-fefault cart">
                             <i class="fa fa-shopping-cart"></i>
                             Add to cart
                         </button>
+                    }
+                    @if (TempData["Notification"] != null)
+                    {
+                        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@TempData["Notification"]");
+            };
+                        </script>
                     }
                 </span>
                 <p><b>Availability:</b> @Model.Book.quantity_in_stock</p>
@@ -79,21 +89,15 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
                 <li><a hrer="#similars" data-toggle="tab">Similars</a></li>
-                @*<li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>*@
             </ul>
         </div>
         <div class="tab-content">
             <div class="tab-pane fade" id="details">
                 <div class="col-sm-12">
-                    <p>@Model.Book.description</p>
+                 
                 </div>
             </div>
 
-            <div class="tab-pane fade active in" id="reviews">
-                @*<div class="col-sm-12">
-                    @foreach(var item in Model.Book.)
-                </div>*@
-            </div>
 
         </div>
     </div>

@@ -1,73 +1,66 @@
 ﻿@model bookstore.Models.Payment_card
 
-    @{
-        ViewBag.Title = "Create";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-    <section id="cart_items">
-        <div class="container">
-            <div class="shopper-informations">
-                <div class="row">
-                    <div class="col-sm-9">
-                        <div class="shopper-info">
-                            <div class="heading">
-                                <h3>Create Payment Card</h3>
-                                <p>You can Create your new payment card here!</p>
-                            </div>
-
-
-                            <div class="row">
-                                <h5 style="color: red"> @Html.ValidationSummary()</h5>
-                                <div class="col-sm-12">
-                                    <div class="total_area">
-                                        <ul>
-                                            <li>
-                                                @using (Html.BeginForm("Create", "PaymentCard", FormMethod.Post, new { @class = "form" }))
-                                                {
-                                                    @Html.AntiForgeryToken();
-                                                    <div>
-                                                        <lable>Card Number</lable>
-                                                        @Html.TextBoxFor(m => m.card_number, new { type = "text", @class = "form-control" })
-                                                    </div>
-
-                                                    <div>
-                                                        <lable>From Date</lable>
-                                                        @Html.TextBoxFor(m => m.from_date, new { type = "date", @class = "form-control" })
-
-                                                    </div>
-
-                                                    <div>
-                                                        <lable>To Date</lable>
-                                                        @Html.TextBoxFor(m => m.to_date, new { type = "date", @class = "form-control" })
-                                                    </div>
-
-                                                    <div>
-                                                        <lable>Cart Type</lable>
-                                                        @Html.TextBoxFor(m => m.card_type, new { type = "text", @class = "form-control" })
-
-                                                    </div>
-
-                                                    <a href="@Url.Action("Index","PaymentCard")" class="btn btn-default update"> Back </a>
-                                                    <button type="submit" class="btn btn-default update"> Submit </button>
-                                                }
-                                            </li>
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            
-
+<section id="cart_items">
+    <div class="container">
+        <div class="shopper-informations">
+            <div class="row" style="margin-bottom: 80px;">
+                <div class="col-sm-9">
+                    <div class="shopper-info">
+                        <div class="heading">
+                            <h3>Create Payment Card</h3>
+                            <p>You can Create your new payment card here!</p>
                         </div>
 
 
+                        <div class="row">
+                            <h5 style="color: red"> @Html.ValidationSummary()</h5>
+                            <div class="col-sm-12">
+                                <div class="total_area">
+                                    <ul>
+                                        <li>
+                                            @using (Html.BeginForm("Create", "PaymentCard", FormMethod.Post, new { @class = "form" }))
+                                            {
+                                                @Html.AntiForgeryToken();
+                                                <br />
+                                                <lable>Card Number</lable>
+                                                @Html.TextBoxFor(m => m.card_number, new { type = "text", @class = "form-control", placeholder ="Enter your card number" }) <br />
+
+                                                <lable>From Date</lable>
+                                                @Html.TextBoxFor(m => m.from_date, new { type = "date", @class = "form-control" }) <br />
+                                                <lable>To Date</lable>
+                                                @Html.TextBoxFor(m => m.to_date, new { type = "date", @class = "form-control" }) <br />
+
+                                                <lable>Cart Type</lable>
+                                                @Html.TextBoxFor(m => m.card_type, new { type = "text", @class = "form-control" , placeholder = "Enter the card type" }) <br />
+
+                                                <br />
+
+                                                <button type="submit" class="btn btn-default update pull-right"> Submit </button>
+                                                <a href="@Url.Action("Index","PaymentCard")" class="btn btn-default update pull-right"> Back </a>
+                                                <br /><br />
+                                            }
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
                     </div>
+
+
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
 

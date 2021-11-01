@@ -96,7 +96,7 @@
                 <div class="category-tab">
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">
-                            @foreach (var category in Model.ListCategory.Take(5))
+                            @foreach (var category in Model.ListCategory.Take(5).OrderBy(m=> m.category_name))
                             {
                                 if (Model.ListCategory.IndexOf(category) == 0)
                                 {
