@@ -16,6 +16,7 @@ namespace bookstore.Areas.Admin.Controllers
         // GET: Admin/Admin
         public ActionResult Index()
         {
+            
             List<User> users = db.Users.ToList();
             List<Book> book = db.Books.ToList();
             List<Author> authors = db.Authors.ToList();
@@ -24,7 +25,9 @@ namespace bookstore.Areas.Admin.Controllers
             List<Order> order = db.Orders.ToList();
 
             AdminDashboardViewModel adminDashboardViewModel = new AdminDashboardViewModel(users, book, categories, publishers, authors, order);
-            return View(adminDashboardViewModel);
+            
+            // not professional way to prevent Customer to go to Admin in backend
+            return AuthencatedByRole() != null ? AuthencatedByRole() : View(adminDashboardViewModel);
         }
 
 

@@ -8,7 +8,7 @@ namespace bookstore.Helpers
 {
     public class AuthUser
     {
-        public static void SetLogin(AuthUser u)
+        public static void SetLogin(User u)
         {
             HttpContext.Current.Session["auth"] = u;
         }

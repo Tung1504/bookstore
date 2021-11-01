@@ -1,4 +1,4 @@
-﻿@model bookstore.ViewModels.BookCategoryPublisherAuthorViewModel
+﻿@model bookstore.ViewModels.Home.HomeViewModel
 
 @{
     ViewBag.Title = "Home";
@@ -76,50 +76,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                <div class="left-sidebar">
-                    <h2>Category</h2>
-                    <div class="panel-group category-products" id="accordian">
-                        <div class="panel panel-default">
-
-                            @foreach (var category in Model.ListCategory.Take(5))
-                            {
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a href="@Url.Action("Category","Home", new {id = category.id })">@category.category_name</a>
-                                    </h4>
-
-                                </div>
-                            }
-                        </div>
-
-                    </div>
-
-                    <div class="brands_products">
-                        <h2>Publisher</h2>
-                        <div class="brands-name">
-                            <ul class="nav nav-pills nav-stacked">
-
-                                @foreach (var item in Model.ListPublisher.Take(5))
-                                {
-                                    <li><a href="@Url.Action("Publisher","Home", new {id = item.id })">@item.publisher_name</a></li>
-                                }
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="price-range">
-                        <h2>Price Range</h2>
-                        <div class="well text-center">
-                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
-                            <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
-                        </div>
-                    </div>
-
-                    <div class="shipping text-center">
-                        <img src="~/images/home/shipping.jpg" alt="" />
-                    </div>
-
-                </div>
+                @Html.Action("Index", "Widget")
             </div>
 
             <div class="col-sm-9 padding-right">
@@ -128,37 +85,8 @@
                     @foreach (var book in Model.ListBook.Take(6))
                     {
                         <div class="col-sm-4">
-                            <div class="product-image-wrapper ">
-
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-
-                                        <img src="~/images/shop/@book.image" alt="" style="width: 256px; height: 238px" />
-                                        <h2>$@book.price</h2>
-                                        <p>@book.title</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                                    <div class="product-overlay">
-                                        <div class="overlay-content">
-                                            <a href="@Url.Action("ProductDetail", "Home", new { id = book.id})">
-                                                <img src="~/images/shop/@book.image" alt="" />
-                                                <h2>$@book.price</h2>
-                                                <p>@book.title</p>
-                                            </a>
-
-                                            @if (book.quantity_in_stock > 0)
-                                            {
-                                                using (Html.BeginForm("AddToCart", "Cart", new { bookId = book.id }, FormMethod.Post))
-                                                {
-                                                    <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                }
-                                            }else{
-                                                <p>Item out of stock</p>
-                                            }
-                                        </div>
-                                    </div>
-
-                                </div>
+                            <div class="product-image-wrapper" style="width: 207px; height: 336px">
+                                @Html.Partial("~/Views/Product/_Item.cshtml", book)
                             </div>
                         </div>
                     }
@@ -183,48 +111,24 @@
                         </ul>
                     </div>
                     <div class="tab-content">
+
                         @foreach (var category in Model.ListCategory.Take(4))
                         {
                             <div class="tab-pane fade active in" id="category_@category.id">
                                 @foreach (var book in Model.ListBook.Where(m => m.category_id == category.id).Take(4))
                                 {
+                                    <h1></h1>
                                     <div class="col-sm-3">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-
-                                                    <img src="~/images/shop/@book.image" alt="" style="width: 184px; height: 171px" />
-                                                    <h2>$@book.price</h2>
-                                                    <p>@book.title</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-                                                <div class="product-overlay">
-                                                    <div class="overlay-content">
-                                                        <a href="@Url.Action("ProductDetail", "Home", new { id = book.id})">
-                                                            <img src="~/images/shop/@book.image" />
-                                                            <h2>$@book.price</h2>
-                                                            <p>@book.title</p>
-                                                        </a>
-
-                                                        @if (book.quantity_in_stock > 0)
-                                                        {
-                                                            using (Html.BeginForm("AddToCart", "Cart", new { bookId = book.id }, FormMethod.Post))
-                                                            {
-                                                                <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                            }
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="product-image-wrapper" style="width: 148px; height: 280px">
+                                            @Html.Partial("~/Views/Product/_Item.cshtml", book)
                                         </div>
                                     </div>
                                 }
-
-
                             </div>
                         }
 
                     </div>
+                    
                 </div>
 
                 <div class="recommended_items">
@@ -239,33 +143,7 @@
 
                                     <div class="col-sm-4">
                                         <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-
-                                                    <img src="~/images/shop/@book.image" alt="" />
-                                                    <h2>$@book.price</h2>
-                                                    <p>@book.title</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-                                                <div class="product-overlay">
-                                                    <div class="overlay-content">
-                                                        <a href="@Url.Action("ProductDetail", "Home", new { id = book.id})">
-                                                            <img src="~/images/shop/@book.image" alt="" />
-                                                            <h2>$@book.price</h2>
-                                                            <p>@book.title</p>
-                                                        </a>
-
-                                                        @if (book.quantity_in_stock > 0)
-                                                        {
-                                                            using (Html.BeginForm("AddToCart", "Cart", new { bookId = book.id }, FormMethod.Post))
-                                                            {
-                                                                <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                            }
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
-
+                                            @Html.Partial("~/Views/Product/_Item.cshtml", book)
                                         </div>
                                     </div>
                                 }
@@ -276,32 +154,7 @@
 
                                     <div class="col-sm-4">
                                         <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-
-                                                    <img src="~/images/shop/@book.image" alt="" />
-                                                    <h2>$@book.price</h2>
-                                                    <p>@book.title</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-                                                <div class="product-overlay">
-                                                    <div class="overlay-content">
-                                                        <a href="@Url.Action("ProductDetail", "Home", new { id = book.id})">
-                                                            <img src="~/images/shop/@book.image" alt="" />
-                                                            <h2>$@book.price</h2>
-                                                            <p>@book.title</p>
-                                                        </a>
-
-                                                        @if (book.quantity_in_stock > 0)
-                                                        {
-                                                            using (Html.BeginForm("AddToCart", "Cart", new { bookId = book.id }, FormMethod.Post))
-                                                            {
-                                                                <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></button>
-                                                            }
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @Html.Partial("~/Views/Product/_Item.cshtml", book)
 
                                         </div>
                                     </div>

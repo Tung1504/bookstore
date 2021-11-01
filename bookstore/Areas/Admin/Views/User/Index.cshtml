@@ -34,6 +34,7 @@
                                 <p>@ViewBag.SuccessMsg</p>
                             </div>
                         }
+                        <a href="@Url.Action("Create", "User")" class="btn btn-success fas fa-plus mb-3"> Create New</a>
                         <div class="table-responsive">
                             <table class="table table-bordered first">
                                 <thead>
@@ -50,20 +51,20 @@
 
                                     @foreach (var user in Model)
                                     {
-                                        
-                                            <tr>
-                                                <td>@user.id</td>
-                                                <td>@user.username</td>
-                                                <td>@user.role</td>
-                                                <td>
-                                                    @*@Html.ActionLink(" Edit", "Edit", new { id = user.id }, new { @class = "btn btn-light fas fa-edit" })*@
-                                                    @Html.ActionLink(" Detail", "ViewDetail", new { id = user.id }, new { @class = "btn btn-primary fas fa-file" })
 
-                                                    <a data-id="@user.id" href='#' class='btn btn-danger fas fa-trash btnDel'> Delete</a>
-                                                </td>
-                                            </tr>
-                                        }
-                                    
+                                        <tr>
+                                            <td>@user.id</td>
+                                            <td>@user.username</td>
+                                            <td>@user.role</td>
+                                            <td>
+                                                @*@Html.ActionLink(" Edit", "Edit", new { id = user.id }, new { @class = "btn btn-light fas fa-edit" })*@
+                                                @Html.ActionLink(" Detail", "ViewDetail", new { id = user.id }, new { @class = "btn btn-primary fas fa-file" })
+
+                                                <a data-id="@user.id" href='#' class='btn btn-danger fas fa-trash btnDel'> Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+
                                 </tbody>
                             </table>
                         </div>

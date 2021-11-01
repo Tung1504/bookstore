@@ -28,21 +28,28 @@ namespace bookstore.Areas.Admin.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(User user)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Users.Add(user);
-        //        db.SaveChanges(); //Apply insert statement
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    //nếu validate thất bại
-        //    return View(user);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(User user)
+        {
+            if (db.Users.Any(x => x.username == user.username))
+            {
+                ViewBag.CreateFail = "This name has been accounted";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges(); //Apply insert statement
+                    TempData["result"] = "Create new user successfully!";
+                    return RedirectToAction("Index");
+                }
+            }
+            //nếu validate thất bại
+            return View(user);
+        }
 
 
         public ActionResult ViewDetail(int id)
