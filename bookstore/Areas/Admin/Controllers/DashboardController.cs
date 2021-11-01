@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using bookstore.Filters.AuthorFilters;
 
 namespace bookstore.Areas.Admin.Controllers
 {
@@ -27,7 +28,7 @@ namespace bookstore.Areas.Admin.Controllers
             AdminDashboardViewModel adminDashboardViewModel = new AdminDashboardViewModel(users, book, categories, publishers, authors, order);
             
             // not professional way to prevent Customer to go to Admin in backend
-            return AuthencatedByRole() != null ? AuthencatedByRole() : View(adminDashboardViewModel);
+            return View(adminDashboardViewModel);
         }
 
 
