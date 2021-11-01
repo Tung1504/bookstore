@@ -57,13 +57,23 @@
                 <span>
                     <span>US $@Model.Book.price</span>
                     <label>Quantity:</label>
-                    @using (Html.BeginForm("AddToCart", "Cart", new { bookId = Model.Book.id }, FormMethod.Post, new { style = "display:inline" }))
+                    @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post, new { style = "display:inline" }))
                     {
-                        @Html.TextBoxFor(p => p.Quantity, new { @Value = Model.Quantity })
+                        <input type="hidden" name="bookId" value="@Model.Book.id" />
+                        <input type="number" min="1" step="1" name="qty" value="@Model.Quantity" style="width: 75px" />
                         <button type="submit" class="btn btn-fefault cart">
                             <i class="fa fa-shopping-cart"></i>
                             Add to cart
                         </button>
+                    }
+                    @if (TempData["Notification"] != null)
+                    {
+                        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@TempData["Notification"]");
+            };
+                        </script>
                     }
                 </span>
                 <p><b>Availability:</b> @Model.Book.quantity_in_stock</p>
@@ -85,7 +95,7 @@
         <div class="tab-content">
             <div class="tab-pane fade" id="details">
                 <div class="col-sm-12">
-                    <p>@Model.Book.description</p>
+                 
                 </div>
             </div>
 
@@ -94,9 +104,9 @@
                     <ul>
                         <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
                         <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-                        <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
+                        <li><a href=""><i class="fa fa-calendar-o"></i>@Model.Book.public_date</a></li>
                     </ul>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <p>@Model.Book.description</p>                
                     <p><b>Write Your Review</b></p>
 
                     <form action="#">

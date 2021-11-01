@@ -13,6 +13,7 @@
 }
 else
 {
+    
     <section id="cart_items">
         <div class="container">
             <div class="breadcrumbs">
@@ -37,7 +38,7 @@ else
 
                         @if (Session["cart"] != null)
                         {
-
+                            
                             double total_price = 0;
 
                             foreach (var item in Model)
@@ -46,7 +47,8 @@ else
                                 total_price = total_price + LineTotal;
                                 <tr>
                                     <td class="cart_product">
-                                        <a href=""><img src="images/cart/one.png" alt=""></a>
+                                        <a href=""><img src="~/images/shop/@item.Book.image" alt="" width="100" 
+     height="150"/></a>
                                     </td>
                                     <td class="cart_description">
                                         <h4><a href="">@item.Book.title</a></h4>

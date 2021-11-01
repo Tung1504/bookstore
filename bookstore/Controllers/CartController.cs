@@ -18,7 +18,7 @@ namespace bookstore.Controllers
 
             return View(cart);
         }
-        public RedirectToRouteResult AddToCart(int bookId)
+        public ActionResult AddToCart(int bookId, int qty)
         {
             if (AuthUser.GetLogin() != null)
             {
@@ -27,19 +27,45 @@ namespace bookstore.Controllers
                     Session["cart"] = new List<CartItem>();
                 }
                 int id = AuthUser.GetLogin().id;
+               
                 List<CartItem> cart = Session["cart"] as List<CartItem>;
                 if (cart.FirstOrDefault(m => m.Book.id == bookId) == null)
                 {
+
                     Book book = db.Books.Find(bookId);
-                    CartItem newItem = new CartItem(book, 1, id);
+                    CartItem newItem = null;
+                    if (qty > book.quantity_in_stock)
+                    {
+                        newItem = new CartItem(book, book.quantity_in_stock, id);
+                        TempData["Notification"] = "quantity is greater than quantity in stock";
+
+                    }
+                    else
+                    {
+                        newItem = new CartItem(book, qty, id);
+                    }
                     cart.Add(newItem);
                 }
                 else
                 {
+
                     CartItem cartItem = cart.FirstOrDefault(m => m.Book.id == bookId);
-                    cartItem.Quantity++;
+                    if (cartItem.UserId == id)
+                    {
+                        if (qty <= (cartItem.Book.quantity_in_stock - cartItem.Quantity))
+                        {
+                            cartItem.Quantity = cartItem.Quantity + qty;
+                        }
+                        else
+                        {
+                            cartItem.Quantity = cartItem.Book.quantity_in_stock;
+                            TempData["Notification"] = "quantity is greater than quantity in stock";
+
+                        }
+
+                    }
                 }
-                return RedirectToAction("Index", "Home");
+                return Redirect(Request.UrlReferrer.ToString());
             }
             else
             {
@@ -49,9 +75,10 @@ namespace bookstore.Controllers
         [HttpPost]
         public ActionResult UpdateQuantity(int bookId, int quantity)
         {
+            int id = AuthUser.GetLogin().id;
             List<CartItem> cart = Session["cart"] as List<CartItem>;
             CartItem updateItem = cart.FirstOrDefault(m => m.Book.id == bookId);
-            if (updateItem != null)
+            if (updateItem != null && updateItem.UserId==id)
             {
                 if (updateItem.Book.quantity_in_stock >= quantity)
                 {
@@ -59,6 +86,7 @@ namespace bookstore.Controllers
                 }
                 else
                 {
+                    updateItem.Quantity = updateItem.Book.quantity_in_stock;
                     TempData["Message"] = "quantity is greater than quantity in stock";
                 }
             }
@@ -66,6 +94,7 @@ namespace bookstore.Controllers
         }
         public RedirectToRouteResult DeleteFromCart(int bookId)
         {
+          
             List<CartItem> giohang = Session["cart"] as List<CartItem>;
             CartItem itemXoa = giohang.FirstOrDefault(m => m.Book.id == bookId);
             if (itemXoa != null && itemXoa.UserId == AuthUser.GetLogin().id)
@@ -107,7 +136,7 @@ namespace bookstore.Controllers
                     city = model.Address;
                 }
                 List<CartItem> cart = Session["cart"] as List<CartItem>;
-                User user = (User)Session["auth"];
+                User user = AuthUser.GetLogin();
 
                 int orderNo = db.Orders.Count() + 1;
                 string orderNumber = "1000" + orderNo;

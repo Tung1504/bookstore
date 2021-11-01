@@ -2,7 +2,8 @@
 
 <div class="single-products ">
     <div class="productinfo text-center">
-        <img src="~/images/shop/@Model.image" alt="" />
+        <img src="~/images/shop/@Model.image" alt="" width="130" 
+     height="200"  />
         <h2>$@Model.price</h2>
         <p>@Model.title</p>
         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -10,7 +11,8 @@
     <a href="@Url.Action("Detail", "Product", new { id = Model.id})">
         <div class="product-overlay">
             <div class="overlay-content">
-                <img src="~/images/shop/@Model.image" alt="" />
+                <img src="~/images/shop/@Model.image" alt="" width="150"
+                     height="200" />
                 <h2>$@Model.price</h2>
                 <p>@Model.title</p>
 
@@ -18,12 +20,22 @@
                 {
                     using (Html.BeginForm("AddToCart", "Cart", new { bookId = Model.id }, FormMethod.Post))
                     {
+                        <input type="hidden" name="qty" value=1 />
                         <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                     }
                 }
                 else
                 {
                     <p>Item out of stock</p>
+                }
+                @if (TempData["Notification"] != null)
+                {
+                    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@TempData["Notification"]");
+            };
+                    </script>
                 }
             </div>
         </div>
