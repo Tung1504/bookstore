@@ -49,9 +49,9 @@
                                     @Html.TextBoxFor(m => m.password, new { type = "password", @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" }) <br />
 
-                                    <lable>Re-Password</lable>
+                                    @*<lable>Re-Password</lable>
                                     @Html.TextBoxFor(m => m.repassword, new { type = "password", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.repassword, "", new { @class = "text-danger" }) <br />
+                                    @Html.ValidationMessageFor(m => m.repassword, "", new { @class = "text-danger" }) <br />*@
 
                                     <lable>Role</lable>
                                     @Html.DropDownListFor(x => x.role, new List<SelectListItem>
