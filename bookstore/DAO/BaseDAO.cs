@@ -45,6 +45,17 @@ namespace bookstore.DAO
             return dbSet.Find(id);
         }
 
+        public bool Delete(T entity)
+        {
+            T t = dbSet.Remove(entity);
+            if (t != null)
+            {
+                SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
         public void SaveChanges()
         {
             db.SaveChanges();

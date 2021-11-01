@@ -63,27 +63,7 @@
                 </div>
                 <div class="col-md-8 clearfix">
                     <div class="shop-menu clearfix pull-right">
-                        <ul class="nav navbar-nav">
-                            @*<li><a href=""><i class="fa fa-user"></i> Account</a></li>*@
-                            @*<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>*@
-
-
-                            @if (AuthUser.GetLogin() != null)
-                            {
-                                <li><a href="@Url.Action("Index", "Cart")"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-
-                                <li><a href="@Url.Action("Index", "Customer")"><i class="fa fa-user"></i> Hello @AuthUser.GetLogin().name</a></li>
-
-                                <li><a href="@Url.Action("Logout", "Auth")"><i class="fa fa-sign-out"></i> Logout</a></li>
-                            }
-                            else
-                            {
-                                <li><a href="@Url.Action("Index", "Cart")"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-
-                                <li><a href="@Url.Action("LoginOrSignUp", "Auth")"><i class="fa fa-lock"></i> LoginOrSignUp</a></li>
-                            }
-
-                        </ul>
+                       @Html.Action("Nav", "Widget")
                     </div>
                 </div>
             </div>

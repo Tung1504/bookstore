@@ -50,8 +50,7 @@
                             <div class="alert alert-danger alert-dismissable" role="alert">
                                 @TempData["signup-failed"]
                             </div>
-                        }
-                        <label>@ViewBag.SignUpFail</label>
+                        }                       
                         <div>
                             @Html.TextBoxFor(m => m.SignupViewModel.Username, new { placeholder = "Username" })
                             @Html.ValidationMessageFor(m => m.SignupViewModel.Username, "", new { @class = "text-danger" })

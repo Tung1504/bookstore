@@ -140,7 +140,6 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
-    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthorController.cs" />
     <Compile Include="Areas\Admin\Controllers\BookController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
@@ -170,6 +169,7 @@
     <Compile Include="DTO\Publisher.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Extensions\NotificationExtensions.cs" />
+    <Compile Include="Filters\AuthorizeFilters\Authenticated.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -841,6 +841,7 @@
     <Content Include="Views\Shared\_WithSidebarLayout.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Product\_Item.cshtml" />
+    <Content Include="Views\Widget\_Nav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

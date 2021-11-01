@@ -5,15 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@if (Model == null || Model.CartItems.Count() == 0)
-{
-    <p class="text-info text-center">
-        Giỏ hàng của bạn rỗng!
-    </p>
-}
-else
-{
     <section id="cart_items">
         <div class="container">
             <div class="breadcrumbs">
@@ -22,6 +13,13 @@ else
                     <li class="active">Shopping Cart</li>
                 </ol>
             </div>
+
+            @if (TempData["error"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["error"]
+                </div>
+            }
             <div class="table-responsive cart_info">
                 <table class="table table-condensed cart-table">
                     <thead>
@@ -36,7 +34,7 @@ else
                     </thead>
                     <tbody>
 
-                        @if (Session["cart"] != null)
+                        @if (Model.CartItems.Count > 0)
                         {
                             double totalPrice = 0;
 
@@ -56,10 +54,10 @@ else
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
-                                            @using (Html.BeginForm("UpdateQuantity", "Cart", new { id = item.Book.id }, FormMethod.Post, new { id = "update-cart-"+item.Book.id }))
+                                            @using (Html.BeginForm("UpdateQuantity", "Cart", new { bookId = item.Book.id }, FormMethod.Post, new { id = "update-cart-" + item.Book.id }))
                                             {
-                                                <a class="cart_quantity_up" href=""> + </a>                                                
-                                                @Html.TextBoxFor(p => p.Quantity, ""+item.Quantity ,new { @class = "cart_quantity_input", size=2, onChange= "document.getElementById('update-cart-"+item.Book.id+"').submit()" })
+                                                <a class="cart_quantity_up" href=""> + </a>
+                                                @Html.TextBoxFor(p => p.Quantity, "" + item.Quantity, new { @class = "cart_quantity_input", size = 2, onChange = "document.getElementById('update-cart-" + item.Book.id + "').submit()" })
                                                 <a class="cart_quantity_down" href=""> - </a>
                                             }
 
@@ -69,31 +67,37 @@ else
                                         <p class="cart_total_price">$ @item.Linetotal</p>
                                     </td>
                                     <td class="cart_delete">
-                                        <a class="cart_quantity_delete" href="@Url.Action("DeleteFromCart",new { bookId = item.Book.id})" onclick="return confirm('Delete this item?');"><i class="fa fa-times"></i></a>
-                                
+                                        <a class="cart_quantity_delete" href="@Url.Action("DeleteFromCart", new { bookId = item.Book.id })" onclick="return confirm('Delete this item?');"><i class="fa fa-times"></i></a>
+
                                     </td>
                                 </tr>
                             }
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <h4>Total Price</h4>
-                                    </td>
-                                    <td class="cart_total">
-                                        <p class="cart_total_price"> $ @totalPrice</p>
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action("Checkout")" class="btn btn-default check_out"> Check out </a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <h4>Total Price</h4>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price"> $ @totalPrice</p>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Checkout")" class="btn btn-default check_out"> Check out </a>
+                                </td>
+                            </tr>
 
-                         }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">No items in cart</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
 
             </div>
         </div>
     </section>
-}
+

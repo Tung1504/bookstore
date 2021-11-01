@@ -1,4 +1,5 @@
 ﻿using bookstore.DAO;
+using bookstore.Helpers;
 using bookstore.ViewModels.Widget;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace bookstore.Controllers
 
         // GET: Widget
         [ChildActionOnly]
-        public ActionResult Index()
+        public ActionResult Sidebar()
         {
             CategoriesPublishersViewModel categoriesPublishersViewModel = new CategoriesPublishersViewModel()
             {
@@ -30,6 +31,13 @@ namespace bookstore.Controllers
                 Publishers = publisherDAO.All()
             };
             return PartialView("_Sidebar", categoriesPublishersViewModel);
+        }
+
+        [ChildActionOnly]
+        public ActionResult Nav(CartHelper cartHelper)
+        {
+            ViewBag.TotalItemsInCart = cartHelper.CountTotalItemsInCart();
+            return PartialView("_Nav");
         }
     }
 }

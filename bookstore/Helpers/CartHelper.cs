@@ -10,7 +10,8 @@ namespace bookstore.Helpers
     public class CartHelper
     {
         List<CartItem> cartItems;
-        BookDAO BookDAO = new BookDAO();
+
+        BookDAO bookDAO = new BookDAO();
 
         public CartHelper()
         {
@@ -25,17 +26,24 @@ namespace bookstore.Helpers
         {
             return cartItems;
         }
+        
+        public int CountTotalItemsInCart()
+        {
+            return cartItems.Count;
+        }
 
         public void AddProductToCart(int bookId, int quantity = 1)
         {
             CartItem existingCartItem = FindBookInCart(bookId);
             if (existingCartItem != null)
             {
-                existingCartItem.Quantity += quantity;
+                Book book = bookDAO.Find(bookId);
+                existingCartItem.Quantity = quantity > book.quantity_in_stock - existingCartItem.Quantity ? 
+                    book.quantity_in_stock : existingCartItem.Quantity + quantity;
             }
             else
             {
-                Book book = BookDAO.Find(bookId);
+                Book book = bookDAO.Find(bookId);
                 cartItems.Add(new CartItem(book, quantity));
             }
             RefreshCartSession();
@@ -61,11 +69,19 @@ namespace bookstore.Helpers
             }
         }
 
-        public void UpdateQuantity(int bookId, int quantity)
-        {
-            CartItem cartItem = FindBookInCart(bookId);
-            cartItem.Quantity = quantity;
-            RefreshCartSession();
+        public bool UpdateQuantity(int bookId, int quantity)
+        { 
+            Book book = bookDAO.Find(bookId);
+            if (quantity <= book.quantity_in_stock)
+            {
+                CartItem cartItem = FindBookInCart(bookId);
+                cartItem.Quantity = quantity;
+                RefreshCartSession();
+                return true;
+            }
+
+            return false;
+            
         }
 
         public void RefreshCartSession()

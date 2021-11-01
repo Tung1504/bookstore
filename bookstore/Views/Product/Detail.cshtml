@@ -57,7 +57,7 @@
                     <span>
                         <span>US $@Model.Book.price</span>
                         <label>Quantity:</label>
-                        @using (Html.BeginForm("AddToCart", "Cart",new { id = Model.Book.id },FormMethod.Get, new { style="display:inline" }))
+                        @using (Html.BeginForm("AddToCart", "Cart",new { bookId = Model.Book.id },FormMethod.Post, new { style="display:inline" }))
                         {
                             @Html.TextBoxFor(p => p.Quantity, new { @Value = Model.Quantity })
                             <button type="submit" class="btn btn-fefault cart">

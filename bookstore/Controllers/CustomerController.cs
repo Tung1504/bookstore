@@ -1,15 +1,13 @@
 ﻿using bookstore.DAO;
+using bookstore.Filters.AuthorizeFilters;
 using bookstore.Helpers;
 using bookstore.Models;
 using bookstore.ViewModels.Customer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace bookstore.Controllers
 {
+    [Authenticated]
     public class CustomerController : BaseController
     {
         UserDAO UserDAO;

@@ -1,13 +1,10 @@
-﻿using bookstore.DAO;
+﻿using bookstore.Filters.AuthorizeFilters;
 using bookstore.Helpers;
 using bookstore.Models;
-using bookstore.ViewModels;
 using bookstore.ViewModels.Cart;
 using bookstore.ViewModels.ProductDetailViewModel;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+
 using System.Web.Mvc;
 
 namespace bookstore.Controllers
@@ -22,26 +19,25 @@ namespace bookstore.Controllers
             return View(cartViewModel);
         }
 
-        public ActionResult AddToCart(int id, ProductDetailViewModel productDetailViewModel, CartHelper cartHelper)
+        [Authenticated]
+        public ActionResult AddToCart(int bookId, ProductDetailViewModel productDetailViewModel, CartHelper cartHelper)
         {
-            if (AuthUser.GetLogin() != null)
-            {
-                cartHelper.AddProductToCart(id, productDetailViewModel.Quantity);
-                return Redirect(Request.UrlReferrer.ToString());
-            }
-            else
-            {
-                return RedirectToAction("LoginOrSignup", "Auth");
-            }
+            cartHelper.AddProductToCart(bookId, productDetailViewModel.Quantity);
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
-        [HttpPost]
-        public ActionResult UpdateQuantity(int id, CartViewModel cartViewModel, CartHelper cartHelper)
+        [Authenticated]
+        public ActionResult UpdateQuantity(int bookId, CartViewModel cartViewModel, CartHelper cartHelper)
         {
-            cartHelper.UpdateQuantity(id, cartViewModel.Quantity);
+            bool isUpdated = cartHelper.UpdateQuantity(bookId, cartViewModel.Quantity);
+            if (!isUpdated)
+            {
+                SetErrorFlash(string.Format("Quantity of cart item is greater than in stock"));
+            }
             return RedirectToAction("Index");
         }
-
+        
+        [Authenticated]
         public ActionResult DeleteFromCart(int bookId, CartHelper cartHelper)
         {
             cartHelper.DeleteCartItem(bookId);
