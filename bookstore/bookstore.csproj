@@ -154,10 +154,12 @@
     <Compile Include="Controllers\CategoryProductController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PublisherProductController.cs" />
     <Compile Include="Controllers\UserOrderController.cs" />
     <Compile Include="Controllers\PaymentCardController.cs" />
     <Compile Include="Controllers\WidgetController.cs" />
+    <Compile Include="DAO\AuthorDAO.cs" />
     <Compile Include="DAO\BaseDAO.cs" />
     <Compile Include="DAO\BookDAO.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
@@ -230,6 +232,7 @@
     <Compile Include="ViewModels\Customer\CustomerUpdateInformationViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\Product\DetailViewModel.cs" />
     <Compile Include="ViewModels\PublisherProduct\PublisherProductViewModel.cs" />
     <Compile Include="ViewModels\UserAddressPaymentCardViewModels.cs" />
     <Compile Include="ViewModels\UserAddressPaymentListAndCartViewModels.cs" />
