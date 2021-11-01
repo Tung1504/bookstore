@@ -28,7 +28,7 @@
                                                 @Html.AntiForgeryToken();
                                                 <br />
                                                 <lable>Card Number</lable>
-                                                @Html.TextBoxFor(m => m.card_number, new { type = "text", @class = "form-control" }) <br />
+                                                @Html.TextBoxFor(m => m.card_number, new { type = "text", @class = "form-control", placeholder ="Enter your card number" }) <br />
 
                                                 <lable>From Date</lable>
                                                 @Html.TextBoxFor(m => m.from_date, new { type = "date", @class = "form-control" }) <br />
@@ -36,7 +36,7 @@
                                                 @Html.TextBoxFor(m => m.to_date, new { type = "date", @class = "form-control" }) <br />
 
                                                 <lable>Cart Type</lable>
-                                                @Html.TextBoxFor(m => m.card_type, new { type = "text", @class = "form-control" }) <br />
+                                                @Html.TextBoxFor(m => m.card_type, new { type = "text", @class = "form-control" , placeholder = "Enter the card type" }) <br />
 
                                                 <br />
 

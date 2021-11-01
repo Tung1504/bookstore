@@ -33,6 +33,7 @@ namespace bookstore.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult UpdateInformation()
         {
             int authId = AuthUser.GetLogin().id;
@@ -75,6 +76,42 @@ namespace bookstore.Controllers
             }
 
             return View(customerUpdateInformationViewModel);
+        }
+
+        [HttpGet]
+        public ActionResult ResetPassword()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(CustomerResetPasswordViewModel customerResetPasswordViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+                User user = new User()
+                {
+                    name = AuthUser.GetLogin().name,
+                    username = AuthUser.GetLogin().username,
+                    email = AuthUser.GetLogin().email,
+                    dob = AuthUser.GetLogin().dob,
+                    phone = AuthUser.GetLogin().phone,
+                    role = AuthUser.GetLogin().role,
+                    id = AuthUser.GetLogin().id,
+                    password = customerResetPasswordViewModel.Password
+                };
+
+
+                db.Entry(user).State = System.Data.EntityState.Modified;
+                db.SaveChanges();
+                AuthUser.SetLogin(user);
+                return RedirectToAction("Index");
+            }
+
+            return View(customerResetPasswordViewModel);
         }
 
 

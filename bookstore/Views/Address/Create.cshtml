@@ -27,16 +27,16 @@
                                                 @Html.AntiForgeryToken();
                                                 <br />
                                                 <lable>Address</lable>
-                                                @Html.TextBoxFor(m => m.address1, new { type = "text", @class = "form-control" }) <br />
+                                                @Html.TextBoxFor(m => m.address1, new { type = "text", @class = "form-control", placeholder = "Enter your address" }) <br />
 
                                                 <lable>City</lable>
-                                                @Html.TextBoxFor(m => m.city, new { type = "text", @class = "form-control" }) <br />
+                                                @Html.TextBoxFor(m => m.city, new { type = "text", @class = "form-control" , placeholder = "Enter your city" }) <br />
 
                                                 <lable>District</lable>
-                                                @Html.TextBoxFor(m => m.district, new { type = "text", @class = "form-control" }) <br />
+                                                @Html.TextBoxFor(m => m.district, new { type = "text", @class = "form-control", placeholder = "Enter your district" }) <br />
 
                                                 <lable>Postal Code</lable>
-                                                @Html.TextBoxFor(m => m.postal_code, new { type = "text", @class = "form-control" }) <br />
+                                                @Html.TextBoxFor(m => m.postal_code, new { type = "text", @class = "form-control", placeholder = "Enter the postal code" }) <br />
 
 
                                                 <br />
