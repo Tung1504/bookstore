@@ -29,6 +29,12 @@ namespace bookstore.Controllers
             {
                 
                 order.status = "Cancel";
+                List<Order_Detail> order_Details = db.Order_Detail.Where(o => o.order_id == order.id).ToList();
+                foreach(var order_detail in order_Details)
+                {
+                    Book book = db.Books.FirstOrDefault(o => o.id == order_detail.book_id);
+                    book.quantity_in_stock = book.quantity_in_stock + order_detail.quantity;
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

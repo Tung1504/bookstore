@@ -113,7 +113,7 @@ namespace bookstore.Controllers
                 string orderNumber = "1000" + orderNo;
                 int shipping_price;
 
-                shipping_price = 15000;
+                shipping_price = 2;
 
 
                 string status = "Pending";

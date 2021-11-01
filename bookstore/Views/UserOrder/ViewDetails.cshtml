@@ -21,6 +21,7 @@
                                 <p>Status : @Model.Order.status</p>
                                 <p>Order Date : @Model.Order.date</p>
                                 <p>Address : @Model.Order.delivery_location</p>
+                                <p>Shipping Price: $@Model.Order.shipping_price  <br />Total Price : $@Model.Order.total_price</p>
 
                             </address>
                         </div>
@@ -45,8 +46,8 @@
                             {
                                 <tr>
                                     <td>@order.Book.title</td>
-                                    <td>@order.quantity</td>
-                                    <td>@order.total_price</td>
+                                    <td>$@order.quantity</td>
+                                    <td>$@order.total_price</td>
 
 
                                 </tr>

@@ -1,8 +1,13 @@
 ﻿@model IEnumerable<bookstore.Models.Order>
+  
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+
+
 
 <section id="cart_items">
     <div class="container">
@@ -32,29 +37,63 @@
                                         <th scope="col">Order Status</th>
                                         <th scope="col">Order Date</th>
                                         <th scope="col">Order Note</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var order in Model)
                                     {
-                                        <tr>
-                                            <td>@order.order_number</td>
-                                            <td>@order.delivery_location</td>
-                                            <td>@order.total_price</td>
-                                            <td>@order.status</td>
-                                            <td>@order.date</td>
-                                            <td>@order.note</td>
-                                            <td>
-                                                @Html.ActionLink("ViewDetails", "ViewDetails", new { order_id = order.id }, new { @class = "btn btn-info" })
-                                                
-                                                <a class="btn btn-danger " style="display:inline" href="@Url.Action("Delete",new {order_id=order.id})" onclick="return confirm('Delete this item?');">Cancel</a>
-                                                @*@using (Html.BeginForm("Delete", "UserOrder", new { order_id = order.id }, FormMethod.Post, new { style = "display:inline" }))
-                                                {
-                                                    @Html.AntiForgeryToken()
-                                                    <button type="submit" class="btn btn-danger " onclick="return confirm('Cancel  this order?'" )"> Cancel</button>
-                                                }*@
+                                    <tr>
+                                        <td>@order.order_number</td>
+                                        <td>@order.delivery_location</td>
+                                        <td>@order.total_price</td>
+
+                                        @if (order.status == "Pending")
+                                        {
+                                            <td style="color:orange">
+                                                @order.status
                                             </td>
-                                        </tr>
+                                        }
+                                        else if (order.status == "Shipping")
+                                        {
+                                            <td style="color:blue">
+                                                <i class="fas fa-shipping-fast"></i>
+                                                @order.status
+                                            </td>
+                                        }
+                                        else if (order.status == "Complete")
+                                        {
+                                            <td style="color:forestgreen">
+                                                <i class="fas fa-clipboard-check"></i>
+                                                @order.status
+                                            </td>
+                                        }
+                                        else 
+                                        {
+                                            <td style="color:red">
+                                                <i class="fas fa-window-close"></i>
+                                                @order.status
+                                            </td>
+
+                                        }
+
+
+                                        <td>@order.date</td>
+                                        <td>@order.note</td>
+
+                                        <td>
+                                            @if (order.status == "Pending")
+                                            {
+                                                @Html.ActionLink("ViewDetails", "ViewDetails", new { order_id = order.id }, new { @class = "btn btn-info" })
+
+                                                <a class="btn btn-danger " style="display:inline" href="@Url.Action("Delete", new { order_id = order.id })" onclick="return confirm('Delete this item?');">Cancel</a>
+                                            }
+                                            else
+                                            {
+                                                @Html.ActionLink("ViewDetails", "ViewDetails", new { order_id = order.id }, new { @class = "btn btn-info" })
+                                            }
+                                        </td>
+                                    </tr>
                                     }
                                 </tbody>
 
@@ -74,5 +113,30 @@
             </div>
         </div>
     </div>
+
 </section>
 
+@*=============*@
+
+
+
+
+        @section js{
+            <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+            <script src="~/Areas/Admin/Content/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+            <script src="~/Areas/Admin/Content/vendor/datatables/js/data-table.js"></script>
+            <script src="~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+            <script src="~/Areas/Admin/Content/vendor/slimscroll/jquery.slimscroll.js"></script>
+            <script src="~/Areas/Admin/Content/js/main-js.js"></script>
+
+            <script>
+                setTimeout(function () {
+                    $('#success').fadeOut('slow');
+                }, 2000);
+            </script>
+        }
+
+        @section css{
+            <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/datatables/css/dataTables.bootstrap4.css">
+        }
