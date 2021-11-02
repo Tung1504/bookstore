@@ -2,8 +2,7 @@
 
 <div class="single-products ">
     <div class="productinfo text-center">
-        <img src="~/images/shop/@Model.image" alt="" width="130" 
-     height="200"  />
+        <img src="~/images/shop/@Model.image" alt=""/>
         <h2>$@Model.price</h2>
         <p>@Model.title</p>
         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -11,8 +10,7 @@
     <a href="@Url.Action("Detail", "Product", new { id = Model.id})">
         <div class="product-overlay">
             <div class="overlay-content">
-                <img src="~/images/shop/@Model.image" alt="" width="150"
-                     height="200" />
+                @*<img src="~/images/shop/@Model.image" alt=""/>*@
                 <h2>$@Model.price</h2>
                 <p>@Model.title</p>
 

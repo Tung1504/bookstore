@@ -5,6 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section css{
+    <style>
+        .size-banner {
+            width: 484px;
+            height: 441px;
+            object-fit: cover;
+        }
+
+        .size-feature-item {
+            width: 207px;
+            height: 336px;
+        }
+
+        .size-category-item {
+            width: 148px; 
+            height: 280px
+        }
+    </style>
+}
+
 
 
 <section id="slider">
@@ -27,7 +47,7 @@
                                 <button type="button" class="btn btn-default get">Get it now</button>
                             </div>
                             <div class="col-sm-6">
-                                <img src="~/images/home/girl1.jpg" class="girl img-responsive" alt="" />
+                                <img src="~/images/home/girl1.jpg" class="girl img-responsive size-banner" alt="" />
                                 <img src="~/images/home/pricing.png" class="pricing" alt="" />
                             </div>
                         </div>
@@ -39,7 +59,7 @@
                                 <button type="button" class="btn btn-default get">Get it now</button>
                             </div>
                             <div class="col-sm-6">
-                                <img src="~/images/home/girl2.jpg" class="girl img-responsive" alt="" />
+                                <img src="~/images/home/girl2.jpg" class="girl img-responsive size-banner" alt="" />
                                 <img src="~/images/home/pricing.png" class="pricing" alt="" />
                             </div>
                         </div>
@@ -52,12 +72,14 @@
                                 <button type="button" class="btn btn-default get">Get it now</button>
                             </div>
                             <div class="col-sm-6">
-                                <img src="~/images/home/girl3.jpg" class="girl img-responsive" alt="" />
+                                <img src="~/images/home/girl3.jpg" class="girl img-responsive size-banner" alt="" />
                                 <img src="~/images/home/pricing.png" class="pricing" alt="" />
                             </div>
                         </div>
 
                     </div>
+
+                    @*<br /><br /><br /><br />*@
 
                     <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
                         <i class="fa fa-angle-left"></i>
@@ -85,7 +107,7 @@
                     @foreach (var book in Model.ListBook.Take(6))
                     {
                         <div class="col-sm-4">
-                            <div class="product-image-wrapper" style="width: 207px; height: 336px">
+                            <div class="product-image-wrapper size-feature-item" >
                                 @Html.Partial("~/Views/Product/_Item.cshtml", book)
                             </div>
                         </div>
@@ -96,7 +118,7 @@
                 <div class="category-tab">
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">
-                            @foreach (var category in Model.ListCategory.Take(5).OrderBy(m=> m.category_name))
+                            @foreach (var category in Model.ListCategory.Take(5).OrderBy(m => m.category_name))
                             {
                                 if (Model.ListCategory.IndexOf(category) == 0)
                                 {
@@ -119,7 +141,7 @@
                                 {
                                     <h1></h1>
                                     <div class="col-sm-3">
-                                        <div class="product-image-wrapper" style="width: 148px; height: 280px">
+                                        <div class="product-image-wrapper size-category-item" >
                                             @Html.Partial("~/Views/Product/_Item.cshtml", book)
                                         </div>
                                     </div>
@@ -128,7 +150,7 @@
                         }
 
                     </div>
-                    
+
                 </div>
 
                 <div class="recommended_items">
