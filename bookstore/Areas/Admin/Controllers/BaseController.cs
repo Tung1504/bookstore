@@ -9,10 +9,17 @@ using System.Web.Mvc;
 
 namespace bookstore.Areas.Admin.Controllers
 {
-    [AdminAuthorized]
+    
     public class BaseController : Controller
     {
         protected BookStoreEntities db = new BookStoreEntities();
-        
+
+        protected void SetErrorFlash(string message, string key = "error")
+        {
+            TempData[key] = message;
+        }
     }
+
 }
+
+    
