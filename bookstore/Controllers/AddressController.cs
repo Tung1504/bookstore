@@ -1,4 +1,5 @@
-﻿using bookstore.Helpers;
+﻿using bookstore.Filters.AuthorFilters;
+using bookstore.Helpers;
 using bookstore.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace bookstore.Controllers
 {
+    [Authenticated]
     public class AddressController : BaseController
     {
         // GET: Address
@@ -36,6 +38,7 @@ namespace bookstore.Controllers
                 address.user_id = user_id;
                 db.Addresses.Add(address);
                 db.SaveChanges(); //Apply insert statement
+                SetSuccessFlash("Create new address successfully!");
                 return RedirectToAction("Index");
             }
 
@@ -63,6 +66,7 @@ namespace bookstore.Controllers
                 address.user_id = user_id;
                 db.Entry(address).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
+                SetSuccessFlash("Edit address successfully!");
                 return RedirectToAction("Index");
             }
 
@@ -78,6 +82,7 @@ namespace bookstore.Controllers
             {
                 db.Addresses.Remove(address);
                 db.SaveChanges();
+                SetSuccessFlash("Delete address successfully!");
                 return RedirectToAction("Index");
             }
             return HttpNotFound();
