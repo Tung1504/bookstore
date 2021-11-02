@@ -13,6 +13,15 @@
             object-fit: cover;
         }
 
+        .size-feature-item {
+            width: 207px;
+            height: 336px;
+        }
+
+        .size-category-item {
+            width: 148px; 
+            height: 280px
+        }
     </style>
 }
 
@@ -38,7 +47,7 @@
                                 <button type="button" class="btn btn-default get">Get it now</button>
                             </div>
                             <div class="col-sm-6">
-                                <img src="~/images/home/girl1.jpg" class="girl img-responsive size-banner" alt=""  />
+                                <img src="~/images/home/girl1.jpg" class="girl img-responsive size-banner" alt="" />
                                 <img src="~/images/home/pricing.png" class="pricing" alt="" />
                             </div>
                         </div>
@@ -98,7 +107,7 @@
                     @foreach (var book in Model.ListBook.Take(6))
                     {
                         <div class="col-sm-4">
-                            <div class="product-image-wrapper" style="width: 207px; height: 336px">
+                            <div class="product-image-wrapper size-feature-item" >
                                 @Html.Partial("~/Views/Product/_Item.cshtml", book)
                             </div>
                         </div>
@@ -132,7 +141,7 @@
                                 {
                                     <h1></h1>
                                     <div class="col-sm-3">
-                                        <div class="product-image-wrapper" style="width: 148px; height: 280px">
+                                        <div class="product-image-wrapper size-category-item" >
                                             @Html.Partial("~/Views/Product/_Item.cshtml", book)
                                         </div>
                                     </div>
