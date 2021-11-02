@@ -147,7 +147,6 @@
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublisherController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
-    <Compile Include="Areas\Admin\Models\User.cs" />
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -230,6 +229,7 @@
     <Compile Include="ViewModels\Auth\SignupViewModel.cs" />
     <Compile Include="ViewModels\BookCategoryPublisherAuthorViewModel.cs" />
     <Compile Include="ViewModels\CategoryProduct\CategoryProductViewModel.cs" />
+    <Compile Include="ViewModels\Customer\CustomerResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Customer\CustomerUpdateInformationViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
@@ -750,6 +750,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>

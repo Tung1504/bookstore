@@ -5,7 +5,7 @@
     <div class="panel-group category-products" id="accordian">
         <div class="panel panel-default">
             
-            @foreach (var category in Model.Categories.Take(10).OrderBy(m=> m.category_name))
+            @foreach (var category in Model.Categories.Take(5).OrderBy(m=> m.category_name))
             {
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -22,7 +22,7 @@
         <h2>Publisher</h2>
         <div class="brands-name">
             <ul class="nav nav-pills nav-stacked">
-                @foreach (var item in Model.Publishers.Take(6))
+                @foreach (var item in Model.Publishers.Take(5))
                 {
                     <li><a href="@Url.Action("Index","PublisherProduct", new {id = item.id })">@item.publisher_name</a></li>
                 }
