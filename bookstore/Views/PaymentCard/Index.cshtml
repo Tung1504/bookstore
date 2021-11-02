@@ -5,34 +5,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+@section css{
+    <style>
+        .center {
+            margin: auto;
+            width: 85%;
+        }
+        table tr td:first-child {
+            padding-left: 20px;
+        }
+    </style>
+}
 
 
 <section id="cart_items">
     <div class="container">
         <div class="shopper-informations">
-            <div class="row">
+            <div class="row" style="margin-bottom: 80px;">
                 <div class="shopper-info">
-                    <div class="col-sm-11">
+                    <div class="col-12 center">
+                        @if (TempData["success"] != null)
+                        {
+                            <div class="alert alert-success" id="success">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <p>@TempData["success"]</p>
+                            </div>
+                        }
                         <div class="heading">
-                            <h3>Payment Card Management</h3>
                             <p>You can Update your payment cards here!</p>
+                            <br />
                         </div>
+
+                        <h2 class="title text-center">Payment Card Management</h2>
 
                         <a href="@Url.Action("Create", "PaymentCard")" class="btn btn-success"> Create New</a>
                         <br /><br />
 
-                        <div class="table-responsive cart_info" style="padding: 20px;">
-                            
-                            <table class="table table-bordered first">
+                        <div class="table-responsive cart_info">
+
+                            <table class="table">
                                 <thead>
                                     <tr class="cart_menu">
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Card Number</th>
-                                        <th scope="col">From Date</th>
-                                        <th scope="col">To Date</th>
-                                        <th scope="col">Cart Type Code</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col" style="padding-bottom: 12px; padding-left:20px">ID</th>
+                                        <th scope="col" style="padding-bottom: 12px">Card Number</th>
+                                        <th scope="col" style="padding-bottom: 12px">From Date</th>
+                                        <th scope="col" style="padding-bottom: 12px">To Date</th>
+                                        <th scope="col" style="padding-bottom: 12px">Cart Type Code</th>
+                                        <th scope="col" style="padding-bottom: 12px">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,9 +76,8 @@
                                 </tbody>
 
                             </table>
-                            <a href="@Url.Action("Index","Customer")" class="btn btn-default update pull-right"> Back </a>
-                            <br /><br />
                         </div>
+                        <a href="@Url.Action("Index","Customer")" class="btn btn-default update pull-right"> Back </a>
 
 
                     </div>

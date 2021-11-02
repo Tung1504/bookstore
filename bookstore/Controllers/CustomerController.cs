@@ -66,6 +66,7 @@ namespace bookstore.Controllers
 
                 db.Entry(user).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
+                SetSuccessFlash("Update personal information successfully!");
                 AuthUser.SetLogin(user);
                 return RedirectToAction("Index");
             }
@@ -102,6 +103,7 @@ namespace bookstore.Controllers
 
                 db.Entry(user).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
+                SetSuccessFlash("Reset password successfully!");
                 AuthUser.SetLogin(user);
                 return RedirectToAction("Index");
             }

@@ -4,45 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@*<section id="cart_items">
-    <div id="contact-page" class="container">
-        <div class="bg">
-
-            <div class="row">
-
-                <div class="col-sm-12 padding-right">
-                    <div class="product-details">
-                        <!--product-details-->
-                        <div class="col-sm-4">
-                            <div class="view-product">
-                                <img src="~/images/home/avatar.png"  class="rounded-circle user-avatar-xxl text-center" style="width:200px; height:200px; text-align:center" />
-                                
-                            </div>
-
-                        </div>
-                        <div class="col-sm-8">
-                            <h2 class="title text-center">Contact Info</h2>
-                            <address>
-                                <p>Name : @Model.name</p>
-                                <p>UserName : @Model.username</p>
-                                <p>Mobile Number : @Model.phone</p>
-                                <p>Contact Email : @Model.email</p>
-                                <p>Date of Birth : @Model.dob</p>
-
-                            </address>
-                            <a href="@Url.Action("ResetPassword") " class="btn btn-default update"> Reset Password</a>
-                            <a href="@Url.Action("UpdateInformation") " class="btn btn-default update"> Update Information </a>
-                            <a href="@Url.Action("Index","Address") " class="btn btn-default update"> Address List</a>
-                            <a href="@Url.Action("Index","PaymentCard") " class="btn btn-default update"> Payment List</a>
-                        </div>
-                    </div><!--/product-details-->
-                </div>
-            </div>
-        </div><!--/#contact-page-->
-    </div>
-</section>*@
-
 <div id="contact-page">
     <div class="container">
         <div class="bg">
@@ -59,6 +20,13 @@
 
                         </div>
                         <div class="col-sm-9">
+                            @if (TempData["success"] != null)
+                            {
+                                <div class="alert alert-success" id="success">
+                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                    <p>@TempData["success"]</p>
+                                </div>
+                            }
                             <h2 class="title text-center">Contact Info</h2>
                             <address>
                                 <p>Name : @Model.name</p>

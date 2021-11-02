@@ -1,4 +1,5 @@
-﻿using bookstore.Helpers;
+﻿using bookstore.Filters.AuthorFilters;
+using bookstore.Helpers;
 using bookstore.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Web.Mvc;
 
 namespace bookstore.Controllers
 {
-    // similar to AddressController
+    [Authenticated]
     public class PaymentCardController : BaseController 
     {
         // GET: Payment
@@ -37,6 +38,7 @@ namespace bookstore.Controllers
                 paymentCard.user_id = user_id;
                 db.Payment_card.Add(paymentCard);
                 db.SaveChanges(); //Apply insert statement
+                SetSuccessFlash("Create new payment card successfully!");
                 return RedirectToAction("Index");
             }
 
@@ -64,6 +66,7 @@ namespace bookstore.Controllers
                 paymentCard.user_id = user_id;
                 db.Entry(paymentCard).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
+                SetSuccessFlash("Edit payment card successfully!");
                 return RedirectToAction("Index");
             }
 
@@ -79,6 +82,7 @@ namespace bookstore.Controllers
             {
                 db.Payment_card.Remove(paymentCard);
                 db.SaveChanges();
+                SetSuccessFlash("Delete payment card successfully!");
                 return RedirectToAction("Index");
             }
             return HttpNotFound();
