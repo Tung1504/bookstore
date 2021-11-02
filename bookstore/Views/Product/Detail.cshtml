@@ -1,9 +1,9 @@
 ﻿@model bookstore.ViewModels.Product.DetailViewModel
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Detail";
-                Layout = "~/Views/Shared/_WithSidebarLayout.cshtml";
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_WithSidebarLayout.cshtml";
 }
 
 @section css{
@@ -96,7 +96,7 @@
         <div class="tab-content">
             <div class="tab-pane fade" id="details">
                 <div class="col-sm-12">
-
+                    <p>@Model.Book.description</p>
                 </div>
             </div>
 
