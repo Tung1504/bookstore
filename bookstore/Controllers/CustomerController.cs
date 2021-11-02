@@ -1,4 +1,5 @@
 ﻿using bookstore.DAO;
+using bookstore.Filters.AuthorFilters;
 using bookstore.Helpers;
 using bookstore.Models;
 using bookstore.ViewModels;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 
 namespace bookstore.Controllers
 {
+    [Authenticated]
     public class CustomerController : BaseController
     {
         UserDAO UserDAO;
@@ -22,15 +24,8 @@ namespace bookstore.Controllers
 
         public ActionResult Index()
         {
-            if (AuthUser.GetLogin() != null)
-            {
-                User user = AuthUser.GetLogin();
-                return View(user);
-            }
-            else
-            {
-                return RedirectToAction("LoginOrSignUp", "Auth");
-            }
+            User user = AuthUser.GetLogin();
+            return View(user);
         }
 
         [HttpGet]
