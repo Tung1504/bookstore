@@ -41,7 +41,7 @@
     <!-- ============================================================== -->
     <div class="splash-container">
         <div class="card ">
-            <div class="card-header text-center"><a href="../index.html"><img class="logo-img" src="../assets/images/logo.png" alt="logo"></a><span class="splash-description">Please enter your user information.</span></div>
+            <div class="card-header text-center"><span class="splash-description">ADMINISTRATION LOGIN</span></div>
             <div class="card-body">
                 @using (Html.BeginForm("Login", "Login", FormMethod.Post))
                 {
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="form-group">
-                                 <a href="#" class="footer-link" style="text-align:right">Forgot Password</a>
+                                 @*<a href="#" class="footer-link" style="text-align:right">Forgot Password</a>*@
                                 </div>
 
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>

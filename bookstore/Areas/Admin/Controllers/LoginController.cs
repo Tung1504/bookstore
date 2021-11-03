@@ -2,6 +2,7 @@
 using bookstore.Helpers;
 using bookstore.Models;
 using bookstore.ViewModels.Auth;
+using bookstore.ViewModels.Customer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,19 @@ using System.Web.Mvc;
 
 namespace bookstore.Areas.Admin.Controllers
 {
-    public class LoginController : BaseController
+    public class LoginController : Controller
     {
+        protected BookStoreEntities db = new BookStoreEntities();
+
+        protected void SetErrorFlash(string message, string key = "error")
+        {
+            TempData[key] = message;
+        }
+
+        protected void SetSuccessFlash(string message, string key = "error")
+        {
+            TempData[key] = message;
+        }
 
         public ActionResult Index()
         {
@@ -42,7 +54,7 @@ namespace bookstore.Areas.Admin.Controllers
                     {
                         return RedirectToAction("Index", "Dashboard");
                     }
-                    if (u.role == Models.User.CUSTOMER)
+                    if (u.role != Models.User.ADMIN)
                     {
                         //return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
                         SetErrorFlash("Please input your admin account", "login-failed");
@@ -59,6 +71,43 @@ namespace bookstore.Areas.Admin.Controllers
             return View("Index");
         }
 
+
+        //[HttpGet]
+        //public ActionResult ResetPassword()
+        //{
+
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult ResetPassword(CustomerResetPasswordViewModel customerResetPasswordViewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        User user = new User()
+        //        {
+        //            name = AuthUser.GetLogin().name,
+        //            username = AuthUser.GetLogin().username,
+        //            email = AuthUser.GetLogin().email,
+        //            dob = AuthUser.GetLogin().dob,
+        //            phone = AuthUser.GetLogin().phone,
+        //            role = AuthUser.GetLogin().role,
+        //            id = AuthUser.GetLogin().id,
+        //            password = customerResetPasswordViewModel.Password
+        //        };
+
+
+        //        db.Entry(user).State = System.Data.EntityState.Modified;
+        //        db.SaveChanges();
+        //        SetSuccessFlash("");
+        //        AuthUser.SetLogin(user);
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View(customerResetPasswordViewModel);
+        //}
 
     }
 }

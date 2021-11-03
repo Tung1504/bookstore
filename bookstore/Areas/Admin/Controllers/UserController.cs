@@ -26,6 +26,30 @@ namespace bookstore.Areas.Admin.Controllers
             return View(listUser);
         }
 
+
+        public ActionResult AdminView()
+        {
+            List<User> listUser = db.Users.Where(m => m.role == "Admin").ToList();
+            if (TempData["result"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["result"];
+            }
+
+            return View(listUser);
+        }
+
+        public ActionResult UserView()
+        {
+            List<User> listUser = db.Users.Where(m => m.role == "Customer").ToList();
+            if (TempData["result"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["result"];
+            }
+
+            return View(listUser);
+        }
+
+
         public ActionResult Create()
         {
             return View();
@@ -56,7 +80,7 @@ namespace bookstore.Areas.Admin.Controllers
                     };
                     userDAO.Create(u);
                     TempData["result"] = "Create new user successfully!";
-                    return RedirectToAction("Index");
+                    return RedirectToAction("AdminView");
                 }
             }
 

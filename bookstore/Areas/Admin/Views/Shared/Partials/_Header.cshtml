@@ -13,14 +13,14 @@
                         <a class="nav-link" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i> Hello @AuthUser.GetLogin().username!</a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
 
-                           
+
                             @*<a class="dropdown-item" href="@Url.Action("ViewDetail", "User" , new { id = Model.id })"><i class="fas fa-user mr-2"></i>Account</a>*@
                             <a class="dropdown-item" href="@Url.Action("Logout", "Login")"><i class="fas fa-power-off mr-2"></i>Logout</a>
 
                         </div>
 
                     }
-                    </li>
+                </li>
             </ul>
         </div>
     </nav>
@@ -40,7 +40,18 @@
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link" href="@Url.Action("Index","User")"><i class="fas fa-user-circle"></i>Manage User</a>
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2"><i class="fas fa-user-circle"></i>Manage User</a>
+                        <div id="submenu-1-2" class="collapse submenu" style="">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("AdminView","User")">Admin</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("UserView","User")">Customer</a>
+                                </li>
+
+                            </ul>
+                        </div>
                     </li>
 
                     <li class="nav-item ">

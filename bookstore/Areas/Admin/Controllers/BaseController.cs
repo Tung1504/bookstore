@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace bookstore.Areas.Admin.Controllers
 {
-    
+    [AdminAuthorized]
     public class BaseController : Controller
     {
         protected BookStoreEntities db = new BookStoreEntities();

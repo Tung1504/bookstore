@@ -107,7 +107,7 @@
                     @foreach (var book in Model.ListBook.Take(6))
                     {
                         <div class="col-sm-4">
-                            <div class="product-image-wrapper size-feature-item" >
+                            <div class="product-image-wrapper size-feature-item">
                                 @Html.Partial("~/Views/Product/_Item.cshtml", book)
                             </div>
                         </div>
@@ -141,66 +141,67 @@
                                 {
                                     <h1></h1>
                                     <div class="col-sm-3">
-<<<<<<< HEAD
-                                        <div class="product-image-wrapper" style="width: 170px; height: 280px">
-=======
-                                        <div class="product-image-wrapper size-category-item" >
->>>>>>> 928a19a8b8a775ad73b06d7544dfcbc18437b4d0
-                                            @Html.Partial("~/Views/Product/_Item.cshtml", book)
+
+                                        <div class="product-image-wrapper" >
+
+                                            <div class="product-image-wrapper size-category-item" style="width: 170px; height: 280px">
+
+                                                @Html.Partial("~/Views/Product/_Item.cshtml", book)
+                                            </div>
                                         </div>
                                     </div>
                                 }
+
                             </div>
                         }
 
+
+
                     </div>
 
-                </div>
+                    <div class="recommended_items">
 
-                <div class="recommended_items">
+                        <h2 class="title text-center">recommended items</h2>
 
-                    <h2 class="title text-center">recommended items</h2>
+                        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    @foreach (var book in Model.ListBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
+                                    {
 
-                    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                @foreach (var book in Model.ListBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
-                                {
-
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper" style="width: 200px; height: 280px">
-                                            @Html.Partial("~/Views/Product/_Item.cshtml", book)
+                                        <div class="col-sm-4">
+                                            <div class="product-image-wrapper" style="width: 200px; height: 280px">
+                                                @Html.Partial("~/Views/Product/_Item.cshtml", book)
+                                            </div>
                                         </div>
-                                    </div>
-                                }
-                            </div>
-                            <div class="item">
-                                @foreach (var book in Model.ListBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
-                                {
+                                    }
+                                </div>
+                                <div class="item">
+                                    @foreach (var book in Model.ListBook.OrderByDescending(m => m.quantity_in_stock).Take(3))
+                                    {
 
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            @Html.Partial("~/Views/Product/_Item.cshtml", book)
+                                        <div class="col-sm-4">
+                                            <div class="product-image-wrapper">
+                                                @Html.Partial("~/Views/Product/_Item.cshtml", book)
 
+                                            </div>
                                         </div>
-                                    </div>
-                                }
-                            </div>
+                                    }
+                                </div>
 
+                            </div>
+                            <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         </div>
-                        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
                     </div>
+
                 </div>
-
-
-
-
             </div>
+
         </div>
     </div>
 </section>

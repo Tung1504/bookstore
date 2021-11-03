@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "ManageUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="dashboard-wrapper">
+    <div class="container-fluid  dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h3 class="mb-2">CUSTOMER USERS</h3>
+                    <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard")" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Manage User</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @Html.Partial("~/Areas/Admin/Views/User/Index.cshtml")
+    </div>
+</div>
+
+
+@section js{
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/datatables/js/data-table.js"></script>
+    <script>
+        setTimeout(function () {
+            $('#success').fadeOut('slow');
+        }, 2000);
+
+        $(document).ready(function () {
+            $('body').on('click', '.btnDel', function () {
+                var id = $(this).data('id');
+
+                if (parseInt(id) > 0) {
+                    var conf = confirm("Are you sure to delete this user?");
+                    if (conf) {
+                        Delete(id)
+                        //alert("Deleted Successfully!")
+                        window.location.reload();
+                    }
+
+                }
+
+            });
+
+
+            function Delete(id) {
+                $.ajax({
+                    url: "/Admin/User/Delete",
+                    type: "POST",
+                    data: { id: id }
+
+                }).done(function (res) {
+                    if (res.success) {
+                        $('#trow' + id).remove();
+                    }
+                }).fail(function (err) {
+                    console.log(err)
+                })
+
+            }
+        });
+
+
+
+
+
+    </script>
+
+
+}
+
+@section css{
+    <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/vendor/datatables/css/dataTables.bootstrap4.css">
+}
