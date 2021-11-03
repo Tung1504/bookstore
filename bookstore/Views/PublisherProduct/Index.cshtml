@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_WithSidebarLayout.cshtml";
 }
 
+<div class="padding-right">
     <div class="features_items">
         <!--features_items-->
         <h2 class="title text-center">Publisher: @Model.Publisher.publisher_name</h2>
@@ -27,17 +28,19 @@
     </div><!--features_items-->
     
 
-<ul class="pagination">
-    @{
-        int numberPage = ViewBag.numberPage;
-        int pageCurrent = ViewBag.pageCurrent;
-        int i;
-        for (i = 1; i <= numberPage; i++)
-        {
-            <li class="@(i == pageCurrent ? "active" : "")"><a href="?page=@i">@i</a></li>
+
+    <ul class="pagination">
+        @{
+            int numberPage = ViewBag.numberPage;
+            int pageCurrent = ViewBag.pageCurrent;
+            int i;
+            for (i = 1; i <= numberPage; i++)
+            {
+                <li class="@(i == pageCurrent ? "active" : "")"><a href="?page=@i">@i</a></li>
+            }
         }
-    }
-</ul>
+    </ul>
+</div>
 
 
 @section js{

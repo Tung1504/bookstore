@@ -868,7 +868,7 @@ h2.title {
 }
 
 .productinfo img {
-    width: 85%;
+    width: 100%;
 }
 
 .productinfo {
@@ -977,19 +977,19 @@ h2.title {
     overflow: hidden;
 }
 
-    .category-tab ul {
-        background: #FE980F;
-        border-bottom: 1px solid #FE980F;
-        list-style: none outside none;
-        margin: 0 0 30px;
-        padding: 0;
-        width: 100%;
-    }
+.category-tab ul {
+    background: #40403E;
+    border-bottom: 1px solid #FE980F;
+    list-style: none outside none;
+    margin: 0 0 30px;
+    padding: 0;
+    width: 100%;
+}
 
 .category-tab ul li a {
     border: 0 none;
     border-radius: 0;
-    color: white;
+    color: #B3AFA8;
     display: block;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -1024,13 +1024,10 @@ h2.title {
 }
 
 .recommended_items {
-    flex-wrap: wrap;
-    
     overflow: hidden;
 }
 
 #recommended-item-carousel .carousel-inner .item {
-    flex-basis: 33.333333%;
     padding-left: 0;
 }
 
@@ -1083,7 +1080,6 @@ h2.title {
     margin-bottom: 25px;
     margin-top: 0;
     padding-left: 15px;
-    text-align:center;
 }
 
 .pagination li:first-child a,
@@ -1638,7 +1634,7 @@ h2.title {
 }
 
 .cart_delete a {
-    background: #FE980F;
+    background: #F0F0E9;
     color: #FFFFFF;
     padding: 5px 7px;
     font-size: 16px
@@ -1745,17 +1741,22 @@ textarea {
     margin-left: 40px;
 }
 
-.update, .check_out {
+.update,
+.check_out {
     background: #FE980F;
     border-radius: 0;
     color: #FFFFFF;
-    /* margin-top: 18px; */
+    margin-top: 18px;
     border: none;
     padding: 5px 15px;
 }
 
 .update {
     margin-left: 40px;
+}
+
+.check_out {
+    margin-left: 20px
 }
 
 
@@ -1859,7 +1860,7 @@ textarea {
 .form-two,
 .form-one {
     float: left;
-    width: 65%;
+    width: 47%
 }
 
 .shopper-info>form>input,
@@ -1884,7 +1885,7 @@ textarea {
 
 .order-message textarea {
     font-size: 12px;
-    height: 200px;
+    height: 335px;
     margin-bottom: 20px;
     padding: 15px 20px;
 }
@@ -2437,12 +2438,4 @@ textarea {
 
 .contact-info .social-networks ul li a:hover {
     color: #FE980F;
-}
-
-.cart_total_price, .cart_price p{
-    margin-bottom:0;
-}
-
-.cart-table {
-    margin-bottom:0;
 }

@@ -1,4 +1,5 @@
 ﻿using bookstore.DAO;
+using bookstore.Filters.AuthorFilters;
 using bookstore.Helpers;
 using bookstore.Models;
 using bookstore.ViewModels;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 
 namespace bookstore.Controllers
 {
+    [Authenticated]
     public class CustomerController : BaseController
     {
         UserDAO UserDAO;
@@ -22,17 +24,11 @@ namespace bookstore.Controllers
 
         public ActionResult Index()
         {
-            if (AuthUser.GetLogin() != null)
-            {
-                User user = AuthUser.GetLogin();
-                return View(user);
-            }
-            else
-            {
-                return RedirectToAction("LoginOrSignUp", "Auth");
-            }
+            User user = AuthUser.GetLogin();
+            return View(user);
         }
 
+        [HttpGet]
         public ActionResult UpdateInformation()
         {
             int authId = AuthUser.GetLogin().id;
@@ -70,11 +66,49 @@ namespace bookstore.Controllers
 
                 db.Entry(user).State = System.Data.EntityState.Modified;
                 db.SaveChanges();
+                SetSuccessFlash("Update personal information successfully!");
                 AuthUser.SetLogin(user);
                 return RedirectToAction("Index");
             }
 
             return View(customerUpdateInformationViewModel);
+        }
+
+        [HttpGet]
+        public ActionResult ResetPassword()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(CustomerResetPasswordViewModel customerResetPasswordViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+                User user = new User()
+                {
+                    name = AuthUser.GetLogin().name,
+                    username = AuthUser.GetLogin().username,
+                    email = AuthUser.GetLogin().email,
+                    dob = AuthUser.GetLogin().dob,
+                    phone = AuthUser.GetLogin().phone,
+                    role = AuthUser.GetLogin().role,
+                    id = AuthUser.GetLogin().id,
+                    password = customerResetPasswordViewModel.Password
+                };
+
+
+                db.Entry(user).State = System.Data.EntityState.Modified;
+                db.SaveChanges();
+                SetSuccessFlash("Reset password successfully!");
+                AuthUser.SetLogin(user);
+                return RedirectToAction("Index");
+            }
+
+            return View(customerResetPasswordViewModel);
         }
 
 

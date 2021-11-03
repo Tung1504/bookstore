@@ -1,4 +1,5 @@
-﻿using bookstore.Helpers;
+﻿using bookstore.Filters.AuthorFilters;
+using bookstore.Helpers;
 using bookstore.Models;
 using System;
 using System.Collections.Generic;
@@ -8,21 +9,17 @@ using System.Web.Mvc;
 
 namespace bookstore.Areas.Admin.Controllers
 {
+    
     public class BaseController : Controller
     {
         protected BookStoreEntities db = new BookStoreEntities();
 
-        public ActionResult AuthencatedByRole()
+        protected void SetErrorFlash(string message, string key = "error")
         {
-            if (AuthUser.GetLogin().role.ToString() == "Customer")
-            {
-                return RedirectToAction("LoginOrSignUp", "Auth", new { area = "" });
-            }
-            else
-            {
-                return null;
-
-            }
+            TempData[key] = message;
         }
     }
+
 }
+
+    

@@ -24,5 +24,10 @@ namespace bookstore.Controllers
         {
             TempData[key] = message;
         }
+
+        protected void SetSuccessFlash(string message, string key = "success")
+        {
+            TempData[key] = message;
+        }
     }
 }

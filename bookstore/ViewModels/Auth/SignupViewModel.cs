@@ -20,12 +20,19 @@ namespace bookstore.ViewModels.Auth
         [Compare("Password", ErrorMessage = "Confirm password doesn't match, type again!")]
         public string RePassword { get; set; }
 
+        [Required(ErrorMessage = "Please enter the name")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Please enter phone number")]
         public string Phone { get; set; }
 
+        [Required(ErrorMessage = "Please assign role for the user")]
+        public string Role { get; set; }
+
+        [Required(ErrorMessage = "Please enter user email")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Please choose date of birth")]
         public DateTime Dob { get; set; }
     }
 }

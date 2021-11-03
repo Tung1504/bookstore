@@ -4,56 +4,63 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section css{
+    <style>
+        .center {
+            margin: auto;
+            width: 50%;
+        }
+    </style>
+}
+
+
+
 <section id="cart_items">
-    <div class="container">
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <div class="row justify-content-center" style="margin-bottom: 80px;">
+                <div class="col-12 center">
+                    <div class="contact-form">
+                        <h2 class="title text-center">Edit User Information</h2>
+                        @using (Html.BeginForm("UpdateInformation", "Customer", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken();
+                            <br />
 
-        <div class="shopper-informations">
-            <div class="row">
-                <div class="col-sm-9">
-                    <div class="shopper-info">
-                        <div class="heading">
-                            <h3>Edit User Information</h3>
-                            <p>You can Update your personal information here!</p>
-                        </div>
-
-                        <div class="row">
-                            <h5 style="color: red"> @Html.ValidationSummary()</h5>
-                            <div class="col-sm-12">
-                                <div class="total_area">
-                                    <ul>
-                                        <li>
-                                            @using (Html.BeginForm("UpdateInformation", "Customer", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
-                                            {
-                                                @Html.AntiForgeryToken();
-
-                                                <lable>Name</lable>
-                                                @Html.TextBoxFor(m => m.Name, new { type = "text", @class = "form-control" })
-                                                
-                                                <lable>UserName</lable>
-                                                @Html.TextBoxFor(m => m.Username, new { type = "text", @class = "form-control" })
-                                                
-                                                <lable>Phone</lable>
-                                                @Html.TextBoxFor(m => m.Phone, new { type = "text", @class = "form-control" })
-
-                                                <lable>Email</lable>
-                                                @Html.TextBoxFor(m => m.Email, new { type = "text", @class = "form-control" })
-
-                                                <lable>Date of birth</lable>
-                                                @Html.TextBoxFor(m => m.Dob, new { type = "date", @class = "form-control" })
-                                                
-
-                                                <a href="@Url.Action("Index","Customer")" class="btn btn-default" style="text-align:center"> Back </a>
-                                                <button type="submit" class="btn btn-default" style="text-align:center"> Submit </button>
-                                            }
-                                        </li>
-
-                                    </ul>
-
-                                </div>
+                            <div class="form-group col-md-12">
+                                @Html.TextBoxFor(m => m.Name, new { type = "text", @class = "form-control", placeholder = "Enter your name.." })
+                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                             </div>
-                        </div>
+
+                            <div class="form-group col-md-12">
+                                @Html.TextBoxFor(m => m.Username, new { type = "text", @class = "form-control", placeholder = "Enter your username.." })
+                                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                @Html.TextBoxFor(m => m.Phone, new { type = "text", @class = "form-control", placeholder = "Enter your phone.." })
+                                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                @Html.TextBoxFor(m => m.Email, new { type = "text", @class = "form-control", placeholder = "Enter your email.." })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                @Html.TextBoxFor(m => m.Dob, new { type = "date", @class = "form-control", placeholder = "Enter your date of birth.." })
+                                @Html.ValidationMessageFor(m => m.Dob, "", new { @class = "text-danger" })
+                            </div>
+
+                            <br />
+
+                            <button type="submit" class="btn btn-default update pull-right"> Submit </button>
+                            <a href="@Url.Action("Index","Customer")" class="btn btn-default update pull-right"> Back </a>
+
+                            <br /><br />
+                        }
+
                     </div>
-                </div>
             </div>
         </div>
     </div>

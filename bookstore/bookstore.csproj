@@ -139,6 +139,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthorController.cs" />
@@ -172,6 +173,8 @@
     <Compile Include="DTO\PaymentCard.cs" />
     <Compile Include="DTO\User.cs" />
     <Compile Include="DTO\Publisher.cs" />
+    <Compile Include="Filters\AuthorFilters\AdminAuthorized.cs" />
+    <Compile Include="Filters\AuthorFilters\Authenticated.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,6 +232,7 @@
     <Compile Include="ViewModels\Auth\SignupViewModel.cs" />
     <Compile Include="ViewModels\BookCategoryPublisherAuthorViewModel.cs" />
     <Compile Include="ViewModels\CategoryProduct\CategoryProductViewModel.cs" />
+    <Compile Include="ViewModels\Customer\CustomerResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Customer\CustomerUpdateInformationViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
@@ -644,6 +648,12 @@
     <Content Include="Global.asax" />
     <Content Include="images\404\404.png" />
     <Content Include="images\author\1.jpg" />
+    <Content Include="images\author\author34.jpg" />
+    <Content Include="images\author\author35.jpg" />
+    <Content Include="images\author\author37.jpg" />
+    <Content Include="images\author\author38.1810%29_hires.jpg" />
+    <Content Include="images\author\author39.jpg" />
+    <Content Include="images\author\author40.jpeg" />
     <Content Include="images\blog\blog-one.jpg" />
     <Content Include="images\blog\blog-three.jpg" />
     <Content Include="images\blog\blog-two.jpg" />
@@ -696,21 +706,29 @@
     <Content Include="images\product-details\similar2.jpg" />
     <Content Include="images\product-details\similar3.jpg" />
     <Content Include="images\publisher\1.jpg" />
+    <Content Include="images\publisher\publisher1.jpg" />
+    <Content Include="images\publisher\publisher3.jpg" />
+    <Content Include="images\publisher\publisher4.jpg" />
+    <Content Include="images\publisher\publisher5.png" />
+    <Content Include="images\publisher\publisher6.jpeg" />
+    <Content Include="images\publisher\publisher7.jpg" />
+    <Content Include="images\publisher\publisher8.jpg" />
+    <Content Include="images\publisher\publisher8.png" />
+    <Content Include="images\publisher\publisher9.jpg" />
     <Content Include="images\shop\advertisement.jpg" />
     <Content Include="images\shop\book1.jpg" />
-    <Content Include="images\shop\book16.jpg" />
-    <Content Include="images\shop\book17.jpg" />
-    <Content Include="images\shop\book18.jpg" />
-    <Content Include="images\shop\book19.jpg" />
-    <Content Include="images\shop\book3.jpg" />
-    <Content Include="images\shop\book4.jpg" />
-    <Content Include="images\shop\book8.jpg" />
-    <Content Include="images\shop\product10.jpg" />
-    <Content Include="images\shop\product11.jpg" />
-    <Content Include="images\shop\product12.jpg" />
-    <Content Include="images\shop\product7.jpg" />
-    <Content Include="images\shop\product8.jpg" />
-    <Content Include="images\shop\product9.jpg" />
+    <Content Include="images\shop\book27.jpg" />
+    <Content Include="images\shop\book27.png" />
+    <Content Include="images\shop\book28.jpg" />
+    <Content Include="images\shop\book29.jpeg" />
+    <Content Include="images\shop\book31.jpg" />
+    <Content Include="images\shop\book33.jpg" />
+    <Content Include="images\shop\book34.jpeg" />
+    <Content Include="images\shop\book35.jpg" />
+    <Content Include="images\shop\book36.jpg" />
+    <Content Include="images\shop\book37.jpg" />
+    <Content Include="images\shop\book38.jpg" />
+    <Content Include="images\shop\book7.jpeg" />
     <Content Include="Models\BookStoreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BookStoreModel.edmx</DependentUpon>
@@ -834,8 +852,10 @@
       <DependentUpon>BookStoreModel.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Checkout.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Shop.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
@@ -862,6 +882,7 @@
     <Content Include="Views\Home\LoginOrSignUp.cshtml" />
     <Content Include="Views\Home\ProductDetail.cshtml" />
     <Content Include="Views\Home\Publisher.cshtml" />
+    <Content Include="Views\Customer\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
