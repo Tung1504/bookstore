@@ -41,9 +41,14 @@
                                     <td>@user.role</td>
                                     <td>
                                         @*@Html.ActionLink(" Edit", "Edit", new { id = user.id }, new { @class = "btn btn-light fas fa-edit" })*@
+
                                         @Html.ActionLink(" Detail", "ViewDetail", new { id = user.id }, new { @class = "btn btn-primary fas fa-file" })
 
-                                        <a data-id="@user.id" href='#' class='btn btn-danger fas fa-trash btnDel'> Delete</a>
+                                        @if (user.role == "Admin")
+                                        {
+                                            <a data-id="@user.id" href='#' class='btn btn-danger fas fa-trash btnDel'> Delete</a>
+                                        }
+
                                     </td>
                                 </tr>
                             }
