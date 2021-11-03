@@ -29,7 +29,7 @@ namespace bookstore.Controllers
             int totalBook = books.Count();
             int numberPage = Convert.ToInt32(Math.Ceiling((double)totalBook / limit));
 
-            List<Book> paginatedBooks = books.OrderByDescending(s => s.id).Skip(start).Take(limit).ToList();
+            List<Book> paginatedBooks = books.OrderByDescending(s => s.id).Take(limit).ToList();
             Category category = db.Categories.Find(id);
             CategoryProductViewModel categoryProductViewModel = new CategoryProductViewModel()
             {
