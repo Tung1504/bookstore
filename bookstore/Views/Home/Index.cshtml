@@ -28,6 +28,7 @@
 }
 
 
+
 <section id="slider">
     <div class="container">
         <div class="row">
@@ -141,14 +142,13 @@
                                     <h1></h1>
                                     <div class="col-sm-3">
 
+                                        <div class="product-image-wrapper">
 
-                                        <div class="product-image-wrapper" >
-
-                                            <div class="product-image-wrapper size-category-item" style="width: 170px; height: 280px">
+                                            <div class="product-image-wrapper size-category-item" >
 
                                                 @Html.Partial("~/Views/Product/_Item.cshtml", book)
                                             </div>
-
+                                        </div>
                                     </div>
                                 }
 
@@ -157,6 +157,7 @@
 
 
 
+                    </div>
                     </div>
 
                     <div class="recommended_items">
@@ -170,7 +171,7 @@
                                     {
 
                                         <div class="col-sm-4">
-                                            <div class="product-image-wrapper" style="width: 200px; height: 280px">
+                                            <div class="product-image-wrapper" >
                                                 @Html.Partial("~/Views/Product/_Item.cshtml", book)
                                             </div>
                                         </div>
@@ -215,4 +216,3 @@
     <script src="@Url.Content("~/Scripts/jquery.prettyPhoto.js")"></script>
     <script src="@Url.Content("~/Scripts/main.js")"></script>
 }
-

@@ -3,25 +3,17 @@
 <div class="single-products ">
     <div class="productinfo text-center">
 
-        <img src="~/images/shop/@Model.image" alt="" style="height:400px; width:250px "/>
+        <img src="~/images/shop/@Model.image" alt="" />
 
         <h2>$@Model.price</h2>
         <p>@Model.title</p>
         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
     </div>
-    @if (TempData["AddSuccess"] != null)
-    {
-        <script type="text/javascript">
 
-            window.onload = function () {
-                alert("@TempData["AddSuccess"]");
-            };
-        </script>
-    }
     <a href="@Url.Action("Detail", "Product", new { id = Model.id})">
         <div class="product-overlay">
             <div class="overlay-content">
-                <img src="~/images/shop/@Model.image" alt=""/>
+                @*<img src="~/images/shop/@Model.image" alt=""/>*@
                 <h2>$@Model.price</h2>
                 <p>@Model.title</p>
 
@@ -43,6 +35,15 @@
 
             window.onload = function () {
                 alert("@TempData["Notification"]");
+            };
+                    </script>
+                }
+                @if (TempData["AddSuccess"] != null)
+                {
+                    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@TempData["AddSuccess"]");
             };
                     </script>
                 }
