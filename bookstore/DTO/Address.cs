@@ -14,14 +14,14 @@ namespace bookstore.Models
 
     public class AddressMetaData
     {
-        [Required]
+        [Required(ErrorMessage = "Please enter your address")]
         public string address1 { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter your city")]
         public string city { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter your district")]
         public string district { get; set; }
         public int user_id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter your postal code")]
         public int postal_code { get; set; }
 
         

@@ -13,13 +13,13 @@ namespace bookstore.Models
 
     public class Payment_cardMetaData
     {
-        [Required]
-        public int card_number { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter your card number")]
+        public string card_number { get; set; } 
+        [Required(ErrorMessage = "Please enter your card valid from date")]
         public System.DateTime from_date { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter your card valid end date")]
         public System.DateTime to_date { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter your card type")]
         public string card_type { get; set; }
         
 

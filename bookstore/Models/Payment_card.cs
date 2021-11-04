@@ -15,7 +15,7 @@ namespace bookstore.Models
     public partial class Payment_card
     {
         public int id { get; set; }
-        public int card_number { get; set; }
+        public string card_number { get; set; }
         public System.DateTime from_date { get; set; }
         public System.DateTime to_date { get; set; }
         public int user_id { get; set; }

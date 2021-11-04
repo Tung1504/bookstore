@@ -80,7 +80,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="card_number" Type="int" Nullable="false" />
+          <Property Name="card_number" Type="varchar(max)" Nullable="false" />
           <Property Name="from_date" Type="date" Nullable="false" />
           <Property Name="to_date" Type="date" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
@@ -338,7 +338,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="card_number" Type="Int32" Nullable="false" />
+          <Property Name="card_number" Type="String" Nullable="false" />
           <Property Name="from_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="to_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="user_id" Type="Int32" Nullable="false" />

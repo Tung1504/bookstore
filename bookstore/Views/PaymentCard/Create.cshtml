@@ -28,24 +28,28 @@
                             <br />
 
                             <div class="form-group col-md-12">
-                                @Html.TextBoxFor(m => m.card_number, new { type = "text", @class = "form-control", placeholder = "Enter your card number.." })<br />
+                                @Html.TextBoxFor(m => m.card_number, new { type = "text", @class = "form-control", placeholder = "Enter your card number.." })
                                 @Html.ValidationMessageFor(m => m.card_number, "", new { @class = "text-danger" })
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                @Html.TextBoxFor(m => m.from_date, new { type = "date", @class = "form-control" }) 
-                                @Html.ValidationMessageFor(m => m.from_date, "", new { @class = "text-danger" })
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                @Html.TextBoxFor(m => m.to_date, new { type = "date", @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.to_date, "", new { @class = "text-danger" })
                             </div>
 
                             <div class="form-group col-md-12">
                                 @Html.TextBoxFor(m => m.card_type, new { type = "text", @class = "form-control", placeholder = "Enter the card type.." })
                                 @Html.ValidationMessageFor(m => m.card_type, "", new { @class = "text-danger" })
                             </div>
+
+                            <div class="form-group col-md-12">
+                                <p>Date From: </p>
+                                @Html.TextBoxFor(m => m.from_date, new { type = "date", @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.from_date, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <p>End Date: </p>
+                                @Html.TextBoxFor(m => m.to_date, new { type = "date", @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.to_date, "", new { @class = "text-danger" })
+                            </div>
+
+
 
 
 

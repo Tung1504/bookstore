@@ -25,8 +25,7 @@ namespace bookstore.ViewModels.Auth
 
         [Required(ErrorMessage = "Please enter phone number")]
         public string Phone { get; set; }
-
-        [Required(ErrorMessage = "Please assign role for the user")]
+        
         public string Role { get; set; }
 
         [Required(ErrorMessage = "Please enter user email")]
