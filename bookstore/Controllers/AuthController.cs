@@ -16,14 +16,15 @@ namespace bookstore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SignUp(LoginSignUpViewModel loginSignUpViewModel, UserDAO userDAO)
         {
-            if (ModelState.IsValid)
+
+            if (userDAO.Any(x => x.username == loginSignUpViewModel.SignupViewModel.Username))
             {
-                if (userDAO.Any(x => x.username == loginSignUpViewModel.SignupViewModel.Username))
-                {
-                    SetErrorFlash("Account exists", "signup-fail");
-                    return RedirectToAction("LoginOrSignup");
-                }
-                else
+                SetErrorFlash("Account exists", "signup-failed");
+                return View("LoginOrSignUp");
+            }
+            else
+            {
+                if (ModelState.IsValid)
                 {
                     User u = new User()
                     {
@@ -43,7 +44,8 @@ namespace bookstore.Controllers
                 }
             }
 
-            return View("~/Views/Auth/LoginOrSignUp.cshtml");
+            return View("LoginOrSignUp");
+
         }
 
 

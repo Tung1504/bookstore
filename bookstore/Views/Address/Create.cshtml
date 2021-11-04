@@ -26,19 +26,21 @@
                             <br />
 
                             <div class="form-group col-md-12">
-                                @Html.TextBoxFor(m => m.address1, new { type = "text", @class = "form-control", placeholder = "Enter your address.." }) 
+                                @Html.TextBoxFor(m => m.address1, new { type = "text", @class = "form-control", placeholder = "Enter your address.." })
                                 @Html.ValidationMessageFor(m => m.address1, "", new { @class = "text-danger" })
                             </div>
 
                             <div class="form-group col-md-12">
-                                @Html.TextBoxFor(m => m.city, new { type = "text", @class = "form-control", placeholder = "Enter your city.." }) 
-                                @Html.ValidationMessageFor(m => m.city, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(m => m.district, new { type = "text", @class = "form-control", placeholder = "Enter your district.." })
+                                @Html.ValidationMessageFor(m => m.district, "", new { @class = "text-danger" })
                             </div>
 
                             <div class="form-group col-md-12">
-                                @Html.TextBoxFor(m => m.district, new { type = "text", @class = "form-control", placeholder = "Enter your district.." }) 
-                                @Html.ValidationMessageFor(m => m.district, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(m => m.city, new { type = "text", @class = "form-control", placeholder = "Enter your city.." })
+                                @Html.ValidationMessageFor(m => m.city, "", new { @class = "text-danger" })
                             </div>
+
+
 
                             <div class="form-group col-md-12">
                                 @Html.TextBoxFor(m => m.postal_code, new { type = "text", @class = "form-control", placeholder = "Enter the postal code.." })
