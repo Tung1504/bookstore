@@ -221,6 +221,9 @@
     <Compile Include="Models\Publisher.cs">
       <DependentUpon>BookStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>BookStoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>BookStoreModel.tt</DependentUpon>
     </Compile>

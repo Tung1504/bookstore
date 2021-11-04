@@ -53,16 +53,19 @@
 
 
                         <div class="float-left">
-                            <h3 class="pt-2">Invoice #@Model.Order.id</h3>
-                            @Model.Order.date.Day/@Model.Order.date.Month/@Model.Order.date.Year
+                            <h3 class="pt-2">Invoice #@Model.Order.order_number</h3>
+                            <strong>Order date: </strong>@Model.Order.date.Day/@Model.Order.date.Month/@Model.Order.date.Year
+                            <br />
+
                             @if (Model.Order.payment_status == "Unpaid")
                             {
-                                <p>Payment Status: <span class="text-warning">Cash on delivery</span></p>
+                                <p><strong>Payment Status: </strong><span class="text-warning">Cash on delivery</span></p>
                             }
                             else
                             {
-                                <p>Payment Status: <span class="text-success">Paid by card</span></p>
+                                <p><strong>Payment Status: </strong><span class="text-success">Paid by card</span></p>
                             }
+
                         </div>
                     </div>
                     <div class="card-body">
