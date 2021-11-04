@@ -1746,7 +1746,7 @@ textarea {
     background: #FE980F;
     border-radius: 0;
     color: #FFFFFF;
-    margin-top: 18px;
+    /*margin-top: 0px;*/
     border: none;
     padding: 5px 15px;
 }
