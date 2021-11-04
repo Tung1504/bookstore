@@ -37,12 +37,13 @@ namespace bookstore.Controllers
                     if (qty > book.quantity_in_stock)
                     {
                         newItem = new CartItem(book, book.quantity_in_stock, id);
-                        TempData["Notification"] = "quantity is greater than quantity in stock";
+                        TempData["Notification"] = "your order has exceeded the current available stock the maximum quantity will be automatically filled in the box";
 
                     }
                     else
                     {
                         newItem = new CartItem(book, qty, id);
+                        TempData["AddSuccess"] = "Add to cart successfully";
                     }
                     cart.Add(newItem);
                 }
@@ -55,11 +56,12 @@ namespace bookstore.Controllers
                         if (qty <= (cartItem.Book.quantity_in_stock - cartItem.Quantity))
                         {
                             cartItem.Quantity = cartItem.Quantity + qty;
+                            TempData["AddSuccess"] = "Add to cart successfully";
                         }
                         else
                         {
                             cartItem.Quantity = cartItem.Book.quantity_in_stock;
-                            TempData["Notification"] = "quantity is greater than quantity in stock";
+                            TempData["Notification"] = "your order has exceeded the current available stock the maximum quantity will be automatically filled in the box";
 
                         }
 
@@ -83,11 +85,12 @@ namespace bookstore.Controllers
                 if (updateItem.Book.quantity_in_stock >= quantity)
                 {
                     updateItem.Quantity = quantity;
+                    TempData["UpdateSuccess"] = "Update quantity susscessfully";
                 }
                 else
                 {
                     updateItem.Quantity = updateItem.Book.quantity_in_stock;
-                    TempData["Message"] = "quantity is greater than quantity in stock";
+                    TempData["Message"] = "your order has exceeded the current available stock the maximum quantity will be automatically filled in the box";
                 }
             }
             return RedirectToAction("Index");
@@ -129,6 +132,12 @@ namespace bookstore.Controllers
                 {
                     n = int.Parse(model.Address);
                     Address address = db.Addresses.Find(n);
+                    if (address == null)
+                    {
+                        TempData["Invalid Address"] = "Your address is not valid please choose another address";
+                        return Redirect(Request.UrlReferrer.ToString());
+                    }
+                    else
                     city = address.address1 + " " + address.city + " " + address.district + " " + address.postal_code;
                 }
                 else

@@ -15,7 +15,7 @@
                 <li class="active">Check out</li>
             </ol>
         </div><!--/breadcrums-->
-
+        <label style="color:red">@TempData["Invalid Address"]</label>
         <div class="shopper-informations">
             <div class="row">
                 @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, new { @class = "form" }))
