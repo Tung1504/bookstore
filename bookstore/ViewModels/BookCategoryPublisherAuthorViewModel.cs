@@ -10,6 +10,8 @@ namespace bookstore.ViewModels
 
     public class BookCategoryPublisherAuthorViewModel
     {
+        
+        
         public Book Book { get; set; }
         public Category Category { get; set; }
         public Publisher Publisher { get; set; }

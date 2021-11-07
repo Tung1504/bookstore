@@ -62,7 +62,7 @@
                                                 @using (Html.BeginForm("Delete", "Book", new { id = book.id }, FormMethod.Post, new { style = "display:inline" }))
                                                 {
                                                     @Html.AntiForgeryToken()
-                                                    <button type="submit" class="btn btn-danger fas fa-trash"> Delete</button>
+                                                    <button type="submit" class="btn btn-danger fas fa-trash" onclick="return confirm('Delete this item?')"> Delete</button>
                                                 }
                                             </td>
                                         </tr>

@@ -58,7 +58,7 @@
                                     <div class="modal-footer">
                                         <div class="btn-group">
                                             <a href="#" id="btnSave" class="btn btn-primary mr-2">Save</a>
-                                            <a href="#" id="btnCancel" class="btn btn-danger" @*data-dismiss="modal"*@>Cancel</a>
+                                            <a href="#" id="btnCancel" class="btn btn-danger" data-dismiss="modal">Cancel</a>
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +182,6 @@
                 var id = $(this).data('id');
 
                 if (id > 0) {
-
                     GetDataById(id);
                 }
             });
@@ -250,7 +249,7 @@
                     data: { id: id },
                     success: function (res) {
                         if (res.data != null) {
-                            $('#name').val(res.data.author_name);
+                            $('#name').val(res.data.category_name);
                             $('#id').val(res.data.id);
                             $('#createModal').modal('show');
                         }
