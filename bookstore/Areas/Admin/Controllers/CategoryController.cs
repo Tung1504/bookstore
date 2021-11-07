@@ -47,9 +47,10 @@ namespace bookstore.Areas.Admin.Controllers
             }
         }
 
+        
         public ActionResult GetById(int id)
         {
-            var item = db.Categories.Find(id);
+            var item = db.Categories.FirstOrDefault(x=> x.id == id);
             return Json(new { data = item }, JsonRequestBehavior.AllowGet);
         }
 

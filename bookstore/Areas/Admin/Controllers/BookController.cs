@@ -30,6 +30,7 @@ namespace bookstore.Areas.Admin.Controllers
             List<Category> categories = db.Categories.ToList();
 
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(book, categories, publishers, authors);
+
             return View(bookCategoryPublisherViewModel);
         }
 

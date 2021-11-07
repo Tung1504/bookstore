@@ -24,7 +24,7 @@
         </div>
         @using (Html.BeginForm("Create", "Book", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
         {
-            
+
             @Html.AntiForgeryToken();
             <div class="card">
                 <div class="card-body">
@@ -46,47 +46,47 @@
                                 <div class="user-avatar-address">
                                     <label>Book title:</label>
                                     @Html.TextBoxFor(m => m.Book.title, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Book.title, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.title, "", new { @class = "text-danger title" })
                                     <br />
 
                                     <label>Edition:</label>
                                     @Html.TextBoxFor(m => m.Book.edition, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Book.edition, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.edition, "", new { @class = "text-danger edition" })
                                     <br />
 
                                     <label>By:</label> <br />
-                                    @Html.DropDownListFor(m => m.Book.author_id, new SelectList(Model.ListAuthor, "id", "author_name"), "-----Select Author-----", new { @class ="form-control", style = "width:210px" }) <br />
-                                    @Html.ValidationMessageFor(m => m.Book.Author.id, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(m => m.Book.author_id, new SelectList(Model.ListAuthor, "id", "author_name"), "-----Select Author-----", new { @class = "form-control", style = "width:210px" }) <br />
+                                    @Html.ValidationMessageFor(m => m.Book.author_id, "", new { @class = "text-danger author" })
                                     <br />
 
                                     <label>Publisher</label> <br />
                                     @Html.DropDownListFor(m => m.Book.publisher_id, new SelectList(Model.ListPublisher, "id", "publisher_name"), "-----Select Publisher-----", new { @class = "form-control", style = "width:210px" }) <br />
-                                    @Html.ValidationMessageFor(m => m.Book.Publisher.id, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.publisher_id, "", new { @class = "text-danger publisher" })
                                     <br />
 
                                     <label>Category:</label> <br />
                                     @Html.DropDownListFor(m => m.Book.category_id, new SelectList(Model.ListCategory, "id", "category_name"), "-----Select Category-----", new { @class = "form-control", style = "width:210px" }) <br />
-                                    @Html.ValidationMessageFor(m => m.Book.Category.id, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.category_id, "", new { @class = "text-danger category" })
                                     <br />
 
                                     <label>Quantity in stock:</label>
                                     @Html.TextBoxFor(m => m.Book.quantity_in_stock, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Book.quantity_in_stock, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.quantity_in_stock, "", new { @class = "text-danger qty" })
                                     <br />
 
                                     <label>Public Date:</label>
                                     @Html.TextBoxFor(m => m.Book.public_date, new { type = "date", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Book.public_date, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.public_date, "", new { @class = "text-danger date" })
                                     <br />
 
                                     <label>Price</label>
                                     @Html.TextBoxFor(m => m.Book.price, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Book.price, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.price, "", new { @class = "text-danger price" })
                                     <br />
 
                                     <label>Description: </label>
                                     @Html.TextBoxFor(m => m.Book.description, new { type = "text", @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Book.description, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(m => m.Book.description, "", new { @class = "text-danger des" })
                                     <br />
 
                                     <button type="submit" class="btn btn-primary" onclick="Validate()">Submit</button>
@@ -106,18 +106,45 @@
     <script>
         function Validate() {
             var check = false;
-            var name = $('#name').val();
-            if (name === '') {
-                $('#name').next().html('Please enter category name');
+            var title = document.getElementByClassName("title").val();''
+            var edition = $('#edition').val();
+            var author = $('#author').val();
+            var publisher = $('#publisher').val();
+            var category = $('#categroy').val();
+            var qty = $('#qty').val();
+            var date = $('#date').val();
+            var price = $('#price').val();
+            var des = $('#des').val();
+
+            if (title == "" || edition == "" || author == "" || publisher == "" || category == "" || qty == "" || date == "" || price == "" || des == "") {
+                $('#title').next().html('Please enter category name');
+                $('#edition').next().html('Please enter category name');
+                $('#author').next().html('Please enter category name');
+                $('#publisher').next().html('Please enter category name');
+                $('#category').next().html('Please enter category name');
+                $('#qty').next().html('Please enter category name');
+                $('#date').next().html('Please enter category name');
+                $('#price').next().html('Please enter category name');
+                $('#des').next().html('Please enter category name');
                 check = false;
             }
             else {
                 $('#name').next().html('');
+                $('#title').next().html('Please enter category name');
+                $('#edition').next().html('Please enter category name');
+                $('#author').next().html('Please enter category name');
+                $('#publisher').next().html('Please enter category name');
+                $('#category').next().html('Please enter category name');
+                $('#qty').next().html('Please enter category name');
+                $('#date').next().html('Please enter category name');
+                $('#price').next().html('Please enter category name');
+                $('#des').next().html('Please enter category name');
                 check = true;
             }
             return check;
+            
         }
     </script>
-    
-    
-    }
+
+
+}
