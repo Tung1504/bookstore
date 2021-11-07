@@ -5,9 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section id="form">
-    <!--form-->
-    <div class="container">
+@*<section id="form">*@
+    <div class="container" style="margin-bottom: 80px;">
         <div class="row">
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form">
@@ -39,7 +38,7 @@
                 <h2 class="or">OR</h2>
             </div>
             <div class="col-sm-4">
-                <div class="signup-form">
+                <div class="login-form">
                     <!--sign up form-->
                     @using (Html.BeginForm("SignUp", "Auth", FormMethod.Post))
                     {
@@ -79,7 +78,7 @@
             </div>
         </div>
     </div>
-</section><!--/form-->
+@*</section>*@
 
 @section js
 {
