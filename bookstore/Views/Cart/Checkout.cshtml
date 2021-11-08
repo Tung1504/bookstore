@@ -4,85 +4,82 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section css{
+    <style>
+        h5 {
+            color: #FE980F;
+            font-weight: bold;
+        }
+    </style>
+}
 
+<div id="contact-page" class="container" style="margin-bottom: 80px;">
+    <div class="breadcrumbs">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Check out</li>
+        </ol>
+    </div>
+    <div class="shopper-informations">
+        <div class="col-sm-4 col-sm-offset-1">
 
+            @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <h2 class="title text-center">FROM ADDRESS BOOK</h2>
+                <div>
+                    <h5>ADDRESS</h5>
+                    @Html.DropDownListFor(m => m.Address, new SelectList(Model.AddressList, "id", "city"), "-----Select Address-----") <br /><br /><br />
+                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                    <h5>PAYMENT</h5>
+                    <label>Cash on delivery</label>   @Html.RadioButtonFor(m => m.Payment, "COD (Cash on delivery)")
+                    @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment Card-----") <br /> <br />
+                    @Html.ValidationMessageFor(m => m.Payment, "", new { @class = "text-danger" })
 
-<section id="cart_items">
-    <div class="container">
-        <div class="breadcrumbs">
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Check out</li>
-            </ol>
-        </div><!--/breadcrums-->
-        <label style="color:red">@TempData["Invalid Address"]</label>
-        <div class="shopper-informations">
-            <div class="row">
-                @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, new { @class = "form" }))
-                {
-                    @Html.ValidationSummary();
-                    @Html.AntiForgeryToken();
-                    <div class="col-sm-6">
-                        <div class="shopper-info">
-                            <div class="form-two">
-                                <h3>FROM ADDRESS BOOKS</h3> <br />
-                                <form>
-                                    <h5>ADDRESS</h5>
-                                    @Html.DropDownListFor(m => m.Address, new SelectList(Model.AddressList, "id", "city"), "-----Select Address-----") <br />
-                                    <br /> 
-                                    <h5>PAYMENT</h5>
-                                    <label>Cash on delivery</label>   @Html.RadioButtonFor(m => m.Payment, "COD (Cash on delivery)")
-                                    @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----") <br /> <br />
+                    <h5>NOTE</h5>
+                    @Html.TextAreaFor(m => m.Note, new { type = "text", @class = "form-control", name = "message", id = "message", rows = "8", @placeholder = "Enter notes for the delivery.. (optional)" })
 
-                                    <div class="order-message">
-                                        <h5>NOTE</h5>
-                                        @Html.TextAreaFor(m => m.Note, new { type = "text", @class = "form-control", @placeholder = "Notes about your order, Special Notes for Delivery" })
-                                    </div> <br />
-
-                                    <button class="btn btn-primary" type="reset">Reset</button>
-                                    <button class="btn btn-primary" type="submit"> Order </button>
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
-                }
-                @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post, new { @class = "form" }))
-                {
-                    @Html.ValidationSummary();
-                    @Html.AntiForgeryToken();
-                    <div class="col-sm-6">
-                        <div class="shopper-info">
-                            <div class="form-two">
-                                <h3>NEW ADDRESS</h3> <br />
-                                <form>
-                                    <h5>ADDRESS</h5>
-                                    @Html.TextBoxFor(m => m.Address, new { type = "text", @class = "form-control", @placeholder = "recipient address" }) <br /> 
-
-                                    <h5>PAYMENT</h5>
-                                    <label>Cash on delivery</label>  @Html.RadioButtonFor(m => m.Payment, "COD (Cash on delivery)")
-                                    @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment-----") <br /> <br />
-
-                                    <div class="order-message">
-                                        <h5>NOTE</h5>
-                                        @Html.TextAreaFor(m => m.Note, new { type = "text", @class = "form-control", @placeholder = "Notes about your order, Special Notes for Delivery" })
-
-                                    </div>
-
-                                    <button class="btn btn-primary" type="reset">Reset</button>
-                                    <button class="btn btn-primary" type="submit"> Order </button>
-                                </form>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                }
-
-            </div>
+                    <button class="btn btn-primary update pull-right" type="submit"> Order </button>
+                    <button class="btn btn-primary update pull-right" type="reset">Reset</button>
+                </div>
+            }
         </div>
-        @*<div class="review-payment">
+        <div class="col-sm-1">
+            <h2 class="or">OR</h2>
+        </div>
+        <div class="col-sm-4">
+            <!--sign up form-->
+            @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <h2 class="title text-center">NEW ADDRESS</h2>
+                <div>
+                    <h5>ADDRESS</h5>
+                    @Html.TextBoxFor(m => m.Address, new { type = "text", @class = "form-control", @placeholder = "Enter your new address.." }) <br />
+                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+
+                    <h5>PAYMENT</h5>
+                    <label>Cash on delivery</label>  @Html.RadioButtonFor(m => m.Payment, "COD (Cash on delivery)")
+                    @Html.DropDownListFor(m => m.Payment, new SelectList(Model.PaymentCardList, "id", "card_number"), "-----Select Payment Card-----") <br /> <br />
+                    @Html.ValidationMessageFor(m => m.Payment, "", new { @class = "text-danger" })
+
+                    <h5>NOTE</h5>
+                    @Html.TextAreaFor(m => m.Note, new { type = "text", @class = "form-control", name = "message", id = "message", rows = "8", @placeholder = "Enter notes for the delivery.. (optional)" })
+
+
+
+                    <button class="btn btn-primary update pull-right" type="submit"> Order </button>
+                    <button class="btn btn-primary update pull-right" type="reset">Reset</button>
+                </div>
+            }
+        </div>
+    </div>
+
+    <h6 style="color:red">@TempData["Invalid Address"]</h6>
+
+
+
+    @*<div class="review-payment">
             <h2>Review & Payment</h2>
         </div>
         <div class="table-responsive cart_info">
@@ -158,8 +155,7 @@
             </table>
         </div>*@
 
-    </div>
-</section> <!--/#cart_items-->
+</div>
 
 @section js
 {
@@ -169,3 +165,4 @@
     <script src="@Url.Content("~/Scripts/jquery.prettyPhoto.js")"></script>
     <script src="@Url.Content("~/Scripts//main.js")"></script>
 }
+

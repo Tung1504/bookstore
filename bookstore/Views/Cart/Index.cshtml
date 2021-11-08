@@ -4,11 +4,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section css{
+    <style>
+
+        #customers td, #customers th {
+            padding: 8px;
+        }
+
+
+        #customers tr:hover {
+            background-color: #FEFAF6;
+        }
+
+        #customers tr:last-child:hover {
+            background-color: #ffffff;
+        }
+
+    </style>
+}
+
 
 @if (Model == null || Model.Count() == 0)
 {
-    <p class="text-info text-center">
-        Giỏ hàng của bạn rỗng!
+    <p class="text-info text-center" style="font-size: 24px; color: #FE980F">
+        Your cart is empty!..
     </p>
 }
 else
@@ -42,7 +61,7 @@ else
 
 
             <div class="table-responsive cart_info">
-                <table class="table table-condensed cart-table">
+                <table class="table table-condensed cart-table" id="customers">
                     <thead>
                         <tr class="cart_menu">
                             <td class="image"></td>
@@ -129,6 +148,7 @@ else
 
 }
 @section js{
+<<<<<<< HEAD
     <script>
         setTimeout(function () {
             $('#updateSuccess').fadeOut('slow');
@@ -141,5 +161,8 @@ else
 
 
     </script>
+=======
+
+>>>>>>> viethp
 }
 

@@ -4,95 +4,121 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section css{
+    <style>
+
+            #customers td, #customers th {
+                padding: 8px;
+            }
+
+
+        #customers tr:hover {
+            background-color: #FEFAF6;
+        }
+
+    </style>
+}
+
 <section id="cart_items">
     <div id="contact-page" class="container">
         <div class="bg">
 
-            <div class="row">
 
-                <div class="col-sm-12 padding-right">
-                    <div class="product-details">
-
-                        <div class="col-sm-8" style="position:center">
-                            <h2 class="title text-center" style="text-align:center">Order</h2>
-                            <address>
-                                <p style="text-align:center">Order number : @Model.Order.order_number</p>
-                                <p style="text-align:center">Payment Status : @Model.Order.payment_status</p>
-                                <p style="text-align:center">Status : @Model.Order.status</p>
-                                <p style="text-align:center">Order Date : @Model.Order.date</p>
-                                <p style="text-align:center">Address : @Model.Order.delivery_location</p>
-                                >
-
-                            </address>
-                        </div>
-                    </div>
-                </div><!--/#contact-page-->
-            </div>
             <h2 class="title text-center">Order Details</h2>
             <div class="col-sm-13">
-                
-            <div class="table-responsive cart_info">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr class="cart_menu">
-                            <td class="image">Item</td>
-                            <td class="description"></td>
-                            <td class="price">Price</td>
-                            <td class="quantity" height="15%">Description</td>
-                            <td class="total">Total</td>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var o in Model.OrderDetails)
-                        {
-                            <tr>
-                                <td class="cart_product">
-                                    <a href=""><img src="~/images/shop/@o.Book.image" alt="" width="150" height="200"></a>
-                                </td>
-                                <td class="cart_description">
-                                    <h4><a href="">@o.Book.title</a></h4>
-                                    <p> X @o.quantity</p>
-                                </td>
-                                <td class="cart_price">
-                                    <p>$ @o.Book.price</p>
-                                </td>
-                                <td class="cart_quantity">
-                                    <p>@o.Book.description.ToString().Substring(0, 75) ....</p>
-                                </td>
-                                <td class="cart_total">
-                                    <p class="cart_total_price">$ @o.total_price</p>
-                                </td>
-                               
+
+                <div class="table-responsive cart_info">
+                    <table class="table table-condensed" id="customers">
+                        <thead>
+                            <tr class="cart_menu">
+                                <td class="image">Item</td>
+                                <td class="description">Title</td>
+                                <td class="price">Price</td>
+                                <td class="quantity" height="15%">Description</td>
+                                <td class="total">Total</td>
+
                             </tr>
-                        }
-                        <tr>
-                            <td colspan="4">&nbsp;</td>
-                            <td colspan="2">
+                        </thead>
+                        <tbody>
+                            @foreach (var o in Model.OrderDetails)
+                            {
+                                <tr>
+                                    <td class="cart_product">
+                                        <a href=""><img src="~/images/shop/@o.Book.image" alt="" width="80" height="120"></a>
+                                    </td>
+                                    <td class="cart_description">
+                                        <h4><a href="">@o.Book.title</a></h4>
+                                        <p> X @o.quantity</p>
+                                    </td>
+                                    <td class="cart_price">
+                                        <p>$ @o.Book.price</p>
+                                    </td>
+                                    <td class="cart_quantity">
+                                        <p>@o.Book.description.ToString().Substring(0, 75) ....</p>
+                                    </td>
+                                    <td class="cart_total">
+                                        <p class="cart_total_price">$ @o.total_price</p>
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="contact-form">
+                                <h2 class="title text-center">Information</h2>
+                                <table class="table ">
+                                    <tr>
+                                        <td><strong>Order number</strong> : @Model.Order.order_number</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><strong>Payment Status</strong> : @Model.Order.payment_status</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Status</strong> : @Model.Order.status</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Order Date</strong> : @Model.Order.date</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Address</strong> : @Model.Order.delivery_location</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="contact-info">
+                                <h2 class="title text-center">TOTAL PRICE</h2>
                                 <table class="table table-condensed total-result">
                                     <tr>
-                                        <td>Cart Sub Total</td>
+                                        <td>Subtotal</td>
                                         <td>$ @Model.OrderDetails.Sum(q => q.total_price)</td>
                                     </tr>
 
                                     <tr class="shipping-cost">
-                                        <td>Shipping Cost</td>
+                                        <td>Shipping</td>
                                         <td>$ @Model.Order.shipping_price</td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td><strong>Total</strong></td>
                                         <td><span>$ @Model.Order.total_price</span></td>
                                     </tr>
 
                                 </table>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
+
         </div>
-        
-            </div>
-        
+    </div>
+
 </section>
 
