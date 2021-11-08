@@ -22,7 +22,7 @@ namespace bookstore.Models
         public int id { get; set; }
         public string author_name { get; set; }
         public string description { get; set; }
-        public string birth_year { get; set; }
+        public Nullable<int> birth_year { get; set; }
         public string status { get; set; }
         public string image { get; set; }
     

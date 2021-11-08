@@ -29,6 +29,7 @@ namespace bookstore.ViewModels.Auth
         public string Role { get; set; }
 
         [Required(ErrorMessage = "Please enter user email")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Input email is not in correct format")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please choose date of birth")]

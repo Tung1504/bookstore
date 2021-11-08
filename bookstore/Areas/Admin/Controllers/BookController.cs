@@ -28,6 +28,10 @@ namespace bookstore.Areas.Admin.Controllers
             List<Author> authors = db.Authors.ToList();
             List<Publisher> publishers = db.Publishers.ToList();
             List<Category> categories = db.Categories.ToList();
+            ViewBag.Author = new SelectList(db.Authors.ToList(), "id", "author_name");
+            ViewBag.Publisher = new SelectList(db.Publishers.ToList(), "id", "publisher_name");
+            ViewBag.Category = new SelectList(db.Categories.ToList(), "id", "category_name");
+
 
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherViewModel = new BookCategoryPublisherAuthorViewModel(book, categories, publishers, authors);
 
@@ -36,9 +40,13 @@ namespace bookstore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Book book, HttpPostedFileBase upload_image)
+        public ActionResult Create(BookCategoryPublisherAuthorViewModel model, HttpPostedFileBase upload_image)
         {
             // #TODO: save duong dan file image vao images/shop..
+            ViewBag.Author = new SelectList(db.Authors.ToList(), "id", "author_name");
+            ViewBag.Publisher = new SelectList(db.Publishers.ToList(), "id", "publisher_name");
+            ViewBag.Category = new SelectList(db.Categories.ToList(), "id", "category_name");
+
 
             if (ModelState.IsValid)
             {
@@ -52,7 +60,7 @@ namespace bookstore.Areas.Admin.Controllers
 
                     upload_image.SaveAs(_path);
 
-                    Book b = db.Books.Add(book);
+                    Book b = db.Books.Add(model.Book);
                     //Book b = db.Books.FirstOrDefault(x => x.id == id);
                     b.image = _FileName;
                     db.SaveChanges();
@@ -60,7 +68,7 @@ namespace bookstore.Areas.Admin.Controllers
                 }
                 else
                 {
-                    db.Books.Add(book);
+                    db.Books.Add(model.Book);
                     db.SaveChanges();
                     TempData["result"] = "Create new book successfully!";
                 }
@@ -69,7 +77,7 @@ namespace bookstore.Areas.Admin.Controllers
             }
 
             //nếu validate thất bại
-            return View(book);
+            return View(model);
         }
 
         public ActionResult ViewDetail(int id)
@@ -78,6 +86,8 @@ namespace bookstore.Areas.Admin.Controllers
             Category category = db.Categories.Where(m => m.id == book.category_id).FirstOrDefault();
             Publisher publisher = db.Publishers.Where(m => m.id == book.publisher_id).FirstOrDefault();
             Author author = db.Authors.Where(m => m.id == book.author_id).FirstOrDefault();
+
+            
 
             BookCategoryPublisherAuthorViewModel bookCategoryPublisherAuthorViewModel = new BookCategoryPublisherAuthorViewModel(book, category, publisher, author);
 
@@ -88,6 +98,9 @@ namespace bookstore.Areas.Admin.Controllers
         {
             Book book = db.Books.Find(id);
 
+            ViewBag.Author = new SelectList(db.Authors.ToList(), "id", "author_name");
+            ViewBag.Publisher = new SelectList(db.Publishers.ToList(), "id", "publisher_name");
+            ViewBag.Category = new SelectList(db.Categories.ToList(), "id", "category_name");
 
             if (book == null)
             {
@@ -107,11 +120,15 @@ namespace bookstore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Book book, HttpPostedFileBase upload_image)
+        public ActionResult Edit(int id, BookCategoryPublisherAuthorViewModel model, HttpPostedFileBase upload_image)
         {
+            ViewBag.Author = new SelectList(db.Authors.ToList(), "id", "author_name");
+            ViewBag.Publisher = new SelectList(db.Publishers.ToList(), "id", "publisher_name");
+            ViewBag.Category = new SelectList(db.Categories.ToList(), "id", "category_name");
+
             if (ModelState.IsValid)
             {
-                db.Entry(book).State = System.Data.EntityState.Modified;
+                db.Entry(model.Book).State = System.Data.EntityState.Modified;
                 //db.SaveChanges();
 
                 // generate image file name (eg. book27.png)
@@ -141,7 +158,7 @@ namespace bookstore.Areas.Admin.Controllers
             }
             
             
-            return View(book);
+            return View(model);
         }
 
         [HttpPost]

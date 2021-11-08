@@ -24,23 +24,31 @@ namespace bookstore.Controllers
             }
             else
             {
-                if (ModelState.IsValid)
+                if (userDAO.Any(x => x.email == loginSignUpViewModel.SignupViewModel.Email))
                 {
-                    User u = new User()
+                    SetErrorFlash("Email exists", "signup-failed");
+                    return View("LoginOrSignUp");
+                }
+                else
+                {
+                    if (ModelState.IsValid)
                     {
-                        username = loginSignUpViewModel.SignupViewModel.Username,
-                        password = loginSignUpViewModel.SignupViewModel.Password,
-                        name = loginSignUpViewModel.SignupViewModel.Name,
-                        phone = loginSignUpViewModel.SignupViewModel.Phone,
-                        email = loginSignUpViewModel.SignupViewModel.Email,
-                        dob = loginSignUpViewModel.SignupViewModel.Dob,
-                        role = Models.User.CUSTOMER
-                    };
+                        User u = new User()
+                        {
+                            username = loginSignUpViewModel.SignupViewModel.Username,
+                            password = loginSignUpViewModel.SignupViewModel.Password,
+                            name = loginSignUpViewModel.SignupViewModel.Name,
+                            phone = loginSignUpViewModel.SignupViewModel.Phone,
+                            email = loginSignUpViewModel.SignupViewModel.Email,
+                            dob = loginSignUpViewModel.SignupViewModel.Dob,
+                            role = Models.User.CUSTOMER
+                        };
 
-                    userDAO.Create(u);
-                    AuthUser.SetLogin(u);
+                        userDAO.Create(u);
+                        AuthUser.SetLogin(u);
 
-                    return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
             }
 

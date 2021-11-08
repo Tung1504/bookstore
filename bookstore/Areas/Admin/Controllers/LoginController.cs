@@ -57,7 +57,7 @@ namespace bookstore.Areas.Admin.Controllers
                     if (u.role != Models.User.ADMIN)
                     {
                         //return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
-                        SetErrorFlash("Please input your admin account", "login-failed");
+                        SetErrorFlash("Wrong UserName and Password", "login-failed");
                     }
 
                 }

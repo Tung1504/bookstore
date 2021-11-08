@@ -68,19 +68,27 @@ namespace bookstore.Areas.Admin.Controllers
                 }
                 else
                 {
-                    User u = new User()
+                    if (userDAO.Any(x => x.email == loginSignUpViewModel.SignupViewModel.Email))
                     {
-                        username = loginSignUpViewModel.SignupViewModel.Username,
-                        password = loginSignUpViewModel.SignupViewModel.Password,
-                        name = loginSignUpViewModel.SignupViewModel.Name,
-                        phone = loginSignUpViewModel.SignupViewModel.Phone,
-                        email = loginSignUpViewModel.SignupViewModel.Email,
-                        dob = loginSignUpViewModel.SignupViewModel.Dob,
-                        role = loginSignUpViewModel.SignupViewModel.Role
-                    };
-                    userDAO.Create(u);
-                    TempData["result"] = "Create new user successfully!";
-                    return RedirectToAction("AdminView");
+                        ViewBag.CreateFail = "This email has been accounted";
+                        return View();
+                    }
+                    else
+                    {
+                        User u = new User()
+                        {
+                            username = loginSignUpViewModel.SignupViewModel.Username,
+                            password = loginSignUpViewModel.SignupViewModel.Password,
+                            name = loginSignUpViewModel.SignupViewModel.Name,
+                            phone = loginSignUpViewModel.SignupViewModel.Phone,
+                            email = loginSignUpViewModel.SignupViewModel.Email,
+                            dob = loginSignUpViewModel.SignupViewModel.Dob,
+                            role = loginSignUpViewModel.SignupViewModel.Role
+                        };
+                        userDAO.Create(u);
+                        TempData["result"] = "Create new user successfully!";
+                        return RedirectToAction("AdminView");
+                    }
                 }
             }
 

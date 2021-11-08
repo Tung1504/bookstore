@@ -23,7 +23,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="author_name" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" />
-          <Property Name="birth_year" Type="nvarchar" MaxLength="50" />
+          <Property Name="birth_year" Type="int" />
           <Property Name="status" Type="nvarchar" MaxLength="50" />
           <Property Name="image" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -80,7 +80,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="card_number" Type="varchar(max)" Nullable="false" />
+          <Property Name="card_number" Type="nvarchar(max)" Nullable="false" />
           <Property Name="from_date" Type="date" Nullable="false" />
           <Property Name="to_date" Type="date" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
@@ -93,7 +93,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="publisher_name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" />
-          <Property Name="est_date" Type="nvarchar" MaxLength="10" />
+          <Property Name="est_date" Type="int" />
           <Property Name="image" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -282,7 +282,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="author_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="birth_year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="birth_year" Type="Int32" />
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Book_Author" FromRole="Author" ToRole="Book" />
@@ -349,7 +349,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="card_number" Type="String" Nullable="false" />
+          <Property Name="card_number" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="from_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="to_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
@@ -363,7 +363,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="publisher_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="est_date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="est_date" Type="Int32" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Book_Publisher" FromRole="Publisher" ToRole="Book" />
         </EntityType>

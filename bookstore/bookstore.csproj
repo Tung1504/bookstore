@@ -148,7 +148,7 @@
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublisherController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
-    <Compile Include="Areas\Admin\ViewModels\Book\BookViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Validation.cs" />
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -844,7 +844,6 @@
     <Content Include="Areas\Admin\Views\Book\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\ViewDetail.cshtml" />
-    <Content Include="Areas\Admin\Views\Author\AddOrEdit.cshtml" />
     <Content Include="Areas\Admin\Views\Author\ViewDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Publisher\ViewDetail.cshtml" />
     <EntityDeploy Include="Models\BookStoreModel.edmx">

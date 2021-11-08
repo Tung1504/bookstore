@@ -22,7 +22,7 @@ namespace bookstore.Models
         public int id { get; set; }
         public string publisher_name { get; set; }
         public string description { get; set; }
-        public string est_date { get; set; }
+        public Nullable<int> est_date { get; set; }
         public string image { get; set; }
     
         public virtual ICollection<Book> Books { get; set; }

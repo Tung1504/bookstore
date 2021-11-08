@@ -24,7 +24,9 @@ namespace bookstore.Models
         [Required(ErrorMessage = "Please write some description for publisher")]
         public string description { get; set; }
 
-        [Required(ErrorMessage = "Please enter publisher establish date")]
+        [Required(ErrorMessage = "Please enter establised year")]
+        [Range(1, 9999, ErrorMessage = "Publisher established year must be less than 5 digits")]
+        [RegularExpression("[0-9]+", ErrorMessage = "Publisher established year must be digits only")]
         public string est_date { get; set; }
 
         //[Required(ErrorMessage = "Please choose a image for the publisher")]

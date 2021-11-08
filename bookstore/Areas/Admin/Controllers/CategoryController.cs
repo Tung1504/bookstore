@@ -54,7 +54,7 @@ namespace bookstore.Areas.Admin.Controllers
             return Json(new { data = item }, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
+        
         public ActionResult CreateOrEdit(Category category)
         {
 
@@ -63,7 +63,6 @@ namespace bookstore.Areas.Admin.Controllers
 
                 db.Categories.Attach(category);
                 var listCategory = db.Categories.Find(category.id);
-                listCategory.id = category.id;
                 listCategory.category_name= category.category_name;
                 db.Entry(category).State = System.Data.EntityState.Modified;
                 db.SaveChanges();

@@ -20,6 +20,8 @@ namespace bookstore.Models
         public string description { get; set; }
 
         [Required(ErrorMessage = "Please enter author birth year")]
+        [Range(1, 9999, ErrorMessage = "Author birth year must be less than 5 digits")]
+        [RegularExpression("[0-9]+", ErrorMessage = "Author birth year must be digits only")]
         public string birth_year { get; set; }
 
         [Required(ErrorMessage = "Please enter author active status")]

@@ -67,7 +67,7 @@
                             @Html.TextBoxFor(m => m.SignupViewModel.Phone, new { placeholder = "Phone" })
                             @Html.ValidationMessageFor(m => m.SignupViewModel.Phone, "", new { @class = "text-danger" })
 
-                            @Html.TextBoxFor(m => m.SignupViewModel.Email, new { placeholder = "Email" })
+                            @Html.TextBoxFor(m => m.SignupViewModel.Email, new {type = "email", placeholder = "Email" })
                             @Html.ValidationMessageFor(m => m.SignupViewModel.Email, "", new { @class = "text-danger" })
 
                             @Html.TextBoxFor(m => m.SignupViewModel.Dob, new { type = "date", placeholder = "Date of birth" })
